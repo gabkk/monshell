@@ -1,9 +1,24 @@
 #include "minishell.h"
 
 
-void	printPrompt()
+void	printPrompt(t_env **env)
 {
-	ft_putstr("$>");
+	t_env	*ptrmaillon;
+	char 	*name;
+
+	name = NULL;
+	ptrmaillon = *env;
+	while (ptrmaillon->next)
+	{
+		if (ft_strcmp(ptrmaillon->name, "USER") == 0){
+			name = ft_strdup(ptrmaillon->value);
+		}
+		ptrmaillon = ptrmaillon->next;
+	}
+	if (name != NULL)
+		ft_putstr(name);
+	ft_putstr("/$>");
+	free(name);
 }
 
 char	*readCommandLine()

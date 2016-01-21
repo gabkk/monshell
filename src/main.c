@@ -11,7 +11,7 @@ int		main(int ac, char **av)
 		char	*cmd;
 
 		(void)av;
-		printPrompt();
+		printPrompt(env);
 		cmd = readCommandLine();
 		// readline open un fd sur l entree standart
 		// read l entree standart et la stocker dans un char*
