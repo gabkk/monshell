@@ -5,8 +5,6 @@ int			isBuiltins(char **cmd){
 	int		i;
 	int		boolean;
 
-
-	//ft_putendl(cmd[0]); // virer ce put
 	i = 0;
 	listBuiltins = (char **)malloc(sizeof(char*) * 5);
 	listBuiltins[0] = "exit";
@@ -28,11 +26,10 @@ int			isBuiltins(char **cmd){
 
 void		execBultins(char **cmd, t_env **env){
 
-	ft_putstr(cmd[0]); // virer ce put
 	if (ft_strcmp(cmd[0], "env") == 0){
 		execenv(env);
 	} else if (ft_strcmp(cmd[0], "setenv") == 0){
-		builtSetEnv(env);
+		addEnv(env, cmd);
 	}
 }
 
@@ -48,12 +45,21 @@ void		execenv(t_env **env){
 	}
 }
 
-void		builtSetEnv(t_env **env){
+void		addEnv(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
+	if (!cmd[1]){
+		execenv(env);
+		return;
+	} else if (cmd[1] && !cmd[2]){
+		// check si cmd1 existe sinon la creer vide
+	} else if (cmd[1] && cmd[2]){
+		// check si cmd1 si oui modifier cmd2
+		// sinon la creer
+
+	}
 	ptrmaillon = *env;
 	while (ptrmaillon){
-
 		ptrmaillon = ptrmaillon->next;
 	}
 }

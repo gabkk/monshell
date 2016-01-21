@@ -44,6 +44,6 @@ t_env				*initEnv(void);
 int					isBuiltins(char **cmd);
 void				execBultins(char **cmd, t_env **env);
 void				execenv(t_env **env);
-void				builtSetEnv(t_env **env);
+void				addEnv(t_env **env, char **cmd);
 
 #endif
