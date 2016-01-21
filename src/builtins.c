@@ -1,10 +1,12 @@
 #include "minishell.h"
 
-int			isBuiltins(char *cmd){
+int			isBuiltins(char **cmd){
 	char	**listBuiltins;
 	int		i;
 	int		boolean;
 
+
+	//ft_putendl(cmd[0]); // virer ce put
 	i = 0;
 	listBuiltins = (char **)malloc(sizeof(char*) * 5);
 	listBuiltins[0] = "exit";
@@ -12,9 +14,8 @@ int			isBuiltins(char *cmd){
 	listBuiltins[2] = "setenv";
 	listBuiltins[3] = "unsetenv";
 	listBuiltins[4] = "cd";
-
 	while (i < 5){
-		if (ft_strcmp(cmd, listBuiltins[i]) == 0){
+		if (ft_strcmp(cmd[0], listBuiltins[i]) == 0){
 			boolean = 1;
 			break;
 		}
@@ -25,10 +26,13 @@ int			isBuiltins(char *cmd){
 	return boolean;
 }
 
-void		execBultins(char *cmd, t_env **env){
+void		execBultins(char **cmd, t_env **env){
 
-	if (ft_strcmp(cmd, "env") == 0){
+	ft_putstr(cmd[0]); // virer ce put
+	if (ft_strcmp(cmd[0], "env") == 0){
 		execenv(env);
+	} else if (ft_strcmp(cmd[0], "setenv") == 0){
+		builtSetEnv(env);
 	}
 }
 
@@ -43,3 +47,22 @@ void		execenv(t_env **env){
 		ptrmaillon = ptrmaillon->next;
 	}
 }
+
+void		builtSetEnv(t_env **env){
+	t_env	*ptrmaillon;
+
+	ptrmaillon = *env;
+	while (ptrmaillon){
+
+		ptrmaillon = ptrmaillon->next;
+	}
+}
+
+
+
+
+
+
+
+
+

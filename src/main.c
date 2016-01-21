@@ -3,23 +3,31 @@ int		main(int ac, char **av)
 {
 	t_env	*env;
 
+	(void) ac;
 	env = (t_env *)malloc(sizeof(t_env));
 	if (!(env))
 		return (0);
 	getLocalEnv(av, &env);
-	(void) ac;
 	while(42) {
-		pid_t	father;
-		int		status;
-		char	*cmd;
+		char	**cmd;
 
-		//(void)av;
+		cmd = NULL;
 		printPrompt(env);
 		cmd = readCommandLine();
-		// readline open un fd sur l entree standart
-		// read l entree standart et la stocker dans un char*
+		if (cmd[0] != NULL)
+		{
+			doTheJob(env, cmd);	
+			free(cmd); //Free toutes les tabs
+		}
+	}
+	return (0);
+}
 
-		if (isBuiltins(cmd) == 1){ //test sur uneliste de builtin
+void		doTheJob(t_env *env, char **cmd){
+	pid_t	father;
+	int		status;
+
+	if (isBuiltins(cmd) == 1){ //test sur uneliste de builtin
 			execBultins(cmd, &env);
 		}
 		else {
@@ -54,9 +62,7 @@ int		main(int ac, char **av)
 					// 	printf("continued\n");
 					// 	}
 
-					}
 				}
 			}
-	}
-	return (0);
+		}
 }

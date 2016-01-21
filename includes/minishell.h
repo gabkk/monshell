@@ -23,21 +23,27 @@
 # include <fcntl.h>
 
 typedef struct		s_env{
-	char		*name;
-	char		*value;
+	char			*name;
+	char			*value;
 	struct s_env	*next;
 }					t_env;
 
-void	printPrompt(t_env *env);
-char	*readCommandLine();
+void		doTheJob(t_env *env, char **cmd);
 
-void	getLocalEnv(char **env, t_env **liste);
-void	setLocalEnv(char **env, int i, t_env **liste);
-t_env *fillEnv(t_env *newmaillon, char *fullEnv);
-t_env	*initEnv(void);
 
-int		isBuiltins(char *cmd);
-void	execBultins(char *cmd, t_env **env);
-void	execenv(t_env **env);
+void				printPrompt(t_env *env);
+char				**readCommandLine();
+char 				**parseCmd(char *cmd);
+char				**setTab(char *cmd);
+
+void				getLocalEnv(char **env, t_env **liste);
+void				setLocalEnv(char **env, int i, t_env **liste);
+t_env 				*fillEnv(t_env *newmaillon, char *fullEnv);
+t_env				*initEnv(void);
+
+int					isBuiltins(char **cmd);
+void				execBultins(char **cmd, t_env **env);
+void				execenv(t_env **env);
+void				builtSetEnv(t_env **env);
 
 #endif
