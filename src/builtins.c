@@ -36,7 +36,7 @@ void		execenv(t_env **env){
 	t_env	*ptrmaillon;
 
 	ptrmaillon = *env;
-	while (ptrmaillon->next){
+	while (ptrmaillon){
 		ft_putstr(ptrmaillon->name);
 		ft_putchar('=');
 		ft_putendl(ptrmaillon->value);

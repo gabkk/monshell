@@ -1,24 +1,26 @@
 #include "minishell.h"
 int		main(int ac, char **av)
 {
-	t_env	**env;
+	t_env	*env;
 
-	env = getLocalEnv(av);
+	env = (t_env *)malloc(sizeof(t_env));
+	if (!(env))
+		return (0);
+	getLocalEnv(av, &env);
 	(void) ac;
 	while(42) {
 		pid_t	father;
 		int		status;
 		char	*cmd;
 
-		(void)av;
+		//(void)av;
 		printPrompt(env);
 		cmd = readCommandLine();
 		// readline open un fd sur l entree standart
 		// read l entree standart et la stocker dans un char*
 
 		if (isBuiltins(cmd) == 1){ //test sur uneliste de builtin
-			execBultins(cmd, env);
-			ft_putendl("built-in");
+			execBultins(cmd, &env);
 		}
 		else {
 			father = fork();

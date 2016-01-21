@@ -23,15 +23,15 @@
 # include <fcntl.h>
 
 typedef struct		s_env{
-	const char		*name;
-	const char		*value;
+	char		*name;
+	char		*value;
 	struct s_env	*next;
 }					t_env;
 
-void	printPrompt();
+void	printPrompt(t_env *env);
 char	*readCommandLine();
 
-t_env	**getLocalEnv(char **env);
+void	getLocalEnv(char **env, t_env **liste);
 void	setLocalEnv(char **env, int i, t_env **liste);
 t_env *fillEnv(t_env *newmaillon, char *fullEnv);
 t_env	*initEnv(void);
