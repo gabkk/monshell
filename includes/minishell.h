@@ -36,8 +36,8 @@ char				**readCommandLine();
 char 				**parseCmd(char *cmd);
 char				**setTab(char *cmd);
 
-void				getLocalEnv(char **env, t_env **liste);
-void				setLocalEnv(char **env, int i, t_env **liste);
+t_env				*getLocalEnv(char *const envp[]);
+void				setLocalEnv(char *const envp[], t_env **liste);
 t_env 				*fillEnv(t_env *newmaillon, char *fullEnv);
 t_env				*initEnv(void);
 

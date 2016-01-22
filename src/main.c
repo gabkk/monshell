@@ -1,13 +1,11 @@
 #include "minishell.h"
-int		main(int ac, char **av)
+int		main(int ac, char *const av[], char *const envp[])
 {
 	t_env	*env;
 
 	(void) ac;
-	env = (t_env *)malloc(sizeof(t_env));
-	if (!(env))
-		return (0);
-	getLocalEnv(av, &env);
+	(void) av;
+	env = getLocalEnv(envp);
 	while(42) {
 		char	**cmd;
 

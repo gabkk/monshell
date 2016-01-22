@@ -48,20 +48,21 @@ void		execenv(t_env **env){
 void		addEnv(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
+	ptrmaillon = *env;
 	if (!cmd[1]){
 		execenv(env);
 		return;
 	} else if (cmd[1] && !cmd[2]){
-		// check si cmd1 existe sinon la creer vide
+		while (ptrmaillon){
+			if (ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
+			ptrmaillon = ptrmaillon->next;
+		}
 	} else if (cmd[1] && cmd[2]){
 		// check si cmd1 si oui modifier cmd2
 		// sinon la creer
 
 	}
-	ptrmaillon = *env;
-	while (ptrmaillon){
-		ptrmaillon = ptrmaillon->next;
-	}
+
 }
 
 

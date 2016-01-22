@@ -1,23 +1,24 @@
 #include "minishell.h"
 
-void	getLocalEnv(char **env, t_env **liste){
-	t_env	*newmaillon;
+t_env	*getLocalEnv(char *const envp[]){
+	t_env	*liste;
 	int 	i;
 
-	i = 2;
-	if (!(env[i]))
-		return;
-	newmaillon = initEnv();
-	*liste = fillEnv(newmaillon, env[i]);
-	setLocalEnv(env, i, liste);
-	return ;
+	i = 0;
+	if (!(envp))
+		return (NULL);
+	liste = NULL;
+	setLocalEnv(envp, &liste);
+	return (liste);
 }
 
-void	setLocalEnv(char **env, int i, t_env **liste){
+void	setLocalEnv(char *const envp[], t_env **liste){
 	t_env	*newmaillon;
 	t_env	*ptrmaillon;
+	int 	i;
 
-	while (env[i] != NULL)
+	i = 0;
+	while (envp[i] != NULL)
 	{
 		newmaillon = initEnv();
 		if (!(*liste))
@@ -27,7 +28,7 @@ void	setLocalEnv(char **env, int i, t_env **liste){
 			ptrmaillon = ptrmaillon->next;
 		}
 		ptrmaillon->next = newmaillon;
-		newmaillon = fillEnv(newmaillon, env[i]);
+		newmaillon = fillEnv(newmaillon, envp[i]);
 		newmaillon->next = NULL;
 		i++;
 	}
