@@ -20,7 +20,7 @@ INC = -I includes/ -I libft/includes
 
 SRCSDIR = src/
 
-SRCS = main.c commandLineAction.c defineEnv.c builtins.c
+SRCS = main.c commandLineAction.c defineEnv.c builtins.c error.c setenv.c
 
 OBJ = $(SRCS:.c=.o)
 

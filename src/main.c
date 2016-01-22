@@ -12,7 +12,7 @@ int		main(int ac, char *const av[], char *const envp[])
 		cmd = NULL;
 		printPrompt(env);
 		cmd = readCommandLine();
-		if (cmd[0] != NULL)
+		if (cmd != NULL)
 		{
 			doTheJob(env, cmd);	
 			free(cmd); //Free toutes les tabs

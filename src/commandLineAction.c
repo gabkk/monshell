@@ -43,31 +43,32 @@ char		**parseCmd(char *cmd){
 	int		j;
 	int		k;
 	int		len;
-	int		pos;
+	int 	pos;
 
 	i = 0;
 	j = 0;
 	cmdTab = setTab(cmd);
-	while (cmd[i] != '\0'){
+	while (cmd[i] != '\0')
+	{
 		len = 0;
 		k = 0;
-		while (cmd[i] == ' ' && cmd[pos] != '\0')
+		while ((ft_isspace(cmd[i]) == 1) && cmd[i] != '\0')
 			i++;
 		pos = i;
-		while (cmd[pos] != ' ' && cmd[pos] != '\0'){
-			pos++;
-			len++;
+		while ((ft_isspace(cmd[pos]) == 0) && cmd[pos] != '\0')
+		{
+			pos ++;
+			len ++;
 		}
-		if (len != 0){
-			cmdTab[j] = (char *)malloc(sizeof(char) * len);
-			while (cmd[i] != ' ' && cmd[i] != '\0'){
-				cmdTab[j][k] = cmd[i];
-				i++;
-				k++;
-			}
-			cmdTab[j][k] = '\0';
-			j++;
+		cmdTab[j] = (char *)malloc(sizeof(char) * len);
+		while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
+		{
+			cmdTab[j][k] = cmd[i];
+			i++;
+			k++;
 		}
+		cmdTab[j][k] = '\0';
+		j++;
 	}
 	return (cmdTab);
 }
@@ -80,16 +81,15 @@ char		**setTab(char *cmd){
 	i = 0;
 	size = 0;
 	while (cmd[i] != '\0'){
-		while (cmd[i] == ' ')
+		while ((ft_isspace(cmd[i]) == 1))
 			i++;
-		if (cmd[i] != ' ' && cmd[i] != '\0'){
+		if ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0'){
 			size++;
-			while (cmd[i] != ' ' && cmd[i] != '\0')
+			while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
 				i++;
 		}
 	}
-	// ft_putnbr(size);
 	tab = (char **)malloc(sizeof(char *)* size);
-	tab[size] = NULL;
+	tab[size] = NULL
 	return (tab);
 }

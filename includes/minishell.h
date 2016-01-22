@@ -30,20 +30,31 @@ typedef struct		s_env{
 
 void		doTheJob(t_env *env, char **cmd);
 
-
+/*  commandLineAction.c */
 void				printPrompt(t_env *env);
 char				**readCommandLine();
 char 				**parseCmd(char *cmd);
 char				**setTab(char *cmd);
+char				*malloc_cmd(char *cmd, int *pos);
+int 				isdquote_cmd(char *cmd, int *pos);
+char				*init_cmd(char *cmd, int *i, char *cmdTab);
 
+/*  defineEnv.c        */
 t_env				*getLocalEnv(char *const envp[]);
 void				setLocalEnv(char *const envp[], t_env **liste);
 t_env 				*fillEnv(t_env *newmaillon, char *fullEnv);
 t_env				*initEnv(void);
 
+/*  builtins.c        */
 int					isBuiltins(char **cmd);
 void				execBultins(char **cmd, t_env **env);
 void				execenv(t_env **env);
-void				addEnv(t_env **env, char **cmd);
 
+/*  setenv.c        */
+void				addEnv(t_env **env, char **cmd);
+void				addNewEnv(t_env **env, char **cmd);
+
+/*  error.c        */
+void				invalidParam(char **cmd);
+void				setenvError(char **cmd);
 #endif

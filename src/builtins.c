@@ -40,36 +40,7 @@ void		execenv(t_env **env){
 	while (ptrmaillon){
 		ft_putstr(ptrmaillon->name);
 		ft_putchar('=');
-		ft_putendl(ptrmaillon->value);
+		(ptrmaillon->value) ? ft_putendl(ptrmaillon->value) : ft_putchar('\n');
 		ptrmaillon = ptrmaillon->next;
 	}
 }
-
-void		addEnv(t_env **env, char **cmd){
-	t_env	*ptrmaillon;
-
-	ptrmaillon = *env;
-	if (!cmd[1]){
-		execenv(env);
-		return;
-	} else if (cmd[1] && !cmd[2]){
-		while (ptrmaillon){
-			if (ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
-			ptrmaillon = ptrmaillon->next;
-		}
-	} else if (cmd[1] && cmd[2]){
-		// check si cmd1 si oui modifier cmd2
-		// sinon la creer
-
-	}
-
-}
-
-
-
-
-
-
-
-
-
