@@ -12,7 +12,6 @@ void		addEnv(t_env **env, char **cmd){
 		return;
 	}
 	if (cmd[1] && !cmd[2]){
-		ft_putendl("step 1");
 		if(withequal(cmd[1]) == 0)
 			setnoequal(env, cmd);
 		else
@@ -32,7 +31,6 @@ void		addEnv(t_env **env, char **cmd){
 void		setnoequal(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
-	ft_putstr("no equal");
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
@@ -51,11 +49,7 @@ void		setequal(t_env **env, char **cmd){
 	char 	**varvalue;
 
 	(void)env;
-	ft_putstr("equal");
 	varvalue = ft_strsplit(cmd[1], '=');
-
-	//ft_putendl(varvalue[0]);
-	//ft_putendl(varvalue[1]);
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{

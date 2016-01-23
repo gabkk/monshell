@@ -14,7 +14,7 @@ void	printPrompt(t_env *env)
 			if (ptrmaillon->value != NULL)
 				value = ft_strdup(ptrmaillon->value);
 			else
-				value = ft_strdup(" ");
+				value = NULL;
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
@@ -45,55 +45,47 @@ char		**parseCmd(char *cmd){
 	int		i;
 	int		j;
 	int		k;
-	int		len;
-	int		pos;
 
 	i = 0;
 	j = 0;
-	pos = 0;
 	cmdTab = setTab(cmd);
 	while (cmd[i] != '\0')
 	{
-		len = 0;
 		k = 0;
-//	ft_putendl("a");
 		while ((ft_isspace(cmd[i]) == 1) && cmd[i] != '\0')
 			i++;
-		pos = i;
-//	ft_putendl("b");
-		while ((ft_isspace(cmd[pos]) == 0) && cmd[pos] != '\0')
+		if (cmd[i] != '\0')
+			cmdTab[j] = malloc_tab(cmd, i);
+		if (cmdTab[j] != NULL)
 		{
-			pos ++;
-			len ++;
-		}
-//		ft_putnbr(len);
-	ft_putendl("len");
-		if (len != 0)
-		{
-			cmdTab[j] = (char *)malloc(sizeof(char) * len);
-			if (!cmdTab[j])
-				return NULL;
-		}
-//	ft_putendl("d");
-		while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
-		{
-			cmdTab[j][k] = cmd[i];
-			i++;
-			k++;
-		}
-//	ft_putendl("e");
-		if (len != 0)
+			while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
+				cmdTab[j][k++] = cmd[i++];
 			cmdTab[j][k] = '\0';
-		ft_putnbr(j);
-		ft_putendl(cmdTab[j]);
+		}
 		j++;
 	}
-//	ft_putendl("end");
-	ft_putnbr(j);
 	cmdTab[j] = NULL;
 	return (cmdTab);
 }
 
+char		*malloc_tab(char *cmd, int pos){
+	char	*cmdTab;
+	int		len;
+
+	len = 0;
+	while ((ft_isspace(cmd[pos]) == 0) && cmd[pos] != '\0')
+	{
+		pos ++;
+		len ++;
+	}
+	if (len != 0)
+	{
+		cmdTab = (char *)malloc(sizeof(char) * len);
+		if (!cmdTab)
+			return NULL;
+	}
+	return (cmdTab);
+}
 char		**setTab(char *cmd){
 	char	**tab;
 	int		size;
@@ -110,8 +102,8 @@ char		**setTab(char *cmd){
 				i++;
 		}
 	}
-//	ft_putnbr(size);
 	tab = (char **)malloc(sizeof(char *)* size + 1);
+	tab[size] = NULL;
 	if (!tab)
 		return(NULL);
 	return (tab);

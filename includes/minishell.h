@@ -35,6 +35,7 @@ void				printPrompt(t_env *env);
 char				**readCommandLine();
 char 				**parseCmd(char *cmd);
 char				**setTab(char *cmd);
+char				*malloc_tab(char *cmd, int pos);
 
 /*  defineEnv.c        */
 t_env				*getLocalEnv(char *const envp[]);
