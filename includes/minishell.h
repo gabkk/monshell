@@ -28,7 +28,7 @@ typedef struct		s_env{
 	struct s_env	*next;
 }					t_env;
 
-void		doTheJob(t_env *env, char **cmd);
+void		doTheJob(t_env **env, char **cmd);
 
 /*  commandLineAction.c */
 void				printPrompt(t_env *env);
@@ -55,6 +55,9 @@ int					isvalidvar(char *str);
 void				setnoequal(t_env **env, char **cmd);
 int 		 		withequal(char *str);
 void				setequal(t_env **env, char **cmd);
+
+/*  unsetenv*/
+void				unset_env(t_env** env, char **cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);

@@ -8,7 +8,7 @@ void	printPrompt(t_env *env)
 
 	value = NULL;
 	ptrmaillon = env;
-	while (ptrmaillon != NULL)
+	while (ptrmaillon)
 	{
 		if ((ft_strcmp(ptrmaillon->name, "USER") == 0)){
 			if (ptrmaillon->value != NULL)
@@ -35,7 +35,7 @@ char	**readCommandLine()
 	value[ret - 1] = '\0';
 	if (value){
 		cmd = parseCmd(value);	
-		return(cmd);
+		return (cmd);
 	}
 	return (NULL);
 }
@@ -105,6 +105,6 @@ char		**setTab(char *cmd){
 	tab = (char **)malloc(sizeof(char *)* size + 1);
 	tab[size] = NULL;
 	if (!tab)
-		return(NULL);
+		return (NULL);
 	return (tab);
 }

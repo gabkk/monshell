@@ -15,19 +15,19 @@ int		main(int ac, char *const av[], char *const envp[])
 //		ft_putendl("sortit");
 		if (*cmd != NULL)
 		{
-			doTheJob(env, cmd);	
+			doTheJob(&env, cmd);	
 			//free(cmd); //Free toutes les tabs
 		}
 	}
 	return (0);
 }
 
-void		doTheJob(t_env *env, char **cmd){
+void		doTheJob(t_env **env, char **cmd){
 	pid_t	father;
 	int		status;
 
 	if (isBuiltins(cmd) == 1){ //test sur uneliste de builtin
-			execBultins(cmd, &env);
+			execBultins(cmd, env);
 		}
 		else {
 			father = fork();
