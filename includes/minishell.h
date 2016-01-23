@@ -42,7 +42,7 @@ char				*init_cmd(char *cmd, int *i, char *cmdTab);
 /*  defineEnv.c        */
 t_env				*getLocalEnv(char *const envp[]);
 void				setLocalEnv(char *const envp[], t_env **liste);
-t_env 				*fillEnv(t_env *newmaillon, char *fullEnv);
+t_env				*fillEnv(t_env *newmaillon, char *fullEnv);
 t_env				*initEnv(void);
 
 /*  builtins.c        */

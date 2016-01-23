@@ -2,9 +2,7 @@
 
 t_env	*getLocalEnv(char *const envp[]){
 	t_env	*liste;
-	int 	i;
 
-	i = 0;
 	if (!(envp))
 		return (NULL);
 	liste = NULL;

@@ -12,10 +12,11 @@ int		main(int ac, char *const av[], char *const envp[])
 		cmd = NULL;
 		printPrompt(env);
 		cmd = readCommandLine();
-		if (cmd != NULL)
+//		ft_putendl("sortit");
+		if (*cmd != NULL)
 		{
 			doTheJob(env, cmd);	
-			free(cmd); //Free toutes les tabs
+			//free(cmd); //Free toutes les tabs
 		}
 	}
 	return (0);

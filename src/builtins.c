@@ -20,7 +20,7 @@ int			isBuiltins(char **cmd){
 		boolean = 0;
 		i++;
 	}
-	free(listBuiltins);
+	//free(listBuiltins);
 	return boolean;
 }
 
