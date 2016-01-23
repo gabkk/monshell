@@ -35,9 +35,6 @@ void				printPrompt(t_env *env);
 char				**readCommandLine();
 char 				**parseCmd(char *cmd);
 char				**setTab(char *cmd);
-char				*malloc_cmd(char *cmd, int *pos);
-int 				isdquote_cmd(char *cmd, int *pos);
-char				*init_cmd(char *cmd, int *i, char *cmdTab);
 
 /*  defineEnv.c        */
 t_env				*getLocalEnv(char *const envp[]);
@@ -48,11 +45,15 @@ t_env				*initEnv(void);
 /*  builtins.c        */
 int					isBuiltins(char **cmd);
 void				execBultins(char **cmd, t_env **env);
-void				execenv(t_env **env);
+void				showenv(t_env **env);
 
 /*  setenv.c        */
 void				addEnv(t_env **env, char **cmd);
 void				addNewEnv(t_env **env, char **cmd);
+int					isvalidvar(char *str);
+void				setnoequal(t_env **env, char **cmd);
+int 		 		withequal(char *str);
+void				setequal(t_env **env, char **cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);

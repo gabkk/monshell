@@ -11,7 +11,10 @@ void	printPrompt(t_env *env)
 	while (ptrmaillon != NULL)
 	{
 		if ((ft_strcmp(ptrmaillon->name, "USER") == 0)){
-			value = ft_strdup(ptrmaillon->value);
+			if (ptrmaillon->value != NULL)
+				value = ft_strdup(ptrmaillon->value);
+			else
+				value = ft_strdup(" ");
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
@@ -64,7 +67,7 @@ char		**parseCmd(char *cmd){
 			len ++;
 		}
 //		ft_putnbr(len);
-//	ft_putendl("len");
+	ft_putendl("len");
 		if (len != 0)
 		{
 			cmdTab[j] = (char *)malloc(sizeof(char) * len);
@@ -79,14 +82,14 @@ char		**parseCmd(char *cmd){
 			k++;
 		}
 //	ft_putendl("e");
-		if (len)
+		if (len != 0)
 			cmdTab[j][k] = '\0';
-		//ft_putnbr(j);
-		//ft_putendl(cmdTab[j]);
+		ft_putnbr(j);
+		ft_putendl(cmdTab[j]);
 		j++;
 	}
 //	ft_putendl("end");
-//	ft_putnbr(j);
+	ft_putnbr(j);
 	cmdTab[j] = NULL;
 	return (cmdTab);
 }

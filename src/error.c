@@ -8,6 +8,6 @@ void invalidParam(char **cmd){
 
 void	setenvError(char **cmd){
 	if (cmd[1] && !cmd[2]){
-		ft_putendl("To set an environment variable, please add a seconde parameter ex:  USER \"test\"");
+		ft_putendl("To set an environment variable, please add a seconde parameter ex:  USER test");
 	}
 }

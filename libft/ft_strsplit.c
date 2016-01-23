@@ -48,7 +48,7 @@ char			**ft_strsplit(char const *s, char c)
 	{
 		while (!(j = 0) && s[i] == c && s[i] != '\0')
 			i++;
-		while (s[i + len] != c && s[i] != '\0')
+		while (s[i + len] != c && s[i + len] != '\0')
 			len++;
 		t[z] = (char *)malloc(sizeof(char) * len + 1);
 		while (s[i] != c && s[i] != '\0')

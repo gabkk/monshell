@@ -27,13 +27,13 @@ int			isBuiltins(char **cmd){
 void		execBultins(char **cmd, t_env **env){
 
 	if (ft_strcmp(cmd[0], "env") == 0){
-		execenv(env);
+		showenv(env);
 	} else if (ft_strcmp(cmd[0], "setenv") == 0){
 		addEnv(env, cmd);
 	}
 }
 
-void		execenv(t_env **env){
+void		showenv(t_env **env){
 	t_env	*ptrmaillon;
 
 	ptrmaillon = *env;
