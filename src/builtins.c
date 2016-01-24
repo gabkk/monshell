@@ -29,17 +29,18 @@ void		execBultins(char **cmd, t_env **env){
 	if (env)
 	{
 		if (ft_strcmp(cmd[0], "env") == 0)
-		{
 			showenv(env);
-		} else if (ft_strcmp(cmd[0], "setenv") == 0)
-		{
-			ft_putendl("go into setenv");
-			
+		else if (ft_strcmp(cmd[0], "cd") == 0)
+			ft_opendir(env, cmd);
+		else if (ft_strcmp(cmd[0], "setenv") == 0)
 			addEnv(env, cmd);
-		} else if (ft_strcmp(cmd[0], "unsetenv") == 0)
-		{
+		else if (ft_strcmp(cmd[0], "unsetenv") == 0)
 			unset_env(env, cmd);
-		}	
+		else if (ft_strcmp(cmd[0], "exit") == 0)
+		{
+			// GERER LES FREE EN EXIT
+			exit(0);
+		}
 	}
 }
 
@@ -49,8 +50,12 @@ void		showenv(t_env **env){
 	ptrmaillon = *env;
 	while (ptrmaillon){
 		ft_putstr(ptrmaillon->name);
-		ft_putchar('=');
-		(ptrmaillon->value) ? ft_putendl(ptrmaillon->value) : ft_putchar('\n');
+		if (ptrmaillon->name && !ptrmaillon->value)
+			ft_putendl("=");
+		else if (ptrmaillon->name)
+			ft_putchar('=');
+		if (ptrmaillon->value)
+			ft_putendl(ptrmaillon->value);
 		ptrmaillon = ptrmaillon->next;
 	}
 }

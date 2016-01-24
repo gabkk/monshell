@@ -7,7 +7,7 @@ void	printPrompt(t_env *env)
 	t_env	*ptrmaillon;
 	char 	*value;
 
-	ft_putendl("In PRompt");
+	// ft_putendl("In PRompt");
 	value = NULL;
 	ptrmaillon = env;
 	while (ptrmaillon)

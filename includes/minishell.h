@@ -21,6 +21,9 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <dirent.h>
+
+typedef struct dirent	*t_dirent;
 
 typedef struct		s_env{
 	char			*name;
@@ -28,7 +31,7 @@ typedef struct		s_env{
 	struct s_env	*next;
 }					t_env;
 
-void		doTheJob(t_env **env, char **cmd);
+void		doTheJob(t_env **env, char **cmd, char *const envp[]);
 
 /*  commandLineAction.c */
 void				printPrompt(t_env *env);
@@ -56,8 +59,15 @@ void				setnoequal(t_env **env, char **cmd);
 int 		 		withequal(char *str);
 void				setequal(t_env **env, char **cmd);
 
-/*  unsetenv*/
+/*  unsetenv.c      */
 void				unset_env(t_env** env, char **cmd);
+
+/*  chdir.c        */
+void				ft_opendir(t_env **env, char **cmd);
+void				ft_setpwd(t_env **env, char *pwd, char *nextpwd);
+
+/*	pathexec.c      */
+int					isCommande(char **cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);

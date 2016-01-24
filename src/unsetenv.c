@@ -5,7 +5,7 @@ void		unset_env(t_env **env, char **cmd){
 	t_env	*prevmaillon;
 
 	if (!(*env) || !cmd[1]){
-		ft_putstr("ENV NULL || CMD NULL");
+//		ft_putstr("ENV NULL || CMD NULL");
 		return;
 	}
 	ptrmaillon = *env;

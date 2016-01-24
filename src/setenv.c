@@ -4,33 +4,34 @@ void		addEnv(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
 
-	if (!(*env)){
-		ft_putendl("reinit");
-		ft_putendl(cmd[0]);
-		ft_putendl(cmd[1]);
-		ft_putendl(cmd[2]);
-		*env = initEnv();
-		addNewEnv(env, cmd);
-	}
+	// if (!(*env)){
+	// 	// ft_putendl("reinit");
+	// 	// ft_putendl(cmd[0]);
+	// 	// ft_putendl(cmd[1]);
+	// 	// ft_putendl(cmd[2]);
+	// 	*env = initEnv();
+	// 	addNewEnv(env, cmd);
+	// }
 	ptrmaillon = *env;
-	ft_putendl("back from addENV");
-	ft_putendl(ptrmaillon->name);
-	ft_putendl("1");
+	// ft_putendl("back from addENV");
+	// ft_putendl(ptrmaillon->name);
+	// ft_putendl("1");
 	if (!cmd[1])
 	{
 		//ft_putendl("!cmd1");
 		showenv(env);
 		return;
 	}
-	ft_putendl("2");
+	// ft_putendl("2");
 	if (isvalidvar(cmd[1]) == 0)
 	{
 		return;
 	}
-	ft_putendl("3");
+	// ft_putendl("3");
 	if (!cmd[1] && !cmd[2])
 	{
 		ft_putendl("Please enter at least 1 VAR");
+		return;
 	}
 	if (cmd[1] && !cmd[2])
 	{ 
@@ -41,8 +42,12 @@ void		addEnv(t_env **env, char **cmd){
 	}
 	else if (cmd[1] && cmd[2])
 	{
-		ft_putendl("2 parameter");
-		ft_putendl(ptrmaillon->name);
+		// ft_putendl("2 parameter");
+		// ft_putendl(ptrmaillon->name);
+		if (ft_isupper(cmd[1]) == 0){
+			ft_putendl("VAR should contain only capital letter");
+			return;
+		}
 		while (ptrmaillon)
 		{
 			if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
@@ -59,7 +64,7 @@ void		addEnv(t_env **env, char **cmd){
 void		setnoequal(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
-	ft_putendl("noequal");
+	// ft_putendl("noequal");
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
@@ -77,14 +82,14 @@ void		setequal(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 	char 	**varvalue;
 
-	ft_putendl("equal");
+	// ft_putendl("equal");
 	varvalue = ft_strsplit(cmd[1], '=');
 	ptrmaillon = *env;
-	ft_putendl(ptrmaillon->name);
-	ft_putendl("equal 1");
+	// ft_putendl(ptrmaillon->name);
+	// ft_putendl("equal 1");
 	while (ptrmaillon)
 	{
-		ft_putendl(ptrmaillon->name);
+//		ft_putendl(ptrmaillon->name);
 		if ((ptrmaillon->name) && ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
 		{
 			if (varvalue[1] != NULL)
@@ -95,11 +100,11 @@ void		setequal(t_env **env, char **cmd){
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
-	ft_putendl("equal 2");
+	// ft_putendl("equal 2");
 	cmd[1] = varvalue[0];
 	if (varvalue[1] != NULL)
 		cmd[2] = varvalue[1];
-	ft_putendl("equal 3");
+	// ft_putendl("equal 3");
 	addNewEnv(env, cmd);
 }
 
@@ -120,7 +125,7 @@ void		addNewEnv(t_env **env, char **cmd){
 	t_env	*newmaillon;
 	t_env	*ptrmaillon;
 
-	ft_putendl("inside addNEWenv");
+	// ft_putendl("inside addNEWenv");
 	newmaillon = initEnv();
 	ptrmaillon = *env;
 	while (ptrmaillon->next){
@@ -128,7 +133,7 @@ void		addNewEnv(t_env **env, char **cmd){
 	}
 	ptrmaillon->next = newmaillon;
 	newmaillon->name = cmd[1];
-	ft_putendl(newmaillon->name);
+//	ft_putendl(newmaillon->name);
 	if (cmd[2])
 		newmaillon->value = cmd[2];
 }
@@ -161,7 +166,7 @@ int			isvalidvar(char *str){
 		{
 			if (valid == 1)
 				return (1);
-			ft_putendl("VAR should be set in capital");
+			ft_putendl("VAR should contain only capital letter");
 			return (0);
 		}
 		i++;
