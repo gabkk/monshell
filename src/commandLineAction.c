@@ -3,14 +3,16 @@
 
 void	printPrompt(t_env *env)
 {
+	(void)env;
 	t_env	*ptrmaillon;
 	char 	*value;
 
+	ft_putendl("In PRompt");
 	value = NULL;
 	ptrmaillon = env;
 	while (ptrmaillon)
 	{
-		if ((ft_strcmp(ptrmaillon->name, "USER") == 0)){
+		if (ptrmaillon->name && (ft_strcmp(ptrmaillon->name, "USER") == 0)){
 			if (ptrmaillon->value != NULL)
 				value = ft_strdup(ptrmaillon->value);
 			else
@@ -19,9 +21,11 @@ void	printPrompt(t_env *env)
 		ptrmaillon = ptrmaillon->next;
 	}
 	if (value)
+	{
 		ft_putstr(value);
+		free(value);
+	}
 	ft_putstr("/$>");
-	free(value);
 }
 
 char	**readCommandLine()

@@ -20,21 +20,26 @@ int			isBuiltins(char **cmd){
 		boolean = 0;
 		i++;
 	}
-	//free(listBuiltins);
+	free(listBuiltins);
 	return boolean;
 }
 
 void		execBultins(char **cmd, t_env **env){
 
-	if (ft_strcmp(cmd[0], "env") == 0)
+	if (env)
 	{
-		showenv(env);
-	} else if (ft_strcmp(cmd[0], "setenv") == 0)
-	{
-		addEnv(env, cmd);
-	} else if (ft_strcmp(cmd[0], "unsetenv") == 0)
-	{
-		unset_env(env, cmd);
+		if (ft_strcmp(cmd[0], "env") == 0)
+		{
+			showenv(env);
+		} else if (ft_strcmp(cmd[0], "setenv") == 0)
+		{
+			ft_putendl("go into setenv");
+			
+			addEnv(env, cmd);
+		} else if (ft_strcmp(cmd[0], "unsetenv") == 0)
+		{
+			unset_env(env, cmd);
+		}	
 	}
 }
 

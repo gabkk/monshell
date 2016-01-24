@@ -65,6 +65,7 @@ t_env *fillEnv(t_env *newmaillon, char *fullEnv){
 		i++;
 	}
 	value[ptr] = '\0';
+	//ft_putendl(newmaillon->name);
 	newmaillon->name = ft_strdup(name);
 	newmaillon->value = ft_strdup(value);
 	free(name);

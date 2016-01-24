@@ -3,22 +3,50 @@
 void		addEnv(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
+
+	if (!(*env)){
+		ft_putendl("reinit");
+		ft_putendl(cmd[0]);
+		ft_putendl(cmd[1]);
+		ft_putendl(cmd[2]);
+		*env = initEnv();
+		addNewEnv(env, cmd);
+	}
 	ptrmaillon = *env;
-	if (!cmd[1]){
+	ft_putendl("back from addENV");
+	ft_putendl(ptrmaillon->name);
+	ft_putendl("1");
+	if (!cmd[1])
+	{
+		//ft_putendl("!cmd1");
 		showenv(env);
 		return;
 	}
-	if (isvalidvar(cmd[1]) == 0){
+	ft_putendl("2");
+	if (isvalidvar(cmd[1]) == 0)
+	{
 		return;
 	}
-	if (cmd[1] && !cmd[2]){
+	ft_putendl("3");
+	if (!cmd[1] && !cmd[2])
+	{
+		ft_putendl("Please enter at least 1 VAR");
+	}
+	if (cmd[1] && !cmd[2])
+	{ 
 		if(withequal(cmd[1]) == 0)
 			setnoequal(env, cmd);
 		else
 			setequal(env, cmd);
-	} else if (cmd[1] && cmd[2]){
-		while (ptrmaillon){
-			if (ft_strcmp(ptrmaillon->name, cmd[1]) == 0){
+	}
+	else if (cmd[1] && cmd[2])
+	{
+		ft_putendl("2 parameter");
+		ft_putendl(ptrmaillon->name);
+		while (ptrmaillon)
+		{
+			if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
+			{
 				ptrmaillon->value = cmd[2];
 				return;
 			}
@@ -31,10 +59,11 @@ void		addEnv(t_env **env, char **cmd){
 void		setnoequal(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
+	ft_putendl("noequal");
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
-		if (ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
+		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
 		{
 			setenvError(cmd);
 			return;
@@ -48,12 +77,15 @@ void		setequal(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 	char 	**varvalue;
 
-	(void)env;
+	ft_putendl("equal");
 	varvalue = ft_strsplit(cmd[1], '=');
 	ptrmaillon = *env;
+	ft_putendl(ptrmaillon->name);
+	ft_putendl("equal 1");
 	while (ptrmaillon)
 	{
-		if (ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
+		ft_putendl(ptrmaillon->name);
+		if ((ptrmaillon->name) && ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
 		{
 			if (varvalue[1] != NULL)
 				ptrmaillon->value = varvalue[1];
@@ -63,9 +95,11 @@ void		setequal(t_env **env, char **cmd){
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
+	ft_putendl("equal 2");
 	cmd[1] = varvalue[0];
 	if (varvalue[1] != NULL)
 		cmd[2] = varvalue[1];
+	ft_putendl("equal 3");
 	addNewEnv(env, cmd);
 }
 
@@ -86,6 +120,7 @@ void		addNewEnv(t_env **env, char **cmd){
 	t_env	*newmaillon;
 	t_env	*ptrmaillon;
 
+	ft_putendl("inside addNEWenv");
 	newmaillon = initEnv();
 	ptrmaillon = *env;
 	while (ptrmaillon->next){
@@ -93,6 +128,7 @@ void		addNewEnv(t_env **env, char **cmd){
 	}
 	ptrmaillon->next = newmaillon;
 	newmaillon->name = cmd[1];
+	ft_putendl(newmaillon->name);
 	if (cmd[2])
 		newmaillon->value = cmd[2];
 }
@@ -106,21 +142,22 @@ int			isvalidvar(char *str){
 	valid = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '=')
+		if (str[i] == '=' || str[i] == '_')
 		{
+			if (str[i] == '=')
+				valid++;
 			if (str[i] == '=' && ft_strlen(str) == 1)
 			{
 				ft_putendl("You need to add a value and a parameter");
 				return (0);
 			}
-			valid++;
 			if (valid > 1)
 			{
 				ft_putendl("Parameter of setenv can't have more than one =");
 				return (0);
 			}
 		}
-		if ((str[i] < 65 || str[i] > 90) && str[i] != '=')
+		else if (str[i] < 65 || str[i] > 90)
 		{
 			if (valid == 1)
 				return (1);
