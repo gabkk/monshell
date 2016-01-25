@@ -43,8 +43,11 @@ void		ft_opendir(t_env **env, char **cmd){
 		if (cmd[1])
 		{
 			if (ft_strcmp(cmd[1], ".") == 0)
-			{
-				ft_setpwd(env, NULL, NULL);
+			{	
+				if((directory = opendir(pwd)) == NULL)
+					ft_putendl_fd("OPENDIR ERROR", 1);
+				else
+					ft_setpwd(env, NULL, NULL);
 				return;
 			}
 			else if (ft_strcmp(cmd[1], "..") == 0)
@@ -63,22 +66,31 @@ void		ft_opendir(t_env **env, char **cmd){
 			{
 				tmp = ft_strrchr(pwd, 47);
 				i = (ft_strlen(pwd) - ft_strlen(tmp));
-				ft_putstr("tmp");
-				ft_putstr(tmp);
-				tmp2 = (char *)malloc(sizeof(char) * i);
+				ft_putstr("tmp  ->");
+				ft_putendl(tmp);
+				ft_putnbr(i);
+				tmp2 = (char *)malloc(sizeof(char) * i + 1);
 				while (j < i)
 				{
 					tmp2[j] = pwd[j];
 					j++;
 				}
 				tmp2[j] = '\0';
-				ft_putstr("tmp2");
-				ft_putstr(tmp2);
-				tmp = ft_strchr(pwd, 47);
-				ft_putstr("tmpre");
-				ft_putstr(tmp);
+				ft_putstr("tmp2  ->");
+				ft_putendl(tmp2);
+				tmp = (char*)malloc(sizeof(char)* ft_strlen(cmd[1]) - 1);
+				i = 2;
+				j = 0;
+				while (cmd[1][i] != '\0')
+				{
+					tmp[j] = cmd[1][i];
+					i++;
+					j++;
+				}
+				tmp[i] = '\0';
+
 				nextpwd = ft_strjoin(tmp2, tmp);
-				ft_putstr("nextpwd");
+				ft_putstr("nextpwd  ->");
 				ft_putendl(nextpwd);
 				free(tmp2);
 			}
