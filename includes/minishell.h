@@ -72,4 +72,8 @@ int					isCommande(char **cmd);
 /*  error.c        */
 void				invalidParam(char **cmd);
 void				setenvError(char **cmd);
+
+/* listintab.c     */
+char 				**ft_listintab(t_env	**env);
+
 #endif

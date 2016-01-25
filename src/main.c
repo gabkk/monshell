@@ -1,4 +1,5 @@
 #include "minishell.h"
+
 int		main(int ac, char *const av[], char *const envp[])
 {
 	t_env	*env;
@@ -10,14 +11,10 @@ int		main(int ac, char *const av[], char *const envp[])
 		char	**cmd;
 
 		cmd = NULL;
-//		ft_putendl("");
-		if (!env){
+		if (!env)
 			env = initEnv();
-//			ft_putendl("PAD D ENV");
-		}
 		printPrompt(env);
 		cmd = readCommandLine();
-//		ft_putendl("sortit");
 		if (*cmd)
 		{
 			doTheJob(&env, cmd, envp);
@@ -31,6 +28,11 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 	pid_t	father;
 	int		status;
 
+	char	**tabenv;
+
+	(void)envp;
+	tabenv = ft_listintab(env);
+	//ft_ptab(tabenv);
 	if (isBuiltins(cmd) == 1)
 	{ //test sur uneliste de builtin
 			execBultins(cmd, env);
@@ -44,11 +46,10 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 			exit(EXIT_FAILURE);
 		}
 		if (father == 0){
-			ft_putstr("commande");
 			if(ft_strcmp(cmd[0], "ls") == 0)
-				execve("/bin/ls", cmd, envp);
+				execve("/bin/ls", cmd, tabenv);
 			else if(ft_strcmp(cmd[0], "pwd") == 0)
-				execve("/bin/pwd", cmd, envp);
+				execve("/bin/pwd", cmd, tabenv);
 		}else{
 			if (1 == 2)//test si la commande est en bg
 			ft_putstr("back ground job");

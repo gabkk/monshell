@@ -2,19 +2,12 @@
 
 void		ft_opendir(t_env **env, char **cmd){
 	t_env			*ptrmaillon;
-//	char			*value;
-//	int				fd;
-//	int				buff;
 	DIR				*directory;
 	char			*pwd;
 	char			*tmp;
 	char 			*nextpwd;
-	t_dirent		dir;
 
-	(void)cmd;
-//	buff = 90; // regler les problemes de buffer
 	ptrmaillon = *env;
-//	if (ft_strcmp(cmd[1], "."))
 	while (ptrmaillon)
 	{
 		if (ptrmaillon && ft_strcmp(ptrmaillon->name, "PWD") == 0)
@@ -28,16 +21,17 @@ void		ft_opendir(t_env **env, char **cmd){
 	if (!pwd)
 		return;
 	tmp = ft_strjoin(pwd, "/");
-	free(pwd);
 	nextpwd = ft_strjoin(tmp, cmd[1]);
-	ft_putstr("nexpwd  ->  ");
-	ft_putendl(nextpwd);
-	ft_putstr("tmp  ->  ");
-	ft_putendl(tmp);
+	free(pwd);
+	// ft_putstr("nexpwd  ->  ");
+	// ft_putendl(nextpwd);
+	// ft_putstr("tmp  ->  ");
+	// ft_putendl(tmp);
 	if((directory = opendir(nextpwd)) == NULL)
 	{
 		ft_putendl_fd("OPENDIR ERROR", 1);
-		return;
+		free(tmp);
+		free(nextpwd);
 	}
 	else
 	{
@@ -46,12 +40,6 @@ void		ft_opendir(t_env **env, char **cmd){
 		free(tmp);
 		free(nextpwd);
 	}
-
-	dir = readdir(directory);
-	ft_putendl(dir->d_name);
-	// if (closedir(directory) != 0)
-	// 	ft_putendl_fd("CLOSEDIR ERROR",2);
-	(void)dir;
 }
 
 void		ft_setpwd(t_env **env, char *pwd, char *nextpwd){
@@ -60,19 +48,21 @@ void		ft_setpwd(t_env **env, char *pwd, char *nextpwd){
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
-		if (ft_strcmp(ptrmaillon->name, "PWD") == 0)
+		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "PWD") == 0)
 		{
-			ft_putstr("PWD ->>>>");
-			ft_putendl(nextpwd);
-			free(ptrmaillon->value);
+		//	ft_putstr("PWD ->>>>");
+		//	ft_putendl(nextpwd);
+		//	free(ptrmaillon->value);
 			ptrmaillon->value = ft_strdup(nextpwd);
+		//	ft_putendl(ptrmaillon->value);
 		}
-		if (ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)
+		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)
 		{
-			ft_putstr("OLDPWD ->>>>");
-			ft_putendl(pwd);
-			free(ptrmaillon->value);
+		//	ft_putstr("OLDPWD ->>>>");
+		//	ft_putendl(pwd);
+		//	free(ptrmaillon->value);
 			ptrmaillon->value = ft_strdup(pwd);
+		//	ft_putendl(ptrmaillon->value);
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
