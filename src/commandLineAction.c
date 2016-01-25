@@ -100,6 +100,8 @@ char		*malloc_tab(char *cmd, int pos){
 		if (!cmdTab)
 			return NULL;
 	}
+	else
+		cmdTab = NULL;
 	return (cmdTab);
 }
 char		**setTab(char *cmd){
