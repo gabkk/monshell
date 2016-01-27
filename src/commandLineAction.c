@@ -48,7 +48,10 @@ char	**readCommandLine()
 
 	value = (char *)malloc(sizeof(char)*100);
 	ret = read(STDIN_FILENO, value, 99);
-	value[ret - 1] = '\0';
+	// ft_putstr("ret");
+	// ft_putnbr(ret);
+	// ft_putchar('\n');
+	value[ret - 1] = '\0'; // checker la bonne value de ret
 	if (value){
 		cmd = parseCmd(value);	
 		return (cmd);

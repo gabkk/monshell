@@ -20,27 +20,22 @@ void		ft_opendir(t_env **env, char **cmd){
 	j = 0;
 	if (!cmd[1])
 		cmd[1] = NULL;
-	while (ptrmaillon)
-	{
-		if (ptrmaillon && ft_strcmp(ptrmaillon->name, "PWD") == 0)
-		{
-			pwd = ptrmaillon->value;
-			break;
-		}
-		ptrmaillon = ptrmaillon->next;
-	}
+	pwd = ft_getlistevalue(env, "PWD");
 	if (pwd)
 	{
+		home = ft_getlistevalue(env, "HOME");
 		if (!cmd[1]) //fine but check leacks
 		{
-			home = ft_gethome(env);
 			ft_setpwd(env, pwd, home);
 			return ;
 		}
 		if (cmd[1])
 		{
+			ft_putstr("cmd[1]");
+			ft_putendl(cmd[1]);
 			if (ft_strcmp(cmd[1], ".") == 0)
 			{	
+				ft_putendl("strcmp .");
 				if((directory = opendir(pwd)) == NULL)
 					ft_putendl_fd("OPENDIR ERROR", 1);
 				else
@@ -49,7 +44,7 @@ void		ft_opendir(t_env **env, char **cmd){
 			}
 			else if (ft_strcmp(cmd[1], "~") == 0)
 			{
-				home = ft_gethome(env);
+				ft_putendl("strcmp ~");
 				ft_putstr("home");
 				ft_putendl(home);
 			
@@ -69,16 +64,28 @@ void		ft_opendir(t_env **env, char **cmd){
 				}
 				nextpwd[j] = '\0';
 			}
-			else if (ft_strcmp(cmd[1], "/"))
+			else if (ft_strcmp(cmd[1], "/") == 0)
+			{
+				ft_putendl("strcmp /");
 				nextpwd = "/";
+			}
 			else if (ft_strncmp(cmd[1], "/", 1) == 0)
+			{
+				ft_putendl("strncmp /");
 				nextpwd = cmd[1];
+			}
 			else if (ft_strncmp(cmd[1], "~/", 2) == 0)
 			{
-				ft_putendl("ok");
+				ft_putendl("~/");
 				test = ft_strchr(cmd[1], '/');
+				ft_putendl(home);
 				ft_putendl(test);
 				nextpwd = ft_strjoin(home, test);//free
+			}
+			else if (ft_strcmp(cmd[1], "-") == 0)
+			{
+				nextpwd = ft_getlistevalue(env, "OLDPWD");
+				pwd = ft_getlistevalue(env, "PWD");
 			}
 			else
 			{
@@ -105,14 +112,14 @@ void		ft_opendir(t_env **env, char **cmd){
 	}
 }
 
-char		*ft_gethome(t_env	**env){
+char		*ft_getlistevalue(t_env	**env, char *name){
 	t_env	*ptrmaillon;
 	char	*tmp;
 
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
-		if (ft_strcmp(ptrmaillon->name, "HOME") == 0)
+		if (ft_strcmp(ptrmaillon->name, name) == 0)
 		{
 			tmp = ptrmaillon->value;
 			return (tmp);
@@ -134,7 +141,8 @@ void		ft_setpwd(t_env **env, char *pwd, char *nextpwd){
 			if (nextpwd)
 			{
 				chdir(nextpwd);
-				tmp2 = (char *)malloc(sizeof(char) * 100);
+				ft_putendl(nextpwd);
+				tmp2 = (char *)malloc(sizeof(char) * 100); // mettre une valeur correct dans le buffer
 				if (getcwd(tmp2, 99) != NULL)
 				ptrmaillon->value = ft_strdup(tmp2);
 				free(tmp2);

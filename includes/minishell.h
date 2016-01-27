@@ -65,7 +65,7 @@ void				unset_env(t_env** env, char **cmd);
 /*  chdir.c        */
 void				ft_opendir(t_env **env, char **cmd);
 void				ft_setpwd(t_env **env, char *pwd, char *nextpwd);
-char				*ft_gethome(t_env	**env);
+char				*ft_getlistevalue(t_env	**env, char *name);
 
 
 /*	pathexec.c      */
