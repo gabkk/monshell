@@ -48,7 +48,7 @@ t_env				*initEnv(void);
 
 /*  builtins.c        */
 int					isBuiltins(char **cmd);
-void				execBultins(char **cmd, t_env **env);
+void				execBultins(char **cmd, t_env **env, int status);
 void				showenv(t_env **env);
 
 /*  setenv.c        */
@@ -71,10 +71,12 @@ void				ft_opennsave(t_env **env, char *pwd, char *nextpwd);
 
 /*	pathexec.c      */
 char				*iscommande(t_env **env, char **cmd);
+char				*islocalexec(char **cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);
 void				setenvError(char **cmd);
+void				ft_notfound(char *cmd);
 
 /* listintab.c     */
 char 				**ft_listintab(t_env **env);

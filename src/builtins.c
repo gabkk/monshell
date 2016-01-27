@@ -24,7 +24,7 @@ int			isBuiltins(char **cmd){
 	return boolean;
 }
 
-void		execBultins(char **cmd, t_env **env){
+void		execBultins(char **cmd, t_env **env, int status){
 
 	if (env)
 	{
@@ -39,7 +39,7 @@ void		execBultins(char **cmd, t_env **env){
 		else if (ft_strcmp(cmd[0], "exit") == 0)
 		{
 			// GERER LES FREE EN EXIT
-			exit(0);
+			exit(status);
 		}
 	}
 }

@@ -11,3 +11,8 @@ void	setenvError(char **cmd){
 		ft_putendl("To set an environment variable, please add a seconde parameter ex:  USER test");
 	}
 }
+
+void	ft_notfound(char *cmd){
+	ft_putstr("minishell: command not found: ");
+	ft_putendl(cmd);
+}

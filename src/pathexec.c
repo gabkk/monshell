@@ -34,5 +34,20 @@ char			*iscommande(t_env **env, char **cmd){
 		}
 		i++;
 	}
+	value = islocalexec(cmd);
 	return (value);
 }
+
+char		*islocalexec(char **cmd){
+	struct stat st;
+
+	if (access(cmd[0], X_OK) == -1)
+	{
+		ft_putendl("Access error");
+		return (NULL);
+	}
+	if (lstat(cmd[0], &st) == 0 && st.st_mode & S_IXUSR) 
+		return (cmd[0]);
+	return (NULL);
+}
+

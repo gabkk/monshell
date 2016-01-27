@@ -26,16 +26,18 @@ int		main(int ac, char *const av[], char *const envp[])
 
 void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 	pid_t	father;
+	pid_t	w;
 	int		status;
 	char	**tabenv;
 	char	*path;
 
 	(void)envp;
+	status = 0;
 	tabenv = ft_listintab(env);
 	//ft_ptab(tabenv);
 	if (isBuiltins(cmd) == 1)
-			execBultins(cmd, env);
-	else if ((path = iscommande(env, cmd)) != NULL)
+			execBultins(cmd, env, status);
+	else if (((path = iscommande(env, cmd)) != NULL))
 	{
 //		ft_putendl(path);
 		father = fork();
@@ -44,37 +46,42 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 			exit(EXIT_FAILURE);
 		}
 		if (father == 0){
-			execve(path, cmd, tabenv);
-		}else{
+			if ((execve(path, cmd, tabenv) == -1))
+				ft_notfound(cmd[0]);
+		}
+		else
+		{
 			if (1 == 2)//test si la commande est en bg
 			ft_putstr("back ground job");
-			else {
-				waitpid(father, &status, WUNTRACED | WCONTINUED);
-				// while (!WIFEXITED(status) && !WIFSIGNALED(status)){
-				// 	w = 
+			else
+			{
+				w = waitpid(father, &status, WUNTRACED | WCONTINUED);
+				while (!WIFEXITED(status) && !WIFSIGNALED(status))
+				{
+					if (w == -1)
+					{
+						perror("waitpid");
+						exit(EXIT_FAILURE);
+					}
 
-				// 	if (w == -1) {
-				// 		perror("waitpid");
-				// 		exit(EXIT_FAILURE);
-				// 	}
-
-				// 	if (WIFEXITED(status)) {
-				// 	printf("exited, status=%d\n", WEXITSTATUS(status));
-				// 	} else if (WIFSIGNALED(status)) {
-				// 	printf("killed by signal %d\n", WTERMSIG(status));
-				// 	} else if (WIFSTOPPED(status)) {
-				// 	printf("stopped by signal %d\n", WSTOPSIG(status));
-				// 	} else if (WIFCONTINUED(status)) {
-				// 	printf("continued\n");
-				// 	}
-
+					if (WIFEXITED(status)) {
+					printf("exited, status=%d\n", WEXITSTATUS(status));
+					} else if (WIFSIGNALED(status)) {
+					printf("killed by signal %d\n", WTERMSIG(status));
+					} else if (WIFSTOPPED(status)) {
+					printf("stopped by signal %d\n", WSTOPSIG(status));
+					} else if (WIFCONTINUED(status)) {
+					printf("continued\n");
+					}
+				}
 			}
 		}
 		free(path);
 	}
-	else 
+	else
 	{
-		ft_putendl_fd("Commande non reconnue", 2);
+		ft_putstr("END");
+		ft_notfound(cmd[0]);
 	}
 }
 
