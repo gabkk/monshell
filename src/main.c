@@ -27,29 +27,24 @@ int		main(int ac, char *const av[], char *const envp[])
 void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 	pid_t	father;
 	int		status;
-
 	char	**tabenv;
+	char	*path;
 
 	(void)envp;
 	tabenv = ft_listintab(env);
 	//ft_ptab(tabenv);
 	if (isBuiltins(cmd) == 1)
-	{ //test sur uneliste de builtin
 			execBultins(cmd, env);
-//			ft_putstr("out of builtin");
-	}
-	else if (isCommande(cmd) == 1)
+	else if ((path = iscommande(env, cmd)) != NULL)
 	{
+//		ft_putendl(path);
 		father = fork();
 		if (father == -1){
-			perror("fork");
+			perror("fork"); //virer perror
 			exit(EXIT_FAILURE);
 		}
 		if (father == 0){
-			if(ft_strcmp(cmd[0], "ls") == 0)
-				execve("/bin/ls", cmd, tabenv);
-			else if(ft_strcmp(cmd[0], "pwd") == 0)
-				execve("/bin/pwd", cmd, tabenv);
+			execve(path, cmd, tabenv);
 		}else{
 			if (1 == 2)//test si la commande est en bg
 			ft_putstr("back ground job");
@@ -75,6 +70,7 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 
 			}
 		}
+		free(path);
 	}
 	else 
 	{

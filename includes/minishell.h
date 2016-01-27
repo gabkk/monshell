@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                            :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -64,18 +64,22 @@ void				unset_env(t_env** env, char **cmd);
 
 /*  chdir.c        */
 void				ft_opendir(t_env **env, char **cmd);
-void				ft_setpwd(t_env **env, char *pwd, char *nextpwd);
-char				*ft_getlistevalue(t_env	**env, char *name);
-
+void				ft_savepwd(t_env **env, char *pwd, char *nextpwd);
+char		 		*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd);
+char				*ft_setmallocpwd(char *cmd, char *home, char *pwd);
+void				ft_opennsave(t_env **env, char *pwd, char *nextpwd);
 
 /*	pathexec.c      */
-int					isCommande(char **cmd);
+char				*iscommande(t_env **env, char **cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);
 void				setenvError(char **cmd);
 
 /* listintab.c     */
-char 				**ft_listintab(t_env	**env);
+char 				**ft_listintab(t_env **env);
+
+/* tools.c        */
+char				*ft_getlistevalue(t_env	**env, char *name);
 
 #endif
