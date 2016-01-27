@@ -37,46 +37,52 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 	//ft_ptab(tabenv);
 	if (isBuiltins(cmd) == 1)
 			execBultins(cmd, env, status);
-	else if (((path = iscommande(env, cmd)) != NULL))
+	else if ((path = iscommande(env, cmd)) != NULL)
 	{
-//		ft_putendl(path);
-		father = fork();
-		if (father == -1){
-			perror("fork"); //virer perror
-			exit(EXIT_FAILURE);
-		}
-		if (father == 0){
-			if ((execve(path, cmd, tabenv) == -1))
-				ft_notfound(cmd[0]);
-		}
-		else
+		if (access(path, X_OK) != -1)
 		{
-			if (1 == 2)//test si la commande est en bg
-			ft_putstr("back ground job");
+			ft_putendl("got to fork");
+			father = fork();
+			if (father == -1){
+				perror("fork"); //virer perror
+				exit(EXIT_FAILURE);
+			}
+			if (father == 0){
+				if ((execve(path, cmd, tabenv) == -1))
+				{
+					ft_notfound(cmd[0]);
+					exit(EXIT_FAILURE);
+				}
+			}
 			else
 			{
-				w = waitpid(father, &status, WUNTRACED | WCONTINUED);
-				while (!WIFEXITED(status) && !WIFSIGNALED(status))
+				if (1 == 2)//test si la commande est en bg
+				ft_putstr("back ground job");
+				else
 				{
-					if (w == -1)
+					w = waitpid(father, &status, WUNTRACED | WCONTINUED);
+					while (!WIFEXITED(status) && !WIFSIGNALED(status))
 					{
-						perror("waitpid");
-						exit(EXIT_FAILURE);
-					}
+						if (w == -1)
+						{
+							perror("waitpid");
+							exit(EXIT_FAILURE);
+						}
 
-					if (WIFEXITED(status)) {
-					printf("exited, status=%d\n", WEXITSTATUS(status));
-					} else if (WIFSIGNALED(status)) {
-					printf("killed by signal %d\n", WTERMSIG(status));
-					} else if (WIFSTOPPED(status)) {
-					printf("stopped by signal %d\n", WSTOPSIG(status));
-					} else if (WIFCONTINUED(status)) {
-					printf("continued\n");
+						if (WIFEXITED(status)) {
+						printf("exited, status=%d\n", WEXITSTATUS(status));
+						} else if (WIFSIGNALED(status)) {
+						printf("killed by signal %d\n", WTERMSIG(status));
+						} else if (WIFSTOPPED(status)) {
+						printf("stopped by signal %d\n", WSTOPSIG(status));
+						} else if (WIFCONTINUED(status)) {
+						printf("continued\n");
+						}
 					}
 				}
 			}
-		}
 		free(path);
+		}
 	}
 	else
 	{
@@ -84,33 +90,3 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 		ft_notfound(cmd[0]);
 	}
 }
-
-
-
-
-
-
-
-	// char	**tabenv;
-	// int 	i;
-	// t_env	*ptrmaillon;
-
-	// i = 0;
-	// ptrmaillon = *env;
-	// while (ptrmaillon)
-	// {
-	// 	i++;
-	// 	ptrmaillon = ptrmaillon->next;
-	// }
-	// tabenv = (char **)malloc(sizeof(char *) * i);
-	// ptrmaillon = *env;
-	// i = 0;
-	// while (ptrmaillon)
-	// {
-	// 	if (ptrmaillon)
-	// 	{
-	// 		tabenv[i] = (char *)malloc(sizeof(char) * ft_strlen());
-
-	// 	}
-	// 	ptrmaillon = ptrmaillon->next;
-	// }

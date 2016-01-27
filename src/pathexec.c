@@ -18,7 +18,10 @@ char			*iscommande(t_env **env, char **cmd){
 	while (tab_path[i] != NULL)
 	{
 		if((directory = opendir(tab_path[i])) == NULL)
+		{
 			ft_putendl_fd("OPENDIR ERROR", 2);
+			exit(EXIT_FAILURE);
+		}
 		else
 		{
 			while ((content = readdir(directory)) != NULL)
