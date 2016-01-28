@@ -44,7 +44,10 @@ char				*malloc_tab(char *cmd, int pos);
 t_env				*getLocalEnv(char *const envp[]);
 void				setLocalEnv(char *const envp[], t_env **liste);
 t_env				*fillEnv(t_env *newmaillon, char *fullEnv);
-t_env				*initEnv(void);
+t_env				*initmaillon(void);
+t_env				*setdefaultenv(void);
+char				**getdefaultenv(void);
+void				addmaillon(char *name, char *value, t_env **liste);
 
 /*  builtins.c        */
 int					isBuiltins(char **cmd);
@@ -70,8 +73,9 @@ char				*ft_setmallocpwd(char *cmd, char *home, char *pwd);
 void				ft_opennsave(t_env **env, char *pwd, char *nextpwd);
 
 /*	pathexec.c      */
-char				*iscommande(t_env **env, char **cmd);
+char				*iscommande(t_env **env, char **cmd, char **pathtmp);
 char				*islocalexec(char **cmd);
+char				*setpath(char **tab_path, char *value, char *cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);

@@ -12,14 +12,17 @@ int		main(int ac, char *const av[], char *const envp[])
 
 		cmd = NULL;
 		if (!env)
-			env = initEnv();
+			env = setdefaultenv();
+//		ft_putendl("out setenv");
 		printPrompt(env);
 		cmd = readCommandLine();
+//		ft_putendl(cmd[0]);
 		if (*cmd)
 		{
 			doTheJob(&env, cmd, envp);
 		//	free(cmd); //Free toutes les tabs
 		}
+		free(cmd);
 	}
 	return (0);
 }
@@ -30,15 +33,23 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 	int		status;
 	char	**tabenv;
 	char	*path;
+	char	**pathtmp;
 
 	(void)envp;
 	status = 0;
+	//pathtmp = setpathtmp();
+	pathtmp = (char **)malloc(sizeof(char *) * 2);
+	pathtmp[0] = "/bin";
+	pathtmp[1] = "/usr/bin";
+	pathtmp[2] = NULL;
 	tabenv = ft_listintab(env);
 	//ft_ptab(tabenv);
 	if (isBuiltins(cmd) == 1)
 			execBultins(cmd, env, status);
-	else if ((path = iscommande(env, cmd)) != NULL)
+	else if ((path = iscommande(env, cmd, pathtmp)) != NULL)
 	{
+	//	ft_putendl("got to fork");
+	//	ft_putendl(path);
 		if (access(path, X_OK) != -1)
 		{
 			ft_putendl("got to fork");
@@ -48,7 +59,7 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 				exit(EXIT_FAILURE);
 			}
 			if (father == 0){
-				if ((execve(path, cmd, tabenv) == -1))
+				if (execve(path, cmd, tabenv) == -1)
 				{
 					ft_notfound(cmd[0]);
 					exit(EXIT_FAILURE);
@@ -86,7 +97,7 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[]){
 	}
 	else
 	{
-		ft_putstr("END");
+		//ft_putstr("END");
 		ft_notfound(cmd[0]);
 	}
 }

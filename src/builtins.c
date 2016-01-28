@@ -12,6 +12,8 @@ int			isBuiltins(char **cmd){
 	listBuiltins[2] = "setenv";
 	listBuiltins[3] = "unsetenv";
 	listBuiltins[4] = "cd";
+//	ft_putendl("is builtins");
+//	ft_putendl(cmd[0]);
 	while (i < 5){
 		if (ft_strcmp(cmd[0], listBuiltins[i]) == 0){
 			boolean = 1;
@@ -28,6 +30,7 @@ void		execBultins(char **cmd, t_env **env, int status){
 
 	if (env)
 	{
+//		ft_putendl("exec builtins");
 		if (ft_strcmp(cmd[0], "env") == 0)
 			showenv(env);
 		else if (ft_strcmp(cmd[0], "cd") == 0)

@@ -13,12 +13,12 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void		ft_freetab(char **tab, int i)
+void		ft_freetab(char **tab)
 {
 	int		j;
 
 	j = 0;
-	while (j < i)
+	while (tab[j] != NULL)
 	{
 		free(tab[j]);
 		j++;

@@ -46,8 +46,8 @@ char	**readCommandLine()
 	char	**cmd;
 	int		ret;
 
-	value = (char *)malloc(sizeof(char)*100);
-	ret = read(STDIN_FILENO, value, 99);
+	value = (char *)malloc(sizeof(char)*100000); //a modifier
+	ret = read(STDIN_FILENO, value, 990000);
 	// ft_putstr("ret");
 	// ft_putnbr(ret);
 	// ft_putchar('\n');

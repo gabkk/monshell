@@ -83,6 +83,6 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_ptab(char **tab);
-void				ft_freetab(char **tab, int i);
+void				ft_freetab(char **tab);
 
 #endif

@@ -3,19 +3,7 @@
 void		addEnv(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
-
-	// if (!(*env)){
-	// 	// ft_putendl("reinit");
-	// 	// ft_putendl(cmd[0]);
-	// 	// ft_putendl(cmd[1]);
-	// 	// ft_putendl(cmd[2]);
-	// 	*env = initEnv();
-	// 	addNewEnv(env, cmd);
-	// }
 	ptrmaillon = *env;
-	// ft_putendl("back from addENV");
-	// ft_putendl(ptrmaillon->name);
-	// ft_putendl("1");
 	if (!cmd[1])
 	{
 		//ft_putendl("!cmd1");
@@ -126,7 +114,7 @@ void		addNewEnv(t_env **env, char **cmd){
 	t_env	*ptrmaillon;
 
 	// ft_putendl("inside addNEWenv");
-	newmaillon = initEnv();
+	newmaillon = initmaillon();
 	ptrmaillon = *env;
 	while (ptrmaillon->next){
 		ptrmaillon = ptrmaillon->next;
