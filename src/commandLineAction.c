@@ -48,6 +48,12 @@ char	**readCommandLine()
 
 	value = (char *)malloc(sizeof(char)*100000); //a modifier
 	ret = read(STDIN_FILENO, value, 990000);
+	if (ret == 0) // CHECK ThaT !!!!!!
+	{
+		ft_putendl("exit");
+		free(value);
+		exit(0);
+	}		
 	// ft_putstr("ret");
 	// ft_putnbr(ret);
 	// ft_putchar('\n');

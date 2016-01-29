@@ -26,13 +26,17 @@ int			isBuiltins(char **cmd){
 	return boolean;
 }
 
-void		execBultins(char **cmd, t_env **env, int status){
-
+void		execBultins(char **cmd, t_env **env){
 	if (env)
 	{
 //		ft_putendl("exec builtins");
 		if (ft_strcmp(cmd[0], "env") == 0)
-			showenv(env);
+		{
+			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
+				intothefork(cmd[2], &cmd[0], getdefaultenv());
+			else
+				showenv(env);
+		}
 		else if (ft_strcmp(cmd[0], "cd") == 0)
 			ft_opendir(env, cmd);
 		else if (ft_strcmp(cmd[0], "setenv") == 0)
@@ -41,8 +45,8 @@ void		execBultins(char **cmd, t_env **env, int status){
 			unset_env(env, cmd);
 		else if (ft_strcmp(cmd[0], "exit") == 0)
 		{
-			// GERER LES FREE EN EXIT
-			exit(status);
+			ft_putendl("exit");
+			exit(0);
 		}
 	}
 }

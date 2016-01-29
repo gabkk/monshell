@@ -21,7 +21,7 @@ INC = -I includes/ -I libft/includes
 SRCSDIR = src/
 
 SRCS = main.c commandLineAction.c defineEnv.c builtins.c error.c setenv.c \
-		unsetenv.c chdir.c pathexec.c listintab.c tools.c
+		unsetenv.c chdir.c pathexec.c listintab.c dispatchjob.c tools.c
 
 OBJ = $(SRCS:.c=.o)
 

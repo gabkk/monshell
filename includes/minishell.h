@@ -31,7 +31,11 @@ typedef struct		s_env{
 	struct s_env	*next;
 }					t_env;
 
+
+/*  dispatchjob.c       */
 void		doTheJob(t_env **env, char **cmd, char *const envp[]);
+void		intothefork(char *path, char **cmd, char **tabenv);
+void		fathersup(pid_t father, int status);
 
 /*  commandLineAction.c */
 void				printPrompt(t_env *env);
@@ -45,13 +49,11 @@ t_env				*getLocalEnv(char *const envp[]);
 void				setLocalEnv(char *const envp[], t_env **liste);
 t_env				*fillEnv(t_env *newmaillon, char *fullEnv);
 t_env				*initmaillon(void);
-t_env				*setdefaultenv(void);
-char				**getdefaultenv(void);
 void				addmaillon(char *name, char *value, t_env **liste);
 
 /*  builtins.c        */
 int					isBuiltins(char **cmd);
-void				execBultins(char **cmd, t_env **env, int status);
+void				execBultins(char **cmd, t_env **env);
 void				showenv(t_env **env);
 
 /*  setenv.c        */
@@ -73,7 +75,7 @@ char				*ft_setmallocpwd(char *cmd, char *home, char *pwd);
 void				ft_opennsave(t_env **env, char *pwd, char *nextpwd);
 
 /*	pathexec.c      */
-char				*iscommande(t_env **env, char **cmd, char **pathtmp);
+char				*iscommande(t_env **env, char **cmd);
 char				*islocalexec(char **cmd);
 char				*setpath(char **tab_path, char *value, char *cmd);
 
@@ -87,5 +89,11 @@ char 				**ft_listintab(t_env **env);
 
 /* tools.c        */
 char				*ft_getlistevalue(t_env	**env, char *name);
+char				**setdefaultpath(void);
+t_env				*setdefaultenv(void);
+char				**getdefaultenv(void);
+void				setshlvl(char **tabenv);
+void				setlistlvl(t_env **env);
+
 
 #endif

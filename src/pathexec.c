@@ -1,24 +1,33 @@
 #include "minishell.h"
 
-char			*iscommande(t_env **env, char **cmd, char **pathtmp){
+char			*iscommande(t_env **env, char **cmd){
 	char		*path;
 	char		**tab_path;
 	int			i;
 	char		*value;
-
+	char		**pathtmp;
+	int			freepath;
 
 	i = 0;
+	freepath = 0;
 	value = NULL;
-	path = NULL;	
+	path = NULL;
 	if (env) //peut etre non necessaire
 		path = ft_getlistevalue(env, "PATH");
 	tab_path = NULL;
 	tab_path = ft_strsplit(path, ':');
+	if (!path)
+	{
+		pathtmp = setdefaultpath();
+		tab_path = pathtmp;
+		freepath = 1;
+	}
 //	ft_ptab(tab_path);
 	if (tab_path != NULL)
 	{
 		value = setpath(tab_path, value, cmd[0]);
-		ft_freetab(tab_path);
+		if (freepath == 0)
+			ft_freetab(tab_path);
 	}
 	else
 	{
