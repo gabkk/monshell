@@ -140,19 +140,6 @@ void 	readCommandLine(t_cmd **base)
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 char		**parseCmd(char *cmd){
 	char	**cmdTab;
 	int		i;
