@@ -3,12 +3,10 @@
 char			*iscommande(t_env **env, char **cmd){
 	char		*path;
 	char		**tab_path;
-	int			i;
 	char		*value;
 	char		**pathtmp;
 	int			freepath;
 
-	i = 0;
 	freepath = 0;
 	value = NULL;
 	path = NULL;

@@ -40,7 +40,43 @@ void	printPrompt(t_env *env)
 	ft_putstr("\x1b[0m");
 }
 
-char	**readCommandLine()
+
+
+t_cmd		*initlcmd(void)
+{
+	t_cmd	*initmaillon;
+
+	initmaillon = (t_cmd *)malloc(sizeof(t_cmd));
+	if (!(initmaillon))
+		return (NULL);
+	initmaillon->listcmd = NULL;
+	initmaillon->next = NULL;
+	return (initmaillon);
+}
+
+
+void		addlmaillon(char **cmd, t_cmd **liste){
+	t_cmd		*newmaillon;
+	t_cmd		*ptrmaillon;
+//	int 		i;
+
+	newmaillon = initlcmd();
+	if (!(*liste))
+		*liste = newmaillon;
+	ptrmaillon = *liste;
+	if (!(newmaillon) || !newmaillon)
+		return ;
+	while (ptrmaillon->next)
+	{
+		ptrmaillon = ptrmaillon->next;
+	}
+	ptrmaillon->next = newmaillon;
+	newmaillon->listcmd = cmd;
+	newmaillon->next = NULL;
+}
+
+
+void 	readCommandLine(t_cmd **base)
 {
 	char	*value;
 	char	**cmd;
@@ -58,12 +94,64 @@ char	**readCommandLine()
 	// ft_putnbr(ret);
 	// ft_putchar('\n');
 	value[ret - 1] = '\0'; // checker la bonne value de ret
+	
+
+//	t_cmd		*newmaillon;
+	int 		i;
+
 	if (value){
-		cmd = parseCmd(value);	
-		return (cmd);
+
+		cmd = ft_strsplit(value,';');
+
+		// ft_putendl("CDM AFTER SPLIT");
+		// ft_ptab(cmd);
+		// ft_putendl("");
+		// ft_putendl("");
+
+		while (cmd[i] != NULL)
+		{
+			// ft_putstr("index: ");
+			// ft_putnbr(i);
+			// ft_putendl(" ");
+			addlmaillon(parseCmd(cmd[i]), base);
+			i++;
+		}
+
+	// 	ft_putendl("AFETR WHILE");
+
+
+	// t_cmd		*ptrmaillon;
+
+	// ptrmaillon = *base;
+	// while (ptrmaillon)
+	// {
+	// 	ft_putendl("liste : ");
+	// 	ft_ptab(ptrmaillon->listcmd);
+	// 	ptrmaillon = ptrmaillon->next;
+	// 	ft_putendl("");
+	// }
+	//	exit(0);
+	//	return (NULL);
+
 	}
-	return (NULL);
+	//return (NULL);
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 char		**parseCmd(char *cmd){
 	char	**cmdTab;

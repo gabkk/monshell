@@ -21,7 +21,7 @@ void			ft_opendir(t_env **env, char **cmd){ // Reprendre des choses pas claire
 	home = ft_getlistevalue(env, "HOME");
 	if (cmd[1])
 	{
-		ft_putendl("inside cmd[1] !! ");
+		//ft_putendl("inside cmd[1] !! ");
 		nextpwd = ft_setpwd(env, cmd[1], home, pwd);
 		//ft_putendl(nextpwd);
 		if (nextpwd == NULL)
@@ -59,7 +59,7 @@ void			ft_opennsave(t_env **env, char *pwd, char *nextpwd){
 	}
 	else
 		ft_putstr_fd("cd: no such file or directory: ", 2); // mettre le bon retour
-		ft_putendl_fd(nextpwd, 2); // mettre le bon retour
+	// /	ft_putendl_fd(nextpwd, 2); // mettre le bon retour
 }
 
 char 			*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd){

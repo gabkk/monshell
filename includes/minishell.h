@@ -31,6 +31,11 @@ typedef struct		s_env{
 	struct s_env	*next;
 }					t_env;
 
+typedef struct		s_cmd{
+	char			**listcmd;
+	struct s_cmd	*next;
+}					t_cmd;
+
 
 /*  dispatchjob.c       */
 void		doTheJob(t_env **env, char **cmd, char *const envp[]);
@@ -39,10 +44,15 @@ void		fathersup(pid_t father, int status);
 
 /*  commandLineAction.c */
 void				printPrompt(t_env *env);
-char				**readCommandLine();
+void				readCommandLine(t_cmd **base);
 char 				**parseCmd(char *cmd);
 char				**setTab(char *cmd);
 char				*malloc_tab(char *cmd, int pos);
+
+t_cmd		*initlcmd(void);
+void		addlmaillon(char **cmd, t_cmd **liste);
+
+
 
 /*  defineEnv.c        */
 t_env				*getLocalEnv(char *const envp[]);

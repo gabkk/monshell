@@ -18,19 +18,9 @@ void		doTheJob(t_env **env, char **cmd, char *const envp[])
 		free(path);
 	}
 	else if ( access(cmd[0], X_OK) != -1 )
-	{
-		//ft_putendl("PAsse ici");
-		// setlistlvl(env);
-		// if (tabenv)
-		// 	free(tabenv);
-		// tabenv = ft_listintab(env);
 		intothefork(cmd[0], cmd, tabenv);
-	}
 	else
-	{
-		ft_putendl("END");
 		ft_notfound(cmd[0]);
-	}
 }
 
 
