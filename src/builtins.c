@@ -1,6 +1,7 @@
 #include "minishell.h"
 
-int			isBuiltins(char **cmd){
+int			isBuiltins(char **cmd)
+{
 	char	**listBuiltins;
 	int		i;
 	int		boolean;
@@ -12,8 +13,6 @@ int			isBuiltins(char **cmd){
 	listBuiltins[2] = "setenv";
 	listBuiltins[3] = "unsetenv";
 	listBuiltins[4] = "cd";
-//	ft_putendl("is builtins");
-//	ft_putendl(cmd[0]);
 	while (i < 5){
 		if (ft_strcmp(cmd[0], listBuiltins[i]) == 0){
 			boolean = 1;
@@ -29,7 +28,6 @@ int			isBuiltins(char **cmd){
 void		execBultins(char **cmd, t_env **env){
 	if (env)
 	{
-//		ft_putendl("exec builtins");
 		if (ft_strcmp(cmd[0], "env") == 0)
 		{
 			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
@@ -51,7 +49,8 @@ void		execBultins(char **cmd, t_env **env){
 	}
 }
 
-void		showenv(t_env **env){
+void		showenv(t_env **env)
+{
 	t_env	*ptrmaillon;
 
 	ptrmaillon = *env;

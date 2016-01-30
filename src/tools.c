@@ -1,6 +1,7 @@
 #include "minishell.h"
 
-char		*ft_getlistevalue(t_env	**env, char *name){
+char		*ft_getlistevalue(t_env	**env, char *name)
+{
 	t_env	*ptrmaillon;
 	char	*tmp;
 
@@ -24,13 +25,14 @@ char		**setdefaultpath()
 	pathtmp = (char **)malloc(sizeof(char *) * 2);
 	pathtmp[0] = "/bin";
 	pathtmp[1] = "/usr/bin";
-	pathtmp[2] = NULL;	
+	pathtmp[2] = NULL;
 	return (pathtmp);
 }
 
-char		**getdefaultenv(){
+char		**getdefaultenv()
+{
 	char	**defaultenv;
-	char	*tmp;
+	char	tmp[PATH_MAX];
 
 	defaultenv = (char **)malloc(sizeof(char *) * 9);
 	defaultenv[0] = "HOSTTYPE=unknown";
@@ -38,17 +40,15 @@ char		**getdefaultenv(){
 	defaultenv[2] = "OSTYPE=darwin";
 	defaultenv[3] = "MACHTYPE=x86_64";
 	defaultenv[4] = "SHLVL=1";
-	tmp = (char *)malloc(sizeof(char) * 100); // mettre une valeur correct dans le buffer
-	defaultenv[5] = ft_strjoin("PWD=", getcwd(tmp, 99));
+	defaultenv[5] = ft_strjoin("PWD=", getcwd(tmp, PATH_MAX));
 	defaultenv[6] = "LOGNAME=default";
 	defaultenv[7] = "USER=default";
 	defaultenv[8] = NULL;
-	 // verifier les leaks
-	free(tmp);
 	return (defaultenv);
 }
 
-t_env		*setdefaultenv(){
+t_env		*setdefaultenv()
+{
 	t_env	*liste;
 	char	**defaultenv;
 	char	**tmp;
@@ -64,7 +64,7 @@ t_env		*setdefaultenv(){
 		ft_freetab(tmp);
 		i++;
 	}
-	free(defaultenv[5]); // a checker si on supprime des variable d env plutot free la value PWD
+	free(defaultenv[5]);
 	free(defaultenv);
 	return (liste);
 }
@@ -89,9 +89,6 @@ void		setshlvl(char **tabenv)
 				tmp3 = ft_itoa(value);	
 			}		
 			tmp2 = ft_strjoin(tmp[0], "=");
-
-			//free(tabenv[i]);  NON NECESSAIRE A VERIFIER
-			
 			tabenv[i] = ft_strjoin(tmp2, tmp3);
 			ft_freetab(tmp);
 			free(tmp2);
@@ -113,20 +110,3 @@ void		setlistlvl(t_env **env)
 		ptrmaillon = ptrmaillon->next;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

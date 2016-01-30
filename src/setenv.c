@@ -1,21 +1,17 @@
 #include "minishell.h"
 
-void		addEnv(t_env **env, char **cmd){
+void		addEnv(t_env **env, char **cmd)
+{
 	t_env	*ptrmaillon;
 
 	ptrmaillon = *env;
 	if (!cmd[1])
 	{
-		//ft_putendl("!cmd1");
 		showenv(env);
 		return;
 	}
-	// ft_putendl("2");
 	if (isvalidvar(cmd[1]) == 0)
-	{
 		return;
-	}
-	// ft_putendl("3");
 	if (!cmd[1] && !cmd[2])
 	{
 		ft_putendl("Please enter at least 1 VAR");
@@ -30,9 +26,8 @@ void		addEnv(t_env **env, char **cmd){
 	}
 	else if (cmd[1] && cmd[2])
 	{
-		// ft_putendl("2 parameter");
-		// ft_putendl(ptrmaillon->name);
-		if (ft_isupper(cmd[1]) == 0){
+		if (ft_isupper(cmd[1]) == 0)
+		{
 			ft_putendl("VAR should contain only capital letter");
 			return;
 		}
@@ -49,10 +44,10 @@ void		addEnv(t_env **env, char **cmd){
 	}
 }
 
-void		setnoequal(t_env **env, char **cmd){
+void		setnoequal(t_env **env, char **cmd)
+{
 	t_env	*ptrmaillon;
 
-	// ft_putendl("noequal");
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
@@ -66,18 +61,15 @@ void		setnoequal(t_env **env, char **cmd){
 	addNewEnv(env, cmd);
 }
 
-void		setequal(t_env **env, char **cmd){
+void		setequal(t_env **env, char **cmd)
+{
 	t_env	*ptrmaillon;
 	char 	**varvalue;
 
-	// ft_putendl("equal");
 	varvalue = ft_strsplit(cmd[1], '=');
 	ptrmaillon = *env;
-	// ft_putendl(ptrmaillon->name);
-	// ft_putendl("equal 1");
 	while (ptrmaillon)
 	{
-//		ft_putendl(ptrmaillon->name);
 		if ((ptrmaillon->name) && ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
 		{
 			if (varvalue[1] != NULL)
@@ -88,15 +80,14 @@ void		setequal(t_env **env, char **cmd){
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
-	// ft_putendl("equal 2");
 	cmd[1] = varvalue[0];
 	if (varvalue[1] != NULL)
 		cmd[2] = varvalue[1];
-	// ft_putendl("equal 3");
 	addNewEnv(env, cmd);
 }
 
-int 		withequal(char *str){
+int 		withequal(char *str)
+{
 	int 	i;
 
 	i = 0;
@@ -109,25 +100,23 @@ int 		withequal(char *str){
 	return (0);
 }
 
-void		addNewEnv(t_env **env, char **cmd){
+void		addNewEnv(t_env **env, char **cmd)
+{
 	t_env	*newmaillon;
 	t_env	*ptrmaillon;
 
-	// ft_putendl("inside addNEWenv");
 	newmaillon = initmaillon();
 	ptrmaillon = *env;
-	while (ptrmaillon->next){
+	while (ptrmaillon->next)
 		ptrmaillon = ptrmaillon->next;
-	}
 	ptrmaillon->next = newmaillon;
 	newmaillon->name = cmd[1];
-//	ft_putendl(newmaillon->name);
 	if (cmd[2])
 		newmaillon->value = cmd[2];
 }
 
-
-int			isvalidvar(char *str){
+int			isvalidvar(char *str)
+{
 	int		i;
 	int		valid;
 

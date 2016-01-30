@@ -20,7 +20,6 @@ char			*iscommande(t_env **env, char **cmd){
 		tab_path = pathtmp;
 		freepath = 1;
 	}
-//	ft_ptab(tab_path);
 	if (tab_path != NULL)
 	{
 		value = setpath(tab_path, value, cmd[0]);
@@ -28,13 +27,7 @@ char			*iscommande(t_env **env, char **cmd){
 			ft_freetab(tab_path);
 	}
 	else
-	{
-		//ft_putendl("inside pathtmp");
-		//ft_ptab(pathtmp);
 		value = setpath(pathtmp, value, cmd[0]);
-	}
-
-	//value = islocalexec(cmd); // verifier l'ordre
 	return (value);
 }
 
@@ -54,11 +47,8 @@ char		*setpath(char **tab_path, char *value, char *cmd)
 			{
 				if (content && ft_strcmp(content->d_name, cmd) == 0)
 				{
-	//				ft_putendl(" inside setpath");
 					tmp = ft_strjoin("/", content->d_name);
 					value = ft_strjoin(tab_path[i], tmp);
-	//				ft_putendl(value);
-
 					free(tmp);
 					return (value);
 				}
@@ -78,8 +68,7 @@ char		*islocalexec(char **cmd){
 		ft_putendl_fd("Acces non autorisé", 2);
 		return (NULL);
 	}
-	if (lstat(cmd[0], &st) == 0 && st.st_mode & S_IXUSR) 
+	if (lstat(cmd[0], &st) == 0 && st.st_mode & S_IXUSR)
 		return (cmd[0]);
 	return (NULL);
 }
-

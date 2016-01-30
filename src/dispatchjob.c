@@ -1,12 +1,10 @@
 #include "minishell.h"
-void		doTheJob(t_env **env, char **cmd, char *const envp[])
-{
 
+void		doTheJob(t_env **env, char **cmd)
+{
 	char	**tabenv;
 	char	*path;
 
-	(void)envp;
-	//pathtmp = setpathtmp();
 	tabenv = ft_listintab(env);
 	if (!tabenv)
 		tabenv = getdefaultenv();
@@ -32,14 +30,11 @@ void		intothefork(char *path, char **cmd, char **tabenv)
 	status = 0;
 	if (access(path, X_OK) != -1)
 	{
-		//ft_putendl("got to fork");
 		father = fork();
-		if (father == -1){
-			perror("fork"); //virer perror
+		if (father == -1)
 			exit(EXIT_FAILURE);
-		}
-		if (father == 0){
-			//setshlvl(tabenv);
+		if (father == 0)
+		{
 			if (execve(path, cmd, tabenv) == -1)
 			{
 				ft_putendl("exec fail");

@@ -1,29 +1,34 @@
 #include "minishell.h"
 
-void			ft_opendir(t_env **env, char **cmd){ // Reprendre des choses pas claire
+void			ft_opendir(t_env **env, char **cmd)
+{
 	char		*pwd;
-	char 		*nextpwd;
 	char		*home;
-	char		*tmp;
-	int			havetofree; //faire plus propre
+	char		tmp[PATH_MAX + 1];
+	int			havetofree;
 
 	havetofree = 0;
-	nextpwd = NULL;
 	pwd = ft_getlistevalue(env, "PWD");
 	if (!pwd)
 	{
-		tmp = (char *)malloc(sizeof(char) * 100); // mettre une valeur correct dans le buffer
-		if (getcwd(tmp, 99) != NULL)
-		pwd = ft_strdup(tmp);
-		free(tmp);
+		if (getcwd(tmp, PATH_MAX) != NULL)
+			pwd = ft_strdup(tmp);
 		havetofree = 1;
 	}
 	home = ft_getlistevalue(env, "HOME");
+	ft_cdaction(env, cmd, home, pwd);
+	if (havetofree == 1)
+		free(pwd);
+}
+
+void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
+{
+	char 		*nextpwd;
+
+	nextpwd = NULL;
 	if (cmd[1])
 	{
-		//ft_putendl("inside cmd[1] !! ");
 		nextpwd = ft_setpwd(env, cmd[1], home, pwd);
-		//ft_putendl(nextpwd);
 		if (nextpwd == NULL)
 		{
 			nextpwd = ft_setmallocpwd(cmd[1], home, pwd);
@@ -43,14 +48,12 @@ void			ft_opendir(t_env **env, char **cmd){ // Reprendre des choses pas claire
 	}
 	if (ft_strcmp(nextpwd, "error") != 0)
 		ft_opennsave(env, pwd, nextpwd);
-	if (havetofree == 1)
-		free(pwd);
 }
 
 void			ft_opennsave(t_env **env, char *pwd, char *nextpwd){
 	DIR			*directory;
 
-	if((directory = opendir(nextpwd)) != NULL)
+	if ((directory = opendir(nextpwd)) != NULL)
 	{
 		if (ft_getlistevalue(env, "PWD") == NULL)
 			chdir(nextpwd);
@@ -58,15 +61,16 @@ void			ft_opennsave(t_env **env, char *pwd, char *nextpwd){
 		closedir(directory);
 	}
 	else
-		ft_putstr_fd("cd: no such file or directory: ", 2); // mettre le bon retour
-	// /	ft_putendl_fd(nextpwd, 2); // mettre le bon retour
+	{
+		ft_putstr_fd("cd: no such file or directory: ", 2);
+		ft_putendl_fd(nextpwd, 2);
+	}
 }
 
 char 			*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd){
 	char		*nextpwd;
 
 	nextpwd = NULL;
-
 	if (ft_strcmp(cmd, ".") == 0)
 		nextpwd = pwd;
 	else if (ft_strcmp(cmd, "~") == 0)
@@ -96,17 +100,12 @@ char			*ft_setmallocpwd(char *cmd, char *home, char *pwd)
 	int			j;
 
 	nextpwd = NULL;
-	if (!(i = 0) && !(j = 0) && ft_strcmp(cmd, "..") == 0)
+	if (!(i = 0) && !(j = 1) && ft_strcmp(cmd, "..") == 0)
 	{
-	//	ft_putstr("ft_setmallocpwd ---- > ");
-	//	ft_putendl(pwd);
 		i = (ft_strlen(pwd) - ft_strlen(ft_strrchr(pwd, 47)));
 		nextpwd = (char *)malloc(sizeof(char) * i);
-		while (j < i)
-		{
+		while (j++ < i)
 			nextpwd[j] = pwd[j];
-			j++;
-		}
 		nextpwd[j] = '\0';
 	}
 	else if (ft_strncmp(cmd, "~/", 2) == 0)
@@ -120,9 +119,9 @@ char			*ft_setmallocpwd(char *cmd, char *home, char *pwd)
 	return (nextpwd);
 }
 
-void		ft_savepwd(t_env **env, char *pwd, char *nextpwd){
-	t_env	*ptrmaillon;
-	char	*tmp2;
+void			ft_savepwd(t_env **env, char *pwd, char *nextpwd){
+	t_env		*ptrmaillon;
+	char		tmp2[PATH_MAX + 1];
 
 	ptrmaillon = *env;
 	while (ptrmaillon)
@@ -131,13 +130,9 @@ void		ft_savepwd(t_env **env, char *pwd, char *nextpwd){
 		{
 			if (nextpwd)
 			{
-	//			ft_putstr("Avant chdir ---->  ");
-	//			ft_putendl(nextpwd);
 				chdir(nextpwd);
-				tmp2 = (char *)malloc(sizeof(char) * 100); // mettre une valeur correct dans le buffer
-				if (getcwd(tmp2, 99) != NULL)
-				ptrmaillon->value = ft_strdup(tmp2);
-				free(tmp2);
+				if (getcwd(tmp2, PATH_MAX) != NULL)
+					ptrmaillon->value = ft_strdup(tmp2);
 			}
 		}
 		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)
