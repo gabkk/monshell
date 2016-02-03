@@ -35,14 +35,14 @@ char		**getdefaultenv()
 	char	tmp[PATH_MAX];
 
 	defaultenv = (char **)malloc(sizeof(char *) * 9);
-	defaultenv[0] = "HOSTTYPE=unknown";
-	defaultenv[1] = "VENDOR=apple";
-	defaultenv[2] = "OSTYPE=darwin";
-	defaultenv[3] = "MACHTYPE=x86_64";
-	defaultenv[4] = "SHLVL=1";
+	defaultenv[0] = ft_strdup("HOSTTYPE=unknown");
+	defaultenv[1] = ft_strdup("VENDOR=apple");
+	defaultenv[2] = ft_strdup("OSTYPE=darwin");
+	defaultenv[3] = ft_strdup("MACHTYPE=x86_64");
+	defaultenv[4] = ft_strdup("SHLVL=1");
 	defaultenv[5] = ft_strjoin("PWD=", getcwd(tmp, PATH_MAX));
-	defaultenv[6] = "LOGNAME=default";
-	defaultenv[7] = "USER=default";
+	defaultenv[6] = ft_strdup("LOGNAME=default");
+	defaultenv[7] = ft_strdup("USER=default");
 	defaultenv[8] = NULL;
 	return (defaultenv);
 }

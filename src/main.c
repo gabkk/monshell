@@ -28,11 +28,14 @@ int				main(int ac, char *const av[], char *const envp[])
 				tabenv = settabenv(env);
 				doTheJob(&env, ptrmaillon->listcmd, tabenv);
 				ft_freetab(tabenv);
+				ft_ptab(ptrmaillon->listcmd);
+				ft_freetab(ptrmaillon->listcmd);
 				ptrmaillon = ptrmaillon->next;
 			}
 		}
-		freebase(ptrmaillon); // fou la merde a checker
-		free(base);// verfier ce truc
+		freebase(&base); // fou la merde a checker
+		//free(base);// verfier ce truc
+		//close(STDIN_FILENO);
 	}
 	freenv(env);
 	return (0);
@@ -54,25 +57,23 @@ char			**settabenv(t_env *env)
 			i++;
 			ptrmaillon = ptrmaillon->next;
 		}
-		tabenv = (char **)malloc(sizeof(char *) * i + 1);
-	}
-	if (tabenv)
+		tabenv = (char **)malloc(sizeof(char *) * (i + 1));
 		ft_listintab(&env, tabenv);
+	}
 	else
 	 	tabenv = getdefaultenv();
 	return (tabenv);
 }
 
-void			freebase(t_cmd	*base)
+void			freebase(t_cmd	**base)
 {
 	t_cmd		*ptrmaillon;
 
-	while (base != NULL)
+	while (*base)
 	{
-		ft_freetab(base->listcmd);
-		ptrmaillon = base;
-		free(base);
-		base = ptrmaillon->next;
+		ptrmaillon = *base;
+		free(*base);
+		*base = ptrmaillon->next;
 	}
 }
 

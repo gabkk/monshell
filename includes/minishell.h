@@ -29,6 +29,7 @@
 #define ANSI_COLOR_MAGENTA "\x1b[35m"
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
+#define PATH_MAX			4096
 
 typedef struct dirent	*t_dirent;
 
@@ -115,7 +116,7 @@ void				setshlvl(char **tabenv);
 void				setlistlvl(t_env **env);
 
 /* main.c*/
-void			freebase(t_cmd	*base);
+void			freebase(t_cmd	**base);
 void			freenv(t_env	*env);
 char			**settabenv(t_env *env);
 

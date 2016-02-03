@@ -43,16 +43,17 @@ char		*setpath(char **tab_path, char *cmd)
 		{
 			while ((content = readdir(directory)) != NULL)
 			{
-				if (content->d_name && ft_strcmp(content->d_name, cmd) == 0)
+				if (cmd && ft_strcmp(content->d_name, cmd) == 0)
 				{
 					tmp = ft_strjoin("/", content->d_name);
 					value = ft_strjoin(tab_path[i], tmp);
 					free(tmp);
+					closedir(directory);
 					return (value);
 				}
 			}
-			closedir(directory);
 		}
+		closedir(directory);
 		i++;
 	}
 	return (value);

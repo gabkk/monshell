@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 static int		ft_sumword(char const *s, char c)
 {
@@ -41,7 +42,7 @@ char			**ft_strsplit(char const *s, char c)
 
 	if (!(i = 0) && !s)
 		return (NULL);
-	t = (char **)malloc(sizeof(char *) * ft_sumword(s, c) + 1);
+	t = (char **)malloc(sizeof(char *) * (ft_sumword(s, c) + 1));
 	if (!(z = 0) && !t)
 		return (NULL);
 	while (!(len = 0) && s[i] != '\0')
@@ -55,7 +56,6 @@ char			**ft_strsplit(char const *s, char c)
 			t[z][j++] = (char)s[i++];
 		t[z++][j] = '\0';
 	}
-	if (ft_sumword(s, c) + 1)
-		t[ft_sumword(s, c)] = (char *)NULL;
+	t[ft_sumword(s, c)] = (char *)NULL;
 	return (t);
 }

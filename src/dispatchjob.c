@@ -17,13 +17,6 @@ void		doTheJob(t_env **env, char **cmd, char **tabenv)
 		intothefork(cmd[0], cmd, tabenv);
 	else
 		ft_notfound(cmd[0]);
-	//if (free2 == 0)
-	//	free(tabenv);
-	// else if (free2 == 1)
-	// {
-	// 	free(tabenv[5]);
-	// 	free(tabenv);
-	// }
 }
 
 

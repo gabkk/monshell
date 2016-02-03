@@ -73,22 +73,27 @@ void 			readCommandLine(t_cmd **base)
 
 	i = 0;
 	value = NULL;
-	ret = get_next_line(STDIN_FILENO, &value);
+	value = (char *)malloc(sizeof(char)*100000);
+	ret = read(STDIN_FILENO, value, 990);
 	if (ret == 0)
 	{
 		ft_putendl("exit");
 		free(value);
 		exit(0);
 	}
+	value[ret - 1] = '\0';
 	if (*value)
 	{
 		cmd = ft_strsplit(value,';');
 		while (cmd[i] != NULL)
 		{
+			ft_putendl(cmd[i]);
 			addlmaillon(parseCmd(cmd[i]), base);
+			free(cmd[i]);
 			i++;
 		}
-		ft_freetab(cmd);
+		free(cmd[i]);
+		free(cmd);
 	}
 	free(value);
 }
@@ -110,14 +115,19 @@ char			**parseCmd(char *cmd)
 			i++;
 		if (cmd[i] != '\0')
 			cmdTab[j] = malloc_tab(cmd, i);
+
 		if (cmdTab[j] != NULL)
 		{
 			while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
 				cmdTab[j][k++] = cmd[i++];
 			cmdTab[j][k] = '\0';
 		}
+		 // ft_putendl("");
+		 // ft_putendl(cmdTab[j]);
 		j++;
 	}
+	// ft_putstr("end");
+	// ft_putendl(cmdTab[j]);
 	cmdTab[j] = NULL;
 	return (cmdTab);
 }
@@ -135,7 +145,9 @@ char			*malloc_tab(char *cmd, int pos)
 	}
 	if (len != 0)
 	{
-		cmdTab = (char *)malloc(sizeof(char) * len);
+		// ft_putstr("len -->  ");
+		// ft_putnbr(len + 1);
+		cmdTab = (char *)malloc(sizeof(char) * len + 1);
 		if (!cmdTab)
 			return NULL;
 	}
@@ -160,8 +172,10 @@ char			**setTab(char *cmd){
 				i++;
 		}
 	}
-	tab = (char **)malloc(sizeof(char *)* size + 1);
-	tab[size] = NULL;
+	// ft_putstr("size -->");
+	// ft_putnbr(size + 1);
+	// ft_putendl("");
+	tab = (char **)malloc(sizeof(char *)* (size + 1));
 	if (!tab)
 		return (NULL);
 	return (tab);

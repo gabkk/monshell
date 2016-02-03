@@ -5,13 +5,15 @@ void			ft_opendir(t_env **env, char **cmd)
 	char		*home;
 	char		*path;
 	char		*tmp;
+//	char		buff[PATH_MAX + 1];
 
+	path = NULL;
 	home = ft_getlistevalue(env, "HOME");
-	tmp = (char *)malloc(sizeof(char)* PATH_MAX + 1);
+	tmp = (char *)malloc(sizeof(char) * PATH_MAX + 1);
 	if (getcwd(tmp, PATH_MAX) != NULL) //freele retour de getcwd
 		path = ft_strdup(tmp);
-	ft_cdaction(env, cmd, home, path);
 	free(tmp);
+	ft_cdaction(env, cmd, home, path);
 	free(path);
 }
 
@@ -20,8 +22,6 @@ void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
 	char 		*nextpwd;
 
 	nextpwd = NULL;
-	if (cmd[2])
-		ft_putendl_fd("too many arguments", 2);
 	if (!cmd[1])
 	{
 		nextpwd = home;
@@ -45,6 +45,8 @@ void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
 		}
 		ft_opennsave(env, pwd, nextpwd);
 	}
+	else
+	 	ft_putendl_fd("too many arguments", 2);
 }
 
 void			ft_opennsave(t_env **env, char *pwd, char *nextpwd){
@@ -122,17 +124,20 @@ void			ft_savepwd(t_env **env, char *pwd, char *nextpwd){
 		{
 			if (nextpwd)
 			{
+				free(ptrmaillon->value);
 				tmp2 = (char *)malloc(sizeof(char)* PATH_MAX + 1);
 				if (getcwd(tmp2, PATH_MAX) != NULL)
 					ptrmaillon->value = ft_strdup(tmp2); //A free un jour
 				free(tmp2);// verifier comment free ca
-
 			}
 		}
 		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)
 		{
 			if (pwd)
+			{
+				free(ptrmaillon->value);
 				ptrmaillon->value = ft_strdup(pwd);
+			}
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
