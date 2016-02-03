@@ -45,7 +45,7 @@ typedef struct		s_cmd{
 
 
 /*  dispatchjob.c       */
-void				doTheJob(t_env **env, char **cmd);
+void				doTheJob(t_env **env, char **cmd, char **tabenv);
 void				intothefork(char *path, char **cmd, char **tabenv);
 void				fathersup(pid_t father, int status);
 
@@ -96,7 +96,7 @@ void				ft_cdaction(t_env **env, char **cmd, char *home, char *pwd);
 /*	pathexec.c      */
 char				*iscommande(t_env **env, char **cmd);
 char				*islocalexec(char **cmd);
-char				*setpath(char **tab_path, char *value, char *cmd);
+char				*setpath(char **tab_path, char *cmd);
 
 /*  error.c        */
 void				invalidParam(char **cmd);
@@ -104,7 +104,7 @@ void				setenvError(char **cmd);
 void				ft_notfound(char *cmd);
 
 /* listintab.c     */
-char 				**ft_listintab(t_env **env);
+void				ft_listintab(t_env	**env, char **tabenv);
 
 /* tools.c        */
 char				*ft_getlistevalue(t_env	**env, char *name);
@@ -114,5 +114,9 @@ char				**getdefaultenv(void);
 void				setshlvl(char **tabenv);
 void				setlistlvl(t_env **env);
 
+/* main.c*/
+void			freebase(t_cmd	*base);
+void			freenv(t_env	*env);
+char			**settabenv(t_env *env);
 
 #endif

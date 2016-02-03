@@ -7,14 +7,16 @@ int			isBuiltins(char **cmd)
 	int		boolean;
 
 	i = 0;
-	listBuiltins = (char **)malloc(sizeof(char*) * 5);
+	listBuiltins = (char **)malloc(sizeof(char*) * 6);
 	listBuiltins[0] = "exit";
 	listBuiltins[1] = "env";
 	listBuiltins[2] = "setenv";
 	listBuiltins[3] = "unsetenv";
 	listBuiltins[4] = "cd";
+	listBuiltins[5] = NULL;
 	while (i < 5){
-		if (ft_strcmp(cmd[0], listBuiltins[i]) == 0){
+		if (cmd[0] && ft_strcmp(cmd[0], listBuiltins[i]) == 0)
+		{
 			boolean = 1;
 			break;
 		}
@@ -25,8 +27,9 @@ int			isBuiltins(char **cmd)
 	return boolean;
 }
 
-void		execBultins(char **cmd, t_env **env){
-	if (env)
+void		execBultins(char **cmd, t_env **env)
+{
+	if (env && cmd[0] != NULL)
 	{
 		if (ft_strcmp(cmd[0], "env") == 0)
 		{
@@ -44,6 +47,7 @@ void		execBultins(char **cmd, t_env **env){
 		else if (ft_strcmp(cmd[0], "exit") == 0)
 		{
 			ft_putendl("exit");
+			freenv(*env);
 			exit(0);
 		}
 	}

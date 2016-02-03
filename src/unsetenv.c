@@ -8,8 +8,6 @@ void		unset_env(t_env **env, char **cmd){
 	i = 0;
 	if (!(*env) || !cmd[1])
 		return;
-	ft_ptab(cmd);
-
 	while (cmd[i] != NULL)
 	{
 		ptrmaillon = *env;

@@ -3,49 +3,47 @@
 char			*iscommande(t_env **env, char **cmd){
 	char		*path;
 	char		**tab_path;
-	char		*value;
-	char		**pathtmp;
 	int			freepath;
+	char		*value;
 
 	freepath = 0;
-	value = NULL;
 	path = NULL;
+	value = NULL;
 	if (env) //peut etre non necessaire
 		path = ft_getlistevalue(env, "PATH");
 	tab_path = NULL;
-	tab_path = ft_strsplit(path, ':');
-	if (!path)
+	if (path)
+		tab_path = ft_strsplit(path, ':');
+	else
 	{
-		pathtmp = setdefaultpath();
-		tab_path = pathtmp;
+		tab_path = setdefaultpath();
 		freepath = 1;
 	}
-	if (tab_path != NULL)
-	{
-		value = setpath(tab_path, value, cmd[0]);
-		if (freepath == 0)
-			ft_freetab(tab_path);
-	}
-	else
-		value = setpath(pathtmp, value, cmd[0]);
+	value = setpath(tab_path, cmd[0]);
+	if (freepath == 0)
+		ft_freetab(tab_path);
+	else if (freepath == 1)
+		free(tab_path);
 	return (value);
 }
 
-char		*setpath(char **tab_path, char *value, char *cmd)
+char		*setpath(char **tab_path, char *cmd)
 {
 	DIR			*directory;
 	t_dirent	content;
 	int			i;
 	char		*tmp;
+	char 		*value;
 
 	i = 0;
+	value = NULL;
 	while (tab_path[i] != NULL)
 	{
 		if ((directory = opendir(tab_path[i])) != NULL)
 		{
 			while ((content = readdir(directory)) != NULL)
 			{
-				if (content && ft_strcmp(content->d_name, cmd) == 0)
+				if (content->d_name && ft_strcmp(content->d_name, cmd) == 0)
 				{
 					tmp = ft_strjoin("/", content->d_name);
 					value = ft_strjoin(tab_path[i], tmp);

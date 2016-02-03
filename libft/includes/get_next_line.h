@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-
+# include "libft.h"
 # define BUFF_SIZE 445
 
 typedef struct		s_content

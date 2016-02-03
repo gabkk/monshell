@@ -1,21 +1,13 @@
 #include "minishell.h"
 
-char 	**ft_listintab(t_env	**env){
-	t_env	*ptrmaillon;
-	char 	**tabenv;
+void		ft_listintab(t_env	**env, char **tabenv)
+{
 	int 	i;
 	int 	len;
 	char	*tmp1;
+	t_env	*ptrmaillon;
 
-	i = 0;
 	len = 0;
-	ptrmaillon = *env;
-	while (ptrmaillon)
-	{
-		i++;
-		ptrmaillon = ptrmaillon->next;
-	}
-	tabenv = (char **)malloc(sizeof(char *) * i);
 	ptrmaillon = *env;
 	i = 0;
 	while (ptrmaillon)
@@ -37,5 +29,4 @@ char 	**ft_listintab(t_env	**env){
 		ptrmaillon = ptrmaillon->next;
 	}
 	tabenv[i] = NULL;
-	return (tabenv);
 }

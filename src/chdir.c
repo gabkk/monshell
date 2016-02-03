@@ -2,23 +2,17 @@
 
 void			ft_opendir(t_env **env, char **cmd)
 {
-	char		*pwd;
 	char		*home;
-	char		tmp[PATH_MAX + 1];
-	int			havetofree;
+	char		*path;
+	char		*tmp;
 
-	havetofree = 0;
-	pwd = ft_getlistevalue(env, "PWD");
-	if (!pwd)
-	{
-		if (getcwd(tmp, PATH_MAX) != NULL)
-			pwd = ft_strdup(tmp);
-		havetofree = 1;
-	}
 	home = ft_getlistevalue(env, "HOME");
-	ft_cdaction(env, cmd, home, pwd);
-	if (havetofree == 1)
-		free(pwd);
+	tmp = (char *)malloc(sizeof(char)* PATH_MAX + 1);
+	if (getcwd(tmp, PATH_MAX) != NULL) //freele retour de getcwd
+		path = ft_strdup(tmp);
+	ft_cdaction(env, cmd, home, path);
+	free(tmp);
+	free(path);
 }
 
 void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
@@ -26,7 +20,20 @@ void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
 	char 		*nextpwd;
 
 	nextpwd = NULL;
-	if (cmd[1])
+	if (cmd[2])
+		ft_putendl_fd("too many arguments", 2);
+	if (!cmd[1])
+	{
+		nextpwd = home;
+		if (!nextpwd)
+		{
+			ft_putendl_fd("No $home variable set", 2);
+			return;
+		}
+		ft_opennsave(env, pwd, nextpwd);
+		return;
+	}
+	else if (cmd[1])
 	{
 		nextpwd = ft_setpwd(env, cmd[1], home, pwd);
 		if (nextpwd == NULL)
@@ -36,18 +43,8 @@ void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
 			free(nextpwd);
 			return;
 		}
-	}
-	else if (!cmd[1])
-	{
-		nextpwd = home;
-		if (!nextpwd)
-		{
-			ft_putendl_fd("No $home variable set", 2);
-			return;
-		}
-	}
-	if (ft_strcmp(nextpwd, "error") != 0)
 		ft_opennsave(env, pwd, nextpwd);
+	}
 }
 
 void			ft_opennsave(t_env **env, char *pwd, char *nextpwd){
@@ -55,8 +52,7 @@ void			ft_opennsave(t_env **env, char *pwd, char *nextpwd){
 
 	if ((directory = opendir(nextpwd)) != NULL)
 	{
-		if (ft_getlistevalue(env, "PWD") == NULL)
-			chdir(nextpwd);
+		chdir(nextpwd);
 		ft_savepwd(env, pwd, nextpwd);
 		closedir(directory);
 	}
@@ -75,16 +71,22 @@ char 			*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd){
 		nextpwd = pwd;
 	else if (ft_strcmp(cmd, "~") == 0)
 	{
-		if (home == NULL)
+		nextpwd = home;
+		if (!nextpwd)
 		{
 			ft_putendl_fd("cd: no $home directory", 2);
-			nextpwd = "error";
+			return "error";
 		}
-		else
-			nextpwd = home;
 	}
 	else if (ft_strcmp(cmd, "-") == 0)
+	{
 		nextpwd = ft_getlistevalue(env, "OLDPWD");
+		if (!nextpwd)
+		{
+			ft_putendl_fd("cd: no $OLDPWD value set", 2);
+			return "error";
+		}
+	}
 	else if (ft_strcmp(cmd, "/") == 0)
 		nextpwd = "/";
 	else if (ft_strncmp(cmd, "/", 1) == 0)
@@ -96,21 +98,11 @@ char			*ft_setmallocpwd(char *cmd, char *home, char *pwd)
 {
 	char		*tmp;
 	char		*nextpwd;
-	int			i;
-	int			j;
 
 	nextpwd = NULL;
-	if (!(i = 0) && !(j = 1) && ft_strcmp(cmd, "..") == 0)
-	{
-		i = (ft_strlen(pwd) - ft_strlen(ft_strrchr(pwd, 47)));
-		nextpwd = (char *)malloc(sizeof(char) * i);
-		while (j++ < i)
-			nextpwd[j] = pwd[j];
-		nextpwd[j] = '\0';
-	}
-	else if (ft_strncmp(cmd, "~/", 2) == 0)
+	if (ft_strncmp(cmd, "~/", 2) == 0)
 		nextpwd = ft_strjoin(home, ft_strchr(cmd, '/'));
-	else if (ft_strcmp(cmd, "-") != 0)
+	else
 	{
 		tmp = ft_strjoin(pwd, "/");
 		nextpwd = ft_strjoin(tmp, cmd);
@@ -121,7 +113,7 @@ char			*ft_setmallocpwd(char *cmd, char *home, char *pwd)
 
 void			ft_savepwd(t_env **env, char *pwd, char *nextpwd){
 	t_env		*ptrmaillon;
-	char		tmp2[PATH_MAX + 1];
+	char		*tmp2;
 
 	ptrmaillon = *env;
 	while (ptrmaillon)
@@ -130,9 +122,11 @@ void			ft_savepwd(t_env **env, char *pwd, char *nextpwd){
 		{
 			if (nextpwd)
 			{
-				chdir(nextpwd);
+				tmp2 = (char *)malloc(sizeof(char)* PATH_MAX + 1);
 				if (getcwd(tmp2, PATH_MAX) != NULL)
-					ptrmaillon->value = ft_strdup(tmp2);
+					ptrmaillon->value = ft_strdup(tmp2); //A free un jour
+				free(tmp2);// verifier comment free ca
+
 			}
 		}
 		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)

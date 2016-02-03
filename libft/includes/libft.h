@@ -84,5 +84,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_ptab(char **tab);
 void				ft_freetab(char **tab);
+int					get_next_line(int const fd, char **line);
 
 #endif

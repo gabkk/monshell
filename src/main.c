@@ -4,7 +4,10 @@ int				main(int ac, char *const av[], char *const envp[])
 {
 	t_env		*env;
 	t_cmd		*base;
+	t_cmd		*ptrmaillon;
+	char		**tabenv;
 
+	tabenv = NULL;
 	(void) ac;
 	(void) av;
 	env = getlocalenv(envp);
@@ -16,16 +19,74 @@ int				main(int ac, char *const av[], char *const envp[])
 			env = setdefaultenv();
 		printPrompt(env);
 		readCommandLine(&base);
-		if (base)
+		ptrmaillon = base;
+		if (ptrmaillon)
 		{
-			while (base)
+			while (ptrmaillon)
 			{
-				doTheJob(&env, base->listcmd);
-				base = base->next;
+				ft_putendl("cmd boucle");
+				tabenv = settabenv(env);
+				doTheJob(&env, ptrmaillon->listcmd, tabenv);
+				ft_freetab(tabenv);
+				ptrmaillon = ptrmaillon->next;
 			}
-		//	free(cmd); //Free toutes les tabs
 		}
-		//free(cmd); free tout le details
+		freebase(ptrmaillon); // fou la merde a checker
+		free(base);// verfier ce truc
 	}
+	freenv(env);
 	return (0);
+}
+
+char			**settabenv(t_env *env)
+{
+	int 	i;
+	t_env	*ptrmaillon;
+	char **tabenv;
+	
+	tabenv = NULL;
+	i = 0;
+	if (env)
+	{
+		ptrmaillon = env;
+		while (ptrmaillon)
+		{
+			i++;
+			ptrmaillon = ptrmaillon->next;
+		}
+		tabenv = (char **)malloc(sizeof(char *) * i + 1);
+	}
+	if (tabenv)
+		ft_listintab(&env, tabenv);
+	else
+	 	tabenv = getdefaultenv();
+	return (tabenv);
+}
+
+void			freebase(t_cmd	*base)
+{
+	t_cmd		*ptrmaillon;
+
+	while (base != NULL)
+	{
+		ft_freetab(base->listcmd);
+		ptrmaillon = base;
+		free(base);
+		base = ptrmaillon->next;
+	}
+}
+
+void			freenv(t_env	*env)
+{
+	t_env		*ptrmaillon;
+
+	while (env != NULL)
+	{
+		free(env->name);
+		if (env->value)
+			free(env->value);
+		ptrmaillon = env;
+		free(env);
+		env = ptrmaillon->next;
+	}
 }

@@ -11,7 +11,7 @@ void			printPrompt(t_env *env)
 	{
 		if (ptrmaillon->name && (ft_strcmp(ptrmaillon->name, "USER") == 0)){
 			if (ptrmaillon->value != NULL)
-				value = ft_strdup(ptrmaillon->value);
+				value = ptrmaillon->value;
 			else
 				value = NULL;
 		}
@@ -21,7 +21,6 @@ void			printPrompt(t_env *env)
 	{
 		ft_putstr("\x1b[31m");
 		ft_putstr(value);
-		free(value);
 		ft_putstr("\x1b[0m");
 	}
 	ft_putstr("\x1b[32m");
@@ -73,16 +72,15 @@ void 			readCommandLine(t_cmd **base)
 	int 		i;
 
 	i = 0;
-	value = (char *)malloc(sizeof(char)*100000); //a modifier
-	ret = read(STDIN_FILENO, value, 990000);
-	if (ret == 0) // CHECK ThaT !!!!!!
+	value = NULL;
+	ret = get_next_line(STDIN_FILENO, &value);
+	if (ret == 0)
 	{
 		ft_putendl("exit");
 		free(value);
 		exit(0);
 	}
-	value[ret - 1] = '\0';
-	if (value)
+	if (*value)
 	{
 		cmd = ft_strsplit(value,';');
 		while (cmd[i] != NULL)
@@ -90,7 +88,9 @@ void 			readCommandLine(t_cmd **base)
 			addlmaillon(parseCmd(cmd[i]), base);
 			i++;
 		}
+		ft_freetab(cmd);
 	}
+	free(value);
 }
 
 char			**parseCmd(char *cmd)

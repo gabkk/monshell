@@ -1,13 +1,11 @@
 #include "minishell.h"
+#include <sys/types.h>
+#include <signal.h>
 
-void		doTheJob(t_env **env, char **cmd)
+void		doTheJob(t_env **env, char **cmd, char **tabenv)
 {
-	char	**tabenv;
 	char	*path;
 
-	tabenv = ft_listintab(env);
-	if (!tabenv)
-		tabenv = getdefaultenv();
 	if (isBuiltins(cmd) == 1)
 			execBultins(cmd, env);
 	else if ((path = iscommande(env, cmd)) != NULL)
@@ -19,6 +17,13 @@ void		doTheJob(t_env **env, char **cmd)
 		intothefork(cmd[0], cmd, tabenv);
 	else
 		ft_notfound(cmd[0]);
+	//if (free2 == 0)
+	//	free(tabenv);
+	// else if (free2 == 1)
+	// {
+	// 	free(tabenv[5]);
+	// 	free(tabenv);
+	// }
 }
 
 
@@ -56,6 +61,16 @@ void	fathersup(pid_t father, int status)
 	else
 	{
 		w = waitpid(father, &status, WUNTRACED | WCONTINUED);
+		ft_putstr("status : ");
+		ft_putnbr(status);
+		ft_putstr("pid : ");
+		ft_putnbr(w);
+
+
+
+
+
+
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 		{
 			if (w == -1)
@@ -74,7 +89,10 @@ void	fathersup(pid_t father, int status)
 			printf("continued\n");
 			}
 		}
+		kill(w, SIGKILL);
+
 	}
+
 }
 
 

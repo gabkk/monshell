@@ -22,7 +22,7 @@ char		**setdefaultpath()
 {
 	char	**pathtmp;
 
-	pathtmp = (char **)malloc(sizeof(char *) * 2);
+	pathtmp = (char **)malloc(sizeof(char *) * 3);
 	pathtmp[0] = "/bin";
 	pathtmp[1] = "/usr/bin";
 	pathtmp[2] = NULL;
