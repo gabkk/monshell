@@ -52,8 +52,8 @@ char		*setpath(char **tab_path, char *cmd)
 					return (value);
 				}
 			}
+			closedir(directory);
 		}
-		closedir(directory);
 		i++;
 	}
 	return (value);

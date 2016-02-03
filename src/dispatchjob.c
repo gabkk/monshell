@@ -54,10 +54,10 @@ void	fathersup(pid_t father, int status)
 	else
 	{
 		w = waitpid(father, &status, WUNTRACED | WCONTINUED);
-		ft_putstr("status : ");
-		ft_putnbr(status);
-		ft_putstr("pid : ");
-		ft_putnbr(w);
+		// ft_putstr("status : ");
+		// ft_putnbr(status);
+		// ft_putstr("pid : ");
+		// ft_putnbr(w);
 
 
 

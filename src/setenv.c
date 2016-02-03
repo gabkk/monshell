@@ -26,6 +26,7 @@ void		addEnv(t_env **env, char **cmd)
 	}
 	else if (cmd[1] && cmd[2])
 	{
+		ft_putendl("cmd[1] && cmd[2]");
 		if (ft_isupper(cmd[1]) == 0)
 		{
 			ft_putendl("VAR should contain only capital letter");
@@ -35,7 +36,7 @@ void		addEnv(t_env **env, char **cmd)
 		{
 			if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
 			{
-				ptrmaillon->value = cmd[2];
+				ptrmaillon->value = ft_strdup(cmd[2]);
 				return;
 			}
 			ptrmaillon = ptrmaillon->next;
@@ -110,9 +111,11 @@ void		addNewEnv(t_env **env, char **cmd)
 	while (ptrmaillon->next)
 		ptrmaillon = ptrmaillon->next;
 	ptrmaillon->next = newmaillon;
-	newmaillon->name = cmd[1];
+	newmaillon->name = ft_strdup(cmd[1]);// check les free
 	if (cmd[2])
-		newmaillon->value = cmd[2];
+		newmaillon->value = ft_strdup(cmd[2]); // check les free
+	else
+		newmaillon->value = NULL;
 }
 
 int			isvalidvar(char *str)

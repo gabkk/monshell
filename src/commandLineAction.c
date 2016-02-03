@@ -73,8 +73,8 @@ void 			readCommandLine(t_cmd **base)
 
 	i = 0;
 	value = NULL;
-	value = (char *)malloc(sizeof(char)*100000);
-	ret = read(STDIN_FILENO, value, 990);
+	value = (char *)malloc(sizeof(char)* 1026);
+	ret = read(STDIN_FILENO, value, 1025);
 	if (ret == 0)
 	{
 		ft_putendl("exit");
@@ -87,7 +87,7 @@ void 			readCommandLine(t_cmd **base)
 		cmd = ft_strsplit(value,';');
 		while (cmd[i] != NULL)
 		{
-			ft_putendl(cmd[i]);
+//			ft_putendl(cmd[i]);
 			addlmaillon(parseCmd(cmd[i]), base);
 			free(cmd[i]);
 			i++;
@@ -122,12 +122,8 @@ char			**parseCmd(char *cmd)
 				cmdTab[j][k++] = cmd[i++];
 			cmdTab[j][k] = '\0';
 		}
-		 // ft_putendl("");
-		 // ft_putendl(cmdTab[j]);
 		j++;
 	}
-	// ft_putstr("end");
-	// ft_putendl(cmdTab[j]);
 	cmdTab[j] = NULL;
 	return (cmdTab);
 }

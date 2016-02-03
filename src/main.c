@@ -24,11 +24,11 @@ int				main(int ac, char *const av[], char *const envp[])
 		{
 			while (ptrmaillon)
 			{
-				ft_putendl("cmd boucle");
+				//ft_putendl("cmd boucle");
 				tabenv = settabenv(env);
 				doTheJob(&env, ptrmaillon->listcmd, tabenv);
 				ft_freetab(tabenv);
-				ft_ptab(ptrmaillon->listcmd);
+				//ft_ptab(ptrmaillon->listcmd);
 				ft_freetab(ptrmaillon->listcmd);
 				ptrmaillon = ptrmaillon->next;
 			}

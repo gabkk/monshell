@@ -124,7 +124,8 @@ void			ft_savepwd(t_env **env, char *pwd, char *nextpwd){
 		{
 			if (nextpwd)
 			{
-				free(ptrmaillon->value);
+				if (ptrmaillon->value)
+					free(ptrmaillon->value);
 				tmp2 = (char *)malloc(sizeof(char)* PATH_MAX + 1);
 				if (getcwd(tmp2, PATH_MAX) != NULL)
 					ptrmaillon->value = ft_strdup(tmp2); //A free un jour
@@ -135,7 +136,8 @@ void			ft_savepwd(t_env **env, char *pwd, char *nextpwd){
 		{
 			if (pwd)
 			{
-				free(ptrmaillon->value);
+				if (ptrmaillon->value)
+					free(ptrmaillon->value);
 				ptrmaillon->value = ft_strdup(pwd);
 			}
 		}

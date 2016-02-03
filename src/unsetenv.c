@@ -14,10 +14,13 @@ void		unset_env(t_env **env, char **cmd){
 		 if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[i]) == 0)
 		{
 			*env = ptrmaillon->next;
+			free(ptrmaillon->name);
+			free(ptrmaillon->value);
 			ptrmaillon->name = NULL;
 			ptrmaillon->value = NULL;
 			free(ptrmaillon);
 			unset_env(env, cmd);
+
 			return;
 		}
 		while (ptrmaillon->next != NULL)
@@ -26,6 +29,8 @@ void		unset_env(t_env **env, char **cmd){
 			{
 				prevmaillon = ptrmaillon->next;
 				ptrmaillon->next = prevmaillon->next;
+				free(prevmaillon->value);
+				free(prevmaillon->name);
 				free(prevmaillon);
 			}
 			else
