@@ -89,6 +89,7 @@ void		setshlvl(char **tabenv)
 				tmp3 = ft_itoa(value);	
 			}		
 			tmp2 = ft_strjoin(tmp[0], "=");
+			free(tabenv[i]);
 			tabenv[i] = ft_strjoin(tmp2, tmp3);
 			ft_freetab(tmp);
 			free(tmp2);
@@ -109,4 +110,22 @@ void		setlistlvl(t_env **env)
 			ptrmaillon->value = ft_itoa(ft_atoi(ptrmaillon->value) + 1); // a free
 		ptrmaillon = ptrmaillon->next;
 	}
+}
+
+int			checkifonlyspace(char *value)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (value[i] != '\0')
+	{
+		if (ft_isspace(value[i]))
+			j++;
+		i++;
+	}
+	if (i == j)
+		return(1);
+	return 0;
 }

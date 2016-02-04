@@ -19,25 +19,30 @@ int				main(int ac, char *const av[], char *const envp[])
 			env = setdefaultenv();
 		printPrompt(env);
 		readCommandLine(&base);
-		ptrmaillon = base;
-		if (ptrmaillon)
+		if (base)
 		{
+			ptrmaillon = base;
 			while (ptrmaillon)
 			{
 				//ft_putendl("cmd boucle");
+
 				tabenv = settabenv(env);
 				doTheJob(&env, ptrmaillon->listcmd, tabenv);
 				ft_freetab(tabenv);
 				//ft_ptab(ptrmaillon->listcmd);
-				ft_freetab(ptrmaillon->listcmd);
+				//ft_freetab(ptrmaillon->listcmd);         //---------
 				ptrmaillon = ptrmaillon->next;
-			}
+			}			
 		}
-		freebase(&base); // fou la merde a checker
+		// ft_putstr("commande :");
+		// ft_putendl(ptrmaillon->listcmd[0]);
+		//freebase(&base); // fou la merde a checker //---------
+		
+
 		//free(base);// verfier ce truc
 		//close(STDIN_FILENO);
 	}
-	freenv(env);
+	freenv(env);   //------------
 	return (0);
 }
 

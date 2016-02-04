@@ -114,6 +114,7 @@ t_env				*setdefaultenv(void);
 char				**getdefaultenv(void);
 void				setshlvl(char **tabenv);
 void				setlistlvl(t_env **env);
+int 				checkifonlyspace(char *value);
 
 /* main.c*/
 void			freebase(t_cmd	**base);

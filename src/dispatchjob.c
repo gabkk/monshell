@@ -6,6 +6,8 @@ void		doTheJob(t_env **env, char **cmd, char **tabenv)
 {
 	char	*path;
 
+	if (!cmd[0])
+		return;
 	if (isBuiltins(cmd) == 1)
 			execBultins(cmd, env);
 	else if ((path = iscommande(env, cmd)) != NULL)
@@ -13,7 +15,7 @@ void		doTheJob(t_env **env, char **cmd, char **tabenv)
 		intothefork(path, cmd, tabenv);
 		free(path);
 	}
-	else if ( access(cmd[0], X_OK) != -1 )
+	else if ( cmd[0] && access(cmd[0], X_OK) != -1 )
 		intothefork(cmd[0], cmd, tabenv);
 	else
 		ft_notfound(cmd[0]);

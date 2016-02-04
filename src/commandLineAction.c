@@ -81,7 +81,12 @@ void 			readCommandLine(t_cmd **base)
 		free(value);
 		exit(0);
 	}
+	if ((checkifonlyspace(value) == 1))
+		return;
 	value[ret - 1] = '\0';
+	ft_putstr("value retour de ret: |");
+	ft_putstr(value);
+	ft_putendl("|");
 	if (*value)
 	{
 		cmd = ft_strsplit(value,';');
@@ -98,7 +103,7 @@ void 			readCommandLine(t_cmd **base)
 	free(value);
 }
 
-char			**parseCmd(char *cmd)
+char			**parseCmd(char *cmdvalue)
 {
 	char		**cmdTab;
 	int			i;
@@ -107,21 +112,26 @@ char			**parseCmd(char *cmd)
 
 	i = 0;
 	j = 0;
-	cmdTab = setTab(cmd);
-	while (cmd[i] != '\0')
+	cmdTab = setTab(cmdvalue);
+	while (cmdvalue[i] != '\0')
 	{
 		k = 0;
-		while ((ft_isspace(cmd[i]) == 1) && cmd[i] != '\0')
+		while ((cmdvalue[i] != '\0' && ft_isspace(cmdvalue[i]) == 1))
 			i++;
-		if (cmd[i] != '\0')
-			cmdTab[j] = malloc_tab(cmd, i);
+		if (cmdvalue[i] != '\0')
+			cmdTab[j] = malloc_tab(cmdvalue, i);
 
 		if (cmdTab[j] != NULL)
 		{
-			while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
-				cmdTab[j][k++] = cmd[i++];
+			while (cmdvalue[i] != '\0' && (ft_isspace(cmdvalue[i]) == 0))
+				cmdTab[j][k++] = cmdvalue[i++];
 			cmdTab[j][k] = '\0';
 		}
+		while ((cmdvalue[i] != '\0' && ft_isspace(cmdvalue[i]) == 1))
+			i++;
+		ft_putstr("commande parse: |");
+		ft_putstr(cmdTab[j]);
+		ft_putendl("|");
 		j++;
 	}
 	cmdTab[j] = NULL;
@@ -134,7 +144,7 @@ char			*malloc_tab(char *cmd, int pos)
 	int			len;
 
 	len = 0;
-	while ((ft_isspace(cmd[pos]) == 0) && cmd[pos] != '\0')
+	while (cmd[pos] != '\0' && (ft_isspace(cmd[pos]) == 0))
 	{
 		pos ++;
 		len ++;
@@ -160,17 +170,18 @@ char			**setTab(char *cmd){
 	i = 0;
 	size = 0;
 	while (cmd[i] != '\0'){
-		while ((ft_isspace(cmd[i]) == 1) && cmd[i] != '\0')
+		while (cmd[i] != '\0' && (ft_isspace(cmd[i]) == 1))
 			i++;
-		if ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0'){
+		if (cmd[i] != '\0' && (ft_isspace(cmd[i]) == 0))
+		{
 			size++;
-			while ((ft_isspace(cmd[i]) == 0) && cmd[i] != '\0')
+			while (cmd[i] != '\0' && (ft_isspace(cmd[i]) == 0))
 				i++;
 		}
 	}
-	// ft_putstr("size -->");
-	// ft_putnbr(size + 1);
-	// ft_putendl("");
+	ft_putstr("size -->");
+	ft_putnbr(size + 1);
+	ft_putendl("");
 	tab = (char **)malloc(sizeof(char *)* (size + 1));
 	if (!tab)
 		return (NULL);

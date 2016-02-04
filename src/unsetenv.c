@@ -16,7 +16,6 @@ void		unset_env(t_env **env, char **cmd){
 			*env = ptrmaillon->next;
 			free(ptrmaillon->name);
 			free(ptrmaillon->value);
-			ptrmaillon->name = NULL;
 			ptrmaillon->value = NULL;
 			free(ptrmaillon);
 			unset_env(env, cmd);
