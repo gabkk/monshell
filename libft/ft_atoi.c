@@ -14,8 +14,8 @@
 
 static int		ft_whitesp(const char *str, int i)
 {
-	while (str[i] == 32 || str[i] == '\t' || str[i] == '\v' || str[i] == '\f' \
-			|| str[i] == '\r' || str[i] == '\n')
+	while (str[i] != '\0' && (str[i] == 32 || str[i] == '\t' || str[i] == '\v'\
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == '\n'))
 	{
 		i++;
 	}

@@ -26,7 +26,7 @@ void		addEnv(t_env **env, char **cmd)
 	}
 	else if (cmd[1] && cmd[2])
 	{
-		ft_putendl("cmd[1] && cmd[2]");
+		//ft_putendl("cmd[1] && cmd[2]");
 		if (ft_isupper(cmd[1]) == 0)
 		{
 			ft_putendl("VAR should contain only capital letter");
@@ -36,6 +36,7 @@ void		addEnv(t_env **env, char **cmd)
 		{
 			if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
 			{
+				free(ptrmaillon->value);
 				ptrmaillon->value = ft_strdup(cmd[2]);
 				return;
 			}
@@ -64,6 +65,7 @@ void		setnoequal(t_env **env, char **cmd)
 
 void		setequal(t_env **env, char **cmd)
 {
+	t_env	*newmaillon;
 	t_env	*ptrmaillon;
 	char 	**varvalue;
 
@@ -73,18 +75,27 @@ void		setequal(t_env **env, char **cmd)
 	{
 		if ((ptrmaillon->name) && ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
 		{
+			free(ptrmaillon->value);
 			if (varvalue[1] != NULL)
-				ptrmaillon->value = varvalue[1];
+				ptrmaillon->value = ft_strdup(varvalue[1]);
 			else
 				ptrmaillon->value = NULL;
+			ft_freetab(varvalue);
 			return;
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
-	cmd[1] = varvalue[0];
-	if (varvalue[1] != NULL)
-		cmd[2] = varvalue[1];
-	addNewEnv(env, cmd);
+	newmaillon = initmaillon();
+	ptrmaillon = *env;
+	while (ptrmaillon->next)
+		ptrmaillon = ptrmaillon->next;
+	ptrmaillon->next = newmaillon;
+	newmaillon->name = ft_strdup(varvalue[0]);// check les free
+	if (varvalue[1])
+		newmaillon->value = ft_strdup(varvalue[1]); // check les free
+	else
+		newmaillon->value = NULL;
+	ft_freetab(varvalue);
 }
 
 int 		withequal(char *str)

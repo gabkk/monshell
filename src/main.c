@@ -9,6 +9,7 @@ int				main(int ac, char *const av[], char *const envp[])
 
 	tabenv = NULL;
 	env = NULL;
+	base =  NULL;
 	(void) ac;
 	(void) av;
 	env = getlocalenv(envp);
@@ -16,7 +17,6 @@ int				main(int ac, char *const av[], char *const envp[])
 		setlistlvl(&env);
 	while(42)
 	{
-		base =  NULL;
 		if (!env)
 			env = setdefaultenv();
 		printPrompt(env);
@@ -29,18 +29,17 @@ int				main(int ac, char *const av[], char *const envp[])
 				//ft_putendl("cmd boucle");
 
 				tabenv = settabenv(env);
-				doTheJob(&env, ptrmaillon->listcmd, tabenv);
+				if (ptrmaillon->listcmd)
+					doTheJob(&env, ptrmaillon->listcmd, tabenv);
 				ft_freetab(tabenv);
 				//ft_ptab(ptrmaillon->listcmd);
 				//ft_freetab(ptrmaillon->listcmd);         //---------
 				ptrmaillon = ptrmaillon->next;
 			}			
+			freebase(&base); // fou la merde a checker //---------
 		}
 		// ft_putstr("commande :");
 		// ft_putendl(ptrmaillon->listcmd[0]);
-		//freebase(&base); // fou la merde a checker //---------
-		
-
 		//free(base);// verfier ce truc
 		//close(STDIN_FILENO);
 	}
@@ -76,12 +75,23 @@ void			freebase(t_cmd	**base)
 {
 	t_cmd		*ptrmaillon;
 
+	if (!base || !*base)
+		return;
 	while (*base)
 	{
-		ptrmaillon = *base;
+		//ft_putstr("yo");
+		if ((*base)->listcmd)
+			ft_freetab((*base)->listcmd);
+		ptrmaillon = (*base)->next;
 		free(*base);
-		*base = ptrmaillon->next;
+		*base = ptrmaillon;
 	}
+	// if (*base)
+	// {
+	// 	ft_freetab((*base)->listcmd);
+	// 	free(*base);
+	// }
+	*base = NULL;
 }
 
 void			freenv(t_env	*env)
