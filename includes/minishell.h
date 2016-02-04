@@ -112,7 +112,7 @@ char				*ft_getlistevalue(t_env	**env, char *name);
 char				**setdefaultpath(void);
 t_env				*setdefaultenv(void);
 char				**getdefaultenv(void);
-void				setshlvl(char **tabenv);
+//void				setshlvl(char **tabenv);
 void				setlistlvl(t_env **env);
 int 				checkifonlyspace(char *value);
 

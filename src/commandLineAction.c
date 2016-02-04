@@ -84,9 +84,9 @@ void 			readCommandLine(t_cmd **base)
 	if ((checkifonlyspace(value) == 1))
 		return;
 	value[ret - 1] = '\0';
-	ft_putstr("value retour de ret: |");
-	ft_putstr(value);
-	ft_putendl("|");
+	// ft_putstr("value retour de ret: |");
+	// ft_putstr(value);
+	// ft_putendl("|");
 	if (*value)
 	{
 		cmd = ft_strsplit(value,';');
@@ -129,9 +129,9 @@ char			**parseCmd(char *cmdvalue)
 		}
 		while ((cmdvalue[i] != '\0' && ft_isspace(cmdvalue[i]) == 1))
 			i++;
-		ft_putstr("commande parse: |");
-		ft_putstr(cmdTab[j]);
-		ft_putendl("|");
+		// ft_putstr("commande parse: |");
+		// ft_putstr(cmdTab[j]);
+		// ft_putendl("|");
 		j++;
 	}
 	cmdTab[j] = NULL;
@@ -179,9 +179,9 @@ char			**setTab(char *cmd){
 				i++;
 		}
 	}
-	ft_putstr("size -->");
-	ft_putnbr(size + 1);
-	ft_putendl("");
+	// ft_putstr("size -->");
+	// ft_putnbr(size + 1);
+	// ft_putendl("");
 	tab = (char **)malloc(sizeof(char *)* (size + 1));
 	if (!tab)
 		return (NULL);

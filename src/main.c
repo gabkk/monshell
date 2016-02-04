@@ -8,10 +8,12 @@ int				main(int ac, char *const av[], char *const envp[])
 	char		**tabenv;
 
 	tabenv = NULL;
+	env = NULL;
 	(void) ac;
 	(void) av;
 	env = getlocalenv(envp);
-	setlistlvl(&env);
+	if (env)
+		setlistlvl(&env);
 	while(42)
 	{
 		base =  NULL;

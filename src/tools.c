@@ -69,35 +69,6 @@ t_env		*setdefaultenv()
 	return (liste);
 }
 
-void		setshlvl(char **tabenv)
-{
-	char	**tmp;
-	char	*tmp2;
-	char	*tmp3;
-	int		i;
-	int		value;
-
-	i = 0 ;
-	while (tabenv[i] != NULL)
-	{
-		if (ft_strncmp(tabenv[i], "SHLVL", 5) == 0)
-		{
-			tmp = ft_strsplit(tabenv[i], '=');
-			if (tmp[1])
-			{
-				value = ft_atoi(tmp[1]) + 1;
-				tmp3 = ft_itoa(value);	
-			}		
-			tmp2 = ft_strjoin(tmp[0], "=");
-			free(tabenv[i]);
-			tabenv[i] = ft_strjoin(tmp2, tmp3);
-			ft_freetab(tmp);
-			free(tmp2);
-			free(tmp3);
-		}
-		i++;
-	}
-}
 
 void		setlistlvl(t_env **env)
 {
@@ -107,7 +78,10 @@ void		setlistlvl(t_env **env)
 	while (ptrmaillon)
 	{
 		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "SHLVL") == 0)
+		{
+			free(ptrmaillon->value);
 			ptrmaillon->value = ft_itoa(ft_atoi(ptrmaillon->value) + 1); // a free
+		}
 		ptrmaillon = ptrmaillon->next;
 	}
 }
@@ -129,3 +103,41 @@ int			checkifonlyspace(char *value)
 		return(1);
 	return 0;
 }
+
+// void		setshlvl(char **tabenv)
+// {
+// 	char	**tmp;
+// 	char	*tmp2;
+// 	char	*tmp3;
+// 	int		i;
+// 	int		value;
+
+// 	i = 0 ;
+// 			ft_putstr("start");
+
+// 	while (tabenv[i] != NULL)
+// 	{
+// 			ft_putstr("start");
+	
+// 		if (ft_strncmp(tabenv[i], "SHLVL", 5) == 0)
+// 		{
+// 			ft_putstr("start");
+	
+// 			tmp = ft_strsplit(tabenv[i], '=');
+// 			if (tmp[1])
+// 			{
+// 				value = ft_atoi(tmp[1]) + 1;
+// 				tmp3 = ft_itoa(value);	
+// 			}		
+// 			tmp2 = ft_strjoin(tmp[0], "=");
+// 			ft_putstr("start");
+// 			ft_putendl(tabenv[i]); //del
+// 			free(tabenv[i]);
+// 			tabenv[i] = ft_strjoin(tmp2, tmp3);
+// 			ft_freetab(tmp);
+// 			free(tmp2);
+// 			free(tmp3);
+// 		}
+// 		i++;
+// 	}
+// }
