@@ -22,6 +22,8 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
+# include <signal.h>
+
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
@@ -30,6 +32,7 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 #define PATH_MAX			4096
+
 
 typedef struct dirent	*t_dirent;
 
@@ -43,6 +46,8 @@ typedef struct		s_cmd{
 	char			**listcmd;
 	struct s_cmd	*next;
 }					t_cmd;
+
+	t_env		*env;
 
 
 /*  dispatchjob.c       */
@@ -112,6 +117,9 @@ char				*ft_getlistevalue(t_env	**env, char *name);
 char				**setdefaultpath(void);
 t_env				*setdefaultenv(void);
 char				**getdefaultenv(void);
+void 				sig_handler(int signo);
+
+
 //void				setshlvl(char **tabenv);
 void				setlistlvl(t_env **env);
 int 				checkifonlyspace(char *value);
@@ -120,5 +128,6 @@ int 				checkifonlyspace(char *value);
 void			freebase(t_cmd	**base);
 void			freenv(t_env	*env);
 char			**settabenv(t_env *env);
+void			mainbody(t_env *env);
 
 #endif

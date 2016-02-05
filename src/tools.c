@@ -108,3 +108,43 @@ int			checkifonlyspace(char *value)
 		return(1);
 	return 0;
 }
+
+void sig_handler(int signo)
+{
+  	if (signo == SIGINT)
+  	{
+    	//signal(SIGCONT, sig_handler);
+    	signal(SIGINT, SIG_DFL);
+    	raise(SIGINT);
+//  		signal(SIGINT, SIG_IGN);
+     	write(0,"\n", 1);
+  		mainbody(env);
+  		return;
+  	}
+  		
+	// else if (signo == SIGKILL)
+	//     ft_putendl("received SIGKILL");
+	// else if (signo == SIGSTOP)
+ //    	ft_putendl("received SIGSTOP");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

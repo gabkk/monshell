@@ -1,22 +1,37 @@
 #include "minishell.h"
 
+
 int				main(int ac, char *const av[], char *const envp[])
 {
-	t_env		*env;
+
+	env = NULL;
+	(void) ac;
+	(void) av;
+
+
+  	env = getlocalenv(envp);
+	if (env)
+		setlistlvl(&env);
+
+  	mainbody(env);
+	freenv(env);   //------------
+	return (0);
+}
+
+void			mainbody(t_env *env)
+{
 	t_cmd		*base;
 	t_cmd		*ptrmaillon;
 	char		**tabenv;
 
+
+
 	tabenv = NULL;
-	env = NULL;
 	base =  NULL;
-	(void) ac;
-	(void) av;
-	env = getlocalenv(envp);
-	if (env)
-		setlistlvl(&env);
 	while(42)
 	{
+		if (signal(SIGINT, sig_handler) == SIG_ERR)
+			ft_putendl("sig error");
 		if (!env)
 			env = setdefaultenv();
 		printPrompt(env);
@@ -27,7 +42,6 @@ int				main(int ac, char *const av[], char *const envp[])
 			while (ptrmaillon)
 			{
 				//ft_putendl("cmd boucle");
-
 				tabenv = settabenv(env);
 				if (ptrmaillon->listcmd)
 					doTheJob(&env, ptrmaillon->listcmd, tabenv);
@@ -43,9 +57,8 @@ int				main(int ac, char *const av[], char *const envp[])
 		//free(base);// verfier ce truc
 		//close(STDIN_FILENO);
 	}
-	freenv(env);   //------------
-	return (0);
 }
+
 
 char			**settabenv(t_env *env)
 {
