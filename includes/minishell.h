@@ -64,6 +64,7 @@ char				*malloc_tab(char *cmd, int pos);
 t_cmd				*initlcmd(void);
 void				addlmaillon(char **cmd, t_cmd **liste);
 
+void				parse_value(char *value, char **tmp, t_cmd **base);
 
 
 /*  defineEnv.c        */
@@ -92,11 +93,12 @@ void				unset_env(t_env** env, char **cmd);
 
 /*  chdir.c        */
 void				ft_opendir(t_env **env, char **cmd);
-void				ft_savepwd(t_env **env, char *pwd, char *nextpwd);
-char		 		*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd);
+void				savepwd(t_env **env, char *pwd, char *nextpwd);
+char		 		*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd);
 char				*ft_setmallocpwd(char *cmd, char *home, char *pwd);
 void				ft_opennsave(t_env **env, char *pwd, char *nextpwd);
 void				ft_cdaction(t_env **env, char **cmd, char *home, char *pwd);
+void				setpwd_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon);
 
 /*	pathexec.c      */
 char				*iscommande(t_env **env, char **cmd);

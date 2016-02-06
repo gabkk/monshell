@@ -3,7 +3,7 @@
 void			printPrompt(t_env *env)
 {
 	t_env		*ptrmaillon;
-	char 		*value;
+	char		*value;
 
 	value = NULL;
 	ptrmaillon = env;
@@ -70,12 +70,9 @@ void			addlmaillon(char **cmd, t_cmd **liste)
 void 			readCommandLine(t_cmd **base)
 {
 	char		*value;
-	char		**cmd;
 	int			ret;
-	int 		i;
 	char		**tmp;
 
-	i = 0;
 	value = NULL;
 	tmp = NULL;
 	value = (char *)malloc(sizeof(char)* 1026);
@@ -87,6 +84,15 @@ void 			readCommandLine(t_cmd **base)
 		exit(0);
 	}
 	value[ret - 1] = '\0';
+	parse_value(value, tmp, base);
+}
+
+void			parse_value(char *value, char **tmp, t_cmd **base)
+{
+	int 		i;
+	char		**cmd;
+
+	i = 0;
 	if ((checkifonlyspace(value) == 1))
 	{
 		free(value);
