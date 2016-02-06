@@ -2,23 +2,30 @@
 #include <sys/types.h>
 #include <signal.h>
 
-void		doTheJob(t_env **env, char **cmd, char **tabenv)
+void		dispatch(t_env **env, char **cmd)
 {
 	char	*path;
+	char	**tabenv;
 
+	tabenv = NULL;
 	if (!cmd[0])
 		return;
-	if (isBuiltins(cmd) == 1)
-			execBultins(cmd, env);
+	tabenv = settabenv(env);
+	if (builtins_check(cmd, env) == 1)
+		return;
 	else if ((path = iscommande(env, cmd)) != NULL)
 	{
 		intothefork(path, cmd, tabenv);
 		free(path);
 	}
 	else if ( cmd[0] && access(cmd[0], X_OK) != -1 )
+	{
+		flagsignal = -1;
 		intothefork(cmd[0], cmd, tabenv);
+	}
 	else
 		ft_notfound(cmd[0]);
+	ft_freetab(tabenv);
 }
 
 
@@ -47,62 +54,18 @@ void		intothefork(char *path, char **cmd, char **tabenv)
 	}
 }
 
-void	fathersup(pid_t father, int status)
+void		fathersup(pid_t father, int status)
 {
-	pid_t	w;
+//	pid_t	w;
 
 	if (1 == 2)//test si la commande est en bg
 	ft_putstr("back ground job");
 	else
 	{
-		w = waitpid(father, &status, WUNTRACED | WCONTINUED);
-		// ft_putstr("status : ");
-		// ft_putnbr(status);
-		// ft_putstr("pid : ");
-		// ft_putnbr(w);
-
-
-
-
-
-
-		while (!WIFEXITED(status) && !WIFSIGNALED(status))
-		{
-			if (w == -1)
-			{
-				perror("waitpid");
-				exit(EXIT_FAILURE);
-			}
-
-			if (WIFEXITED(status)) {
-			printf("exited, status=%d\n", WEXITSTATUS(status));
-			} else if (WIFSIGNALED(status)) {
-			printf("killed by signal %d\n", WTERMSIG(status));
-			} else if (WIFSTOPPED(status)) {
-			printf("stopped by signal %d\n", WSTOPSIG(status));
-			} else if (WIFCONTINUED(status)) {
-			printf("continued\n");
-			}
-		}
-		kill(w, SIGKILL);
-
+		if (flagsignal > 0)
+			flagsignal = father;
+		else
+			flagsignal = 0;
+	/*	w = */waitpid(father, &status, WUNTRACED | WCONTINUED);
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

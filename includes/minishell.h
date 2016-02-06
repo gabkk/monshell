@@ -36,22 +36,21 @@
 
 typedef struct dirent	*t_dirent;
 
-typedef struct		s_env{
-	char			*name;
-	char			*value;
-	struct s_env	*next;
-}					t_env;
+typedef struct			s_env{
+	char				*name;
+	char				*value;
+	struct s_env		*next;
+}						t_env;
 
 typedef struct		s_cmd{
 	char			**listcmd;
 	struct s_cmd	*next;
 }					t_cmd;
 
-	t_env		*env;
-
+int 				flagsignal;
 
 /*  dispatchjob.c       */
-void				doTheJob(t_env **env, char **cmd, char **tabenv);
+void				dispatch(t_env **env, char **cmd);
 void				intothefork(char *path, char **cmd, char **tabenv);
 void				fathersup(pid_t father, int status);
 
@@ -76,8 +75,8 @@ void				addmaillon(char *name, char *value, t_env **liste);
 void				fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv);
 
 /*  builtins.c        */
-int					isBuiltins(char **cmd);
-void				execBultins(char **cmd, t_env **env);
+int					builtins_check(char **cmd, t_env **env);
+void				builtins_exec(char **cmd, t_env **env);
 void				showenv(t_env **env);
 
 /*  setenv.c        */
@@ -125,9 +124,9 @@ void				setlistlvl(t_env **env);
 int 				checkifonlyspace(char *value);
 
 /* main.c*/
-void			freebase(t_cmd	**base);
-void			freenv(t_env	*env);
-char			**settabenv(t_env *env);
-void			mainbody(t_env *env);
+void				freebase(t_cmd	**base);
+void				freenv(t_env	*env);
+char				**settabenv(t_env **env);
+void				mainbody(t_env *env);
 
 #endif

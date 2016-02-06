@@ -1,40 +1,42 @@
 #include "minishell.h"
 
-int			isBuiltins(char **cmd)
+int			builtins_check(char **cmd, t_env **env)
 {
 	char	**listBuiltins;
 	int		i;
-	int		boolean;
 
 	i = 0;
-	listBuiltins = (char **)malloc(sizeof(char*) * 6);
+	listBuiltins = (char **)malloc(sizeof (char *) * 6);
 	listBuiltins[0] = "exit";
 	listBuiltins[1] = "env";
 	listBuiltins[2] = "setenv";
 	listBuiltins[3] = "unsetenv";
 	listBuiltins[4] = "cd";
 	listBuiltins[5] = NULL;
-	while (i < 5){
+	while (i < 5)
+	{
 		if (cmd[0] && ft_strcmp(cmd[0], listBuiltins[i]) == 0)
 		{
-			boolean = 1;
-			break;
+			builtins_exec(cmd, env);
+			return 1;
 		}
-		boolean = 0;
 		i++;
 	}
 	free(listBuiltins);
-	return boolean;
+	return 0;
 }
 
-void		execBultins(char **cmd, t_env **env)
+void		builtins_exec(char **cmd, t_env **env)
 {
 	if (env && cmd[0] != NULL)
 	{
 		if (ft_strcmp(cmd[0], "env") == 0)
 		{
 			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
+			{
+				flagsignal = -1;
 				intothefork(cmd[2], &cmd[0], getdefaultenv());
+			}
 			else
 				showenv(env);
 		}
@@ -46,7 +48,7 @@ void		execBultins(char **cmd, t_env **env)
 			unset_env(env, cmd);
 		else if (ft_strcmp(cmd[0], "exit") == 0)
 		{
-			ft_putendl("exit");
+			ft_putendl("exit");//penser a tout free
 			freenv(*env);
 			exit(0);
 		}

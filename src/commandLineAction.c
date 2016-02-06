@@ -160,7 +160,7 @@ char			*malloc_tab(char *cmd, int pos)
 	}
 	if (len != 0)
 	{
-		cmdTab = (char *)malloc(sizeof(char) * len + 1);
+		cmdTab = (char *)malloc(sizeof (char) * len + 1);
 		if (!cmdTab)
 			return NULL;
 	}
@@ -190,9 +190,8 @@ char			**setTab(char *cmd){
 		while (cmd[i] != '\0' && (ft_isspace(cmd[i]) == 1))
 			i++;
 	}
-	ft_putnbr(size);
 	if (size != 0)
-		tab = (char **)malloc(sizeof(char *) * (size + 1));
+		tab = (char **)malloc(sizeof (char *) * (size + 1));
 	if (!tab)
 		return (NULL);
 	return (tab);

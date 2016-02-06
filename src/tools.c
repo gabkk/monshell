@@ -114,11 +114,21 @@ void sig_handler(int signo)
   	if (signo == SIGINT)
   	{
     	//signal(SIGCONT, sig_handler);
-    	signal(SIGINT, SIG_DFL);
-    	raise(SIGINT);
-//  		signal(SIGINT, SIG_IGN);
-     	write(0,"\n", 1);
-  		mainbody(env);
+//     	signal(SIGINT, SIG_DFL);
+//     	raise(SIGINT);
+//  	signal(SIGINT, SIG_IGN);
+//      write(0,"\n", 1);
+//   	mainbody(env);
+//  		ft_putnbr(mainsignal);
+  		if (flagsignal != 0)
+  		{
+  			kill(flagsignal, SIGKILL);
+  			write(1,"\n",1);
+  			flagsignal = 0;
+ // 			signal(SIGINT, SIG_DFL);
+  		}
+  		//if (mainsignal == 0)
+  			//signal(SIGINT, SIG_DFL);
   		return;
   	}
   		
