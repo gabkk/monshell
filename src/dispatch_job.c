@@ -1,5 +1,32 @@
 #include "minishell.h"
 
+void			mainbody(t_env *env)
+{
+	t_cmd		*base;
+	t_cmd		*ptrmaillon;
+
+	base =  NULL;
+	flagsignal = 0;
+	if (!env)
+		env = setdefaultenv();
+	while (42)
+	{
+		printPrompt(env);
+		readCommandLine(&base);
+		if (base)
+		{
+			ptrmaillon = base;
+			while (ptrmaillon)
+			{
+				if (ptrmaillon->listcmd)
+					dispatch(&env, ptrmaillon->listcmd);
+				ptrmaillon = ptrmaillon->next;
+			}			
+			freebase(&base);
+		}
+	}
+}
+
 void		dispatch(t_env **env, char **cmd)
 {
 	char	*path;
@@ -13,13 +40,13 @@ void		dispatch(t_env **env, char **cmd)
 		return;
 	else if ((path = iscommande(env, cmd)) != NULL)
 	{
-		intothefork(path, cmd, tabenv);
+		into_fork(path, cmd, tabenv);
 		free(path);
 	}
 	else if ( cmd[0] && access(cmd[0], X_OK) != -1 )
 	{
 		flagsignal = -1;
-		intothefork(cmd[0], cmd, tabenv);
+		into_fork(cmd[0], cmd, tabenv);
 	}
 	else
 		ft_notfound(cmd[0]);
@@ -27,7 +54,31 @@ void		dispatch(t_env **env, char **cmd)
 }
 
 
-void		intothefork(char *path, char **cmd, char **tabenv)
+char			**settabenv(t_env **env)
+{
+	int			i;
+	t_env		*ptrmaillon;
+	char		**tabenv;
+	
+	tabenv = NULL;
+	i = 0;
+	if (*env)
+	{
+		ptrmaillon = *env;
+		while (ptrmaillon)
+		{
+			i++;
+			ptrmaillon = ptrmaillon->next;
+		}
+		tabenv = (char **)malloc(sizeof (char *) * (i + 1));
+		ft_listintab(env, tabenv);
+	}
+	else
+	 	tabenv = getdefaultenv();
+	return (tabenv);
+}
+
+void		into_fork(char *path, char **cmd, char **tabenv)
 {
 	pid_t	father;
 	int		status;

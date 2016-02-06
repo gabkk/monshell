@@ -35,7 +35,7 @@ void		builtins_exec(char **cmd, t_env **env)
 			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
 			{
 				flagsignal = -1;
-				intothefork(cmd[2], &cmd[0], getdefaultenv());
+				into_fork(cmd[2], &cmd[0], getdefaultenv());
 			}
 			else
 				showenv(env);
@@ -43,7 +43,7 @@ void		builtins_exec(char **cmd, t_env **env)
 		else if (ft_strcmp(cmd[0], "cd") == 0)
 			ft_opendir(env, cmd);
 		else if (ft_strcmp(cmd[0], "setenv") == 0)
-			addEnv(env, cmd);
+			add_env(env, cmd);
 		else if (ft_strcmp(cmd[0], "unsetenv") == 0)
 			unset_env(env, cmd);
 		else if (ft_strcmp(cmd[0], "exit") == 0)

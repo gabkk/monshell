@@ -50,30 +50,32 @@ typedef struct			s_cmd{
 int						flagsignal;
 
 /*  dispatchjob.c       */
+void					mainbody(t_env *env);
 void					dispatch(t_env **env, char **cmd);
-void					intothefork(char *path, char **cmd, char **tabenv);
+char					**settabenv(t_env **env);
+void					into_fork(char *path, char **cmd, char **tabenv);
 void					fathersup(pid_t father, int status);
 
-/*  commandLineAction.c */
+/* display_prompt.c		*/
 void					printPrompt(t_env *env);
+
+/*  commandLineAction.c */
 void					readCommandLine(t_cmd **base);
-char					**parseCmd(char *cmd);
+void					addlmaillon(char **cmd, t_cmd **liste);
+void					parse_value(char *value, char **tmp, t_cmd **base);
+
+/*  alloc_tab.c  		*/
+char					**parse_cmd(char *cmd);
 char					**setTab(char *cmd);
 char					*malloc_tab(char *cmd, int pos);
-
-t_cmd					*initlcmd(void);
-void					addlmaillon(char **cmd, t_cmd **liste);
-
-void					parse_value(char *value, char **tmp, t_cmd **base);
 void					fill_cmd_tab(char *cmdvalue,char **cmdTab);
 
 /*  defineEnv.c        */
 t_env					*getlocalenv(char *const envp[]);
 void					setlocalenv(char *const envp[], t_env **liste);
-t_env					*fillenv(t_env *newmaillon, char *fullEnv);
+void					fill_env(t_env *newmaillon, char * fullenv);
 t_env					*initmaillon(void);
 void					addmaillon(char *name, char *value, t_env **liste);
-void					fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv);
 
 /*  builtins.c        */
 int						builtins_check(char **cmd, t_env **env);
@@ -81,8 +83,7 @@ void					builtins_exec(char **cmd, t_env **env);
 void					showenv(t_env **env);
 
 /*  setenv.c        */
-void					addEnv(t_env **env, char **cmd);
-void					addNewEnv(t_env **env, char *cmd1, char *cmd2);
+void					add_env(t_env **env, char **cmd);
 void					setnoequal(t_env **env, char **cmd);
 int						withequal(char *str);
 void					setequal(t_env **env, char **cmd);
@@ -90,15 +91,15 @@ int						setenv_twocmd(t_env **env, char **cmd);
 
 /*  unsetenv.c      */
 void					unset_env(t_env** env, char **cmd);
+void					freebase(t_cmd	**base);
+void					freenv(t_env	*env);
 
 /*  chdir.c        */
-void					ft_opendir(t_env **env, char **cmd);
-void					savepwd(t_env **env, char *pwd, char *nextpwd);
-char					*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd);
+char					*set_pwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd);
 char					*ft_setmallocpwd(char *cmd, char *home, char *pwd);
-void					ft_opennsave(t_env **env, char *pwd, char *nextpwd);
-void					ft_cdaction(t_env **env, char **cmd, char *home, char *pwd);
-void					setpwd_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon);
+void					ft_opendir(t_env **env, char **cmd);
+void					cd_cmd(t_env **env, char **cmd, char *home, char *pwd);
+void					open_n_save(t_env **env, char *pwd, char *nextpwd);
 
 /*	pathexec.c      */
 char					*iscommande(t_env **env, char **cmd);
@@ -107,30 +108,24 @@ char					*setpath(char **tab_path, char *cmd);
 char					*path_fill(DIR *directory, char *cmd, char *tab_path);
 
 /*  error.c        */
-void					invalidParam(char **cmd);
-void					setenvError(char **cmd);
+void					invalid_param(char **cmd);
+void					setenv_error(char **cmd);
 void					ft_notfound(char *cmd);
 void					setequal_error();
-
-/* listintab.c     */
-void					ft_listintab(t_env	**env, char **tabenv);
 
 /* tools.c        */
 char					*ft_getlistevalue(t_env	**env, char *name);
 char					**setdefaultpath(void);
 t_env					*setdefaultenv(void);
 char					**getdefaultenv(void);
-void					sig_handler(int signo);
+void					ft_listintab(t_env	**env, char **tabenv);
 
 
-//void				setshlvl(char **tabenv);
-void					setlistlvl(t_env **env);
+/*		tools2.		c*/
+void					env_new(t_env **env, char *cmd1, char *cmd2);
+void					setenv_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon);
 int						checkifonlyspace(char *value);
-
-/* main.c*/
-void					freebase(t_cmd	**base);
-void					freenv(t_env	*env);
-char					**settabenv(t_env **env);
-void					mainbody(t_env *env);
+void					sig_handler(int signo);
+void					setlistlvl(t_env **env);
 
 #endif

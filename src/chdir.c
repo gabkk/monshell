@@ -12,11 +12,11 @@ void			ft_opendir(t_env **env, char **cmd)
 	if (getcwd(tmp, PATH_MAX) != NULL)
 		path = ft_strdup(tmp);
 	free(tmp);
-	ft_cdaction(env, cmd, home, path);
+	cd_cmd(env, cmd, home, path);
 	free(path);
 }
 
-void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
+void			cd_cmd(t_env **env, char **cmd, char *home, char *pwd)
 {
 	char		*nextpwd;
 
@@ -27,30 +27,36 @@ void			ft_cdaction(t_env **env, char **cmd, char *home, char *pwd)
 		if (!nextpwd)
 			ft_putendl_fd("No $home variable set", 2);
 		else
-			ft_opennsave(env, pwd, nextpwd);
+			open_n_save(env, pwd, nextpwd);
 	}
 	else if (cmd[1])
 	{
-		if ((nextpwd = ft_setpwd(env, cmd[1], home, pwd, nextpwd)) == NULL)
+		if ((nextpwd = set_pwd(env, cmd[1], home, pwd, nextpwd)) == NULL)
 		{
-			ft_opennsave(env, pwd, ft_setmallocpwd(cmd[1], home, pwd));
+			open_n_save(env, pwd, ft_setmallocpwd(cmd[1], home, pwd));
 			free(nextpwd);
 			return;
 		}
-		ft_opennsave(env, pwd, nextpwd);
+		open_n_save(env, pwd, nextpwd);
 	}
 	else
 	 	ft_putendl_fd("too many arguments", 2);
 }
 
-void			ft_opennsave(t_env **env, char *pwd, char *nextpwd)
+void			open_n_save(t_env **env, char *pwd, char *nextpwd)
 {
 	DIR			*directory;
+	t_env		*ptrmaillon;
 
 	if ((directory = opendir(nextpwd)) != NULL)
 	{
 		chdir(nextpwd);
-		savepwd(env, pwd, nextpwd);
+		ptrmaillon = *env;
+		while (ptrmaillon)
+		{
+			setenv_maillon(pwd, nextpwd, ptrmaillon);
+			ptrmaillon = ptrmaillon->next;
+		}
 		closedir(directory);
 	}
 	else if (ft_strcmp(nextpwd, "error") != 0)
@@ -63,7 +69,7 @@ void			ft_opennsave(t_env **env, char *pwd, char *nextpwd)
 	}
 }
 
-char			*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd)
+char			*set_pwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd)
 {
 	if (ft_strcmp(cmd, ".") == 0)
 		nextpwd = pwd;
@@ -105,44 +111,4 @@ char			*ft_setmallocpwd(char *cmd, char *home, char *pwd)
 		free(tmp);
 	}
 	return (nextpwd);
-}
-
-void			savepwd(t_env **env, char *pwd, char *nextpwd)
-{
-	t_env		*ptrmaillon;
-
-	ptrmaillon = *env;
-	while (ptrmaillon)
-	{
-		setpwd_maillon(pwd, nextpwd, ptrmaillon);
-		ptrmaillon = ptrmaillon->next;
-	}
-}
-
-
-void			setpwd_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon)
-{
-	char		*tmp2;
-
-	if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "PWD") == 0)
-	{
-		if (nextpwd)
-		{
-			if (ptrmaillon->value)
-				free(ptrmaillon->value);
-			tmp2 = (char *)malloc(sizeof (char)* PATH_MAX + 1);
-			if (getcwd(tmp2, PATH_MAX) != NULL)
-				ptrmaillon->value = ft_strdup(tmp2);
-			free(tmp2);
-		}
-	}
-	if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)
-	{
-		if (pwd)
-		{
-			if (ptrmaillon->value)
-				free(ptrmaillon->value);
-			ptrmaillon->value = ft_strdup(pwd);
-		}
-	}
 }

@@ -1,12 +1,12 @@
 #include "minishell.h"
 
-void	invalidParam(char **cmd)
+void	invalid_param(char **cmd)
 {
 	if (ft_strcmp(cmd[0], "setenv") == 0)
-		setenvError(cmd);
+		setenv_error(cmd);
 }
 
-void	setenvError(char **cmd)
+void	setenv_error(char **cmd)
 {
 	if (cmd[1] && !cmd[2])
 		ft_putendl("To set an environment variable, please add a seconde parameter ex:  USER test");

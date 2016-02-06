@@ -69,77 +69,27 @@ t_env		*setdefaultenv()
 	return (liste);
 }
 
-
-void		setlistlvl(t_env **env)
+void		ft_listintab(t_env	**env, char **tabenv)
 {
-	t_env	*ptrmaillon;
-	char	*tmp;
 	int		i;
+	char	*tmp1;
+	t_env	*ptrmaillon;
 
+	i = 0;
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
-		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "SHLVL") == 0)
+		if (ptrmaillon->name)
 		{
-			i = ft_atoi(ptrmaillon->value) + 1;
-			tmp = ft_itoa(i);
-			free(ptrmaillon->value);
-			ptrmaillon->value = ft_strdup(tmp);
-			free(tmp);
+			tmp1 = ft_strjoin(ptrmaillon->name, "=");
+			if (ptrmaillon->value)
+				tabenv[i] = ft_strjoin(tmp1, ptrmaillon->value);
+			else
+				tabenv[i] = ft_strdup(tmp1);
+			free(tmp1);
+			i++;
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
+	tabenv[i] = NULL;
 }
-
-int			checkifonlyspace(char *value)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (value[i] != '\0')
-	{
-		if (ft_isspace(value[i]) == 1)
-			j++;
-		i++;
-	}
-	if (i == j)
-		return (1);
-	return (0);
-}
-
-void		sig_handler(int signo)
-{
-	if (signo == SIGINT)
-	{
-		if (flagsignal != 0)
-		{
-			kill(flagsignal, SIGKILL);
-			write(1,"\n",1);
-			flagsignal = 0;
-		}
-		return;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

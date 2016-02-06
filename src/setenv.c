@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void		addEnv(t_env **env, char **cmd)
+void		add_env(t_env **env, char **cmd)
 {
 	int		i;
 
@@ -22,7 +22,7 @@ void		addEnv(t_env **env, char **cmd)
 	else if (cmd[1] && cmd[2])
 	{
 		if (setenv_twocmd(env, cmd) == 1)
-			addNewEnv(env, cmd[1], cmd[2]);
+			env_new(env, cmd[1], cmd[2]);
 	}
 }
 
@@ -53,12 +53,12 @@ void		setnoequal(t_env **env, char **cmd)
 	{
 		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
 		{
-			setenvError(cmd);
+			setenv_error(cmd);
 			return;
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
-	addNewEnv(env, cmd[1], cmd[2]);
+	env_new(env, cmd[1], cmd[2]);
 }
 
 void		setequal(t_env **env, char **cmd)
@@ -84,23 +84,6 @@ void		setequal(t_env **env, char **cmd)
 		}
 		ptrmaillon = ptrmaillon->next;
 	}
-	addNewEnv(env, varvalue[0], varvalue[1]);
+	env_new(env, varvalue[0], varvalue[1]);
 	ft_freetab(varvalue);
-}
-
-void		addNewEnv(t_env **env, char *cmd1, char *cmd2)
-{
-	t_env	*newmaillon;
-	t_env	*ptrmaillon;
-
-	newmaillon = initmaillon();
-	ptrmaillon = *env;
-	while (ptrmaillon->next)
-		ptrmaillon = ptrmaillon->next;
-	ptrmaillon->next = newmaillon;
-	newmaillon->name = ft_strdup(cmd1);
-	if (cmd2)
-		newmaillon->value = ft_strdup(cmd2);
-	else
-		newmaillon->value = NULL;
 }

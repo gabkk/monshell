@@ -38,3 +38,35 @@ void		unset_env(t_env **env, char **cmd){
 	i++;
 	}
 }
+
+void			freebase(t_cmd	**base)
+{
+	t_cmd		*ptrmaillon;
+
+	if (!base || !*base)
+		return ;
+	while (*base)
+	{
+		if ((*base)->listcmd)
+			ft_freetab((*base)->listcmd);
+		ptrmaillon = (*base)->next;
+		free(*base);
+		*base = ptrmaillon;
+	}
+	*base = NULL;
+}
+
+void			freenv(t_env *env)
+{
+	t_env		*ptrmaillon;
+
+	while (env != NULL)
+	{
+		free(env->name);
+		if (env->value)
+			free(env->value);
+		ptrmaillon = env;
+		free(env);
+		env = ptrmaillon->next;
+	}
+}
