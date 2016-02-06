@@ -34,7 +34,7 @@ t_cmd			*initlcmd(void)
 {
 	t_cmd		*initmaillon;
 
-	initmaillon = (t_cmd *)malloc(sizeof(t_cmd));
+	initmaillon = (t_cmd *)malloc(sizeof (t_cmd));
 	if (!(initmaillon))
 		return (NULL);
 	initmaillon->listcmd = NULL;
@@ -56,7 +56,7 @@ void			addlmaillon(char **cmd, t_cmd **liste)
 		*liste = newmaillon;
 		newmaillon->listcmd = cmd;
 		newmaillon->next = NULL;
-		return;
+		return ;
 	}
 	ptrmaillon = *liste;
 	while (ptrmaillon->next)
@@ -75,7 +75,7 @@ void 			readCommandLine(t_cmd **base)
 
 	value = NULL;
 	tmp = NULL;
-	value = (char *)malloc(sizeof(char)* 1026);
+	value = (char *)malloc(sizeof (char)* 1026);
 	ret = read(STDIN_FILENO, value, 1025);
 	if (ret == 0)
 	{
@@ -96,7 +96,7 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 	if ((checkifonlyspace(value) == 1))
 	{
 		free(value);
-		return;
+		return ;
 	}
 	if (*value)
 	{
@@ -111,7 +111,7 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 			free(cmd[i]);
 			i++;
 		}
-		free(cmd[i]);
+		//free(cmd[i]);
 		free(cmd);
 	}
 	free(value);
@@ -120,17 +120,24 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 char			**parseCmd(char *cmdvalue)
 {
 	char		**cmdTab;
+
+	if (!(*cmdvalue))
+		return NULL;
+	cmdTab = setTab(cmdvalue);
+	if (!cmdTab)
+		return NULL;
+	fill_cmd_tab(cmdvalue, cmdTab);
+	return (cmdTab);
+}
+
+void			fill_cmd_tab(char *cmdvalue,char **cmdTab)
+{
 	int			i;
 	int			j;
 	int			k;
 
 	i = 0;
 	j = 0;
-	if (!(*cmdvalue))
-		return NULL;
-	cmdTab = setTab(cmdvalue);
-	if (!cmdTab)
-		return NULL;
 	while (cmdvalue[i] != '\0')
 	{
 		k = 0;
@@ -150,7 +157,6 @@ char			**parseCmd(char *cmdvalue)
 		j++;
 	}
 	cmdTab[j] = NULL;
-	return (cmdTab);
 }
 
 char			*malloc_tab(char *cmd, int pos)

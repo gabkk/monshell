@@ -1,6 +1,4 @@
 #include "minishell.h"
-#include <sys/types.h>
-#include <signal.h>
 
 void		dispatch(t_env **env, char **cmd)
 {
@@ -56,8 +54,6 @@ void		intothefork(char *path, char **cmd, char **tabenv)
 
 void		fathersup(pid_t father, int status)
 {
-//	pid_t	w;
-
 	if (1 == 2)//test si la commande est en bg
 	ft_putstr("back ground job");
 	else
@@ -66,6 +62,6 @@ void		fathersup(pid_t father, int status)
 			flagsignal = father;
 		else
 			flagsignal = 0;
-	/*	w = */waitpid(father, &status, WUNTRACED | WCONTINUED);
+		waitpid(father, &status, WUNTRACED | WCONTINUED);
 	}
 }

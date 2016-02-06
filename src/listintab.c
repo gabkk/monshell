@@ -2,7 +2,7 @@
 
 void		ft_listintab(t_env	**env, char **tabenv)
 {
-	int 	i;
+	int		i;
 	char	*tmp1;
 	t_env	*ptrmaillon;
 

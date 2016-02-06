@@ -1,8 +1,8 @@
 #include "minishell.h"
 
-void invalidParam(char **cmd)
+void	invalidParam(char **cmd)
 {
-	if (strcmp(cmd[0], "setenv") == 0)
+	if (ft_strcmp(cmd[0], "setenv") == 0)
 		setenvError(cmd);
 }
 
@@ -16,4 +16,9 @@ void	ft_notfound(char *cmd)
 {
 	ft_putstr("minishell: command not found: ");
 	ft_putendl(cmd);
+}
+
+void	setequal_error()
+{
+	ft_putendl_fd("You can't set only equal as value parameter in this shell, sorry", 2);
 }

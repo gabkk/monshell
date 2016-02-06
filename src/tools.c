@@ -52,7 +52,7 @@ t_env		*setdefaultenv()
 	t_env	*liste;
 	char	**defaultenv;
 	char	**tmp;
-	int 	i;
+	int		i;
 
 	i = 0;
 	defaultenv = getdefaultenv();
@@ -84,7 +84,7 @@ void		setlistlvl(t_env **env)
 			i = ft_atoi(ptrmaillon->value) + 1;
 			tmp = ft_itoa(i);
 			free(ptrmaillon->value);
-			ptrmaillon->value = ft_strdup(tmp); // a free
+			ptrmaillon->value = ft_strdup(tmp);
 			free(tmp);
 		}
 		ptrmaillon = ptrmaillon->next;
@@ -105,37 +105,22 @@ int			checkifonlyspace(char *value)
 		i++;
 	}
 	if (i == j)
-		return(1);
-	return 0;
+		return (1);
+	return (0);
 }
 
-void sig_handler(int signo)
+void		sig_handler(int signo)
 {
-  	if (signo == SIGINT)
-  	{
-    	//signal(SIGCONT, sig_handler);
-//     	signal(SIGINT, SIG_DFL);
-//     	raise(SIGINT);
-//  	signal(SIGINT, SIG_IGN);
-//      write(0,"\n", 1);
-//   	mainbody(env);
-//  		ft_putnbr(mainsignal);
-  		if (flagsignal != 0)
-  		{
-  			kill(flagsignal, SIGKILL);
-  			write(1,"\n",1);
-  			flagsignal = 0;
- // 			signal(SIGINT, SIG_DFL);
-  		}
-  		//if (mainsignal == 0)
-  			//signal(SIGINT, SIG_DFL);
-  		return;
-  	}
-  		
-	// else if (signo == SIGKILL)
-	//     ft_putendl("received SIGKILL");
-	// else if (signo == SIGSTOP)
- //    	ft_putendl("received SIGSTOP");
+	if (signo == SIGINT)
+	{
+		if (flagsignal != 0)
+		{
+			kill(flagsignal, SIGKILL);
+			write(1,"\n",1);
+			flagsignal = 0;
+		}
+		return;
+	}
 }
 
 

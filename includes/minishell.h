@@ -42,93 +42,95 @@ typedef struct			s_env{
 	struct s_env		*next;
 }						t_env;
 
-typedef struct		s_cmd{
-	char			**listcmd;
-	struct s_cmd	*next;
-}					t_cmd;
+typedef struct			s_cmd{
+	char				**listcmd;
+	struct s_cmd		*next;
+}						t_cmd;
 
-int 				flagsignal;
+int						flagsignal;
 
 /*  dispatchjob.c       */
-void				dispatch(t_env **env, char **cmd);
-void				intothefork(char *path, char **cmd, char **tabenv);
-void				fathersup(pid_t father, int status);
+void					dispatch(t_env **env, char **cmd);
+void					intothefork(char *path, char **cmd, char **tabenv);
+void					fathersup(pid_t father, int status);
 
 /*  commandLineAction.c */
-void				printPrompt(t_env *env);
-void				readCommandLine(t_cmd **base);
-char 				**parseCmd(char *cmd);
-char				**setTab(char *cmd);
-char				*malloc_tab(char *cmd, int pos);
+void					printPrompt(t_env *env);
+void					readCommandLine(t_cmd **base);
+char					**parseCmd(char *cmd);
+char					**setTab(char *cmd);
+char					*malloc_tab(char *cmd, int pos);
 
-t_cmd				*initlcmd(void);
-void				addlmaillon(char **cmd, t_cmd **liste);
+t_cmd					*initlcmd(void);
+void					addlmaillon(char **cmd, t_cmd **liste);
 
-void				parse_value(char *value, char **tmp, t_cmd **base);
-
+void					parse_value(char *value, char **tmp, t_cmd **base);
+void					fill_cmd_tab(char *cmdvalue,char **cmdTab);
 
 /*  defineEnv.c        */
-t_env				*getlocalenv(char *const envp[]);
-void				setlocalenv(char *const envp[], t_env **liste);
-t_env				*fillenv(t_env *newmaillon, char *fullEnv);
-t_env				*initmaillon(void);
-void				addmaillon(char *name, char *value, t_env **liste);
-void				fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv);
+t_env					*getlocalenv(char *const envp[]);
+void					setlocalenv(char *const envp[], t_env **liste);
+t_env					*fillenv(t_env *newmaillon, char *fullEnv);
+t_env					*initmaillon(void);
+void					addmaillon(char *name, char *value, t_env **liste);
+void					fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv);
 
 /*  builtins.c        */
-int					builtins_check(char **cmd, t_env **env);
-void				builtins_exec(char **cmd, t_env **env);
-void				showenv(t_env **env);
+int						builtins_check(char **cmd, t_env **env);
+void					builtins_exec(char **cmd, t_env **env);
+void					showenv(t_env **env);
 
 /*  setenv.c        */
-void				addEnv(t_env **env, char **cmd);
-void				addNewEnv(t_env **env, char **cmd);
-int					isvalidvar(char *str);
-void				setnoequal(t_env **env, char **cmd);
-int 		 		withequal(char *str);
-void				setequal(t_env **env, char **cmd);
+void					addEnv(t_env **env, char **cmd);
+void					addNewEnv(t_env **env, char *cmd1, char *cmd2);
+void					setnoequal(t_env **env, char **cmd);
+int						withequal(char *str);
+void					setequal(t_env **env, char **cmd);
+int						setenv_twocmd(t_env **env, char **cmd);
 
 /*  unsetenv.c      */
-void				unset_env(t_env** env, char **cmd);
+void					unset_env(t_env** env, char **cmd);
 
 /*  chdir.c        */
-void				ft_opendir(t_env **env, char **cmd);
-void				savepwd(t_env **env, char *pwd, char *nextpwd);
-char		 		*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd);
-char				*ft_setmallocpwd(char *cmd, char *home, char *pwd);
-void				ft_opennsave(t_env **env, char *pwd, char *nextpwd);
-void				ft_cdaction(t_env **env, char **cmd, char *home, char *pwd);
-void				setpwd_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon);
+void					ft_opendir(t_env **env, char **cmd);
+void					savepwd(t_env **env, char *pwd, char *nextpwd);
+char					*ft_setpwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd);
+char					*ft_setmallocpwd(char *cmd, char *home, char *pwd);
+void					ft_opennsave(t_env **env, char *pwd, char *nextpwd);
+void					ft_cdaction(t_env **env, char **cmd, char *home, char *pwd);
+void					setpwd_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon);
 
 /*	pathexec.c      */
-char				*iscommande(t_env **env, char **cmd);
-char				*islocalexec(char **cmd);
-char				*setpath(char **tab_path, char *cmd);
+char					*iscommande(t_env **env, char **cmd);
+char					*islocalexec(char **cmd);
+char					*setpath(char **tab_path, char *cmd);
+char					*path_fill(DIR *directory, char *cmd, char *tab_path);
 
 /*  error.c        */
-void				invalidParam(char **cmd);
-void				setenvError(char **cmd);
-void				ft_notfound(char *cmd);
+void					invalidParam(char **cmd);
+void					setenvError(char **cmd);
+void					ft_notfound(char *cmd);
+void					setequal_error();
 
 /* listintab.c     */
-void				ft_listintab(t_env	**env, char **tabenv);
+void					ft_listintab(t_env	**env, char **tabenv);
 
 /* tools.c        */
-char				*ft_getlistevalue(t_env	**env, char *name);
-char				**setdefaultpath(void);
-t_env				*setdefaultenv(void);
-char				**getdefaultenv(void);
-void 				sig_handler(int signo);
+char					*ft_getlistevalue(t_env	**env, char *name);
+char					**setdefaultpath(void);
+t_env					*setdefaultenv(void);
+char					**getdefaultenv(void);
+void					sig_handler(int signo);
 
 
 //void				setshlvl(char **tabenv);
-void				setlistlvl(t_env **env);
-int 				checkifonlyspace(char *value);
+void					setlistlvl(t_env **env);
+int						checkifonlyspace(char *value);
 
 /* main.c*/
-void				freebase(t_cmd	**base);
-void				freenv(t_env	*env);
-char				**settabenv(t_env **env);
-void				mainbody(t_env *env);
+void					freebase(t_cmd	**base);
+void					freenv(t_env	*env);
+char					**settabenv(t_env **env);
+void					mainbody(t_env *env);
 
 #endif

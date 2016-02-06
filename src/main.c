@@ -8,12 +8,12 @@ int				main(int ac, char *const av[], char *const envp[])
 	env = NULL;
 	(void) ac;
 	(void) av;
-  	env = getlocalenv(envp);
+	env = getlocalenv(envp);
 	if (env)
 		setlistlvl(&env);
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		ft_putendl("sig error");
-  	mainbody(env);
+	mainbody(env);
 	freenv(env);
 	return (0);
 }
@@ -27,7 +27,7 @@ void			mainbody(t_env *env)
 	flagsignal = 0;
 	if (!env)
 		env = setdefaultenv();
-	while(42)
+	while (42)
 	{
 		printPrompt(env);
 		readCommandLine(&base);
@@ -48,9 +48,9 @@ void			mainbody(t_env *env)
 
 char			**settabenv(t_env **env)
 {
-	int 	i;
-	t_env	*ptrmaillon;
-	char **tabenv;
+	int			i;
+	t_env		*ptrmaillon;
+	char		**tabenv;
 	
 	tabenv = NULL;
 	i = 0;
@@ -62,7 +62,7 @@ char			**settabenv(t_env **env)
 			i++;
 			ptrmaillon = ptrmaillon->next;
 		}
-		tabenv = (char **)malloc(sizeof(char *) * (i + 1));
+		tabenv = (char **)malloc(sizeof (char *) * (i + 1));
 		ft_listintab(env, tabenv);
 	}
 	else
@@ -75,7 +75,7 @@ void			freebase(t_cmd	**base)
 	t_cmd		*ptrmaillon;
 
 	if (!base || !*base)
-		return;
+		return ;
 	while (*base)
 	{
 		if ((*base)->listcmd)
@@ -87,7 +87,7 @@ void			freebase(t_cmd	**base)
 	*base = NULL;
 }
 
-void			freenv(t_env	*env)
+void			freenv(t_env *env)
 {
 	t_env		*ptrmaillon;
 

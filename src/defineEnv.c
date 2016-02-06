@@ -15,7 +15,7 @@ void			setlocalenv(char *const envp[], t_env **liste)
 {
 	t_env		*newmaillon;
 	t_env		*ptrmaillon;
-	int 		i;
+	int			i;
 
 	i = 0;
 	while (envp[i] != NULL)
@@ -33,12 +33,12 @@ void			setlocalenv(char *const envp[], t_env **liste)
 	}
 }
 
-t_env *fillenv(t_env *newmaillon, char *fullenv)
+t_env			*fillenv(t_env *newmaillon, char *fullenv)
 {
-	int i;
-	int ptr;
-	int equal;
-	int len;
+	int			i;
+	int			ptr;
+	int			equal;
+	int			len;
 
 	i = 0;
 	ptr = 0;
@@ -50,7 +50,7 @@ t_env *fillenv(t_env *newmaillon, char *fullenv)
 	return (newmaillon);
 }
 
-void		fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv)
+void			fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv)
 {
 	while (fullenv[i] != '\0')
 	{
@@ -73,7 +73,7 @@ void		fillenvstep(t_env *newmaillon, int equal, int ptr, int i, char * fullenv)
 	newmaillon->value[ptr] = '\0';
 }
 
-void		addmaillon(char *name, char *value, t_env **liste)
+void			addmaillon(char *name, char *value, t_env **liste)
 {
 	t_env		*newmaillon;
 	t_env		*ptrmaillon;
@@ -96,9 +96,9 @@ void		addmaillon(char *name, char *value, t_env **liste)
 
 
 
-t_env	*initmaillon(void)
+t_env			*initmaillon(void)
 {
-	t_env	*initmaillon;
+	t_env		*initmaillon;
 
 	initmaillon = (t_env *)malloc(sizeof(t_env));
 	if (!(initmaillon))
