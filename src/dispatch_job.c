@@ -18,7 +18,7 @@ void			mainbody(t_env *env)
 	t_cmd		*ptrmaillon;
 
 	base = NULL;
-	flagsignal = 0;
+	g_flagsignal = 0;
 	if (!env)
 		env = setdefaultenv();
 	while (42)
@@ -57,7 +57,7 @@ void			dispatch(t_env **env, char **cmd)
 	}
 	else if (cmd[0] && access(cmd[0], X_OK) != -1)
 	{
-		flagsignal = -1;
+		g_flagsignal = -1;
 		into_fork(cmd[0], cmd, tabenv);
 	}
 	else
@@ -120,10 +120,10 @@ void			fathersup(pid_t father, int status)
 		ft_putstr("back ground job");
 	else
 	{
-		if (flagsignal > 0)
-			flagsignal = father;
+		if (g_flagsignal > 0)
+			g_flagsignal = father;
 		else
-			flagsignal = 0;
+			g_flagsignal = 0;
 		waitpid(father, &status, WUNTRACED | WCONTINUED);
 	}
 }

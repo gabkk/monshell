@@ -19,6 +19,7 @@ void				unset_env(t_env **env, char **cmd)
 	int				i;
 
 	i = 0;
+	prevmaillon = NULL;
 	if (!(*env) || !cmd[1])
 		return ;
 	while (cmd[i] != NULL)
@@ -34,20 +35,25 @@ void				unset_env(t_env **env, char **cmd)
 			unset_env(env, cmd);
 			return ;
 		}
-		while (ptm->next != NULL)
-		{
-			if ((ptm->next->name) && ft_strcmp(ptm->next->name, cmd[i]) == 0)
-			{
-				prevmaillon = ptm->next;
-				ptm->next = prevmaillon->next;
-				free(prevmaillon->value);
-				free(prevmaillon->name);
-				free(prevmaillon);
-			}
-			else
-				ptm = ptm->next;
-		}
+		unset_env_first(ptm, prevmaillon, cmd[i]);
 		i++;
+	}
+}
+
+void				unset_env_first(t_env *ptm, t_env *prev, char *cmd)
+{
+	while (ptm->next != NULL)
+	{
+		if ((ptm->next->name) && ft_strcmp(ptm->next->name, cmd) == 0)
+		{
+			prev = ptm->next;
+			ptm->next = prev->next;
+			free(prev->value);
+			free(prev->name);
+			free(prev);
+		}
+		else
+			ptm = ptm->next;
 	}
 }
 

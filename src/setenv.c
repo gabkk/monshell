@@ -16,18 +16,21 @@ void		add_env(t_env **env, char **cmd)
 {
 	int		i;
 
-	i = 0;
+	if (!(*env))
+	{
+		ft_putendl("no env");
+		*env = initmaillon();
+	}
 	if (!cmd[1])
 		showenv(env);
 	else if (ft_strcmp(cmd[1], "=") == 0 && !cmd[2])
 		ft_putendl("You need to add a value and a parameter");
-	else if (cmd[1] && !cmd[2])
+	else if (!(i = 0) && cmd[1] && !cmd[2])
 	{
 		while (cmd[1][i] != '\0')
 		{
-			if (cmd[1][i] == '=')
+			if (cmd[1][i++] == '=')
 				return (setequal(env, cmd));
-			i++;
 		}
 		setnoequal(env, cmd);
 	}

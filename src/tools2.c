@@ -29,29 +29,29 @@ void			env_new(t_env **env, char *cmd1, char *cmd2)
 		newmaillon->value = NULL;
 }
 
-void			setenv_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon)
+void			setenv_maillon(char *pwd, char *nextpwd, t_env *ptm)
 {
 	char		*tmp2;
 
-	if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "PWD") == 0)
+	if (ptm->name && ft_strcmp(ptm->name, "PWD") == 0)
 	{
 		if (nextpwd)
 		{
-			if (ptrmaillon->value)
-				free(ptrmaillon->value);
+			if (ptm->value)
+				free(ptm->value);
 			tmp2 = (char *)malloc(sizeof(char) * PATH_MAX + 1);
 			if (getcwd(tmp2, PATH_MAX) != NULL)
-				ptrmaillon->value = ft_strdup(tmp2);
+				ptm->value = ft_strdup(tmp2);
 			free(tmp2);
 		}
 	}
-	if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "OLDPWD") == 0)
+	if (ptm->name && ft_strcmp(ptm->name, "OLDPWD") == 0)
 	{
 		if (pwd)
 		{
-			if (ptrmaillon->value)
-				free(ptrmaillon->value);
-			ptrmaillon->value = ft_strdup(pwd);
+			if (ptm->value)
+				free(ptm->value);
+			ptm->value = ft_strdup(pwd);
 		}
 	}
 }
@@ -99,11 +99,11 @@ void			sig_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
-		if (flagsignal != 0)
+		if (g_flagsignal != 0)
 		{
-			kill(flagsignal, SIGKILL);
+			kill(g_flagsignal, SIGKILL);
 			write(1, "\n", 1);
-			flagsignal = 0;
+			g_flagsignal = 0;
 		}
 		return ;
 	}

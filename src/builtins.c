@@ -46,7 +46,7 @@ void		builtins_exec(char **cmd, t_env **env)
 		{
 			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
 			{
-				flagsignal = -1;
+				g_flagsignal = -1;
 				into_fork(cmd[2], &cmd[0], getdefaultenv());
 			}
 			else
