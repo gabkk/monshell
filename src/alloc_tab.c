@@ -1,19 +1,31 @@
-# include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alloc_tab.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:14:36 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:14:38 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
 
 char			**parse_cmd(char *cmdvalue)
 {
-	char		**cmdTab;
+	char		**cmdtab;
 
 	if (!(*cmdvalue))
-		return NULL;
-	cmdTab = setTab(cmdvalue);
-	if (!cmdTab)
-		return NULL;
-	fill_cmd_tab(cmdvalue, cmdTab);
-	return (cmdTab);
+		return (NULL);
+	cmdtab = set_tab(cmdvalue);
+	if (!cmdtab)
+		return (NULL);
+	fill_cmd_tab(cmdvalue, cmdtab);
+	return (cmdtab);
 }
 
-void			fill_cmd_tab(char *cmdvalue,char **cmdTab)
+void			fill_cmd_tab(char *cmdvalue, char **cmdtab)
 {
 	int			i;
 	int			j;
@@ -27,44 +39,44 @@ void			fill_cmd_tab(char *cmdvalue,char **cmdTab)
 		while ((cmdvalue[i] != '\0' && ft_isspace(cmdvalue[i]) == 1))
 			i++;
 		if (cmdvalue[i] != '\0')
-			cmdTab[j] = malloc_tab(cmdvalue, i);
-
-		if (cmdTab[j] != NULL)
+			cmdtab[j] = malloc_tab(cmdvalue, i);
+		if (cmdtab[j] != NULL)
 		{
 			while (cmdvalue[i] != '\0' && (ft_isspace(cmdvalue[i]) == 0))
-				cmdTab[j][k++] = cmdvalue[i++];
-			cmdTab[j][k] = '\0';
+				cmdtab[j][k++] = cmdvalue[i++];
+			cmdtab[j][k] = '\0';
 		}
 		while ((cmdvalue[i] != '\0' && ft_isspace(cmdvalue[i]) == 1))
 			i++;
 		j++;
 	}
-	cmdTab[j] = NULL;
+	cmdtab[j] = NULL;
 }
 
 char			*malloc_tab(char *cmd, int pos)
 {
-	char		*cmdTab;
+	char		*cmdtab;
 	int			len;
 
 	len = 0;
 	while (cmd[pos] != '\0' && (ft_isspace(cmd[pos]) == 0))
 	{
-		pos ++;
-		len ++;
+		pos++;
+		len++;
 	}
 	if (len != 0)
 	{
-		cmdTab = (char *)malloc(sizeof (char) * len + 1);
-		if (!cmdTab)
-			return NULL;
+		cmdtab = (char *)malloc(sizeof(char) * len + 1);
+		if (!cmdtab)
+			return (NULL);
 	}
 	else
-		cmdTab = NULL;
-	return (cmdTab);
+		cmdtab = NULL;
+	return (cmdtab);
 }
 
-char			**setTab(char *cmd){
+char			**set_tab(char *cmd)
+{
 	char		**tab;
 	int			size;
 	int			i;
@@ -86,7 +98,7 @@ char			**setTab(char *cmd){
 			i++;
 	}
 	if (size != 0)
-		tab = (char **)malloc(sizeof (char *) * (size + 1));
+		tab = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!tab)
 		return (NULL);
 	return (tab);

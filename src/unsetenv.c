@@ -1,47 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unsetenv.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:47:16 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:47:17 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void		unset_env(t_env **env, char **cmd){
-	t_env	*ptrmaillon;
-	t_env	*prevmaillon;
-	int		i;
+void				unset_env(t_env **env, char **cmd)
+{
+	t_env			*ptm;
+	t_env			*prevmaillon;
+	int				i;
 
 	i = 0;
 	if (!(*env) || !cmd[1])
-		return;
+		return ;
 	while (cmd[i] != NULL)
 	{
-		ptrmaillon = *env;
-		 if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[i]) == 0)
+		ptm = *env;
+		if (ptm->name && ft_strcmp(ptm->name, cmd[i]) == 0)
 		{
-			*env = ptrmaillon->next;
-			free(ptrmaillon->name);
-			free(ptrmaillon->value);
-			ptrmaillon->value = NULL;
-			free(ptrmaillon);
+			*env = ptm->next;
+			free(ptm->name);
+			free(ptm->value);
+			ptm->value = NULL;
+			free(ptm);
 			unset_env(env, cmd);
-
-			return;
+			return ;
 		}
-		while (ptrmaillon->next != NULL)
+		while (ptm->next != NULL)
 		{
-			if ((ptrmaillon->next->name) && ft_strcmp(ptrmaillon->next->name, cmd[i]) == 0)
+			if ((ptm->next->name) && ft_strcmp(ptm->next->name, cmd[i]) == 0)
 			{
-				prevmaillon = ptrmaillon->next;
-				ptrmaillon->next = prevmaillon->next;
+				prevmaillon = ptm->next;
+				ptm->next = prevmaillon->next;
 				free(prevmaillon->value);
 				free(prevmaillon->name);
 				free(prevmaillon);
 			}
 			else
-				ptrmaillon = ptrmaillon->next;
+				ptm = ptm->next;
 		}
-	i++;
+		i++;
 	}
 }
 
-void			freebase(t_cmd	**base)
+void				freebase(t_cmd **base)
 {
-	t_cmd		*ptrmaillon;
+	t_cmd			*ptrmaillon;
 
 	if (!base || !*base)
 		return ;
@@ -56,9 +68,9 @@ void			freebase(t_cmd	**base)
 	*base = NULL;
 }
 
-void			freenv(t_env *env)
+void				freenv(t_env *env)
 {
-	t_env		*ptrmaillon;
+	t_env			*ptrmaillon;
 
 	while (env != NULL)
 	{

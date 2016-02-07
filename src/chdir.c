@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chdir.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:23:03 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:23:04 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void			ft_opendir(t_env **env, char **cmd)
@@ -31,16 +43,16 @@ void			cd_cmd(t_env **env, char **cmd, char *home, char *pwd)
 	}
 	else if (cmd[1])
 	{
-		if ((nextpwd = set_pwd(env, cmd[1], home, pwd, nextpwd)) == NULL)
+		if ((nextpwd = set_pwd(env, cmd[1], pwd, nextpwd)) == NULL)
 		{
 			open_n_save(env, pwd, ft_setmallocpwd(cmd[1], home, pwd));
 			free(nextpwd);
-			return;
+			return ;
 		}
 		open_n_save(env, pwd, nextpwd);
 	}
 	else
-	 	ft_putendl_fd("too many arguments", 2);
+		ft_putendl_fd("too many arguments", 2);
 }
 
 void			open_n_save(t_env **env, char *pwd, char *nextpwd)
@@ -65,12 +77,15 @@ void			open_n_save(t_env **env, char *pwd, char *nextpwd)
 		if (nextpwd && checkifonlyspace(nextpwd) != 1)
 			ft_putendl_fd(nextpwd, 2);
 		else
-			write(1,"\n",1);
+			write(1, "\n", 1);
 	}
 }
 
-char			*set_pwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd)
+char			*set_pwd(t_env **env, char *cmd, char *pwd, char *nextpwd)
 {
+	char		*home;
+
+	home = ft_getlistevalue(env, "HOME");
 	if (ft_strcmp(cmd, ".") == 0)
 		nextpwd = pwd;
 	else if (ft_strcmp(cmd, "~") == 0)
@@ -78,16 +93,13 @@ char			*set_pwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd)
 		if (!(nextpwd = home))
 		{
 			ft_putendl_fd("cd: no $home directory", 2);
-			return "error";
+			return ("error");
 		}
 	}
 	else if (ft_strcmp(cmd, "-") == 0)
 	{
 		if (!(nextpwd = ft_getlistevalue(env, "OLDPWD")))
-		{
-			ft_putendl_fd("cd: no $OLDPWD value set", 2);
-			return "error";
-		}
+			return (oldpwd_error());
 	}
 	else if (ft_strcmp(cmd, "/") == 0)
 		nextpwd = "/";

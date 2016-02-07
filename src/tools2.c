@@ -1,9 +1,21 @@
-# include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:45:06 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:45:08 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void		env_new(t_env **env, char *cmd1, char *cmd2)
+#include "minishell.h"
+
+void			env_new(t_env **env, char *cmd1, char *cmd2)
 {
-	t_env	*newmaillon;
-	t_env	*ptrmaillon;
+	t_env		*newmaillon;
+	t_env		*ptrmaillon;
 
 	newmaillon = initmaillon();
 	ptrmaillon = *env;
@@ -27,7 +39,7 @@ void			setenv_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon)
 		{
 			if (ptrmaillon->value)
 				free(ptrmaillon->value);
-			tmp2 = (char *)malloc(sizeof (char)* PATH_MAX + 1);
+			tmp2 = (char *)malloc(sizeof(char) * PATH_MAX + 1);
 			if (getcwd(tmp2, PATH_MAX) != NULL)
 				ptrmaillon->value = ft_strdup(tmp2);
 			free(tmp2);
@@ -44,10 +56,10 @@ void			setenv_maillon(char *pwd, char *nextpwd, t_env *ptrmaillon)
 	}
 }
 
-int			checkifonlyspace(char *value)
+int				checkifonlyspace(char *value)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
@@ -62,11 +74,11 @@ int			checkifonlyspace(char *value)
 	return (0);
 }
 
-void		setlistlvl(t_env **env)
+void			setlistlvl(t_env **env)
 {
-	t_env	*ptrmaillon;
-	char	*tmp;
-	int		i;
+	t_env		*ptrmaillon;
+	char		*tmp;
+	int			i;
 
 	ptrmaillon = *env;
 	while (ptrmaillon)
@@ -83,16 +95,16 @@ void		setlistlvl(t_env **env)
 	}
 }
 
-void		sig_handler(int signo)
+void			sig_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
 		if (flagsignal != 0)
 		{
 			kill(flagsignal, SIGKILL);
-			write(1,"\n",1);
+			write(1, "\n", 1);
 			flagsignal = 0;
 		}
-		return;
+		return ;
 	}
 }

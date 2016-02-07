@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_prompt.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:40:10 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:40:11 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void			printPrompt(t_env *env)
+void			print_prompt(t_env *env)
 {
 	t_env		*ptrmaillon;
 	char		*value;
@@ -9,7 +21,8 @@ void			printPrompt(t_env *env)
 	ptrmaillon = env;
 	while (ptrmaillon)
 	{
-		if (ptrmaillon->name && (ft_strcmp(ptrmaillon->name, "USER") == 0)){
+		if (ptrmaillon->name && (ft_strcmp(ptrmaillon->name, "USER") == 0))
+		{
 			if (ptrmaillon->value != NULL)
 				value = ptrmaillon->value;
 			else

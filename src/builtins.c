@@ -1,29 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtins.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:21:12 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:21:14 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int			builtins_check(char **cmd, t_env **env)
 {
-	char	**listBuiltins;
+	char	**list_builtins;
 	int		i;
 
 	i = 0;
-	listBuiltins = (char **)malloc(sizeof (char *) * 6);
-	listBuiltins[0] = "exit";
-	listBuiltins[1] = "env";
-	listBuiltins[2] = "setenv";
-	listBuiltins[3] = "unsetenv";
-	listBuiltins[4] = "cd";
-	listBuiltins[5] = NULL;
+	list_builtins = (char **)malloc(sizeof(char *) * 6);
+	list_builtins[0] = "exit";
+	list_builtins[1] = "env";
+	list_builtins[2] = "setenv";
+	list_builtins[3] = "unsetenv";
+	list_builtins[4] = "cd";
+	list_builtins[5] = NULL;
 	while (i < 5)
 	{
-		if (cmd[0] && ft_strcmp(cmd[0], listBuiltins[i]) == 0)
+		if (cmd[0] && ft_strcmp(cmd[0], list_builtins[i]) == 0)
 		{
 			builtins_exec(cmd, env);
-			return 1;
+			return (1);
 		}
 		i++;
 	}
-	free(listBuiltins);
-	return 0;
+	free(list_builtins);
+	return (0);
 }
 
 void		builtins_exec(char **cmd, t_env **env)
@@ -48,7 +60,7 @@ void		builtins_exec(char **cmd, t_env **env)
 			unset_env(env, cmd);
 		else if (ft_strcmp(cmd[0], "exit") == 0)
 		{
-			ft_putendl("exit");//penser a tout free
+			ft_putendl("exit");
 			freenv(*env);
 			exit(0);
 		}
@@ -60,7 +72,8 @@ void		showenv(t_env **env)
 	t_env	*ptrmaillon;
 
 	ptrmaillon = *env;
-	while (ptrmaillon){
+	while (ptrmaillon)
+	{
 		ft_putstr(ptrmaillon->name);
 		if (ptrmaillon->name && !ptrmaillon->value)
 			ft_putendl("=");

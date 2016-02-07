@@ -12,9 +12,9 @@
 
 #include <string.h>
 
-char *ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *s, int c)
 {
-	char d;
+	char	d;
 
 	d = (char)c;
 	while (*s && *s != d)

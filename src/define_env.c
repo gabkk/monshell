@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   defineEnv.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:33:17 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:33:19 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 t_env			*getlocalenv(char *const envp[])
@@ -11,14 +23,16 @@ t_env			*getlocalenv(char *const envp[])
 	return (liste);
 }
 
-void			setlocalenv(char *const envp[], t_env **liste)
+void			setlocalenv(char *const evp[], t_env **liste)
 {
 	t_env		*newmaillon;
 	t_env		*ptrmaillon;
 	int			i;
+	int			equal;
 
 	i = 0;
-	while (envp[i] != NULL)
+	equal = 0;
+	while (evp[i] != NULL)
 	{
 		newmaillon = initmaillon();
 		if (!(*liste))
@@ -27,22 +41,21 @@ void			setlocalenv(char *const envp[], t_env **liste)
 		while (ptrmaillon->next)
 			ptrmaillon = ptrmaillon->next;
 		ptrmaillon->next = newmaillon;
-		newmaillon->name = (char*)malloc(sizeof(char)*ft_strlen(envp[i]));
-		newmaillon->value = (char*)malloc(sizeof(char)*ft_strlen(envp[i]));		
-		fill_env(newmaillon, envp[i]);
+		newmaillon->name = (char*)malloc(sizeof(char) * ft_strlen(evp[i]));
+		newmaillon->value = (char*)malloc(sizeof(char) * ft_strlen(evp[i]));
+		fill_env(newmaillon, evp[i], equal);
 		newmaillon->next = NULL;
 		i++;
 	}
 }
 
-void			fill_env(t_env *newmaillon, char * fullenv)
+void			fill_env(t_env *newmaillon, char *fullenv, int equal)
 {
 	int			ptr;
-	int			equal;
 	int			i;
 
-	if (!(ptr = 0) && !(equal = 0) && !(i = 0) && 1 == 1)
-		i = 42 - 42;
+	ptr = 0;
+	i = 0;
 	while (fullenv[i] != '\0')
 	{
 		if (equal == 0)
@@ -64,7 +77,7 @@ void			fill_env(t_env *newmaillon, char * fullenv)
 	newmaillon->value[ptr] = '\0';
 }
 
-t_env			*initmaillon()
+t_env			*initmaillon(void)
 {
 	t_env		*newmaillon;
 

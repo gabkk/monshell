@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cla.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:28:44 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:28:46 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void			addlmaillon(char **cmd, t_cmd **liste)
@@ -7,7 +19,7 @@ void			addlmaillon(char **cmd, t_cmd **liste)
 
 	if (!(*cmd))
 		return ;
-	newmaillon = (t_cmd *)malloc(sizeof (t_cmd));
+	newmaillon = (t_cmd *)malloc(sizeof(t_cmd));
 	if (!(newmaillon))
 		return ;
 	newmaillon->listcmd = NULL;
@@ -27,8 +39,7 @@ void			addlmaillon(char **cmd, t_cmd **liste)
 	newmaillon->next = NULL;
 }
 
-
-void 			readCommandLine(t_cmd **base)
+void			read_command_line(t_cmd **base)
 {
 	char		*value;
 	int			ret;
@@ -36,8 +47,8 @@ void 			readCommandLine(t_cmd **base)
 
 	value = NULL;
 	tmp = NULL;
-	value = (char *)malloc(sizeof (char)* 1026);
-	ret = read(STDIN_FILENO, value, 1025);
+	value = (char *)malloc(sizeof(char) * TTY_PATH + 1);
+	ret = read(STDIN_FILENO, value, TTY_PATH);
 	if (ret == 0)
 	{
 		ft_putendl("exit");
@@ -50,7 +61,7 @@ void 			readCommandLine(t_cmd **base)
 
 void			parse_value(char *value, char **tmp, t_cmd **base)
 {
-	int 		i;
+	int			i;
 	char		**cmd;
 
 	i = 0;
@@ -61,7 +72,7 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 	}
 	if (*value)
 	{
-		cmd = ft_strsplit(value,';');
+		cmd = ft_strsplit(value, ';');
 		if (!*cmd)
 			return ;
 		while (cmd[i])
@@ -72,7 +83,6 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 			free(cmd[i]);
 			i++;
 		}
-		//free(cmd[i]);
 		free(cmd);
 	}
 	free(value);

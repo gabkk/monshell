@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dispatch_job.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:52:38 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:52:41 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void			mainbody(t_env *env)
@@ -5,14 +17,14 @@ void			mainbody(t_env *env)
 	t_cmd		*base;
 	t_cmd		*ptrmaillon;
 
-	base =  NULL;
+	base = NULL;
 	flagsignal = 0;
 	if (!env)
 		env = setdefaultenv();
 	while (42)
 	{
-		printPrompt(env);
-		readCommandLine(&base);
+		print_prompt(env);
+		read_command_line(&base);
 		if (base)
 		{
 			ptrmaillon = base;
@@ -21,29 +33,29 @@ void			mainbody(t_env *env)
 				if (ptrmaillon->listcmd)
 					dispatch(&env, ptrmaillon->listcmd);
 				ptrmaillon = ptrmaillon->next;
-			}			
+			}
 			freebase(&base);
 		}
 	}
 }
 
-void		dispatch(t_env **env, char **cmd)
+void			dispatch(t_env **env, char **cmd)
 {
-	char	*path;
-	char	**tabenv;
+	char		*path;
+	char		**tabenv;
 
 	tabenv = NULL;
 	if (!cmd[0])
-		return;
+		return ;
 	tabenv = settabenv(env);
 	if (builtins_check(cmd, env) == 1)
-		return;
+		return ;
 	else if ((path = iscommande(env, cmd)) != NULL)
 	{
 		into_fork(path, cmd, tabenv);
 		free(path);
 	}
-	else if ( cmd[0] && access(cmd[0], X_OK) != -1 )
+	else if (cmd[0] && access(cmd[0], X_OK) != -1)
 	{
 		flagsignal = -1;
 		into_fork(cmd[0], cmd, tabenv);
@@ -53,13 +65,12 @@ void		dispatch(t_env **env, char **cmd)
 	ft_freetab(tabenv);
 }
 
-
 char			**settabenv(t_env **env)
 {
 	int			i;
 	t_env		*ptrmaillon;
 	char		**tabenv;
-	
+
 	tabenv = NULL;
 	i = 0;
 	if (*env)
@@ -70,18 +81,18 @@ char			**settabenv(t_env **env)
 			i++;
 			ptrmaillon = ptrmaillon->next;
 		}
-		tabenv = (char **)malloc(sizeof (char *) * (i + 1));
+		tabenv = (char **)malloc(sizeof(char *) * (i + 1));
 		ft_listintab(env, tabenv);
 	}
 	else
-	 	tabenv = getdefaultenv();
+		tabenv = getdefaultenv();
 	return (tabenv);
 }
 
-void		into_fork(char *path, char **cmd, char **tabenv)
+void			into_fork(char *path, char **cmd, char **tabenv)
 {
-	pid_t	father;
-	int		status;
+	pid_t		father;
+	int			status;
 
 	status = 0;
 	if (access(path, X_OK) != -1)
@@ -103,10 +114,10 @@ void		into_fork(char *path, char **cmd, char **tabenv)
 	}
 }
 
-void		fathersup(pid_t father, int status)
+void			fathersup(pid_t father, int status)
 {
-	if (1 == 2)//test si la commande est en bg
-	ft_putstr("back ground job");
+	if (1 == 2)
+		ft_putstr("back ground job");
 	else
 	{
 		if (flagsignal > 0)

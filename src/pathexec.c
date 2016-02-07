@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pathexec.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:42:11 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:42:12 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-char			*iscommande(t_env **env, char **cmd){
+char			*iscommande(t_env **env, char **cmd)
+{
 	char		*path;
 	char		**tab_path;
 	int			freepath;
@@ -68,8 +81,9 @@ char			*path_fill(DIR *directory, char *cmd, char *tab_path)
 	return (value);
 }
 
-char			*islocalexec(char **cmd){
-	struct		stat st;
+char			*islocalexec(char **cmd)
+{
+	struct stat st;
 
 	if (access(cmd[0], X_OK) == -1)
 	{

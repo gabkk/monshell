@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:44:48 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:44:52 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-char		*ft_getlistevalue(t_env	**env, char *name)
+char		*ft_getlistevalue(t_env **env, char *name)
 {
 	t_env	*ptrmaillon;
 	char	*tmp;
@@ -18,7 +30,7 @@ char		*ft_getlistevalue(t_env	**env, char *name)
 	return (NULL);
 }
 
-char		**setdefaultpath()
+char		**setdefaultpath(void)
 {
 	char	**pathtmp;
 
@@ -29,7 +41,7 @@ char		**setdefaultpath()
 	return (pathtmp);
 }
 
-char		**getdefaultenv()
+char		**getdefaultenv(void)
 {
 	char	**defaultenv;
 	char	tmp[PATH_MAX];
@@ -47,7 +59,7 @@ char		**getdefaultenv()
 	return (defaultenv);
 }
 
-t_env		*setdefaultenv()
+t_env		*setdefaultenv(void)
 {
 	t_env	*liste;
 	char	**defaultenv;
@@ -69,7 +81,7 @@ t_env		*setdefaultenv()
 	return (liste);
 }
 
-void		ft_listintab(t_env	**env, char **tabenv)
+void		ft_listintab(t_env **env, char **tabenv)
 {
 	int		i;
 	char	*tmp1;

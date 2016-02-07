@@ -32,7 +32,7 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 #define PATH_MAX			4096
-
+#define TTY_PATH			1025
 
 typedef struct dirent	*t_dirent;
 
@@ -57,23 +57,23 @@ void					into_fork(char *path, char **cmd, char **tabenv);
 void					fathersup(pid_t father, int status);
 
 /* display_prompt.c		*/
-void					printPrompt(t_env *env);
+void					print_prompt(t_env *env);
 
-/*  commandLineAction.c */
-void					readCommandLine(t_cmd **base);
+/*  cla.c */
+void					read_command_line(t_cmd **base);
 void					addlmaillon(char **cmd, t_cmd **liste);
 void					parse_value(char *value, char **tmp, t_cmd **base);
 
 /*  alloc_tab.c  		*/
 char					**parse_cmd(char *cmd);
-char					**setTab(char *cmd);
+char					**set_tab(char *cmd);
 char					*malloc_tab(char *cmd, int pos);
 void					fill_cmd_tab(char *cmdvalue,char **cmdTab);
 
 /*  defineEnv.c        */
 t_env					*getlocalenv(char *const envp[]);
 void					setlocalenv(char *const envp[], t_env **liste);
-void					fill_env(t_env *newmaillon, char * fullenv);
+void					fill_env(t_env *newmaillon, char *fullenv, int equal);
 t_env					*initmaillon(void);
 void					addmaillon(char *name, char *value, t_env **liste);
 
@@ -95,7 +95,7 @@ void					freebase(t_cmd	**base);
 void					freenv(t_env	*env);
 
 /*  chdir.c        */
-char					*set_pwd(t_env **env, char *cmd, char *home, char *pwd, char *nextpwd);
+char					*set_pwd(t_env **env, char *cmd, char *pwd, char *nextpwd);
 char					*ft_setmallocpwd(char *cmd, char *home, char *pwd);
 void					ft_opendir(t_env **env, char **cmd);
 void					cd_cmd(t_env **env, char **cmd, char *home, char *pwd);
@@ -112,7 +112,7 @@ void					invalid_param(char **cmd);
 void					setenv_error(char **cmd);
 void					ft_notfound(char *cmd);
 void					setequal_error();
-
+char					*oldpwd_error();
 /* tools.c        */
 char					*ft_getlistevalue(t_env	**env, char *name);
 char					**setdefaultpath(void);

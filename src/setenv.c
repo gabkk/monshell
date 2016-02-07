@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setenv.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/07 13:43:04 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:43:05 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void		add_env(t_env **env, char **cmd)
@@ -7,7 +19,7 @@ void		add_env(t_env **env, char **cmd)
 	i = 0;
 	if (!cmd[1])
 		showenv(env);
-	else if (ft_strcmp(cmd[1] ,"=") == 0 && !cmd[2])
+	else if (ft_strcmp(cmd[1], "=") == 0 && !cmd[2])
 		ft_putendl("You need to add a value and a parameter");
 	else if (cmd[1] && !cmd[2])
 	{
@@ -54,7 +66,7 @@ void		setnoequal(t_env **env, char **cmd)
 		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, cmd[1]) == 0)
 		{
 			setenv_error(cmd);
-			return;
+			return ;
 		}
 		ptrmaillon = ptrmaillon->next;
 	}

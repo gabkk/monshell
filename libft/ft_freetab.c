@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkuma </var/mail/gkuma>                    +#+  +:+       +#+        */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/15 18:32:32 by gkuma             #+#    #+#             */
-/*   Updated: 2015/05/15 18:56:49 by gkuma            ###   ########.fr       */
+/*   Created: 2016/02/07 13:09:11 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:09:26 by gkuma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
+#include "libft.h"
 
 void		ft_freetab(char **tab)
 {
