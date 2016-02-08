@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char		*ft_getlistevalue(t_env **env, char *name)
+char		*getlistevalue(t_env **env, char *name)
 {
 	t_env	*ptrmaillon;
 	char	*tmp;
@@ -28,17 +28,6 @@ char		*ft_getlistevalue(t_env **env, char *name)
 		ptrmaillon = ptrmaillon->next;
 	}
 	return (NULL);
-}
-
-char		**setdefaultpath(void)
-{
-	char	**pathtmp;
-
-	pathtmp = (char **)malloc(sizeof(char *) * 3);
-	pathtmp[0] = "/bin";
-	pathtmp[1] = "/usr/bin";
-	pathtmp[2] = NULL;
-	return (pathtmp);
 }
 
 char		**getdefaultenv(void)
@@ -81,27 +70,14 @@ t_env		*setdefaultenv(void)
 	return (liste);
 }
 
-void		ft_listintab(t_env **env, char **tabenv)
+void		randcol_ansi(int i)
 {
-	int		i;
 	char	*tmp1;
-	t_env	*ptrmaillon;
-
-	i = 0;
-	ptrmaillon = *env;
-	while (ptrmaillon)
-	{
-		if (ptrmaillon->name)
-		{
-			tmp1 = ft_strjoin(ptrmaillon->name, "=");
-			if (ptrmaillon->value)
-				tabenv[i] = ft_strjoin(tmp1, ptrmaillon->value);
-			else
-				tabenv[i] = ft_strdup(tmp1);
-			free(tmp1);
-			i++;
-		}
-		ptrmaillon = ptrmaillon->next;
-	}
-	tabenv[i] = NULL;
+	char	*tmp2;
+	
+	tmp1 = ft_strjoin(ft_itoa(i),"m");
+	tmp2 = ft_strjoin("\x1b[38;5;", tmp1);
+	ft_putstr(tmp2);
+	free(tmp1);
+	free(tmp2);
 }

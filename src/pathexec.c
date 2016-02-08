@@ -23,7 +23,7 @@ char			*iscommande(t_env **env, char **cmd)
 	path = NULL;
 	value = NULL;
 	tab_path = NULL;
-	path = ft_getlistevalue(env, "PATH");
+	path = getlistevalue(env, "PATH");
 	if (path)
 		tab_path = ft_strsplit(path, ':');
 	else
@@ -81,16 +81,30 @@ char			*path_fill(DIR *directory, char *cmd, char *tab_path)
 	return (value);
 }
 
-char			*islocalexec(char **cmd)
+int				islocalexec(char *cmd)
 {
-	struct stat st;
+	DIR			*directory;
+	t_dirent	content;
+	
 
-	if (access(cmd[0], X_OK) == -1)
+	if ((directory = opendir(".")) != NULL)
 	{
-		ft_putendl_fd("Acces non autorisé", 2);
-		return (NULL);
+		while ((content = readdir(directory)) != NULL)
+		{
+			if (cmd && ft_strcmp(content->d_name, cmd) == 0)
+				return (1);
+		}
 	}
-	if (lstat(cmd[0], &st) == 0 && st.st_mode & S_IXUSR)
-		return (cmd[0]);
-	return (NULL);
+	return (0);
+}
+
+char		**setdefaultpath(void)
+{
+	char	**pathtmp;
+
+	pathtmp = (char **)malloc(sizeof(char *) * 3);
+	pathtmp[0] = "/bin";
+	pathtmp[1] = "/usr/bin";
+	pathtmp[2] = NULL;
+	return (pathtmp);
 }

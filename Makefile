@@ -22,7 +22,7 @@ SRCSDIR = src/
 
 SRCS = main.c alloc_tab.c cla.c define_env.c builtins.c error.c setenv.c \
 	unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
-	display_prompt.c tools2.c
+	display_prompt.c tools2.c history.c
 
 
 OBJ = $(SRCS:.c=.o)

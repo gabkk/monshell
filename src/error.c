@@ -25,7 +25,7 @@ void	setenv_error(char **cmd)
 a seconde parameter ex:  USER test");
 }
 
-void	ft_notfound(char *cmd)
+void	notfound_error(char *cmd)
 {
 	ft_putstr("minishell: command not found: ");
 	ft_putendl(cmd);

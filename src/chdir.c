@@ -19,7 +19,7 @@ void			ft_opendir(t_env **env, char **cmd)
 	char		*tmp;
 
 	path = NULL;
-	home = ft_getlistevalue(env, "HOME");
+	home = getlistevalue(env, "HOME");
 	tmp = (char *)malloc(sizeof(char) * PATH_MAX + 1);
 	if (getcwd(tmp, PATH_MAX) != NULL)
 		path = ft_strdup(tmp);
@@ -45,9 +45,11 @@ void			cd_cmd(t_env **env, char **cmd, char *home, char *pwd)
 	{
 		if ((nextpwd = set_pwd(env, cmd[1], pwd, nextpwd)) == NULL)
 		{
-			open_n_save(env, pwd, ft_setmallocpwd(cmd[1], home, pwd));
-			free(nextpwd);
-			return ;
+			if ((nextpwd = setmallocpwd(cmd[1], home, pwd)) == NULL)
+				return (ft_putstr_fd("cd: no such file or directory: ", 2),\
+					ft_putendl_fd(cmd[1], 2));
+			open_n_save(env, pwd, nextpwd);
+			return (free(nextpwd));
 		}
 		open_n_save(env, pwd, nextpwd);
 	}
@@ -85,7 +87,7 @@ char			*set_pwd(t_env **env, char *cmd, char *pwd, char *np)
 {
 	char		*home;
 
-	home = ft_getlistevalue(env, "HOME");
+	home = getlistevalue(env, "HOME");
 	if (ft_strcmp(cmd, ".") == 0)
 		np = pwd;
 	else if (ft_strcmp(cmd, "~") == 0)
@@ -98,7 +100,7 @@ char			*set_pwd(t_env **env, char *cmd, char *pwd, char *np)
 	}
 	else if (ft_strcmp(cmd, "-") == 0)
 	{
-		if (!(np = ft_getlistevalue(env, "OLDPWD")))
+		if (!(np = getlistevalue(env, "OLDPWD")))
 			return (oldpwd_error());
 	}
 	else if (ft_strcmp(cmd, "/") == 0)
@@ -108,7 +110,7 @@ char			*set_pwd(t_env **env, char *cmd, char *pwd, char *np)
 	return (np);
 }
 
-char			*ft_setmallocpwd(char *cmd, char *home, char *pwd)
+char			*setmallocpwd(char *cmd, char *home, char *pwd)
 {
 	char		*tmp;
 	char		*nextpwd;

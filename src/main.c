@@ -19,6 +19,7 @@ int				main(int ac, char *const av[], char *const envp[])
 	env = NULL;
 	(void)ac;
 	(void)av;
+	print_intro();
 	env = getlocalenv(envp);
 	if (env)
 		setlistlvl(&env);

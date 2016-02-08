@@ -16,22 +16,24 @@ void			mainbody(t_env *env)
 {
 	t_cmd		*base;
 	t_cmd		*ptrmaillon;
+	t_hist		*history;
 
 	base = NULL;
+	history = NULL;
 	g_flagsignal = 0;
 	if (!env)
 		env = setdefaultenv();
 	while (42)
 	{
 		print_prompt(env);
-		read_command_line(&base);
+		read_command_line(&base, &history);
 		if (base)
 		{
 			ptrmaillon = base;
 			while (ptrmaillon)
 			{
 				if (ptrmaillon->listcmd)
-					dispatch(&env, ptrmaillon->listcmd);
+					dispatch(&env, ptrmaillon->listcmd, &history);
 				ptrmaillon = ptrmaillon->next;
 			}
 			freebase(&base);
@@ -39,7 +41,7 @@ void			mainbody(t_env *env)
 	}
 }
 
-void			dispatch(t_env **env, char **cmd)
+void			dispatch(t_env **env, char **cmd, t_hist **history)
 {
 	char		*path;
 	char		**tabenv;
@@ -48,20 +50,20 @@ void			dispatch(t_env **env, char **cmd)
 	if (!cmd[0])
 		return ;
 	tabenv = settabenv(env);
-	if (builtins_check(cmd, env) == 1)
+	if (builtins_check(cmd, env, history) == 1)
 		return ;
 	else if ((path = iscommande(env, cmd)) != NULL)
 	{
 		into_fork(path, cmd, tabenv);
 		free(path);
 	}
-	else if (cmd[0] && access(cmd[0], X_OK) != -1)
+	else if (cmd[0] && islocalexec(cmd[0]) == 1)
 	{
 		g_flagsignal = -1;
 		into_fork(cmd[0], cmd, tabenv);
 	}
-	else
-		ft_notfound(cmd[0]);
+	else if (cmd[0])
+		notfound_error(cmd[0]);
 	ft_freetab(tabenv);
 }
 
@@ -105,12 +107,17 @@ void			into_fork(char *path, char **cmd, char **tabenv)
 			if (execve(path, cmd, tabenv) == -1)
 			{
 				ft_putendl("exec fail");
-				ft_notfound(cmd[0]);
+				notfound_error(cmd[0]);
 				exit(EXIT_FAILURE);
 			}
 		}
 		else
 			fathersup(father, status);
+	}
+	else
+	{
+		ft_putendl_fd("Error: Permission denied", 2);
+		g_flagsignal = 0;
 	}
 }
 

@@ -24,15 +24,12 @@
 # include <dirent.h>
 # include <signal.h>
 
-# define ANSI_COLOR_RED     "\x1b[31m"
-# define ANSI_COLOR_GREEN   "\x1b[32m"
-# define ANSI_COLOR_YELLOW  "\x1b[33m"
-# define ANSI_COLOR_BLUE    "\x1b[34m"
-# define ANSI_COLOR_MAGENTA "\x1b[35m"
-# define ANSI_COLOR_CYAN    "\x1b[36m"
-# define ANSI_COLOR_RESET   "\x1b[0m"
-# define PATH_MAX			4096
-# define TTY_PATH			1025
+# define ANSI_COLOR_YELLOW  	"\x1b[33m"
+# define ANSI_COLOR_RESET   	"\x1b[0m"
+# define ANSI_COLOR_LIGHT_BLUE	"\033[94m"
+# define ANSI_UNDERLINE			"\x1b[4m"
+# define PATH_MAX				4096
+# define TTY_PATH				1025
 
 typedef struct dirent	*t_dirent;
 
@@ -47,13 +44,18 @@ typedef struct			s_cmd{
 	struct s_cmd		*next;
 }						t_cmd;
 
+typedef struct			s_hist{
+	char				*cmd;
+	struct s_hist		*next;
+}						t_hist;
+
 int						g_flagsignal;
 
 /*
 ** dispatchjob.c
 */
 void					mainbody(t_env *env);
-void					dispatch(t_env **env, char **cmd);
+void					dispatch(t_env **env, char **cmd, t_hist **history);
 char					**settabenv(t_env **env);
 void					into_fork(char *path, char **cmd, char **tabenv);
 void					fathersup(pid_t father, int status);
@@ -62,11 +64,15 @@ void					fathersup(pid_t father, int status);
 ** display_prompt.c
 */
 void					print_prompt(t_env *env);
+void					print_intro(void);
+void					topbar_path(char *home, int flag, char *pwd);
+void					topbar_user(char *value);
+void					topbar_icone(int flag);
 
 /*
 ** cla.c
 */
-void					read_command_line(t_cmd **base);
+void					read_command_line(t_cmd **base, t_hist **history);
 void					addlmaillon(char **cmd, t_cmd **liste);
 void					parse_value(char *value, char **tmp, t_cmd **base);
 
@@ -77,6 +83,7 @@ char					**parse_cmd(char *cmd);
 char					**set_tab(char *cmd);
 char					*malloc_tab(char *cmd, int pos);
 void					fill_cmd_tab(char *cmdvalue, char **cmdtab);
+void					ft_listintab(t_env	**env, char **tabenv);
 
 /*
 ** defineEnv.c
@@ -90,8 +97,8 @@ void					addmaillon(char *name, char *value, t_env **liste);
 /*
 ** builtins.c
 */
-int						builtins_check(char **cmd, t_env **env);
-void					builtins_exec(char **cmd, t_env **env);
+int						builtins_check(char **cmd, t_env **env, t_hist **history);
+void					builtins_exec(char **cmd, t_env **env, t_hist **history);
 void					showenv(t_env **env);
 
 /*
@@ -115,7 +122,7 @@ void					unset_env_first(t_env *ptm, t_env *prev, char *cmd);
 ** chdir.c
 */
 char					*set_pwd(t_env **env, char *cmd, char *pwd, char *np);
-char					*ft_setmallocpwd(char *cmd, char *home, char *pwd);
+char					*setmallocpwd(char *cmd, char *home, char *pwd);
 void					ft_opendir(t_env **env, char **cmd);
 void					cd_cmd(t_env **env, char **cmd, char *home, char *pwd);
 void					open_n_save(t_env **env, char *pwd, char *nextpwd);
@@ -124,27 +131,34 @@ void					open_n_save(t_env **env, char *pwd, char *nextpwd);
 ** pathexec.c
 */
 char					*iscommande(t_env **env, char **cmd);
-char					*islocalexec(char **cmd);
+int						islocalexec(char *cmd);
 char					*setpath(char **tab_path, char *cmd);
 char					*path_fill(DIR *directory, char *cmd, char *tab_path);
+char					**setdefaultpath(void);
+
+/*
+** history.c
+*/
+void					add_to_history(char *cmd, t_hist **history);
+void					show_history(t_hist **history);
+t_hist 					*inithist(void);
 
 /*
 ** error.c
 */
 void					invalid_param(char **cmd);
 void					setenv_error(char **cmd);
-void					ft_notfound(char *cmd);
+void					notfound_error(char *cmd);
 void					setequal_error();
 char					*oldpwd_error();
 
 /*
 ** tools.c
 */
-char					*ft_getlistevalue(t_env	**env, char *name);
-char					**setdefaultpath(void);
+char					*getlistevalue(t_env	**env, char *name);
 t_env					*setdefaultenv(void);
 char					**getdefaultenv(void);
-void					ft_listintab(t_env	**env, char **tabenv);
+void					randcol_ansi(int i);
 
 /*
 ** tools2.c

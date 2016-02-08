@@ -12,24 +12,25 @@
 
 #include "minishell.h"
 
-int			builtins_check(char **cmd, t_env **env)
+int			builtins_check(char **cmd, t_env **env, t_hist **history)
 {
 	char	**list_builtins;
 	int		i;
 
 	i = 0;
-	list_builtins = (char **)malloc(sizeof(char *) * 6);
+	list_builtins = (char **)malloc(sizeof(char *) * 7);
 	list_builtins[0] = "exit";
 	list_builtins[1] = "env";
 	list_builtins[2] = "setenv";
 	list_builtins[3] = "unsetenv";
 	list_builtins[4] = "cd";
-	list_builtins[5] = NULL;
-	while (i < 5)
+	list_builtins[5] = "history";
+	list_builtins[6] = NULL;
+	while (i < 6)
 	{
 		if (cmd[0] && ft_strcmp(cmd[0], list_builtins[i]) == 0)
 		{
-			builtins_exec(cmd, env);
+			builtins_exec(cmd, env, history);
 			return (1);
 		}
 		i++;
@@ -38,7 +39,7 @@ int			builtins_check(char **cmd, t_env **env)
 	return (0);
 }
 
-void		builtins_exec(char **cmd, t_env **env)
+void		builtins_exec(char **cmd, t_env **env, t_hist **history)
 {
 	if (env && cmd[0] != NULL)
 	{
@@ -47,7 +48,7 @@ void		builtins_exec(char **cmd, t_env **env)
 			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
 			{
 				g_flagsignal = -1;
-				into_fork(cmd[2], &cmd[0], getdefaultenv());
+				into_fork(cmd[2], &cmd[0], NULL);
 			}
 			else
 				showenv(env);
@@ -58,6 +59,8 @@ void		builtins_exec(char **cmd, t_env **env)
 			add_env(env, cmd);
 		else if (ft_strcmp(cmd[0], "unsetenv") == 0)
 			unset_env(env, cmd);
+		else if (ft_strcmp(cmd[0], "history") == 0)
+			show_history(history);
 		else if (ft_strcmp(cmd[0], "exit") == 0)
 		{
 			ft_putendl("exit");
@@ -70,17 +73,27 @@ void		builtins_exec(char **cmd, t_env **env)
 void		showenv(t_env **env)
 {
 	t_env	*ptrmaillon;
+	int		i;
 
+	i = 17;
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
+		if (i < 229)
+			randcol_ansi(i++);
 		ft_putstr(ptrmaillon->name);
+		ft_putstr(ANSI_COLOR_RESET);
 		if (ptrmaillon->name && !ptrmaillon->value)
 			ft_putendl("=");
 		else if (ptrmaillon->name)
 			ft_putchar('=');
+		if (i < 229)
+			randcol_ansi(i++);
+		else
+			i = 17;
 		if (ptrmaillon->value)
 			ft_putendl(ptrmaillon->value);
+		ft_putstr(ANSI_COLOR_RESET);
 		ptrmaillon = ptrmaillon->next;
 	}
 }
