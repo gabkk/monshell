@@ -33,7 +33,7 @@ void			mainbody(t_env *env)
 			while (ptrmaillon)
 			{
 				if (ptrmaillon->listcmd)
-					dispatch(&env, ptrmaillon->listcmd, &history, &base);
+					dispatch(&env, ptrmaillon->listcmd, &history);
 				ptrmaillon = ptrmaillon->next;
 			}
 			freebase(&base);
@@ -41,7 +41,7 @@ void			mainbody(t_env *env)
 	}
 }
 
-void			dispatch(t_env **env, char **c, t_hist **h, t_cmd **b)
+void			dispatch(t_env **env, char **c, t_hist **h)
 {
 	char		*path;
 	char		**tabenv;
@@ -50,7 +50,7 @@ void			dispatch(t_env **env, char **c, t_hist **h, t_cmd **b)
 	if (!c[0])
 		return ;
 	tabenv = settabenv(env);
-	if (b_check(c, env, h, b) == 1)
+	if (b_check(c, env, h) == 1)
 		return ;
 	else if ((path = iscommande(env, c)) != NULL)
 	{
@@ -105,17 +105,15 @@ void			into_fork(char *path, char **cmd, char **tabenv)
 		if (father == 0)
 		{
 			if (execve(path, cmd, tabenv) == -1)
-			{
 				notfound_error(cmd[0]);
-				exit(EXIT_FAILURE);
-			}
 		}
 		else
 			fathersup(father, status);
 	}
 	else
 	{
-		ft_putendl_fd("Error: Permission denied", 2);
+		ft_putstr_fd("minishell: Permission denied: ", 2);
+		ft_putendl_fd(path, 2);
 		g_flagsignal = 0;
 	}
 }

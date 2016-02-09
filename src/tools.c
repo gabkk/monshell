@@ -82,24 +82,8 @@ void		randcol_ansi(int i)
 	free(tmp2);
 }
 
-void		ft_exit(t_env **env, t_hist **h, t_cmd **b)
+void		ft_exit(void)
 {
-	t_hist	*ptrmaillon;
-
-	if (!h || !*h)
-		return ;
-	while (*h)
-	{
-		if ((*h)->cmd)
-			free((*h)->cmd);
-		ptrmaillon = (*h)->next;
-		free(*h);
-		*h = ptrmaillon;
-	}
-	*h = NULL;
 	ft_putendl("exit");
-	free(h);
-	freebase(b);
-	freenv(*env);
 	exit(0);
 }

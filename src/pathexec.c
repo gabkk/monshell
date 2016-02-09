@@ -85,13 +85,22 @@ int				islocalexec(char *cmd)
 {
 	DIR			*directory;
 	t_dirent	content;
+	char		*tmp;
 
+	if (cmd && ft_strncmp(cmd, "./", 2) != 0)
+		return (0);
 	if ((directory = opendir(".")) != NULL)
 	{
 		while ((content = readdir(directory)) != NULL)
 		{
 			if (cmd && ft_strcmp(content->d_name, cmd) == 0)
 				return (1);
+			tmp = ft_strjoin("./", content->d_name);
+			if (cmd && ft_strcmp(tmp, cmd) == 0)
+			{
+				free(tmp);
+				return (1);
+			}
 		}
 	}
 	return (0);
