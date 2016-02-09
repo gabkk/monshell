@@ -33,7 +33,7 @@ void			mainbody(t_env *env)
 			while (ptrmaillon)
 			{
 				if (ptrmaillon->listcmd)
-					dispatch(&env, ptrmaillon->listcmd, &history);
+					dispatch(&env, ptrmaillon->listcmd, &history, &base);
 				ptrmaillon = ptrmaillon->next;
 			}
 			freebase(&base);
@@ -41,29 +41,29 @@ void			mainbody(t_env *env)
 	}
 }
 
-void			dispatch(t_env **env, char **cmd, t_hist **history)
+void			dispatch(t_env **env, char **c, t_hist **h, t_cmd **b)
 {
 	char		*path;
 	char		**tabenv;
 
 	tabenv = NULL;
-	if (!cmd[0])
+	if (!c[0])
 		return ;
 	tabenv = settabenv(env);
-	if (builtins_check(cmd, env, history) == 1)
+	if (b_check(c, env, h, b) == 1)
 		return ;
-	else if ((path = iscommande(env, cmd)) != NULL)
+	else if ((path = iscommande(env, c)) != NULL)
 	{
-		into_fork(path, cmd, tabenv);
+		into_fork(path, c, tabenv);
 		free(path);
 	}
-	else if (cmd[0] && islocalexec(cmd[0]) == 1)
+	else if (c[0] && islocalexec(c[0]) == 1)
 	{
 		g_flagsignal = -1;
-		into_fork(cmd[0], cmd, tabenv);
+		into_fork(c[0], c, tabenv);
 	}
-	else if (cmd[0])
-		notfound_error(cmd[0]);
+	else if (c[0])
+		notfound_error(c[0]);
 	ft_freetab(tabenv);
 }
 
@@ -106,7 +106,6 @@ void			into_fork(char *path, char **cmd, char **tabenv)
 		{
 			if (execve(path, cmd, tabenv) == -1)
 			{
-				ft_putendl("exec fail");
 				notfound_error(cmd[0]);
 				exit(EXIT_FAILURE);
 			}

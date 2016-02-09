@@ -85,7 +85,6 @@ int				islocalexec(char *cmd)
 {
 	DIR			*directory;
 	t_dirent	content;
-	
 
 	if ((directory = opendir(".")) != NULL)
 	{
@@ -98,9 +97,9 @@ int				islocalexec(char *cmd)
 	return (0);
 }
 
-char		**setdefaultpath(void)
+char			**setdefaultpath(void)
 {
-	char	**pathtmp;
+	char		**pathtmp;
 
 	pathtmp = (char **)malloc(sizeof(char *) * 3);
 	pathtmp[0] = "/bin";

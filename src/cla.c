@@ -56,7 +56,8 @@ void			read_command_line(t_cmd **base, t_hist **history)
 		exit(0);
 	}
 	value[ret - 1] = '\0';
-	add_to_history(value, history);
+	if (*value)
+		add_to_history(value, history);
 	parse_value(value, tmp, base);
 }
 

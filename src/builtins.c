@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int			builtins_check(char **cmd, t_env **env, t_hist **history)
+int			b_check(char **c, t_env **env, t_hist **h, t_cmd **b)
 {
 	char	**list_builtins;
 	int		i;
@@ -28,9 +28,9 @@ int			builtins_check(char **cmd, t_env **env, t_hist **history)
 	list_builtins[6] = NULL;
 	while (i < 6)
 	{
-		if (cmd[0] && ft_strcmp(cmd[0], list_builtins[i]) == 0)
+		if (c[0] && env && ft_strcmp(c[0], list_builtins[i]) == 0)
 		{
-			builtins_exec(cmd, env, history);
+			b_exec(c, env, h, b);
 			return (1);
 		}
 		i++;
@@ -39,35 +39,28 @@ int			builtins_check(char **cmd, t_env **env, t_hist **history)
 	return (0);
 }
 
-void		builtins_exec(char **cmd, t_env **env, t_hist **history)
+void		b_exec(char **c, t_env **env, t_hist **h, t_cmd **b)
 {
-	if (env && cmd[0] != NULL)
+	if (ft_strcmp(c[0], "env") == 0)
 	{
-		if (ft_strcmp(cmd[0], "env") == 0)
+		if (c[1] && ft_strcmp(c[1], "-i") == 0)
 		{
-			if (cmd[1] && ft_strcmp(cmd[1], "-i") == 0)
-			{
-				g_flagsignal = -1;
-				into_fork(cmd[2], &cmd[0], NULL);
-			}
-			else
-				showenv(env);
+			g_flagsignal = -1;
+			into_fork(c[2], &c[0], NULL);
 		}
-		else if (ft_strcmp(cmd[0], "cd") == 0)
-			ft_opendir(env, cmd);
-		else if (ft_strcmp(cmd[0], "setenv") == 0)
-			add_env(env, cmd);
-		else if (ft_strcmp(cmd[0], "unsetenv") == 0)
-			unset_env(env, cmd);
-		else if (ft_strcmp(cmd[0], "history") == 0)
-			show_history(history);
-		else if (ft_strcmp(cmd[0], "exit") == 0)
-		{
-			ft_putendl("exit");
-			freenv(*env);
-			exit(0);
-		}
+		else
+			showenv(env);
 	}
+	else if (ft_strcmp(c[0], "cd") == 0)
+		ft_opendir(env, c);
+	else if (ft_strcmp(c[0], "setenv") == 0)
+		add_env(env, c);
+	else if (ft_strcmp(c[0], "unsetenv") == 0)
+		unset_env(env, c);
+	else if (ft_strcmp(c[0], "history") == 0)
+		show_history(h);
+	else if (ft_strcmp(c[0], "exit") == 0)
+		ft_exit(env, h, b);
 }
 
 void		showenv(t_env **env)

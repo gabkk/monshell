@@ -46,8 +46,7 @@ void			cd_cmd(t_env **env, char **cmd, char *home, char *pwd)
 		if ((nextpwd = set_pwd(env, cmd[1], pwd, nextpwd)) == NULL)
 		{
 			if ((nextpwd = setmallocpwd(cmd[1], home, pwd)) == NULL)
-				return (ft_putstr_fd("cd: no such file or directory: ", 2),\
-					ft_putendl_fd(cmd[1], 2));
+				return (ft_putstr_fd("cd: no such file or directory ", 2));
 			open_n_save(env, pwd, nextpwd);
 			return (free(nextpwd));
 		}

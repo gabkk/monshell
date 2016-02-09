@@ -55,7 +55,7 @@ int						g_flagsignal;
 ** dispatchjob.c
 */
 void					mainbody(t_env *env);
-void					dispatch(t_env **env, char **cmd, t_hist **history);
+void					dispatch(t_env **env, char **c, t_hist **h, t_cmd **b);
 char					**settabenv(t_env **env);
 void					into_fork(char *path, char **cmd, char **tabenv);
 void					fathersup(pid_t father, int status);
@@ -97,8 +97,8 @@ void					addmaillon(char *name, char *value, t_env **liste);
 /*
 ** builtins.c
 */
-int						builtins_check(char **cmd, t_env **env, t_hist **history);
-void					builtins_exec(char **cmd, t_env **env, t_hist **history);
+int						b_check(char **c, t_env **env, t_hist **h, t_cmd **b);
+void					b_exec(char **c, t_env **env, t_hist **h, t_cmd **b);
 void					showenv(t_env **env);
 
 /*
@@ -141,7 +141,7 @@ char					**setdefaultpath(void);
 */
 void					add_to_history(char *cmd, t_hist **history);
 void					show_history(t_hist **history);
-t_hist 					*inithist(void);
+t_hist					*inithist(void);
 
 /*
 ** error.c
@@ -159,6 +159,7 @@ char					*getlistevalue(t_env	**env, char *name);
 t_env					*setdefaultenv(void);
 char					**getdefaultenv(void);
 void					randcol_ansi(int i);
+void					ft_exit(t_env **env, t_hist **h, t_cmd **b);
 
 /*
 ** tools2.c

@@ -18,12 +18,17 @@ void			print_prompt(t_env *env)
 	char		*home;
 	int			flag;
 	char		buff[PATH_MAX];
-	char 		*pwd;
+	char		*pwd;
 
 	pwd = getcwd(buff, PATH_MAX);
 	flag = 1;
-	home = getlistevalue(&env, "HOME");
-	name = getlistevalue(&env, "USER");
+	home = NULL;
+	name = NULL;
+	if (env)
+	{
+		home = getlistevalue(&env, "HOME");
+		name = getlistevalue(&env, "USER");
+	}
 	if (home && pwd)
 		flag = ft_strncmp(pwd, home, ft_strlen(home));
 	topbar_user(name);
@@ -34,6 +39,7 @@ void			print_prompt(t_env *env)
 
 void			topbar_icone(int flag)
 {
+	ft_putendl(ANSI_COLOR_LIGHT_BLUE);
 	if (flag == 0)
 		ft_putstr("(✖╭╮✖)» ");
 	else
@@ -52,33 +58,28 @@ void			topbar_user(char *value)
 	else
 		ft_putstr(" ▂▂▃▅ ");
 	ft_putstr("\x1b[0m");
-
 }
 
 void			topbar_path(char *home, int flag, char *pwd)
 {
 	char		*tmp;
 
+	ft_putstr(ANSI_COLOR_YELLOW);
+	ft_putstr("\t\t");
+	if (flag == 0 && home)
 	{
-		ft_putstr(ANSI_COLOR_YELLOW);
-		ft_putstr("\t\t");
-		if (flag == 0)
-		{
-			ft_putstr("~");
-			tmp = ft_strsub(pwd, ft_strlen(home),\
-				(ft_strlen(pwd) - ft_strlen(home)));
-			ft_putstr(tmp);
-			free(tmp);
-		} 
-		else
-			ft_putstr(pwd);
-		ft_putstr(ANSI_COLOR_RESET);
+		ft_putstr("~");
+		tmp = ft_strsub(pwd, ft_strlen(home),\
+			(ft_strlen(pwd) - ft_strlen(home)));
+		ft_putstr(tmp);
+		free(tmp);
 	}
-	ft_putendl(ANSI_COLOR_LIGHT_BLUE);
-
+	else
+		ft_putstr(pwd);
+	ft_putstr(ANSI_COLOR_RESET);
 }
 
-void		print_intro(void)
+void			print_intro(void)
 {
 	ft_putendl("___  ____       _     _          _ _ ");
 	ft_putendl("|  \\/  (_)     (_)   | |        | | |");

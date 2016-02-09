@@ -104,11 +104,11 @@ char			**set_tab(char *cmd)
 	return (tab);
 }
 
-void		ft_listintab(t_env **env, char **tabenv)
+void			ft_listintab(t_env **env, char **tabenv)
 {
-	int		i;
-	char	*tmp1;
-	t_env	*ptrmaillon;
+	int			i;
+	char		*tmp1;
+	t_env		*ptrmaillon;
 
 	i = 0;
 	ptrmaillon = *env;

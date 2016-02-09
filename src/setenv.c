@@ -16,11 +16,8 @@ void		add_env(t_env **env, char **cmd)
 {
 	int		i;
 
-	if (!(*env))
-	{
-		ft_putendl("no env");
+	if (*env == NULL)
 		*env = initmaillon();
-	}
 	if (!cmd[1])
 		showenv(env);
 	else if (ft_strcmp(cmd[1], "=") == 0 && !cmd[2])
@@ -87,7 +84,8 @@ void		setequal(t_env **env, char **cmd)
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
-		if (*varvalue && ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
+		if (*varvalue && ptrmaillon->name &&\
+			ft_strcmp(ptrmaillon->name, varvalue[0]) == 0)
 		{
 			free(ptrmaillon->value);
 			if (varvalue[1] != NULL)

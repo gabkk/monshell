@@ -20,7 +20,7 @@ char		*getlistevalue(t_env **env, char *name)
 	ptrmaillon = *env;
 	while (ptrmaillon)
 	{
-		if (ft_strcmp(ptrmaillon->name, name) == 0)
+		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, name) == 0)
 		{
 			tmp = ptrmaillon->value;
 			return (tmp);
@@ -74,10 +74,32 @@ void		randcol_ansi(int i)
 {
 	char	*tmp1;
 	char	*tmp2;
-	
-	tmp1 = ft_strjoin(ft_itoa(i),"m");
+
+	tmp1 = ft_strjoin(ft_itoa(i), "m");
 	tmp2 = ft_strjoin("\x1b[38;5;", tmp1);
 	ft_putstr(tmp2);
 	free(tmp1);
 	free(tmp2);
+}
+
+void		ft_exit(t_env **env, t_hist **h, t_cmd **b)
+{
+	t_hist	*ptrmaillon;
+
+	if (!h || !*h)
+		return ;
+	while (*h)
+	{
+		if ((*h)->cmd)
+			free((*h)->cmd);
+		ptrmaillon = (*h)->next;
+		free(*h);
+		*h = ptrmaillon;
+	}
+	*h = NULL;
+	ft_putendl("exit");
+	free(h);
+	freebase(b);
+	freenv(*env);
+	exit(0);
 }

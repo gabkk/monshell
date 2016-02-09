@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/09 11:10:12 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/09 11:10:14 by gkuma            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void			add_to_history(char *cmd, t_hist **history)
 {
 	t_hist		*ptrh;
 	t_hist		*newh;
-
 
 	newh = inithist();
 	if (!*history)
@@ -35,7 +46,7 @@ void			show_history(t_hist **history)
 	}
 }
 
-t_hist 			*inithist(void)
+t_hist			*inithist(void)
 {
 	t_hist		*newh;
 
