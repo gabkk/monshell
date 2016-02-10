@@ -90,3 +90,19 @@ void		showenv(t_env **env)
 		ptrmaillon = ptrmaillon->next;
 	}
 }
+
+int			isexec(char *cmd, t_env **env)
+{
+	char	*path;
+
+	path = cmd;
+	if (access(path, X_OK) != -1)
+	{
+		if (ft_strrchr(cmd, '/') != NULL)
+		{
+			if ((path = iscommande(env, ft_strrchr(cmd, '/') + 1)) != NULL)
+				return (1);
+		}
+	}
+	return (0);
+}

@@ -100,6 +100,7 @@ void					addmaillon(char *name, char *value, t_env **liste);
 int						b_check(char **c, t_env **env, t_hist **h);
 void					b_exec(char **c, t_env **env, t_hist **h);
 void					showenv(t_env **env);
+int						isexec(char *cmd, t_env **env);
 
 /*
 ** setenv.c
@@ -130,7 +131,7 @@ void					open_n_save(t_env **env, char *pwd, char *nextpwd);
 /*
 ** pathexec.c
 */
-char					*iscommande(t_env **env, char **cmd);
+char					*iscommande(t_env **env, char *cmd);
 int						islocalexec(char *cmd);
 char					*setpath(char **tab_path, char *cmd);
 char					*path_fill(DIR *directory, char *cmd, char *tab_path);

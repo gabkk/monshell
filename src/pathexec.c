@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char			*iscommande(t_env **env, char **cmd)
+char			*iscommande(t_env **env, char *cmd)
 {
 	char		*path;
 	char		**tab_path;
@@ -31,7 +31,7 @@ char			*iscommande(t_env **env, char **cmd)
 		tab_path = setdefaultpath();
 		freepath = 1;
 	}
-	value = setpath(tab_path, cmd[0]);
+	value = setpath(tab_path, cmd);
 	if (freepath == 0)
 		ft_freetab(tab_path);
 	else if (freepath == 1)
@@ -86,20 +86,21 @@ int				islocalexec(char *cmd)
 	DIR			*directory;
 	t_dirent	content;
 	char		*tmp;
+	char		*path;
 
-	if (cmd && ft_strncmp(cmd, "./", 2) != 0)
-		return (0);
-	if ((directory = opendir(".")) != NULL)
+	if (ft_strncmp(cmd, "./", 2) == 0)
 	{
-		while ((content = readdir(directory)) != NULL)
+		path = ".";
+		if ((directory = opendir(path)) != NULL)
 		{
-			if (cmd && ft_strcmp(content->d_name, cmd) == 0)
-				return (1);
-			tmp = ft_strjoin("./", content->d_name);
-			if (cmd && ft_strcmp(tmp, cmd) == 0)
+			while ((content = readdir(directory)) != NULL)
 			{
-				free(tmp);
-				return (1);
+				tmp = ft_strjoin("./", content->d_name);
+				if (cmd && ft_strcmp(tmp, cmd) == 0)
+				{
+					free(tmp);
+					return (1);
+				}
 			}
 		}
 	}

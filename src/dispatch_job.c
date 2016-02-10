@@ -52,12 +52,13 @@ void			dispatch(t_env **env, char **c, t_hist **h)
 	tabenv = settabenv(env);
 	if (b_check(c, env, h) == 1)
 		return ;
-	else if ((path = iscommande(env, c)) != NULL)
+	else if ((path = iscommande(env, c[0])) != NULL)
 	{
 		into_fork(path, c, tabenv);
 		free(path);
 	}
-	else if (c[0] && islocalexec(c[0]) == 1)
+	else if (c[0] && ((islocalexec(c[0]) == 1) || \
+		(isexec(c[0], env) == 1)))
 	{
 		g_flagsignal = -1;
 		into_fork(c[0], c, tabenv);
