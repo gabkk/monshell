@@ -19,9 +19,14 @@ char	*ft_rea(int const fd, char *buf, int *ret)
 
 	*ret = read(fd, tmpbuf, BUFF_SIZE);
 	tmpbuf[*ret] = '\0';
-	del = buf;
-	buf = ft_strjoin(buf, tmpbuf);
-	ft_strdel(&del);
+	if (buf)
+	{
+		del = buf;
+		buf = ft_strjoin(buf, tmpbuf);		
+		ft_strdel(&del);
+	}
+	else
+		buf = ft_strdup(tmpbuf);
 	return (buf);
 }
 
@@ -33,7 +38,7 @@ int		ft_ret_pos(int const fd, char ***line, char **buf, int *ret)
 	test = 0;
 	while (*ret > 0)
 	{
-		if ((templn = ft_strchr(*buf, '\n')) != NULL)
+		if (*buf && (templn = ft_strchr(*buf, '\n')) != NULL)
 		{
 			*templn = '\0';
 			ft_strdel(*line);
@@ -55,13 +60,12 @@ int		ft_ret_pos(int const fd, char ***line, char **buf, int *ret)
 int		get_next_line(int const fd, char **line)
 {
 	int				ret;
-	static char		*buf = "";
+	static char		*buf;
 
 	ret = 1;
 	if (!line)
 		return (-1);
-	if (buf[0] == '\0')
-		buf = ft_strnew(0);
+	buf = NULL;
 	if ((ft_ret_pos(fd, &line, &buf, &ret)) == 1)
 		return (1);
 	if (*buf == '\0')

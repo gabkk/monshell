@@ -55,7 +55,7 @@ int						g_flagsignal;
 ** dispatchjob.c
 */
 void					mainbody(t_env *env);
-void					dispatch(t_env **env, char **c, t_hist **h);
+void					dispatch(t_env **env, char **c);
 char					**settabenv(t_env **env);
 void					into_fork(char *path, char **cmd, char **tabenv);
 void					fathersup(pid_t father, int status);
@@ -72,7 +72,7 @@ void					topbar_icone(int flag);
 /*
 ** cla.c
 */
-void					read_command_line(t_cmd **base, t_hist **history);
+void					read_command_line(t_cmd **base);
 void					addlmaillon(char **cmd, t_cmd **liste);
 void					parse_value(char *value, char **tmp, t_cmd **base);
 
@@ -97,8 +97,8 @@ void					addmaillon(char *name, char *value, t_env **liste);
 /*
 ** builtins.c
 */
-int						b_check(char **c, t_env **env, t_hist **h);
-void					b_exec(char **c, t_env **env, t_hist **h);
+int						b_check(char **c, t_env **env);
+void					b_exec(char **c, t_env **env);
 void					showenv(t_env **env);
 int						isexec(char *cmd, t_env **env);
 
@@ -140,9 +140,11 @@ char					**setdefaultpath(void);
 /*
 ** history.c
 */
-void					add_to_history(char *cmd, t_hist **history);
-void					show_history(t_hist **history);
+void					add_to_history(char *cmd);
+void					set_hist(t_hist **history, char *line);
+void					show_history(void);
 t_hist					*inithist(void);
+void					freehist(t_hist *newhist);
 
 /*
 ** error.c

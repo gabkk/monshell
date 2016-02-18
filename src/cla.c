@@ -39,7 +39,7 @@ void			addlmaillon(char **cmd, t_cmd **liste)
 	newmaillon->next = NULL;
 }
 
-void			read_command_line(t_cmd **base, t_hist **history)
+void			read_command_line(t_cmd **base)
 {
 	char		*value;
 	int			ret;
@@ -57,7 +57,7 @@ void			read_command_line(t_cmd **base, t_hist **history)
 	}
 	value[ret - 1] = '\0';
 	if (*value)
-		add_to_history(value, history);
+		add_to_history(value);
 	parse_value(value, tmp, base);
 }
 

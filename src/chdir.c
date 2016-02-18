@@ -16,14 +16,13 @@ void			ft_opendir(t_env **env, char **cmd)
 {
 	char		*home;
 	char		*path;
-	char		*tmp;
+	char		tmp[PATH_MAX + 1];
 
 	path = NULL;
 	home = getlistevalue(env, "HOME");
-	tmp = (char *)malloc(sizeof(char) * PATH_MAX + 1);
 	if (getcwd(tmp, PATH_MAX) != NULL)
 		path = ft_strdup(tmp);
-	free(tmp);
+//	free(tmp);
 	cd_cmd(env, cmd, home, path);
 	free(path);
 }

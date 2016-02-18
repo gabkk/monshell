@@ -16,24 +16,22 @@ void			mainbody(t_env *env)
 {
 	t_cmd		*base;
 	t_cmd		*ptrmaillon;
-	t_hist		*history;
 
 	base = NULL;
-	history = NULL;
 	g_flagsignal = 0;
 	if (!env)
 		env = setdefaultenv();
 	while (42)
 	{
 		print_prompt(env);
-		read_command_line(&base, &history);
+		read_command_line(&base);
 		if (base)
 		{
 			ptrmaillon = base;
 			while (ptrmaillon)
 			{
 				if (ptrmaillon->listcmd)
-					dispatch(&env, ptrmaillon->listcmd, &history);
+					dispatch(&env, ptrmaillon->listcmd);
 				ptrmaillon = ptrmaillon->next;
 			}
 			freebase(&base);
@@ -41,7 +39,7 @@ void			mainbody(t_env *env)
 	}
 }
 
-void			dispatch(t_env **env, char **c, t_hist **h)
+void			dispatch(t_env **env, char **c)
 {
 	char		*path;
 	char		**tabenv;
@@ -50,8 +48,8 @@ void			dispatch(t_env **env, char **c, t_hist **h)
 	if (!c[0])
 		return ;
 	tabenv = settabenv(env);
-	if (b_check(c, env, h) == 1)
-		return ;
+	if (b_check(c, env) == 1)
+		return (ft_freetab(tabenv));
 	else if ((path = iscommande(env, c[0])) != NULL)
 	{
 		into_fork(path, c, tabenv);

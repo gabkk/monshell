@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int			b_check(char **c, t_env **env, t_hist **h)
+int			b_check(char **c, t_env **env)
 {
 	char	**list_builtins;
 	int		i;
@@ -30,7 +30,7 @@ int			b_check(char **c, t_env **env, t_hist **h)
 	{
 		if (c[0] && env && ft_strcmp(c[0], list_builtins[i]) == 0)
 		{
-			b_exec(c, env, h);
+			b_exec(c, env);
 			return (1);
 		}
 		i++;
@@ -39,7 +39,7 @@ int			b_check(char **c, t_env **env, t_hist **h)
 	return (0);
 }
 
-void		b_exec(char **c, t_env **env, t_hist **h)
+void		b_exec(char **c, t_env **env)
 {
 	if (ft_strcmp(c[0], "env") == 0)
 	{
@@ -58,7 +58,7 @@ void		b_exec(char **c, t_env **env, t_hist **h)
 	else if (ft_strcmp(c[0], "unsetenv") == 0)
 		unset_env(env, c);
 	else if (ft_strcmp(c[0], "history") == 0)
-		show_history(h);
+		show_history();
 	else if (ft_strcmp(c[0], "exit") == 0)
 		ft_exit();
 }
