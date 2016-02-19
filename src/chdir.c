@@ -22,7 +22,6 @@ void			ft_opendir(t_env **env, char **cmd)
 	home = getlistevalue(env, "HOME");
 	if (getcwd(tmp, PATH_MAX) != NULL)
 		path = ft_strdup(tmp);
-//	free(tmp);
 	cd_cmd(env, cmd, home, path);
 	free(path);
 }

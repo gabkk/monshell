@@ -74,10 +74,13 @@ void		randcol_ansi(int i)
 {
 	char	*tmp1;
 	char	*tmp2;
+	char	*nbr;
 
-	tmp1 = ft_strjoin(ft_itoa(i), "m");
+	nbr = ft_itoa(i);
+	tmp1 = ft_strjoin(nbr, "m");
 	tmp2 = ft_strjoin("\x1b[38;5;", tmp1);
 	ft_putstr(tmp2);
+	free(nbr);
 	free(tmp1);
 	free(tmp2);
 }

@@ -31,6 +31,7 @@ int			b_check(char **c, t_env **env)
 		if (c[0] && env && ft_strcmp(c[0], list_builtins[i]) == 0)
 		{
 			b_exec(c, env);
+			free(list_builtins);
 			return (1);
 		}
 		i++;

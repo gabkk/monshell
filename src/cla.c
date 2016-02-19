@@ -42,20 +42,16 @@ void			addlmaillon(char **cmd, t_cmd **liste)
 void			read_command_line(t_cmd **base)
 {
 	char		*value;
-	int			ret;
 	char		**tmp;
 
 	value = NULL;
 	tmp = NULL;
-	value = (char *)malloc(sizeof(char) * TTY_PATH + 1);
-	ret = read(STDIN_FILENO, value, TTY_PATH);
-	if (ret == 0)
+	if (get_next_line(STDIN_FILENO, &value) == 0)
 	{
 		ft_putendl("exit");
 		free(value);
 		exit(0);
 	}
-	value[ret - 1] = '\0';
 	if (*value)
 		add_to_history(value);
 	parse_value(value, tmp, base);

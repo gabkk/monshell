@@ -16,7 +16,7 @@ void			add_to_history(char *cmd)
 {
 	int			fd;
 
-	fd = open(".mshell_hist",  O_RDWR | O_CREAT | O_APPEND, 0777);
+	fd = open(".mshell_hist", O_RDWR | O_CREAT | O_APPEND, 0777);
 	write(fd, cmd, ft_strlen(cmd));
 	write(fd, "\n", 1);
 	close(fd);
@@ -56,6 +56,7 @@ void			show_history(void)
 		return ;
 	while (get_next_line(fd, &line) == 1)
 		set_hist(&newhist, line);
+	free(line);
 	ptrh = newhist;
 	ft_putstr("\t\t ...history...\n");
 	while (ptrh)
@@ -64,7 +65,6 @@ void			show_history(void)
 		ptrh = ptrh->next;
 	}
 	freehist(newhist);
-	//penser a free la liste
 	close(fd);
 }
 
@@ -77,12 +77,10 @@ void			freehist(t_hist *newhist)
 	while (ptrhist)
 	{
 		tmphist = ptrhist->next;
-		//free(tmphist->cmd);
+		free(ptrhist->cmd);
 		free(ptrhist);
 		ptrhist = tmphist;
-		//newhist = newhist->next;
 	}
-//	free(newhist);
 }
 
 t_hist			*inithist(void)

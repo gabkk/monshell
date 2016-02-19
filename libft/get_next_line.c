@@ -44,6 +44,7 @@ int		ft_ret_pos(int const fd, char ***line, char **buf, int *ret)
 			ft_strdel(*line);
 			**line = ft_strdup(*buf);
 			ft_memmove(*buf, templn + 1, ft_strlen(templn + 1) + 1);
+			free(*buf);
 			return (1);
 		}
 		*buf = ft_rea(fd, *buf, ret);
