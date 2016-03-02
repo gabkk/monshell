@@ -43,18 +43,25 @@ void			read_command_line(t_cmd **base)
 {
 	char		*value;
 	char		**tmp;
+	int			ret;
 
 	value = NULL;
 	tmp = NULL;
-	if (get_next_line(STDIN_FILENO, &value) == 0)
+	ret = 0;
+	if ((ret = get_next_line(STDIN_FILENO, &value)) == 0)
 	{
 		ft_putendl("exit");
 		free(value);
 		exit(0);
 	}
-	if (*value)
-		add_to_history(value);
-	parse_value(value, tmp, base);
+	else if (ret == -1)
+		exit(EXIT_FAILURE);
+	else
+	{
+		if (*value)
+			add_to_history(value);
+		parse_value(value, tmp, base);
+	}
 }
 
 void			parse_value(char *value, char **tmp, t_cmd **base)

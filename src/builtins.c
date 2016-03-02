@@ -104,6 +104,7 @@ int			isexec(char *cmd, t_env **env)
 			if ((path = iscommande(env, ft_strrchr(cmd, '/') + 1)) != NULL)
 				return (1);
 		}
+		return (1);
 	}
 	return (0);
 }

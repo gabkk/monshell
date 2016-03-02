@@ -22,7 +22,7 @@ char	*ft_rea(int const fd, char *buf, int *ret)
 	if (buf)
 	{
 		del = buf;
-		buf = ft_strjoin(buf, tmpbuf);		
+		buf = ft_strjoin(buf, tmpbuf);
 		ft_strdel(&del);
 	}
 	else
