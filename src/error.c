@@ -27,8 +27,8 @@ a seconde parameter ex:  USER test");
 
 void	notfound_error(char *cmd)
 {
-	ft_putstr("minishell: command not found: ");
-	ft_putendl(cmd);
+	ft_putstr_fd(cmd, 2);
+	ft_putendl_fd(": Command not found.", 2);
 }
 
 void	setequal_error(void)

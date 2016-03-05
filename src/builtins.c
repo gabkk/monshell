@@ -44,7 +44,8 @@ void		b_exec(char **c, t_env **env)
 {
 	if (ft_strcmp(c[0], "env") == 0)
 	{
-		if (c[1] && ft_strcmp(c[1], "-i") == 0)
+		if (c[1] && ((ft_strcmp(c[1], "-i") == 0) ||\
+			ft_strcmp(c[1], "--ignore-environment") == 0))
 		{
 			g_flagsignal = -1;
 			into_fork(c[2], &c[0], NULL);
