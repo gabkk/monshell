@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell
+NAME = 21sh
 
 CFLAGS = -Wall -Wextra -Werror -c
 
@@ -20,9 +20,10 @@ INC = -I includes/ -I libft/includes
 
 SRCSDIR = src/
 
-SRCS = main.c alloc_tab.c cla.c define_env.c builtins.c error.c setenv.c \
-	unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
-	display_prompt.c tools2.c history.c
+SRCS = main.c alloc_tab.c read_input.c define_env.c builtins.c error.c \
+	setenv.c unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
+	display_prompt.c history.c default_env.c exit.c \
+	maillon_op.c signal.c
 
 
 OBJ = $(SRCS:.c=.o)

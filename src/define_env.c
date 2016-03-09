@@ -76,37 +76,3 @@ void			fill_env(t_env *newmaillon, char *fullenv, int equal)
 	}
 	newmaillon->value[ptr] = '\0';
 }
-
-t_env			*initmaillon(void)
-{
-	t_env		*newmaillon;
-
-	newmaillon = (t_env *)malloc(sizeof(t_env));
-	if (!(newmaillon))
-		return (NULL);
-	newmaillon->name = NULL;
-	newmaillon->value = NULL;
-	newmaillon->next = NULL;
-	return (newmaillon);
-}
-
-void			addmaillon(char *name, char *value, t_env **liste)
-{
-	t_env		*newmaillon;
-	t_env		*ptrmaillon;
-
-	newmaillon = initmaillon();
-	if (!(*liste))
-		*liste = newmaillon;
-	ptrmaillon = *liste;
-	if (!(newmaillon) || !newmaillon)
-		return ;
-	while (ptrmaillon->next)
-	{
-		ptrmaillon = ptrmaillon->next;
-	}
-	ptrmaillon->next = newmaillon;
-	newmaillon->name = ft_strdup(name);
-	newmaillon->value = ft_strdup(value);
-	newmaillon->next = NULL;
-}

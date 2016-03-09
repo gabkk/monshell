@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools2.c                                           :+:      :+:    :+:   */
+/*   maillon_op.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/07 13:45:06 by gkuma             #+#    #+#             */
-/*   Updated: 2016/02/07 13:45:08 by gkuma            ###   ########.fr       */
+/*   Created: 2016/02/07 13:33:17 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:33:19 by gkuma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			env_new(t_env **env, char *cmd1, char *cmd2)
+t_env			*initmaillon(void)
+{
+	t_env		*newmaillon;
+
+	newmaillon = (t_env *)malloc(sizeof(t_env));
+	if (!(newmaillon))
+		return (NULL);
+	newmaillon->name = NULL;
+	newmaillon->value = NULL;
+	newmaillon->next = NULL;
+	return (newmaillon);
+}
+
+void			addmaillon(char *name, char *value, t_env **liste)
 {
 	t_env		*newmaillon;
 	t_env		*ptrmaillon;
 
 	newmaillon = initmaillon();
-	if (!(*env))
-	{
-		*env = newmaillon;
-		newmaillon->name = ft_strdup(cmd1);
-		newmaillon->value = ft_strdup(cmd2);
-		newmaillon->next = NULL;
-	}
-	ptrmaillon = *env;
+	if (!(*liste))
+		*liste = newmaillon;
+	ptrmaillon = *liste;
+	if (!(newmaillon) || !newmaillon)
+		return ;
 	while (ptrmaillon->next)
+	{
 		ptrmaillon = ptrmaillon->next;
+	}
 	ptrmaillon->next = newmaillon;
-	newmaillon->name = ft_strdup(cmd1);
-	if (cmd2)
-		newmaillon->value = ft_strdup(cmd2);
-	else
-		newmaillon->value = NULL;
+	newmaillon->name = ft_strdup(name);
+	newmaillon->value = ft_strdup(value);
+	newmaillon->next = NULL;
 }
 
 void			setenv_maillon(char *pwd, char *nextpwd, t_env *ptm)
@@ -63,55 +73,29 @@ void			setenv_maillon(char *pwd, char *nextpwd, t_env *ptm)
 	}
 }
 
-int				checkifonlyspace(char *value)
+void			add_maillon_cmd(char **cmd, t_cmd **liste)
 {
-	int			i;
-	int			j;
+	t_cmd		*newmaillon;
+	t_cmd		*ptrmaillon;
 
-	i = 0;
-	j = 0;
-	while (value[i] != '\0')
+	if (!(*cmd))
+		return ;
+	newmaillon = (t_cmd *)malloc(sizeof(t_cmd));
+	if (!(newmaillon))
+		return ;
+	newmaillon->listcmd = NULL;
+	newmaillon->next = NULL;
+	if (!(*liste))
 	{
-		if (ft_isspace(value[i]) == 1)
-			j++;
-		i++;
-	}
-	if (i == j)
-		return (1);
-	return (0);
-}
-
-void			setlistlvl(t_env **env)
-{
-	t_env		*ptrmaillon;
-	char		*tmp;
-	int			i;
-
-	ptrmaillon = *env;
-	while (ptrmaillon)
-	{
-		if (ptrmaillon->name && ft_strcmp(ptrmaillon->name, "SHLVL") == 0)
-		{
-			i = ft_atoi(ptrmaillon->value) + 1;
-			tmp = ft_itoa(i);
-			free(ptrmaillon->value);
-			ptrmaillon->value = ft_strdup(tmp);
-			free(tmp);
-		}
-		ptrmaillon = ptrmaillon->next;
-	}
-}
-
-void			sig_handler(int signo)
-{
-	if (signo == SIGINT)
-	{
-		if (g_flagsignal != 0)
-		{
-			kill(g_flagsignal, SIGKILL);
-			write(1, "\n", 1);
-			g_flagsignal = 0;
-		}
+		*liste = newmaillon;
+		newmaillon->listcmd = cmd;
+		newmaillon->next = NULL;
 		return ;
 	}
+	ptrmaillon = *liste;
+	while (ptrmaillon->next)
+		ptrmaillon = ptrmaillon->next;
+	ptrmaillon->next = newmaillon;
+	newmaillon->listcmd = cmd;
+	newmaillon->next = NULL;
 }

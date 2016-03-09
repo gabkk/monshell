@@ -29,35 +29,30 @@ void			print_prompt(t_env *env)
 		home = getlistevalue(&env, "HOME");
 		name = getlistevalue(&env, "USER");
 	}
+	topbar_user(name);
 	if (home && pwd)
 		flag = ft_strncmp(pwd, home, ft_strlen(home));
-	topbar_user(name);
 	if (pwd)
 		topbar_path(home, flag, pwd);
-	topbar_icone(flag);
+	topbar_icone();
 }
 
-void			topbar_icone(int flag)
+void			topbar_icone()
 {
-	ft_putendl(ANSI_COLOR_LIGHT_BLUE);
-	if (flag == 0)
-		ft_putstr("(✖╭╮✖)» ");
-	else
-		ft_putstr("(◣__◢)» ");
+	ft_putstr(ANSI_COLOR_LIGHT_BLUE);
+		ft_putstr(" » ");
 	ft_putstr(ANSI_COLOR_RESET);
 }
 
 void			topbar_user(char *value)
 {
-	ft_putstr("\x1b[38;5;237m");
-	ft_putendl("-------------");
+//	ft_putstr("\x1b[38;5;237m");
+//	ft_putendl("-------------");
 	ft_putstr("\x1b[0m");
 	ft_putstr(ANSI_COLOR_LIGHT_BLUE);
 	if (value)
 		ft_putstr(value);
-	else
-		ft_putstr(" ▂▂▃▅ ");
-	ft_putstr("\x1b[0m");
+	ft_putstr("|\x1b[0m");
 }
 
 void			topbar_path(char *home, int flag, char *pwd)
@@ -65,7 +60,7 @@ void			topbar_path(char *home, int flag, char *pwd)
 	char		*tmp;
 
 	ft_putstr(ANSI_COLOR_YELLOW);
-	ft_putstr("\t\t");
+//	ft_putstr("\t\t");
 	if (flag == 0 && home)
 	{
 		ft_putstr("~");

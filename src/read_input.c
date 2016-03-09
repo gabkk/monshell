@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cla.c                                              :+:      :+:    :+:   */
+/*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,33 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void			addlmaillon(char **cmd, t_cmd **liste)
-{
-	t_cmd		*newmaillon;
-	t_cmd		*ptrmaillon;
-
-	if (!(*cmd))
-		return ;
-	newmaillon = (t_cmd *)malloc(sizeof(t_cmd));
-	if (!(newmaillon))
-		return ;
-	newmaillon->listcmd = NULL;
-	newmaillon->next = NULL;
-	if (!(*liste))
-	{
-		*liste = newmaillon;
-		newmaillon->listcmd = cmd;
-		newmaillon->next = NULL;
-		return ;
-	}
-	ptrmaillon = *liste;
-	while (ptrmaillon->next)
-		ptrmaillon = ptrmaillon->next;
-	ptrmaillon->next = newmaillon;
-	newmaillon->listcmd = cmd;
-	newmaillon->next = NULL;
-}
 
 void			read_command_line(t_cmd **base)
 {
@@ -84,7 +57,7 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 		{
 			tmp = parse_cmd(cmd[i]);
 			if (tmp)
-				addlmaillon(tmp, base);
+				add_maillon_cmd(tmp, base);
 			free(cmd[i]);
 			i++;
 		}

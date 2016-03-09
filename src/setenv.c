@@ -12,6 +12,30 @@
 
 #include "minishell.h"
 
+void			env_new(t_env **env, char *cmd1, char *cmd2)
+{
+	t_env		*newmaillon;
+	t_env		*ptrmaillon;
+
+	newmaillon = initmaillon();
+	if (!(*env))
+	{
+		*env = newmaillon;
+		newmaillon->name = ft_strdup(cmd1);
+		newmaillon->value = ft_strdup(cmd2);
+		newmaillon->next = NULL;
+	}
+	ptrmaillon = *env;
+	while (ptrmaillon->next)
+		ptrmaillon = ptrmaillon->next;
+	ptrmaillon->next = newmaillon;
+	newmaillon->name = ft_strdup(cmd1);
+	if (cmd2)
+		newmaillon->value = ft_strdup(cmd2);
+	else
+		newmaillon->value = NULL;
+}
+
 void		add_env(t_env **env, char **cmd)
 {
 	int		i;

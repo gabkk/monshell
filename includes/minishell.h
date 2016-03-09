@@ -52,6 +52,14 @@ typedef struct			s_hist{
 int						g_flagsignal;
 
 /*
+** maillon_op.c
+*/
+t_env					*initmaillon(void);
+void					addmaillon(char *name, char *value, t_env **liste);
+void					setenv_maillon(char *pwd, char *nextpwd, t_env *ptm);
+void					add_maillon_cmd(char **cmd, t_cmd **liste);
+
+/*
 ** dispatchjob.c
 */
 void					mainbody(t_env *env);
@@ -67,13 +75,12 @@ void					print_prompt(t_env *env);
 void					print_intro(void);
 void					topbar_path(char *home, int flag, char *pwd);
 void					topbar_user(char *value);
-void					topbar_icone(int flag);
+void					topbar_icone(void);
 
 /*
-** cla.c
+** read_input.c
 */
 void					read_command_line(t_cmd **base);
-void					addlmaillon(char **cmd, t_cmd **liste);
 void					parse_value(char *value, char **tmp, t_cmd **base);
 
 /*
@@ -91,8 +98,6 @@ void					ft_listintab(t_env	**env, char **tabenv);
 t_env					*getlocalenv(char *const envp[]);
 void					setlocalenv(char *const envp[], t_env **liste);
 void					fill_env(t_env *newmaillon, char *fullenv, int equal);
-t_env					*initmaillon(void);
-void					addmaillon(char *name, char *value, t_env **liste);
 
 /*
 ** builtins.c
@@ -105,9 +110,9 @@ int						isexec(char *cmd, t_env **env);
 /*
 ** setenv.c
 */
+void					env_new(t_env **env, char *cmd1, char *cmd2);
 void					add_env(t_env **env, char **cmd);
 void					setnoequal(t_env **env, char **cmd);
-int						withequal(char *str);
 void					setequal(t_env **env, char **cmd);
 int						setenv_twocmd(t_env **env, char **cmd);
 
@@ -156,21 +161,27 @@ void					setequal_error();
 char					*oldpwd_error();
 
 /*
+** default_env.c
+*/
+t_env					*setdefaultenv(void);
+char					**getdefaultenv(void);
+
+/*
 ** tools.c
 */
 char					*getlistevalue(t_env	**env, char *name);
-t_env					*setdefaultenv(void);
-char					**getdefaultenv(void);
 void					randcol_ansi(int i);
-void					ft_exit(void);
+int						checkifonlyspace(char *value);
+void					setlistlvl(t_env **env);
 
 /*
-** tools2.c
+** signal.c
 */
-void					env_new(t_env **env, char *cmd1, char *cmd2);
-void					setenv_maillon(char *pwd, char *nextpwd, t_env *ptm);
-int						checkifonlyspace(char *value);
 void					sig_handler(int signo);
-void					setlistlvl(t_env **env);
+
+/*
+** exit.c
+*/
+void					ft_exit(void);
 
 #endif

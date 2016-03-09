@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/07 13:41:31 by gkuma             #+#    #+#             */
-/*   Updated: 2016/02/07 13:41:33 by gkuma            ###   ########.fr       */
+/*   Created: 2016/02/07 13:45:06 by gkuma             #+#    #+#             */
+/*   Updated: 2016/02/07 13:45:08 by gkuma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int				main(int ac, char *const av[], char *const envp[])
+void			sig_handler(int signo)
 {
-	t_env		*env;
-
-	env = NULL;
-	(void)ac;
-	(void)av;
-	//set_term_param();
-	print_intro();
-	env = getlocalenv(envp);
-	if (env)
-		setlistlvl(&env);
-	if (signal(SIGINT, sig_handler) == SIG_ERR)
-		ft_putendl("sig error");
-	mainbody(env);
-	freenv(env);
-	return (0);
+	if (signo == SIGINT)
+	{
+		if (g_flagsignal != 0)
+		{
+			kill(g_flagsignal, SIGKILL);
+			write(1, "\n", 1);
+			g_flagsignal = 0;
+		}
+		return ;
+	}
 }
