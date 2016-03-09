@@ -14,16 +14,16 @@ NAME = 21sh
 
 CFLAGS = -Wall -Wextra -Werror -c
 
-LFLAGS = -L libft -lft
+LFLAGS = -L libft -lft -lncurses
 
 INC = -I includes/ -I libft/includes
 
 SRCSDIR = src/
 
-SRCS = main.c alloc_tab.c read_input.c define_env.c builtins.c error.c \
+SRCS = main.c maillon_op.c read_input.c alloc_tab.c define_env.c builtins.c error.c \
 	setenv.c unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
 	display_prompt.c history.c default_env.c exit.c \
-	maillon_op.c signal.c
+	 signal.c termcaps.c lst_input_op.c
 
 
 OBJ = $(SRCS:.c=.o)

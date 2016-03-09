@@ -16,16 +16,21 @@ void			mainbody(t_env *env)
 {
 	t_cmd		*base;
 	t_cmd		*ptrmaillon;
+	t_input		*input;
 
 	base = NULL;
 	g_flagsignal = 0;
 	if (!env)
 		env = setdefaultenv();
+	env->term->action = 0;
+	input = NULL;
+	print_prompt(env);
 	while (42)
 	{
-		print_prompt(env);
-		read_command_line(&base);
-		if (base)
+		read_input(&env, &input);
+		if (env->term->action == 1)
+			read_cmd(&env, &base);
+		if (base && env->term->action == 1)
 		{
 			ptrmaillon = base;
 			while (ptrmaillon)
@@ -35,6 +40,8 @@ void			mainbody(t_env *env)
 				ptrmaillon = ptrmaillon->next;
 			}
 			freebase(&base);
+			print_prompt(env);
+			env->term->action = 0;
 		}
 	}
 }

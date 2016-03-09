@@ -23,6 +23,9 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include <signal.h>
+# include <termios.h>
+# include <termcap.h>
+# include <sys/ioctl.h>
 
 # define ANSI_COLOR_YELLOW  	"\x1b[33m"
 # define ANSI_COLOR_RESET   	"\x1b[0m"
@@ -33,9 +36,26 @@
 
 typedef struct dirent	*t_dirent;
 
+typedef struct 			s_term{
+	int					action;
+	int					canon;
+	int					echo;
+	int					vim;
+	int					tim;
+}						t_term;
+
+typedef struct			s_input{
+	char				c;
+	int					index;
+	struct s_input		*next;
+}						t_input;
+
 typedef struct			s_env{
 	char				*name;
 	char				*value;
+	int					fd;
+	struct s_term		*term;
+	struct s_input		*input;
 	struct s_env		*next;
 }						t_env;
 
@@ -80,8 +100,9 @@ void					topbar_icone(void);
 /*
 ** read_input.c
 */
-void					read_command_line(t_cmd **base);
-void					parse_value(char *value, char **tmp, t_cmd **base);
+void					read_input(t_env **e, t_input **input);
+void					read_cmd(t_env **env, t_cmd **base);
+void					parse_value(t_env **env, char **tmp, t_cmd **base);
 
 /*
 ** alloc_tab.c
@@ -183,5 +204,20 @@ void					sig_handler(int signo);
 ** exit.c
 */
 void					ft_exit(void);
+
+/*
+** termcaps.c
+*/
+void					set_term_param(t_env *env);
+void					check_terminal(t_env *env);
+void					init_term(t_env *env);
+
+/*
+** lst_input_op.c
+*/
+void					add_to_lst_input(t_input **input, char buf, int i);
+t_input					*init_lst_input();
+void					print_lst_input(t_input **input, t_env **env);
+void					delete_lst_input(t_input **input);
 
 #endif

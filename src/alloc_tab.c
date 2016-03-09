@@ -12,19 +12,6 @@
 
 #include "minishell.h"
 
-char			**parse_cmd(char *cmdvalue)
-{
-	char		**cmdtab;
-
-	if (!(*cmdvalue))
-		return (NULL);
-	cmdtab = set_tab(cmdvalue);
-	if (!cmdtab)
-		return (NULL);
-	fill_cmd_tab(cmdvalue, cmdtab);
-	return (cmdtab);
-}
-
 void			fill_cmd_tab(char *cmdvalue, char **cmdtab)
 {
 	int			i;
@@ -104,6 +91,19 @@ char			**set_tab(char *cmd)
 	return (tab);
 }
 
+char			**parse_cmd(char *cmdvalue)
+{
+	char		**cmdtab;
+
+	if (!(*cmdvalue))
+		return (NULL);
+	cmdtab = set_tab(cmdvalue);
+	if (!cmdtab)
+		return (NULL);
+	fill_cmd_tab(cmdvalue, cmdtab);
+	return (cmdtab);
+}
+
 void			ft_listintab(t_env **env, char **tabenv)
 {
 	int			i;
@@ -128,3 +128,4 @@ void			ft_listintab(t_env **env, char **tabenv)
 	}
 	tabenv[i] = NULL;
 }
+

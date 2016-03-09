@@ -19,9 +19,9 @@ int				main(int ac, char *const av[], char *const envp[])
 	env = NULL;
 	(void)ac;
 	(void)av;
-	//set_term_param();
 	print_intro();
 	env = getlocalenv(envp);
+	set_term_param(env);
 	if (env)
 		setlistlvl(&env);
 	if (signal(SIGINT, sig_handler) == SIG_ERR)

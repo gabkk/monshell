@@ -12,45 +12,71 @@
 
 #include "minishell.h"
 
-void			read_command_line(t_cmd **base)
+void			read_input(t_env **e, t_input **input)
 {
-	char		*value;
-	char		**tmp;
-	int			ret;
+	char	buff[4];
+	int		index;
 
-	value = NULL;
-	tmp = NULL;
-	ret = 0;
-	if ((ret = get_next_line(STDIN_FILENO, &value)) == 0)
+	index = 0;
+	read((*e)->fd, buff, 4);
+	if (buff[0] != '\n' && ft_isprint(buff[0]))
 	{
-		ft_putendl("exit");
-		free(value);
-		exit(0);
+		ft_putchar_fd(buff[0], (*e)->fd);
+		add_to_lst_input(input, buff[0], index);
 	}
-	else if (ret == -1)
-		exit(EXIT_FAILURE);
-	else
+	else if (buff[0] == 27)
 	{
-		if (*value)
-			add_to_history(value);
-		parse_value(value, tmp, base);
+		if (buff[0] == 27)
+		{
+			//key-arrow
+			ft_putendl_fd("F", (*e)->fd);
+			//exit(0);			
+		}
+		else if (buff[0] == 127 || (buff[0] == 27 && buff[2] == '3'))//del
+			ft_putendl_fd("delete", (*e)->fd);
+		ft_bzero(buff, 4);
+		return ;
+	}
+	else if (buff[0] == '\n')//line
+	{
+
+		ft_putendl_fd(" ", (*e)->fd);
+		print_lst_input(input, e);
+		//delete free la liste input
+		delete_lst_input(input);
+		(*e)->term->action = 1;
+	}
+	ft_bzero(buff, 4);
+}
+
+void			read_cmd(t_env **env, t_cmd **base)
+{
+	char		**tmp;
+
+	tmp = NULL;
+	if ((*env)->value)
+	{
+		add_to_history((*env)->value);
+		parse_value(env, tmp, base);
 	}
 }
 
-void			parse_value(char *value, char **tmp, t_cmd **base)
+void			parse_value(t_env **env, char **tmp, t_cmd **base)
 {
 	int			i;
 	char		**cmd;
 
 	i = 0;
-	if ((checkifonlyspace(value) == 1))
+	if ((checkifonlyspace((*env)->value) == 1))
 	{
-		free(value);
+		free((*env)->value);
+		(*env)->term->action = 0;
+		print_prompt(*env);
 		return ;
 	}
-	if (*value)
+	if ((*env)->value)
 	{
-		cmd = ft_strsplit(value, ';');
+		cmd = ft_strsplit((*env)->value, ';');
 		if (!*cmd)
 			return ;
 		while (cmd[i])
@@ -62,6 +88,6 @@ void			parse_value(char *value, char **tmp, t_cmd **base)
 			i++;
 		}
 		free(cmd);
+		free((*env)->value);
 	}
-	free(value);
 }
