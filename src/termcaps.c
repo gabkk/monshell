@@ -12,13 +12,13 @@
 
 #include "minishell.h"
 
-void			set_term_param(t_env *env)
+void			set_term_param(t_para *glob)
 {
-	check_terminal(env);
-	init_term(env);
+	check_terminal(glob);
+	init_term(glob);
 }
 
-void					check_terminal(t_env *env)
+void					check_terminal(t_para *glob)
 {
 	char				*name;
 
@@ -28,15 +28,15 @@ void					check_terminal(t_env *env)
 		ft_putendl_fd("fd incorrect", 2);
 		exit(EXIT_FAILURE);
 	}
-	env->fd = open(name, O_RDWR | O_NONBLOCK);
-	if (!(isatty(env->fd)))
+	glob->fd = open(name, O_RDWR | O_NONBLOCK);
+	if (!(isatty(glob->fd)))
 	{
 		ft_putendl_fd("Not a tty", 1);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void					init_term(t_env *env)
+void					init_term(t_para *glob)
 {
 	struct termios		term;
 	const char			*tname;
@@ -56,11 +56,11 @@ void					init_term(t_env *env)
 		
 		return (exit(EXIT_FAILURE));
 	}
-	env->term = (t_term *)malloc(sizeof(t_term)); //a malloc
-	env->term->canon = term.c_lflag;
-	env->term->echo = term.c_lflag;
-	env->term->vim = term.c_cc[VMIN];
-	env->term->tim = term.c_cc[VTIME];
+	glob->term = (t_term *)malloc(sizeof(t_term)); //a malloc
+	glob->term->canon = term.c_lflag;
+	glob->term->echo = term.c_lflag;
+	glob->term->vim = term.c_cc[VMIN];
+	glob->term->tim = term.c_cc[VTIME];
 	term.c_cc[VMIN] = 0;
 	term.c_cc[VTIME] = 1;
 	term.c_lflag &= ~(ICANON);

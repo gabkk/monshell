@@ -53,11 +53,15 @@ typedef struct			s_input{
 typedef struct			s_env{
 	char				*name;
 	char				*value;
-	int					fd;
-	struct s_term		*term;
-	struct s_input		*input;
 	struct s_env		*next;
 }						t_env;
+
+typedef struct			s_para{
+	int					fd;
+	char				*cmd;
+	struct s_env		*env;
+	struct s_term		*term;
+}						t_para;
 
 typedef struct			s_cmd{
 	char				**listcmd;
@@ -82,7 +86,7 @@ void					add_maillon_cmd(char **cmd, t_cmd **liste);
 /*
 ** dispatchjob.c
 */
-void					mainbody(t_env *env);
+void					mainbody(t_para *glob);
 void					dispatch(t_env **env, char **c);
 char					**settabenv(t_env **env);
 void					into_fork(char *path, char **cmd, char **tabenv);
@@ -100,9 +104,9 @@ void					topbar_icone(void);
 /*
 ** read_input.c
 */
-void					read_input(t_env **e, t_input **input);
-void					read_cmd(t_env **env, t_cmd **base);
-void					parse_value(t_env **env, char **tmp, t_cmd **base);
+void					read_input(t_para *glob, t_input **input);
+void					read_cmd(t_para *glob, t_cmd **base);
+void					parse_value(t_para **glob, char **tmp, t_cmd **base);
 
 /*
 ** alloc_tab.c
@@ -208,16 +212,16 @@ void					ft_exit(void);
 /*
 ** termcaps.c
 */
-void					set_term_param(t_env *env);
-void					check_terminal(t_env *env);
-void					init_term(t_env *env);
+void					set_term_param(t_para *glob);
+void					check_terminal(t_para *glob);
+void					init_term(t_para *glob);
 
 /*
 ** lst_input_op.c
 */
 void					add_to_lst_input(t_input **input, char buf, int i);
 t_input					*init_lst_input();
-void					print_lst_input(t_input **input, t_env **env);
+void					print_lst_input(t_input **input, t_para **glob);
 void					delete_lst_input(t_input **input);
 
 #endif

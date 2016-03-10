@@ -58671,3 +58671,50 @@ Pqwe
 ls
 cd ..
 ls
+
+
+
+ls
+
+
+cd
+ls
+l
+s
+ls
+env
+ls
+env
+/bnin/ls
+/bin/ls
+ls
+ls
+ls
+ls
+ene
+env
+test
+setenv
+setenv PATH=/usr/bin
+setenv test
+env
+setenv
+setenv PATH=test
+env
+ls
+cd ..
+unstenv SHELL
+unste
+unsetenv SHELL
+env
+unsetenv USER PATH
+ls
+setenv PATH:/usr/bin:?/
+env
+ls
+setenv PATH=/bin:/
+ls
+setne
+sen
+setenv PATH=/toto
+ls

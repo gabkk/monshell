@@ -23,7 +23,9 @@ char			*iscommande(t_env **env, char *cmd)
 	path = NULL;
 	value = NULL;
 	tab_path = NULL;
+
 	path = getlistevalue(env, "PATH");
+
 	if (path)
 		tab_path = ft_strsplit(path, ':');
 	else

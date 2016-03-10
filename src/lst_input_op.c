@@ -46,7 +46,7 @@ t_input				*init_lst_input()
 	return (newmaillon);
 }
 
-void				print_lst_input(t_input **input, t_env **env)
+void				print_lst_input(t_input **input, t_para **glob)
 {
 	t_input 		*ptr;
 	int 			i;
@@ -58,16 +58,16 @@ void				print_lst_input(t_input **input, t_env **env)
 		i++;
 		ptr = ptr->next;
 	}
-	(*env)->value = (char *)malloc(sizeof(char) * i);
+	(*glob)->cmd = (char *)malloc(sizeof(char) * i);
 	ptr = *input;
 	i = 0;
 	while (ptr)
 	{
-		(*env)->value[i] = ptr->c;
+		(*glob)->cmd[i] = ptr->c;
 		i++;
 		ptr = ptr->next;
 	}
-	(*env)->value[i] = '\0';
+	(*glob)->cmd[i] = '\0';
 }
 
 void				delete_lst_input(t_input **input)

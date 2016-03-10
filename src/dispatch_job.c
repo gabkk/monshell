@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void			mainbody(t_env *env)
+void			mainbody(t_para *glob)
 {
 	t_cmd		*base;
 	t_cmd		*ptrmaillon;
@@ -20,28 +20,28 @@ void			mainbody(t_env *env)
 
 	base = NULL;
 	g_flagsignal = 0;
-	if (!env)
-		env = setdefaultenv();
-	env->term->action = 0;
+	if (!glob->env)
+		glob->env = setdefaultenv();
+	glob->term->action = 0;
 	input = NULL;
-	print_prompt(env);
+	print_prompt(glob->env);
 	while (42)
 	{
-		read_input(&env, &input);
-		if (env->term->action == 1)
-			read_cmd(&env, &base);
-		if (base && env->term->action == 1)
+		read_input(glob, &input);
+		if (glob->term->action == 1)
+			read_cmd(glob, &base);
+		if (base && glob->term->action == 1)
 		{
 			ptrmaillon = base;
 			while (ptrmaillon)
 			{
 				if (ptrmaillon->listcmd)
-					dispatch(&env, ptrmaillon->listcmd);
+					dispatch(&glob->env, ptrmaillon->listcmd);
 				ptrmaillon = ptrmaillon->next;
 			}
 			freebase(&base);
-			print_prompt(env);
-			env->term->action = 0;
+			print_prompt(glob->env);
+			glob->term->action = 0;
 		}
 	}
 }

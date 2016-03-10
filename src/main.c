@@ -15,18 +15,22 @@
 int				main(int ac, char *const av[], char *const envp[])
 {
 	t_env		*env;
+	t_para		*glob;
 
 	env = NULL;
 	(void)ac;
 	(void)av;
+	glob = (t_para *)malloc(sizeof(t_para));
 	print_intro();
 	env = getlocalenv(envp);
-	set_term_param(env);
+	set_term_param(glob);
 	if (env)
 		setlistlvl(&env);
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		ft_putendl("sig error");
-	mainbody(env);
-	freenv(env);
+	glob->env = env;
+	mainbody(glob);
+	freenv(glob->env);
+	//free all glob
 	return (0);
 }
