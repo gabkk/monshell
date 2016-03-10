@@ -12,40 +12,6 @@
 
 #include "minishell.h"
 
-void			mainbody(t_para *glob)
-{
-	t_cmd		*base;
-	t_cmd		*ptrmaillon;
-	t_input		*input;
-
-	base = NULL;
-	g_flagsignal = 0;
-	if (!glob->env)
-		glob->env = setdefaultenv();
-	glob->term->action = 0;
-	input = NULL;
-	print_prompt(glob->env);
-	while (42)
-	{
-		read_input(glob, &input);
-		if (glob->term->action == 1)
-			read_cmd(glob, &base);
-		if (base && glob->term->action == 1)
-		{
-			ptrmaillon = base;
-			while (ptrmaillon)
-			{
-				if (ptrmaillon->listcmd)
-					dispatch(&glob->env, ptrmaillon->listcmd);
-				ptrmaillon = ptrmaillon->next;
-			}
-			freebase(&base);
-			print_prompt(glob->env);
-			glob->term->action = 0;
-		}
-	}
-}
-
 void			dispatch(t_env **env, char **c)
 {
 	char		*path;
@@ -71,30 +37,6 @@ void			dispatch(t_env **env, char **c)
 	else if (c[0])
 		notfound_error(c[0]);
 	ft_freetab(tabenv);
-}
-
-char			**settabenv(t_env **env)
-{
-	int			i;
-	t_env		*ptrmaillon;
-	char		**tabenv;
-
-	tabenv = NULL;
-	i = 0;
-	if (*env)
-	{
-		ptrmaillon = *env;
-		while (ptrmaillon)
-		{
-			i++;
-			ptrmaillon = ptrmaillon->next;
-		}
-		tabenv = (char **)malloc(sizeof(char *) * (i + 1));
-		ft_listintab(env, tabenv);
-	}
-	else
-		tabenv = getdefaultenv();
-	return (tabenv);
 }
 
 void			into_fork(char *path, char **cmd, char **tabenv)

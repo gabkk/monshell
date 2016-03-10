@@ -51,7 +51,7 @@ void				print_lst_input(t_input **input, t_para **glob)
 	t_input 		*ptr;
 	int 			i;
 
-	i  =0;
+	i = 0;
 	ptr = *input;
 	while (ptr)
 	{

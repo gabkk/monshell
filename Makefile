@@ -20,9 +20,9 @@ INC = -I includes/ -I libft/includes
 
 SRCSDIR = src/
 
-SRCS = main.c maillon_op.c read_input.c alloc_tab.c define_env.c builtins.c error.c \
-	setenv.c unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
-	display_prompt.c history.c default_env.c exit.c \
+SRCS = main.c maillon_op.c read_input.c alloc_tab.c define_env.c builtins.c \
+	error.c setenv.c unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
+	main_body.c display_prompt.c history.c default_env.c exit.c \
 	 signal.c termcaps.c lst_input_op.c
 
 

@@ -84,28 +84,34 @@ void					setenv_maillon(char *pwd, char *nextpwd, t_env *ptm);
 void					add_maillon_cmd(char **cmd, t_cmd **liste);
 
 /*
+** main_body.c
+*/
+void					mainbody(t_para *glob);
+void					main_loop(t_para *glob);
+void					main_action(t_para *glob);
+
+/*
 ** dispatchjob.c
 */
 void					mainbody(t_para *glob);
 void					dispatch(t_env **env, char **c);
-char					**settabenv(t_env **env);
 void					into_fork(char *path, char **cmd, char **tabenv);
 void					fathersup(pid_t father, int status);
 
 /*
 ** display_prompt.c
 */
-void					print_prompt(t_env *env);
-void					print_intro(void);
-void					topbar_path(char *home, int flag, char *pwd);
-void					topbar_user(char *value);
-void					topbar_icone(void);
+void					print_prompt(t_para *glob);
+void					print_intro(int fd);
+void					topbar_path(int fd, char *home, int flag, char *pwd);
+void					topbar_user(int fd, char *value);
+void					topbar_icone(int fd);
 
 /*
 ** read_input.c
 */
-void					read_input(t_para *glob, t_input **input);
-void					read_cmd(t_para *glob, t_cmd **base);
+void					read_input(t_para *glob, t_input **input, int index);
+t_cmd					*read_cmd(t_para *glob);
 void					parse_value(t_para **glob, char **tmp, t_cmd **base);
 
 /*
@@ -118,11 +124,12 @@ void					fill_cmd_tab(char *cmdvalue, char **cmdtab);
 void					ft_listintab(t_env	**env, char **tabenv);
 
 /*
-** defineEnv.c
+** define_env.c
 */
 t_env					*getlocalenv(char *const envp[]);
 void					setlocalenv(char *const envp[], t_env **liste);
 void					fill_env(t_env *newmaillon, char *fullenv, int equal);
+char					**settabenv(t_env **env);
 
 /*
 ** builtins.c

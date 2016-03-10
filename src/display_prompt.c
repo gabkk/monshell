@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void			print_prompt(t_env *env)
+void			print_prompt(t_para *glob)
 {
 	char		*name;
 	char		*home;
@@ -24,64 +24,64 @@ void			print_prompt(t_env *env)
 	flag = 1;
 	home = NULL;
 	name = NULL;
-	if (env)
+	if (glob->env)
 	{
-		home = getlistevalue(&env, "HOME");
-		name = getlistevalue(&env, "USER");
+		home = getlistevalue(&glob->env, "HOME");
+		name = getlistevalue(&glob->env, "USER");
 	}
-	topbar_user(name);
+	topbar_user(glob->fd, name);
 	if (home && pwd)
 		flag = ft_strncmp(pwd, home, ft_strlen(home));
 	if (pwd)
-		topbar_path(home, flag, pwd);
-	topbar_icone();
+		topbar_path(glob->fd, home, flag, pwd);
+	topbar_icone(glob->fd);
 }
 
-void			topbar_icone()
+void			topbar_icone(int fd)
 {
-	ft_putstr(ANSI_COLOR_LIGHT_BLUE);
-		ft_putstr(" » ");
-	ft_putstr(ANSI_COLOR_RESET);
+	ft_putstr_fd(ANSI_COLOR_LIGHT_BLUE, fd);
+		ft_putstr_fd(" » ", fd);
+	ft_putstr_fd(ANSI_COLOR_RESET, fd);
 }
 
-void			topbar_user(char *value)
+void			topbar_user(int fd, char *value)
 {
-//	ft_putstr("\x1b[38;5;237m");
+//	ft_putstr("\x1b[38;5;fd37m");
 //	ft_putendl("-------------");
-	ft_putstr("\x1b[0m");
-	ft_putstr(ANSI_COLOR_LIGHT_BLUE);
+	ft_putstr_fd("\x1b[0m", fd);
+	ft_putstr_fd(ANSI_COLOR_LIGHT_BLUE, fd);
 	if (value)
-		ft_putstr(value);
-	ft_putstr("|\x1b[0m");
+		ft_putstr_fd(value, fd);
+	ft_putstr_fd("|\x1b[0m", fd);
 }
 
-void			topbar_path(char *home, int flag, char *pwd)
+void			topbar_path(int fd, char *home, int flag, char *pwd)
 {
 	char		*tmp;
 
-	ft_putstr(ANSI_COLOR_YELLOW);
+	ft_putstr_fd(ANSI_COLOR_YELLOW, fd);
 //	ft_putstr("\t\t");
 	if (flag == 0 && home)
 	{
-		ft_putstr("~");
+		ft_putstr_fd("~", fd);
 		tmp = ft_strsub(pwd, ft_strlen(home),\
 			(ft_strlen(pwd) - ft_strlen(home)));
-		ft_putstr(tmp);
+		ft_putstr_fd(tmp, fd);
 		free(tmp);
 	}
 	else
-		ft_putstr(pwd);
-	ft_putstr(ANSI_COLOR_RESET);
+		ft_putstr_fd(pwd, fd);
+	ft_putstr_fd(ANSI_COLOR_RESET, fd);
 }
 
-void			print_intro(void)
+void			print_intro(int fd)
 {
-	ft_putendl("___  ____       _     _          _ _ ");
-	ft_putendl("|  \\/  (_)     (_)   | |        | | |");
-	ft_putendl("| .  . |_ _ __  _ ___| |__   ___| | |");
-	ft_putendl("| |\\/| | | '_ \\| / __| '_ \\ / _ \\ | |");
-	ft_putendl("| |  | | | | | | \\__ \\ | | |  __/ | |");
-	ft_putendl("\\_|  |_/_|_| |_|_|___/_| |_|\\___|_|_|");
-	ft_putendl("");
-	ft_putendl("");
+	ft_putendl_fd("___  ____       _     _          _ _ ", fd);
+	ft_putendl_fd("|  \\/  (_)     (_)   | |        | | |", fd);
+	ft_putendl_fd("| .  . |_ _ __  _ ___| |__   ___| | |", fd);
+	ft_putendl_fd("| |\\/| | | '_ \\| / __| '_ \\ / _ \\ | |", fd);
+	ft_putendl_fd("| |  | | | | | | \\__ \\ | | |  __/ | |", fd);
+	ft_putendl_fd("\\_|  |_/_|_| |_|_|___/_| |_|\\___|_|_|", fd);
+	ft_putendl_fd("", fd);
+	ft_putendl_fd("", fd);
 }

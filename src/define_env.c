@@ -76,3 +76,27 @@ void			fill_env(t_env *newmaillon, char *fullenv, int equal)
 	}
 	newmaillon->value[ptr] = '\0';
 }
+
+char			**settabenv(t_env **env)
+{
+	int			i;
+	t_env		*ptrmaillon;
+	char		**tabenv;
+
+	tabenv = NULL;
+	i = 0;
+	if (*env)
+	{
+		ptrmaillon = *env;
+		while (ptrmaillon)
+		{
+			i++;
+			ptrmaillon = ptrmaillon->next;
+		}
+		tabenv = (char **)malloc(sizeof(char *) * (i + 1));
+		ft_listintab(env, tabenv);
+	}
+	else
+		tabenv = getdefaultenv();
+	return (tabenv);
+}

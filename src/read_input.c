@@ -12,53 +12,52 @@
 
 #include "minishell.h"
 
-void			read_input(t_para *glob, t_input **input)
+void			read_input(t_para *glob, t_input **input, int index)
 {
-	char	buff[4];
-	int		index;
+	char	buff[2];
+	int  ret;
 
-	index = 0;
-	read(glob->fd, buff, 4);
-	if (buff[0] != '\n' && ft_isprint(buff[0]))
+	ft_bzero(buff, 2);
+	if ((ret = read(0, buff, 1)) == 0)
+		exit(0);
+	if (ret == -1)
+		ft_putendl_fd("read error", 2);
+	if ((buff[0]))
 	{
 		ft_putchar_fd(buff[0], glob->fd);
 		add_to_lst_input(input, buff[0], index);
+		(*input)->index++;
 	}
 	else if (buff[0] == 27)
 	{
 		if (buff[0] == 27)
 		{
-			//key-arrow
 			ft_putendl_fd("F", glob->fd);
-			//exit(0);			
 		}
-		else if (buff[0] == 127 || (buff[0] == 27 && buff[2] == '3'))//del
-			ft_putendl_fd("delete", glob->fd);
-		ft_bzero(buff, 4);
+		ft_bzero(buff, 2);
 		return ;
 	}
-	else if (buff[0] == '\n')//line
+	if (buff[0] == '\n')//line
 	{
-
-		ft_putendl_fd(" ", glob->fd);
 		print_lst_input(input, &glob);
-		//delete free la liste input
 		delete_lst_input(input);
 		glob->term->action = 1;
 	}
-	ft_bzero(buff, 4);
+
 }
 
-void			read_cmd(t_para *glob, t_cmd **base)
+t_cmd			*read_cmd(t_para *glob)
 {
 	char		**tmp;
+	t_cmd		*base;
 
 	tmp = NULL;
-	if (glob->cmd)
-	{
+	base = NULL;
+	parse_value(&glob, tmp, &base);
+	if (glob->term->action == 1)
 		add_to_history(glob->cmd);
-		parse_value(&glob, tmp, base);
-	}
+	free(glob->cmd);
+	return (base);
 }
 
 void			parse_value(t_para **glob, char **tmp, t_cmd **base)
@@ -70,9 +69,9 @@ void			parse_value(t_para **glob, char **tmp, t_cmd **base)
 	if ((checkifonlyspace((*glob)->cmd) == 1))
 	{
 		(*glob)->term->action = 0;
-		print_prompt((*glob)->env);
+		print_prompt(*glob);
 	}
-	else if ((*glob)->cmd)
+	else
 	{
 		cmd = ft_strsplit((*glob)->cmd, ';');
 		if (!*cmd)
@@ -87,5 +86,4 @@ void			parse_value(t_para **glob, char **tmp, t_cmd **base)
 		}
 		free(cmd);
 	}
-	free((*glob)->cmd);
 }

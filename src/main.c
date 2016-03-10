@@ -21,8 +21,8 @@ int				main(int ac, char *const av[], char *const envp[])
 	(void)ac;
 	(void)av;
 	glob = (t_para *)malloc(sizeof(t_para));
-	print_intro();
 	env = getlocalenv(envp);
+	//print_intro(); // For tests
 	set_term_param(glob);
 	if (env)
 		setlistlvl(&env);
@@ -31,6 +31,7 @@ int				main(int ac, char *const av[], char *const envp[])
 	glob->env = env;
 	mainbody(glob);
 	freenv(glob->env);
+	close(glob->fd);
 	//free all glob
 	return (0);
 }

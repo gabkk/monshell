@@ -22,13 +22,15 @@ void					check_terminal(t_para *glob)
 {
 	char				*name;
 
-	name = ttyname(0);
+	glob->fd = open("/dev/tty", O_RDWR);
+	name = ttyname(glob->fd);
+	//ft_putendl_fd(name, 2);
+	//ft_putnbr_fd(glob->fd, glob->fd);
 	if (!name)
 	{
 		ft_putendl_fd("fd incorrect", 2);
 		exit(EXIT_FAILURE);
 	}
-	glob->fd = open(name, O_RDWR | O_NONBLOCK);
 	if (!(isatty(glob->fd)))
 	{
 		ft_putendl_fd("Not a tty", 1);
@@ -43,17 +45,16 @@ void					init_term(t_para *glob)
 
 	if ((tname = getenv("TERM")) == NULL)//verifier avec l env local
 	{
-		ft_putendl_fd("Environement doesn't exist", 2);
-		exit(EXIT_FAILURE);
+//		ft_putendl_fd("Environement doesn't exist", 2);//
+//		exit(EXIT_FAILURE);//
+		tname = "xterm-256color";
 	}
 	if (tgetent(NULL, tname) == -1){
 		ft_putendl_fd("tgetent incorrect", 2);
-
 		return (exit(EXIT_FAILURE));
 	}
-	if (tcgetattr(0, &term) == -1){
+	if (tcgetattr(glob->fd, &term) == -1){
 		ft_putendl_fd("tcgetattr incorrect", 2);
-		
 		return (exit(EXIT_FAILURE));
 	}
 	glob->term = (t_term *)malloc(sizeof(t_term)); //a malloc
@@ -61,10 +62,10 @@ void					init_term(t_para *glob)
 	glob->term->echo = term.c_lflag;
 	glob->term->vim = term.c_cc[VMIN];
 	glob->term->tim = term.c_cc[VTIME];
-	term.c_cc[VMIN] = 0;
-	term.c_cc[VTIME] = 1;
+	term.c_cc[VMIN] = 1; //a checker pour eviter le segfault
+	term.c_cc[VTIME] = 0; //a checker pour eviter le segfault
 	term.c_lflag &= ~(ICANON);
 	term.c_lflag &= ~(ECHO);
-	if (tcsetattr(0, TCSADRAIN, &term) == -1)
+	if (tcsetattr(glob->fd, TCSADRAIN, &term) == -1)
 		return ;
 }
