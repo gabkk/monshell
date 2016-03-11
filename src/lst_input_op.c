@@ -28,9 +28,10 @@ void				add_to_lst_input(t_input **input, char buf, int i)
 	while (ptr->next)
 		ptr = ptr->next;
 	ptr->next = newm;
+	newm->prev = ptr;
+	newm->pos[0] = i;
 	newm->index = i;
 	newm->c = buf;
-	newm->next = NULL;
 }
 
 t_input				*init_lst_input()
@@ -42,6 +43,9 @@ t_input				*init_lst_input()
 		return (NULL);
 	newmaillon->c = 0;
 	newmaillon->index = 0;
+	newmaillon->pos[0] = 0;
+	newmaillon->pos[1] = 0;
+	newmaillon->prev = NULL;
 	newmaillon->next = NULL;
 	return (newmaillon);
 }

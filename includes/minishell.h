@@ -47,6 +47,8 @@ typedef struct 			s_term{
 typedef struct			s_input{
 	char				c;
 	int					index;
+	int					pos[2];
+	struct s_input		*prev;
 	struct s_input		*next;
 }						t_input;
 
@@ -58,6 +60,7 @@ typedef struct			s_env{
 
 typedef struct			s_para{
 	int					fd;
+	int					cursor[2];
 	char				*cmd;
 	struct s_env		*env;
 	struct s_term		*term;
@@ -110,7 +113,7 @@ void					topbar_icone(int fd);
 /*
 ** read_input.c
 */
-void					read_input(t_para *glob, t_input **input, int index);
+void					read_input(t_para *glob, t_input **input, int *index);
 t_cmd					*read_cmd(t_para *glob);
 void					parse_value(t_para **glob, char **tmp, t_cmd **base);
 

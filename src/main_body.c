@@ -32,7 +32,7 @@ void					main_loop(t_para *glob)
 	index = 0;
 	while (42)
 	{
-		read_input(glob, &input, index);
+		read_input(glob, &input, &index);
 		if (glob->cmd && glob->term->action == 1)
 		{
 			main_action(glob);

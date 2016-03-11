@@ -29,6 +29,8 @@ int				main(int ac, char *const av[], char *const envp[])
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
 		ft_putendl("sig error");
 	glob->env = env;
+	glob->cursor[0] = 0;
+	glob->cursor[1] = 0;
 	mainbody(glob);
 	freenv(glob->env);
 	close(glob->fd);

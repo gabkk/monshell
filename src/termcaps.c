@@ -49,11 +49,13 @@ void					init_term(t_para *glob)
 //		exit(EXIT_FAILURE);//
 		tname = "xterm-256color";
 	}
-	if (tgetent(NULL, tname) == -1){
+	if (tgetent(NULL, tname) == -1)
+	{
 		ft_putendl_fd("tgetent incorrect", 2);
 		return (exit(EXIT_FAILURE));
 	}
-	if (tcgetattr(glob->fd, &term) == -1){
+	if (tcgetattr(glob->fd, &term) == -1)
+	{
 		ft_putendl_fd("tcgetattr incorrect", 2);
 		return (exit(EXIT_FAILURE));
 	}
