@@ -114,8 +114,7 @@ void					topbar_icone(int fd);
 ** read_input.c
 */
 void					read_input(t_para *glob, t_input **input, int *index);
-t_cmd					*read_cmd(t_para *glob);
-void					parse_value(t_para **glob, char **tmp, t_cmd **base);
+void					parse_value(t_para **glob, t_cmd **base);
 
 /*
 ** alloc_tab.c
@@ -229,9 +228,19 @@ void					init_term(t_para *glob);
 /*
 ** lst_input_op.c
 */
-void					add_to_lst_input(t_input **input, char buf, int i);
 t_input					*init_lst_input();
 void					print_lst_input(t_input **input, t_para **glob);
+void					save_cmd(t_input **input, t_para **glob);
 void					delete_lst_input(t_input **input);
+void					add_back_input(t_input **input, char buf, int i);
+void					set_first_input(t_input **input, char buf, int i);
+void					add_inside_input(t_input **input, char buf, int i);
+
+/*
+** backspace.c
+*/
+void					backspace(t_input **input, t_para **glob, int *total);
+void					backspace_last(t_input **input, t_para **glob);
+void					backspace_inside(t_input **input, t_para **glob);
 
 #endif
