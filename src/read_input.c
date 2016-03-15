@@ -20,98 +20,61 @@ void			read_input(t_para *glob, t_input **input, int *total)
 	ft_bzero(buff, 3);
 	if ((ret = read(0, buff, 3)) == 0)
 		exit(0);
-	if (ret == -1)
-	{
-		ft_putendl_fd("read error", 2);
-		exit(0);
-	}
+	else if (ret == -1)
+		exit(EXIT_FAILURE);
 	if (ft_isprint(buff[0]) == 1)
+		read_if_print(&glob, input, total, buff[0]);
+	else if (buff[0] == 127)
 	{
-		if (glob->cursor[0] == *total)
-		{
-			add_back_input(input, buff[0], *total);
-			ft_putchar_fd(buff[0], glob->fd);
-		}
-		else if (glob->cursor[0] < *total || glob->cursor[0] == 0)
-		{
-			add_inside_input(input, buff[0], glob->cursor[0]);
-			print_lst_input(input, &glob);
-		}
-		glob->cursor[0] += 1;
-		*total += 1;
-		ft_bzero(buff, 3);
-	}
-	else if (buff[0] == 127 || (buff[0] == 27 && buff[2] == '3'))
-	{
-		if (buff[0] == 127 && glob->cursor[0] > 0)
-		{
-			backspace(input, &glob, total);
-//			print_lst_input(input, &glob);
-			// ft_putchar_fd(' ', (*glob)->fd);
-
-			*total -= 1;
-		}
-		ft_bzero(buff, 3);
+		if (glob->cursor[0] > 0)
+			backspace(input, &glob, total);	
 	}
 	else if (buff[0] == 27)
-	{
-		if (buff[2] == 'A')
-			ft_putstr_fd("up", glob->fd);
-		else if (buff[2] == 'B')
-			ft_putstr_fd("down", glob->fd);
-		else if (buff[2] == 'C')//droite
-		{
-			if (glob->cursor[0] < *total)
-			{
-				ft_putstr_fd(tgetstr("nd", NULL), glob->fd);
-				glob->cursor[0] += 1;
-			}
-		}
-		else if (buff[2] == 'D')//gauche
-		{
-			if (glob->cursor[0] > 0)
-			{
-				ft_putstr_fd(tgetstr("le", NULL), glob->fd);
-				glob->cursor[0] -= 1;				
-			}
-		}
-		ft_bzero(buff, 3);
-		return ;
-	}
+		read_arrow(&glob, buff[2], *total);
 	else if (buff[0] == '\n')//line
-	{
 		save_cmd(input, &glob);
-		delete_lst_input(input);
-		glob->term->action = 1;
-		ft_putchar_fd('\n', glob->fd);
-	}
 	if (buff[0] == 4)//ctr+d
 		exit(0);
 }
 
-void			parse_value(t_para **glob, t_cmd **base)
+void		read_arrow(t_para **glob, char buff, int total)
 {
-	int			i;
-	char		**cmd;
-	char		**tmp;
-
-	i = 0;
-	tmp = NULL;
-	if ((checkifonlyspace((*glob)->cmd) == 1))
-		(*glob)->term->action = 0;
-	else
+	if (buff == 'A')
+		ft_putstr_fd("up", (*glob)->fd);
+	else if (buff == 'B')
+		ft_putstr_fd("down", (*glob)->fd);
+	else if (buff == 'C')//droite
 	{
-		cmd = ft_strsplit((*glob)->cmd, ';');
-		if (!*cmd)
-			return ;
-		while (cmd[i])
+		if ((*glob)->cursor[0] < total)
 		{
-			tmp = parse_cmd(cmd[i]);
-			if (tmp)
-				add_maillon_cmd(tmp, base);
-			free(cmd[i]);
-			i++;
+			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
+			(*glob)->cursor[0] += 1;
 		}
-		free(cmd);
+	}
+	else if (buff == 'D')//gauche
+	{
+		if ((*glob)->cursor[0] > 0)
+		{
+			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+			(*glob)->cursor[0] -= 1;
+		}
 	}
 }
+
+
+void		read_if_print(t_para **glob, t_input **input, int *total, char buff)
+{
+	if ((*glob)->cursor[0] == *total)
+	{
+		add_back_input(input, buff, *total);
+		ft_putchar_fd(buff, (*glob)->fd);
+	}
+	else if ((*glob)->cursor[0] < *total || (*glob)->cursor[0] == 0)
+	{
+		add_inside_input(input, buff, (*glob)->cursor[0]);
+		print_lst_input(input, glob);
+	}
+	(*glob)->cursor[0] += 1;
+	*total += 1;
+}
+			

@@ -137,6 +137,9 @@ void				save_cmd(t_input **input, t_para **glob)
 		ptr = ptr->next;
 	}
 	(*glob)->cmd[i] = '\0';
+	delete_lst_input(input);
+	(*glob)->term->action = 1;
+	ft_putchar_fd('\n', (*glob)->fd);
 }
 
 void				delete_lst_input(t_input **input)

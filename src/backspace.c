@@ -18,6 +18,8 @@ void				backspace(t_input **input, t_para **glob, int *total)
 		backspace_last(input, glob);
 	else if ((*glob)->cursor[0] < *total)
 		backspace_inside(input, glob);
+	*total -= 1;
+
 }
 void				backspace_last(t_input **input, t_para **glob)
 {

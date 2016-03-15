@@ -68,3 +68,30 @@ void			main_action(t_para *glob)
 		freebase(&base);
 	}
 }
+
+void			parse_value(t_para **glob, t_cmd **base)
+{
+	int			i;
+	char		**cmd;
+	char		**tmp;
+
+	i = 0;
+	tmp = NULL;
+	if ((checkifonlyspace((*glob)->cmd) == 1))
+		(*glob)->term->action = 0;
+	else
+	{
+		cmd = ft_strsplit((*glob)->cmd, ';');
+		if (!*cmd)
+			return ;
+		while (cmd[i])
+		{
+			tmp = parse_cmd(cmd[i]);
+			if (tmp)
+				add_maillon_cmd(tmp, base);
+			free(cmd[i]);
+			i++;
+		}
+		free(cmd);
+	}
+}

@@ -92,6 +92,7 @@ void					add_maillon_cmd(char **cmd, t_cmd **liste);
 void					mainbody(t_para *glob);
 void					main_loop(t_para *glob);
 void					main_action(t_para *glob);
+void					parse_value(t_para **glob, t_cmd **base);
 
 /*
 ** dispatchjob.c
@@ -114,7 +115,8 @@ void					topbar_icone(int fd);
 ** read_input.c
 */
 void					read_input(t_para *glob, t_input **input, int *index);
-void					parse_value(t_para **glob, t_cmd **base);
+void					read_arrow(t_para **glob, char buff, int total);
+void					read_if_print(t_para **glob, t_input **input, int *total, char buff);
 
 /*
 ** alloc_tab.c
