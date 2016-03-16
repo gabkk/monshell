@@ -61,6 +61,8 @@ typedef struct			s_env{
 typedef struct			s_para{
 	int					fd;
 	int					cursor[2];
+	int					total_h;
+	int					current_h;
 	char				*cmd;
 	struct s_env		*env;
 	struct s_term		*term;
@@ -117,6 +119,8 @@ void					topbar_icone(int fd);
 void					read_input(t_para *glob, t_input **input, int *index);
 void					read_arrow(t_para **glob, char buff, int total);
 void					read_if_print(t_para **glob, t_input **input, int *total, char buff);
+void					read_ud(t_para **glob, char buff);
+void					read_lr(t_para **glob, char buff, int total);
 
 /*
 ** alloc_tab.c
@@ -244,5 +248,9 @@ void					add_inside_input(t_input **input, char buf, int i);
 void					backspace(t_input **input, t_para **glob, int *total);
 void					backspace_last(t_input **input, t_para **glob);
 void					backspace_inside(t_input **input, t_para **glob);
+
+void					tot_hist(t_para **glob);
+void					show_last_hist(t_para **glob);
+void					clear_screen(t_para *glob);
 
 #endif

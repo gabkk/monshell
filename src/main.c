@@ -24,6 +24,7 @@ int				main(int ac, char *const av[], char *const envp[])
 	env = getlocalenv(envp);
 	//print_intro(); // For tests
 	set_term_param(glob);
+	tot_hist(&glob);
 	if (env)
 		setlistlvl(&env);
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
@@ -36,4 +37,75 @@ int				main(int ac, char *const av[], char *const envp[])
 	close(glob->fd);
 	//free all glob
 	return (0);
+}
+
+void			tot_hist(t_para **glob)
+{
+	char		*line;
+	int			fd;
+	int			i;
+
+	i = 0;
+	line = NULL;
+	if ((fd = open(".mshell_hist", O_RDWR)) == -1)
+		return ;
+	while (get_next_line(fd, &line) == 1)
+		i++;
+	(*glob)->total_h = i;
+	(*glob)->current_h = i - 1;
+	free(line);
+	close(fd);
+}
+
+void			show_last_hist(t_para **glob)
+{
+	char		*line;
+	int			fd;
+	int			i;
+	int			j;
+
+	j = 0;
+	i = 0;
+	line = NULL;
+	(*glob)->cursor[0] = 0;
+	if ((fd = open(".mshell_hist", O_RDWR)) == -1)
+		return ;
+	while (get_next_line(fd, &line) == 1)
+	{
+		if (i == (*glob)->current_h)
+		{
+			while (line[j] != '\0')
+			{
+				ft_putchar_fd(line[j], (*glob)->fd);
+				(*glob)->cursor[0]++;
+				j++;
+			}
+		}
+		i++;
+	}
+	free(line);
+	close(fd);
+}
+
+void			clear_screen(t_para *glob)
+{
+	int 		i;
+
+	i = glob->cursor[0];
+	while (i > 0)
+	{
+		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
+		i--;	
+	}
+	while (i < glob->cursor[0])
+	{
+		ft_putchar_fd(' ', glob->fd);
+		i++;
+	}
+	i = glob->cursor[0];
+	while (i > 0)
+	{
+		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
+		i--;
+	}
 }

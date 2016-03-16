@@ -39,11 +39,31 @@ void			read_input(t_para *glob, t_input **input, int *total)
 
 void		read_arrow(t_para **glob, char buff, int total)
 {
+	if ((buff == 'A' || buff == 'B') &&
+		(((*glob)->cursor[0] == 0 || (*glob)->current_h != (*glob)->total_h)))
+	{
+		read_ud(glob, buff);	
+	}
+	else if (buff == 'C' || buff == 'D')
+		read_lr(glob, buff, total);
+}
+void		read_ud(t_para **glob, char buff)
+{
+	clear_screen(*glob);
 	if (buff == 'A')
-		ft_putstr_fd("up", (*glob)->fd);
+	{
+		(*glob)->current_h--;
+		show_last_hist(glob);
+	}
 	else if (buff == 'B')
-		ft_putstr_fd("down", (*glob)->fd);
-	else if (buff == 'C')//droite
+	{
+		(*glob)->current_h++;
+		show_last_hist(glob);
+	}
+}
+void		read_lr(t_para **glob, char buff, int total)
+{
+	if (buff == 'C')//droite
 	{
 		if ((*glob)->cursor[0] < total)
 		{
@@ -60,7 +80,6 @@ void		read_arrow(t_para **glob, char buff, int total)
 		}
 	}
 }
-
 
 void		read_if_print(t_para **glob, t_input **input, int *total, char buff)
 {
