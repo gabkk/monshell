@@ -36,7 +36,7 @@ void					main_loop(t_para *glob)
 		if (glob->cmd && glob->term->action == 1)
 		{
 //			ft_putnbr_fd(glob->cursor[0], glob->fd);
-			main_action(glob);
+			main_action(&glob);
 			index = 0;
 			glob->cursor[0] = 0;
 			glob->cursor[1] = 0;
@@ -46,23 +46,25 @@ void					main_loop(t_para *glob)
 	}
 }
 
-void			main_action(t_para *glob)
+void			main_action(t_para **glob)
 {
 	t_cmd		*ptrmaillon;
 	t_cmd		*base;
 
 	ptrmaillon = NULL;
 	base = NULL;
-	parse_value(&glob, &base);
-	if (glob->term->action == 1)
+	parse_value(glob, &base);
+	if ((*glob)->term->action == 1)
 	{
-		add_to_history(glob->cmd);
-		free(glob->cmd);
+		add_to_history((*glob)->cmd);
+		free((*glob)->cmd);
+		(*glob)->total_h += 1;
+		(*glob)->current_h = (*glob)->total_h;
 		ptrmaillon = base;
 		while (ptrmaillon)
 		{
 			if (ptrmaillon->listcmd)
-				dispatch(&glob->env, ptrmaillon->listcmd);
+				dispatch(&(*glob)->env, ptrmaillon->listcmd);
 			ptrmaillon = ptrmaillon->next;
 		}
 		freebase(&base);

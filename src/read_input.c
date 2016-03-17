@@ -30,42 +30,47 @@ void			read_input(t_para *glob, t_input **input, int *total)
 			backspace(input, &glob, total);	
 	}
 	else if (buff[0] == 27)
-		read_arrow(&glob, buff[2], *total);
+		read_arrow(&glob, input, buff[2], total);
 	else if (buff[0] == '\n')//line
 		save_cmd(input, &glob);
 	if (buff[0] == 4)//ctr+d
 		exit(0);
 }
 
-void		read_arrow(t_para **glob, char buff, int total)
+void		read_arrow(t_para **glob, t_input **input, char buff, int *total)
 {
 	if ((buff == 'A' || buff == 'B') &&
-		(((*glob)->cursor[0] == 0 || (*glob)->current_h != (*glob)->total_h)))
+		(((*glob)->cursor[0] == 0 || (*glob)->current_h - 1 <= (*glob)->total_h)))
 	{
-		read_ud(glob, buff);	
+		read_ud(glob, input, buff, total);	
 	}
 	else if (buff == 'C' || buff == 'D')
 		read_lr(glob, buff, total);
 }
-void		read_ud(t_para **glob, char buff)
+void		read_ud(t_para **glob, t_input **input, char buff, int *total)
 {
-	clear_screen(*glob);
-	if (buff == 'A')
+	if (buff == 'A' && (*glob)->current_h - 1 > 0)
 	{
+		clear_screen(*glob, input);
+		if (*input)
+			delete_lst_input(input);
 		(*glob)->current_h--;
-		show_last_hist(glob);
+		show_last_hist(glob, input, total);
 	}
-	else if (buff == 'B')
+	else if (buff == 'B' && (*glob)->current_h < (*glob)->total_h)
 	{
+		clear_screen(*glob, input);
+		if (*input)
+			delete_lst_input(input);
 		(*glob)->current_h++;
-		show_last_hist(glob);
+		show_last_hist(glob, input, total);
 	}
 }
-void		read_lr(t_para **glob, char buff, int total)
+void		read_lr(t_para **glob, char buff, int *total)
 {
 	if (buff == 'C')//droite
 	{
-		if ((*glob)->cursor[0] < total)
+		if ((*glob)->cursor[0] < *total)
 		{
 			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
 			(*glob)->cursor[0] += 1;

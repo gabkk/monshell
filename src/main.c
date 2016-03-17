@@ -51,13 +51,14 @@ void			tot_hist(t_para **glob)
 		return ;
 	while (get_next_line(fd, &line) == 1)
 		i++;
-	(*glob)->total_h = i;
-	(*glob)->current_h = i - 1;
+	(*glob)->total_h = i + 1;
+//	ft_putnbr_fd((*glob)->total_h, (*glob)->fd);
+	(*glob)->current_h = i + 1;
 	free(line);
 	close(fd);
 }
 
-void			show_last_hist(t_para **glob)
+void			show_last_hist(t_para **glob, t_input **input, int *total)
 {
 	char		*line;
 	int			fd;
@@ -68,18 +69,22 @@ void			show_last_hist(t_para **glob)
 	i = 0;
 	line = NULL;
 	(*glob)->cursor[0] = 0;
+	*total = 0;
 	if ((fd = open(".mshell_hist", O_RDWR)) == -1)
 		return ;
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (i == (*glob)->current_h)
+		if (i == (*glob)->current_h - 1)
 		{
 			while (line[j] != '\0')
 			{
 				ft_putchar_fd(line[j], (*glob)->fd);
+				add_back_input(input, line[j], j);
 				(*glob)->cursor[0]++;
+				*total +=1 ;
 				j++;
 			}
+			break;
 		}
 		i++;
 	}
@@ -87,7 +92,7 @@ void			show_last_hist(t_para **glob)
 	close(fd);
 }
 
-void			clear_screen(t_para *glob)
+void			clear_screen(t_para *glob, t_input **input)
 {
 	int 		i;
 
@@ -97,12 +102,12 @@ void			clear_screen(t_para *glob)
 		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
 		i--;	
 	}
-	while (i < glob->cursor[0])
+	while ((*input))
 	{
 		ft_putchar_fd(' ', glob->fd);
+		(*input) = (*input)->next;
 		i++;
 	}
-	i = glob->cursor[0];
 	while (i > 0)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), glob->fd);

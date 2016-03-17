@@ -93,7 +93,7 @@ void					add_maillon_cmd(char **cmd, t_cmd **liste);
 */
 void					mainbody(t_para *glob);
 void					main_loop(t_para *glob);
-void					main_action(t_para *glob);
+void					main_action(t_para **glob);
 void					parse_value(t_para **glob, t_cmd **base);
 
 /*
@@ -117,10 +117,10 @@ void					topbar_icone(int fd);
 ** read_input.c
 */
 void					read_input(t_para *glob, t_input **input, int *index);
-void					read_arrow(t_para **glob, char buff, int total);
+void					read_arrow(t_para **glob, t_input **input, char buff, int *total);
 void					read_if_print(t_para **glob, t_input **input, int *total, char buff);
-void					read_ud(t_para **glob, char buff);
-void					read_lr(t_para **glob, char buff, int total);
+void					read_ud(t_para **glob, t_input **input, char buff, int *total);
+void					read_lr(t_para **glob, char buff, int *total);
 
 /*
 ** alloc_tab.c
@@ -250,7 +250,7 @@ void					backspace_last(t_input **input, t_para **glob);
 void					backspace_inside(t_input **input, t_para **glob);
 
 void					tot_hist(t_para **glob);
-void					show_last_hist(t_para **glob);
-void					clear_screen(t_para *glob);
+void					show_last_hist(t_para **glob, t_input **input, int *total);
+void					clear_screen(t_para *glob, t_input **input);
 
 #endif
