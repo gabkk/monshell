@@ -29,12 +29,12 @@ void			print_prompt(t_para *glob)
 		home = getlistevalue(&glob->env, "HOME");
 		name = getlistevalue(&glob->env, "USER");
 	}
-	topbar_user(glob->fd, name);
+	topbar_user(1, name);
 	if (home && pwd)
 		flag = ft_strncmp(pwd, home, ft_strlen(home));
 	if (pwd)
-		topbar_path(glob->fd, home, flag, pwd);
-	topbar_icone(glob->fd);
+		topbar_path(1, home, flag, pwd);
+	topbar_icone(1);
 }
 
 void			topbar_icone(int fd)

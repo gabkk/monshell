@@ -116,8 +116,8 @@ void					topbar_icone(int fd);
 /*
 ** read_input.c
 */
+void					read_arrow(t_para **glob, t_input **input, int *total);
 void					read_input(t_para *glob, t_input **input, int *index);
-void					read_arrow(t_para **glob, t_input **input, char buff, int *total);
 void					read_if_print(t_para **glob, t_input **input, int *total, char buff);
 void					read_ud(t_para **glob, t_input **input, char buff, int *total);
 void					read_lr(t_para **glob, char buff, int *total);
@@ -192,6 +192,12 @@ t_hist					*inithist(void);
 void					freehist(t_hist *newhist);
 
 /*
+** termcaps_history.c
+*/
+void					show_last_hist(t_para **glob, t_input **input, int *total);
+void					tot_hist(t_para **glob);
+
+/*
 ** error.c
 */
 void					invalid_param(char **cmd);
@@ -213,6 +219,7 @@ char					*getlistevalue(t_env	**env, char *name);
 void					randcol_ansi(int i);
 int						checkifonlyspace(char *value);
 void					setlistlvl(t_env **env);
+void					clear_line(t_para *glob, t_input **input);
 
 /*
 ** signal.c
@@ -248,9 +255,5 @@ void					add_inside_input(t_input **input, char buf, int i);
 void					backspace(t_input **input, t_para **glob, int *total);
 void					backspace_last(t_input **input, t_para **glob);
 void					backspace_inside(t_input **input, t_para **glob);
-
-void					tot_hist(t_para **glob);
-void					show_last_hist(t_para **glob, t_input **input, int *total);
-void					clear_line(t_para *glob, t_input **input);
 
 #endif

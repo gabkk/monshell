@@ -22,8 +22,8 @@ SRCSDIR = src/
 
 SRCS = main.c maillon_op.c read_input.c alloc_tab.c define_env.c builtins.c \
 	error.c setenv.c unsetenv.c chdir.c pathexec.c dispatch_job.c tools.c \
-	main_body.c display_prompt.c history.c default_env.c exit.c \
-	 signal.c termcaps.c lst_input_op.c backspace.c
+	main_body.c display_prompt.c history.c default_env.c exit.c signal.c \
+	termcaps.c lst_input_op.c backspace.c termcaps_history.c 
 
 
 OBJ = $(SRCS:.c=.o)

@@ -83,3 +83,26 @@ void		randcol_ansi(int i)
 	free(tmp1);
 	free(tmp2);
 }
+
+void			clear_line(t_para *glob, t_input **input)
+{
+	int 		i;
+
+	i = glob->cursor[0];
+	while (i > 0)
+	{
+		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
+		i--;	
+	}
+	while ((*input))
+	{
+		ft_putchar_fd(' ', glob->fd);
+		(*input) = (*input)->next;
+		i++;
+	}
+	while (i > 0)
+	{
+		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
+		i--;
+	}
+}
