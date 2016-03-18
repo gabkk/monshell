@@ -31,6 +31,11 @@ void			read_input(t_para *glob, t_input **input, int *total)
 	}
 	else if (buff[0] == 27)
 		read_arrow(&glob, input, buff[2], total);
+	else if (buff[0] == '^')
+	{
+		if (buff[1] == 'X')
+			ft_putchar_fd('&', glob->fd);
+	}
 	else if (buff[0] == '\n')//line
 		save_cmd(input, &glob);
 	if (buff[0] == 4)//ctr+d
@@ -51,7 +56,7 @@ void		read_ud(t_para **glob, t_input **input, char buff, int *total)
 {
 	if (buff == 'A' && (*glob)->current_h - 1 > 0)
 	{
-		clear_screen(*glob, input);
+		clear_line(*glob, input);
 		if (*input)
 			delete_lst_input(input);
 		(*glob)->current_h--;
@@ -59,7 +64,7 @@ void		read_ud(t_para **glob, t_input **input, char buff, int *total)
 	}
 	else if (buff == 'B' && (*glob)->current_h < (*glob)->total_h)
 	{
-		clear_screen(*glob, input);
+		clear_line(*glob, input);
 		if (*input)
 			delete_lst_input(input);
 		(*glob)->current_h++;

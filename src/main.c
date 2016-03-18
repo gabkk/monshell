@@ -92,7 +92,7 @@ void			show_last_hist(t_para **glob, t_input **input, int *total)
 	close(fd);
 }
 
-void			clear_screen(t_para *glob, t_input **input)
+void			clear_line(t_para *glob, t_input **input)
 {
 	int 		i;
 

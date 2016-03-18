@@ -165,7 +165,7 @@ void					freenv(t_env	*env);
 void					unset_env_first(t_env *ptm, t_env *prev, char *cmd);
 
 /*
-** chdir.c
+** cd.c
 */
 char					*set_pwd(t_env **env, char *cmd, char *pwd, char *np);
 char					*setmallocpwd(char *cmd, char *home, char *pwd);
@@ -251,6 +251,6 @@ void					backspace_inside(t_input **input, t_para **glob);
 
 void					tot_hist(t_para **glob);
 void					show_last_hist(t_para **glob, t_input **input, int *total);
-void					clear_screen(t_para *glob, t_input **input);
+void					clear_line(t_para *glob, t_input **input);
 
 #endif
