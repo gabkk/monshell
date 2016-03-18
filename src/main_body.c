@@ -26,18 +26,17 @@ void			mainbody(t_para *glob)
 void					main_loop(t_para *glob)
 {
 	t_input		*input;
-	int			index;
 
 	input = NULL;
-	index = 0;
+	glob->total_c = 0;
 	while (42)
 	{
-		read_input(glob, &input, &index);
+		read_input(glob, &input);
 		if (glob->cmd && glob->term->action == 1)
 		{
 //			ft_putnbr_fd(glob->cursor[0], glob->fd);
 			main_action(&glob);
-			index = 0;
+			glob->total_c = 0;
 			glob->cursor[0] = 0;
 			glob->cursor[1] = 0;
 			glob->term->action = 0;

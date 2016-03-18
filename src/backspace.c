@@ -12,13 +12,13 @@
 
 #include "minishell.h"
 
-void				backspace(t_input **input, t_para **glob, int *total)
+void				backspace(t_input **input, t_para **glob)
 {
-	if ((*glob)->cursor[0] == *total)
+	if ((*glob)->cursor[0] == (*glob)->total_c)
 		backspace_last(input, glob);
-	else if ((*glob)->cursor[0] < *total)
+	else if ((*glob)->cursor[0] < (*glob)->total_c)
 		backspace_inside(input, glob);
-	*total -= 1;
+	(*glob)->total_c -= 1;
 
 }
 void				backspace_last(t_input **input, t_para **glob)

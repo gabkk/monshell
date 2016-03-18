@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void			show_last_hist(t_para **glob, t_input **input, int *total)
+void			show_last_hist(t_para **glob, t_input **input)
 {
 	char		*line;
 	int			fd;
@@ -23,8 +23,8 @@ void			show_last_hist(t_para **glob, t_input **input, int *total)
 	i = 0;
 	line = NULL;
 	(*glob)->cursor[0] = 0;
-	*total = 0;
-	if ((fd = open(".mshell_hist", O_RDWR)) == -1)
+	(*glob)->total_c = 0;
+	if ((fd = open(PATH_HIST, O_RDWR | O_CREAT, 0777)) == -1)
 		return ;
 	while (get_next_line(fd, &line) == 1)
 	{
@@ -35,7 +35,7 @@ void			show_last_hist(t_para **glob, t_input **input, int *total)
 				ft_putchar_fd(line[j], (*glob)->fd);
 				add_back_input(input, line[j], j);
 				(*glob)->cursor[0]++;
-				*total +=1 ;
+				(*glob)->total_c +=1 ;
 				j++;
 			}
 			break;
@@ -54,7 +54,7 @@ void			tot_hist(t_para **glob)
 
 	i = 0;
 	line = NULL;
-	if ((fd = open(".mshell_hist", O_RDWR)) == -1)
+	if ((fd = open(PATH_HIST, O_RDWR | O_CREAT, 0777)) == -1)
 		return ;
 	while (get_next_line(fd, &line) == 1)
 		i++;

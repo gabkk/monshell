@@ -16,7 +16,7 @@ void			add_to_history(char *cmd)
 {
 	int			fd;
 
-	fd = open(".mshell_hist", O_RDWR | O_CREAT | O_APPEND, 0777);
+	fd = open(PATH_HIST, O_RDWR | O_CREAT | O_APPEND, 0777);
 	write(fd, cmd, ft_strlen(cmd));
 	write(fd, "\n", 1);
 	close(fd);
@@ -52,7 +52,7 @@ void			show_history(void)
 
 	newhist = NULL;
 	line = NULL;
-	if ((fd = open(".mshell_hist", O_RDWR)) == -1)
+	if ((fd = open(PATH_HIST, O_RDWR | O_CREAT, 0777)) == -1)
 		return ;
 	while (get_next_line(fd, &line) == 1)
 		set_hist(&newhist, line);

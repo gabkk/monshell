@@ -45,6 +45,7 @@ void				set_first_input(t_input **input, char buf, int i)
 	ptr->prev = newm;
 	newm->pos[0] = i;
 	newm->c = buf;
+	newm->selected = 0;
 	*input = newm;
 }
 
@@ -83,6 +84,7 @@ t_input				*init_lst_input()
 	if (!newmaillon)
 		return (NULL);
 	newmaillon->c = 0;
+	newmaillon->selected = 0;
 	newmaillon->pos[0] = 0;
 	newmaillon->pos[1] = 0;
 	newmaillon->prev = NULL;

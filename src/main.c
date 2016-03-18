@@ -32,6 +32,7 @@ int				main(int ac, char *const av[], char *const envp[])
 	glob->env = env;
 	glob->cursor[0] = 0;
 	glob->cursor[1] = 0;
+	glob->selector = 0;
 	mainbody(glob);
 	freenv(glob->env);
 	close(glob->fd);

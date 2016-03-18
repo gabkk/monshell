@@ -33,6 +33,7 @@
 # define ANSI_UNDERLINE			"\x1b[4m"
 # define PATH_MAX				4096
 # define TTY_PATH				1025
+# define PATH_HIST				"/nfs/2014/g/gkuma/.mshell_hist"
 
 typedef struct dirent	*t_dirent;
 
@@ -48,6 +49,7 @@ typedef struct			s_input{
 	char				c;
 	int					index;
 	int					pos[2];
+	int					selected;
 	struct s_input		*prev;
 	struct s_input		*next;
 }						t_input;
@@ -63,9 +65,12 @@ typedef struct			s_para{
 	int					cursor[2];
 	int					total_h;
 	int					current_h;
+	int					selector;
+	int					total_c;
 	char				*cmd;
 	struct s_env		*env;
 	struct s_term		*term;
+	struct s_input		*copy;
 }						t_para;
 
 typedef struct			s_cmd{
@@ -116,11 +121,11 @@ void					topbar_icone(int fd);
 /*
 ** read_input.c
 */
-void					read_arrow(t_para **glob, t_input **input, int *total);
-void					read_input(t_para *glob, t_input **input, int *index);
-void					read_if_print(t_para **glob, t_input **input, int *total, char buff);
-void					read_ud(t_para **glob, t_input **input, char buff, int *total);
-void					read_lr(t_para **glob, char buff, int *total);
+void					read_arrow(t_para **glob, t_input **input);
+void					read_input(t_para *glob, t_input **input);
+void					read_if_print(t_para **glob, t_input **input, char buff);
+void					read_ud(t_para **glob, t_input **input, char buff);
+void					read_lr(t_para **glob, t_input **input, char buff);
 
 /*
 ** alloc_tab.c
@@ -194,7 +199,7 @@ void					freehist(t_hist *newhist);
 /*
 ** termcaps_history.c
 */
-void					show_last_hist(t_para **glob, t_input **input, int *total);
+void					show_last_hist(t_para **glob, t_input **input);
 void					tot_hist(t_para **glob);
 
 /*
@@ -252,8 +257,17 @@ void					add_inside_input(t_input **input, char buf, int i);
 /*
 ** backspace.c
 */
-void					backspace(t_input **input, t_para **glob, int *total);
+void					backspace(t_input **input, t_para **glob);
 void					backspace_last(t_input **input, t_para **glob);
 void					backspace_inside(t_input **input, t_para **glob);
 
+/*
+** selector.c
+*/
+void					mode_selector(t_para **glob);
+void					set_selector(t_para **glob, t_input **input, int index, int direction);
+void					selector_action(t_para **glob, t_input **input, int buff);
+
 #endif
+
+
