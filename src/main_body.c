@@ -39,6 +39,7 @@ void					main_loop(t_para *glob)
 			glob->total_c = 0;
 			glob->cursor[0] = 0;
 			glob->cursor[1] = 0;
+			glob->selector = 0;
 			glob->term->action = 0;
 			print_prompt(glob);
 		}

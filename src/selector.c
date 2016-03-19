@@ -41,7 +41,7 @@ void				set_selector(t_para **glob, t_input **input, int index, int direction)
 			{
 				ft_putchar_fd(' ', (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				ft_putstr_fd("\x1b[31m", (*glob)->fd);
+				ft_putstr_fd("\x1b[32m", (*glob)->fd);
 				ft_putchar_fd(ptr->c, (*glob)->fd);
 				ft_putstr_fd("\x1b[0m", (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -59,7 +59,7 @@ void				set_selector(t_para **glob, t_input **input, int index, int direction)
 			{
 				ft_putchar_fd(' ', (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				ft_putstr_fd("\x1b[31m", (*glob)->fd);
+				ft_putstr_fd("\x1b[32m", (*glob)->fd);
 				ft_putchar_fd(ptr->c, (*glob)->fd);
 				ft_putstr_fd("\x1b[0m", (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -82,7 +82,9 @@ void				selector_action(t_para **glob, t_input **input, int buff)
 {
 	t_input			*ptr;
 	int				i;
+	int				j;
 
+	j = 0;
 	i = 0;
 	if (buff == 'c')
 	{
@@ -93,6 +95,7 @@ void				selector_action(t_para **glob, t_input **input, int buff)
 		{
 			if (ptr->selected == 1)
 			{
+				//ft_putchar_fd(ptr->c, (*glob)->fd);
 				add_back_input(&(*glob)->copy, ptr->c, i);
 				i++;
 			}
@@ -106,28 +109,45 @@ void				selector_action(t_para **glob, t_input **input, int buff)
 	}
 	else if (buff == 'v')
 	{
-		if ((*glob)->copy)
+		if ((*glob)->copy)//(*glob)->copy)
 		{
-			ptr = (*glob)->copy;
+			ptr = (*glob)->copy;//(*glob)->copy;
+			j = (*glob)->cursor[0];
 			while (ptr)
 			{
 				ft_putchar_fd(ptr->c, (*glob)->fd);
-				if ((*glob)->cursor[0] == (*glob)->total_c)
+				if (/*(*glob)->cursor[0]*/j == (*glob)->total_c)
+				{
 					add_back_input(input, ptr->c, (*glob)->total_c);
+				}
 				else
-					add_inside_input(input, ptr->c, (*glob)->cursor[0]);
-				(*glob)->cursor[0]++;
+					add_inside_input(input, ptr->c, j/*(*glob)->cursor[0]*/);
+				//(*glob)->cursor[0]++;
+				
 				(*glob)->total_c++;
+				j++;
 				ptr = ptr->next;
 			}
-			ptr = *input;
-			clear_line(*glob, &ptr);//Probleme de print pas le bon output
-			ptr = *input;
-			while (ptr)
+
+			if (/*(*glob)->cursor[0]*/j != (*glob)->total_c)
 			{
-				ft_putchar_fd(ptr->c, (*glob)->fd);
-				ptr = ptr->next;
+				ptr = *input;
+				while (ptr)
+				{
+					if (ptr->pos[0] >= j)
+					{
+						ft_putchar_fd(ptr->c, (*glob)->fd);
+						j++;
+					}
+					ptr = ptr->next;
+				}
 			}
+			while (j > (*glob)->cursor[0])
+			{
+				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+				j--;
+			}
+			(*glob)->selector = 0;
 		}
 	}
 }

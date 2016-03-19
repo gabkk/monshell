@@ -33,7 +33,8 @@
 # define ANSI_UNDERLINE			"\x1b[4m"
 # define PATH_MAX				4096
 # define TTY_PATH				1025
-# define PATH_HIST				"/nfs/2014/g/gkuma/.mshell_hist"
+# define PATH_HIST2				"/nfs/2014/g/gkuma/.mshell_hist"
+# define PATH_HIST				"/home/shinja/.mshell_hist"
 
 typedef struct dirent	*t_dirent;
 

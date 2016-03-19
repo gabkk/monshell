@@ -25,7 +25,7 @@ void			show_last_hist(t_para **glob, t_input **input)
 	(*glob)->cursor[0] = 0;
 	(*glob)->total_c = 0;
 	if ((fd = open(PATH_HIST, O_RDWR | O_CREAT, 0777)) == -1)
-		return ;
+		return (ft_putstr_fd("open error : hist", 2));
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (i == (*glob)->current_h - 1)
