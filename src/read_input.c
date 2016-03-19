@@ -14,10 +14,10 @@
 
 void			read_input(t_para *glob, t_input **input)
 {
-	char	buff[1];
+	char	buff[2];
 	int  ret;
 
-	ft_bzero(buff, 1);
+	ft_bzero(buff, 2);
 	if ((ret = read(0, buff, 1)) == 0)
 		exit(0);
 	else if (ret == -1)
@@ -37,8 +37,12 @@ void			read_input(t_para *glob, t_input **input)
 	else if (buff[0] == 27)
 		read_arrow(&glob, input);
 	else if (buff[0] == '\n')//line
+	{
 		save_cmd(input, &glob);
-	if (buff[0] == 4)//ctr+d
+		if (*input)
+			delete_lst_input(input);
+	}
+	else if (buff[0] == 4)//ctr+d
 		exit(0);
 }
 

@@ -99,7 +99,7 @@ void					add_maillon_cmd(char **cmd, t_cmd **liste);
 */
 void					mainbody(t_para *glob);
 void					main_loop(t_para *glob);
-void					main_action(t_para **glob);
+void					main_action(t_para *glob);
 void					parse_value(t_para **glob, t_cmd **base);
 
 /*
