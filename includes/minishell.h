@@ -99,7 +99,7 @@ void					add_maillon_cmd(char **cmd, t_cmd **liste);
 */
 void					mainbody(t_para *glob);
 void					main_loop(t_para *glob);
-void					main_action(t_para *glob);
+void					main_action(t_para **glob);
 void					parse_value(t_para **glob, t_cmd **base);
 
 /*
@@ -268,6 +268,9 @@ void					backspace_inside(t_input **input, t_para **glob);
 void					mode_selector(t_para **glob);
 void					set_selector(t_para **glob, t_input **input, int index, int direction);
 void					selector_action(t_para **glob, t_input **input, int buff);
+void					selector_copy(t_para **glob, t_input **input);
+void					selector_cut(t_para **glob, t_input **input);
+void					selector_paste(t_para **glob, t_input **input);
 
 #endif
 

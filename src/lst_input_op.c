@@ -106,7 +106,14 @@ void				print_lst_input(t_input **input, t_para **glob)
 	ptr = *input;
 	while (ptr)
 	{
-		ft_putchar_fd(ptr->c, (*glob)->fd);
+		if (ptr->selected == 1)//faire une fonction
+		{
+			ft_putstr_fd("\x1b[32m", (*glob)->fd);
+			ft_putchar_fd(ptr->c, (*glob)->fd);
+			ft_putstr_fd("\x1b[0m", (*glob)->fd);
+		}
+		else 
+			ft_putchar_fd(ptr->c, (*glob)->fd);
 		i++;
 		ptr = ptr->next;
 	}

@@ -74,14 +74,6 @@ void				backspace_inside(t_input **input, t_para **glob)
 		ptr->pos[0] = x++;
 		ptr = ptr->next;
 	}
-	// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-	// ft_putchar_fd(' ', (*glob)->fd);
-	// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-
-	// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-
-	// REPLACER LE DERNIER CHAR PAR UN ESPACE
-	// REDRAW
 	while (i > 0)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -90,7 +82,14 @@ void				backspace_inside(t_input **input, t_para **glob)
 	ptr = *input;
 	while (ptr)
 	{
-		ft_putchar_fd(ptr->c, (*glob)->fd);
+		if (ptr->selected == 1)//faire une fonction
+		{
+			ft_putstr_fd("\x1b[32m", (*glob)->fd);
+			ft_putchar_fd(ptr->c, (*glob)->fd);
+			ft_putstr_fd("\x1b[0m", (*glob)->fd);
+		}
+		else 
+			ft_putchar_fd(ptr->c, (*glob)->fd);
 		i++;
 		ptr = ptr->next;
 	}
@@ -103,17 +102,4 @@ void				backspace_inside(t_input **input, t_para **glob)
 		i--;
 	}
 	(*glob)->cursor[0]--;
-
-
-
-	// if ((*glob)->cursor[0] != 1)
-	// 	ptr->prev->next = NULL;
-	// (*glob)->cursor[0]--;
-	// free(ptr);
-	// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-	// ft_putchar_fd(' ', (*glob)->fd);
-	// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-	// if ((*glob)->cursor[0] == 0)
-	// 	*input = NULL;
-
 }
