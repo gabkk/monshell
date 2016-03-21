@@ -14,9 +14,9 @@
 
 void				backspace(t_input **input, t_para **glob)
 {
-	if ((*glob)->cursor[0] == (*glob)->total_c)
+	if ((*glob)->cursor->posy == (*glob)->total_c)
 		backspace_last(input, glob);
-	else if ((*glob)->cursor[0] < (*glob)->total_c)
+	else if ((*glob)->cursor->posy < (*glob)->total_c)
 		backspace_inside(input, glob);
 	(*glob)->total_c -= 1;
 
@@ -28,14 +28,14 @@ void				backspace_last(t_input **input, t_para **glob)
 	ptr = *input;
 	while (ptr->next)
 		ptr = ptr->next;
-	if ((*glob)->cursor[0] != 1)
+	if ((*glob)->cursor->posy != 1)
 		ptr->prev->next = NULL;
-	(*glob)->cursor[0]--;
+	(*glob)->cursor->posy--;
 	free(ptr);
 	ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 	ft_putchar_fd(' ', (*glob)->fd);
 	ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-	if ((*glob)->cursor[0] == 0)
+	if ((*glob)->cursor->posy == 0)
 		*input = NULL;
 }
 
@@ -47,7 +47,7 @@ void				backspace_inside(t_input **input, t_para **glob)
 	int				x;
 
 	ptr = *input;
-	i = (*glob)->cursor[0];
+	i = (*glob)->cursor->posy;
 	while (ptr)
 	{
 		if (i == 1 && ptr->pos[0] == 0)
@@ -96,10 +96,10 @@ void				backspace_inside(t_input **input, t_para **glob)
 	ft_putchar_fd(' ', (*glob)->fd);
 	i++;
 	i++;
-	while (i > (*glob)->cursor[0])
+	while (i > (*glob)->cursor->posy)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 		i--;
 	}
-	(*glob)->cursor[0]--;
+	(*glob)->cursor->posy--;
 }

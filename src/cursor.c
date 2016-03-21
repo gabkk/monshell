@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cursor.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkuma <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,34 +12,43 @@
 
 #include "minishell.h"
 
-int				main(int ac, char *const av[], char *const envp[])
+t_cursor		*init_cursor(void)
 {
-	t_env		*env;
-	t_para		*glob;
+	t_cursor	*newm;
 
-	env = NULL;
-	(void)ac;
-	(void)av;
-	glob = (t_para *)malloc(sizeof(t_para));
-	env = getlocalenv(envp);
-	//print_intro(); // For tests
-	set_term_param(glob);
-	winsize(glob->fd, glob->term->size);
-	tot_hist(&glob);
-	if (env)
-		setlistlvl(&env);
-	if (signal(SIGINT, sig_handler) == SIG_ERR)
-		ft_putendl("sig error");
-	//ft_putnbr_fd(glob->term->size[0] , glob->fd);
-	// ft_putnbr_fd(glob->term->size[1] , glob->fd);
-	glob->env = env;
-	glob->current_l = 0;	
-	glob->cursor = init_cursor();
-	glob->copy = NULL;
-	glob->selector = 0;	
-	mainbody(glob);
-	freenv(glob->env);
-	close(glob->fd);
-	//free all glob
-	return (0);
+	newm = (t_cursor *)malloc(sizeof(t_cursor));
+	newm->posx = 0;
+	newm->posy = 0;
+	newm->ymax = 0;
+	newm->next = NULL;
+	newm->prev = NULL;	
+	return (newm);
+}
+
+void			add_cursor(t_cursor **cursor)
+{
+	t_cursor	*newm;
+
+	newm = init_cursor();
+	(*cursor)->next = newm;
+	newm->prev = *cursor;
+	newm->posy = 0;
+	newm->ymax = 0;
+	newm->posx = newm->prev->posx + 1;
+	newm->next = NULL;
+	*cursor = newm;
+}
+
+void			freecursor(t_cursor **cursor)
+{
+	t_cursor	*tmp;
+
+	while ((*cursor)->prev)
+		(*cursor) = (*cursor)->prev;
+	while ((*cursor))
+	{
+		tmp = (*cursor)->next;
+		free((*cursor));
+		(*cursor) = tmp;
+	}
 }

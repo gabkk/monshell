@@ -71,3 +71,12 @@ void					init_term(t_para *glob)
 	if (tcsetattr(glob->fd, TCSADRAIN, &term) == -1)
 		return ;
 }
+
+void			winsize(int fd, int i[2])
+{
+	struct winsize w;
+
+	ioctl(fd, TIOCGWINSZ, &w);
+	i[0] = w.ws_col;
+	i[1] = w.ws_row;
+}

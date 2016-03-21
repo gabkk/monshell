@@ -88,7 +88,7 @@ void			clear_line(t_para *glob, t_input **input)
 {
 	int 		i;
 
-	i = glob->cursor[0];
+	i = glob->cursor->posy;
 	while (i > 0)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), glob->fd);

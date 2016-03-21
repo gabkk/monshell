@@ -31,7 +31,7 @@ void			read_input(t_para *glob, t_input **input)
 	}
 	else if (buff[0] == 127)
 	{
-		if (glob->cursor[0] > 0)
+		if (glob->cursor->posy > 0)
 			backspace(input, &glob);	
 	}
 	else if (buff[0] == 27)
@@ -58,7 +58,7 @@ void		read_arrow(t_para **glob, t_input **input)
 		exit(EXIT_FAILURE);
 	
 	if ((buff[1] == 'A' || buff[1] == 'B') &&
-		(((*glob)->cursor[0] == 0 || (*glob)->current_h - 1 <= (*glob)->total_h)))
+		(((*glob)->cursor->posy == 0 || (*glob)->current_h - 1 <= (*glob)->total_h)))
 	{
 		read_ud(glob, input, buff[1]);	
 	}
@@ -82,41 +82,84 @@ void		read_ud(t_para **glob, t_input **input, char buff)
 }
 void		read_lr(t_para **glob, t_input **input, char buff)
 {
+	int		i;
+
+	i = 0;
 	if (buff == 'C')//droite
 	{
-		if ((*glob)->cursor[0] < (*glob)->total_c)
+		if ((*glob)->cursor->posy < (*glob)->total_c)
 		{
+			// if ((*glob)->cursor[1] == 0 && 
+			// 	((*glob)->total_c + (*glob)->prompt_s) + 1 > glob->term->size[0])
+			// {
+			// 	;
+			// }
 			if ((*glob)->selector == 1)
-				set_selector(glob, input, (*glob)->cursor[0], 1);
+				set_selector(glob, input, (*glob)->cursor->posy, 1);
 			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
-			(*glob)->cursor[0] += 1;
+			(*glob)->cursor->posy += 1;
 		}
 	}
 	else if (buff == 'D')//gauche
 	{
-		if ((*glob)->cursor[0] > 0)
+		if ((*glob)->cursor->posy > 0)
 		{
 			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 			if ((*glob)->selector == 1)
-				set_selector(glob, input, (*glob)->cursor[0] - 1, -1);
-			(*glob)->cursor[0] -= 1;
+				set_selector(glob, input, (*glob)->cursor->posy - 1, -1);
+			(*glob)->cursor->posy -= 1;
+		}
+		else if ((*glob)->cursor->prev && (*glob)->cursor->posy == 0)
+		{
+			ft_putstr_fd(tgetstr("up", NULL),(*glob)->fd);
+			i = (*glob)->term->size[0] - (*glob)->cursor->posy;
+			while (i > 0)
+			{
+				ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
+				i--;
+			}
+			(*glob)->cursor = (*glob)->cursor->prev;
 		}
 	}
 }
 
 void		read_if_print(t_para **glob, t_input **input, char buff)
 {
-	if ((*glob)->cursor[0] == (*glob)->total_c)
+	int		position;
+
+	position = 0;
+	if ((*glob)->cursor->posy == (*glob)->cursor->ymax)
 	{
 		add_back_input(input, buff, (*glob)->total_c);
 		ft_putchar_fd(buff, (*glob)->fd);
 	}
-	else if ((*glob)->cursor[0] < (*glob)->total_c || (*glob)->cursor[0] == 0)
+	else if ((*glob)->cursor->posy < (*glob)->cursor->ymax || (*glob)->cursor->posy == 0)
 	{
-		add_inside_input(input, buff, (*glob)->cursor[0]);
-		print_lst_input(input, glob);
+		if ((*glob)->cursor->posx == 0)
+			add_inside_input(input, buff, (*glob)->cursor->posy);
+		else
+		{
+			position = (*glob)->term->size[0] - (*glob)->prompt_s;//verfier le dernier charactere
+			position += (*glob)->cursor->posy;
+			if ((*glob)->cursor->posx > 1)
+				position = (((*glob)->cursor->posx - 1) * (*glob)->term->size[0]);//verfier le dernier charactere
+			add_inside_input(input, buff, (*glob)->cursor->posy);
+		}
+		print_lst_input(input, glob); //changer le posy et le posx
 	}
-	(*glob)->cursor[0] += 1;
+	(*glob)->cursor->ymax += 1;
+	(*glob)->cursor->posy += 1;
 	(*glob)->total_c += 1;
+	if ((*glob)->cursor->posx == 0 && 
+		(((*glob)->cursor->posy + (*glob)->prompt_s) + 1 > (*glob)->term->size[0]))
+	{
+		//ajouter une nouvelle liste de ligne
+		add_cursor(&(*glob)->cursor);
+	}
+	else if ((*glob)->cursor->posx > 0 &&
+		((*glob)->cursor->posy > (*glob)->term->size[0]))
+	{
+		add_cursor(&(*glob)->cursor);
+	}
 }
 			

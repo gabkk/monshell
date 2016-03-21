@@ -55,9 +55,9 @@ void				add_inside_input(t_input **input, char buf, int i)
 	t_input			*newm;
 
 	newm = init_lst_input();
-	ptr = *input;
 	if (i == 0)
 		set_first_input(input, buf, i);
+	ptr = *input;
 	while (ptr)
 	{
 		if (ptr->pos[0] == i)
@@ -97,7 +97,9 @@ void				print_lst_input(t_input **input, t_para **glob)
 	t_input 		*ptr;
 	int				i;
 
-	i = (*glob)->cursor[0];
+//pas ok
+
+	i = (*glob)->cursor->posy;
 	while (i > 0)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -117,7 +119,7 @@ void				print_lst_input(t_input **input, t_para **glob)
 		i++;
 		ptr = ptr->next;
 	}
-	while (i > (*glob)->cursor[0] + 1)
+	while (i > (*glob)->cursor->posy + 1)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 		i--;

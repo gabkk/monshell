@@ -18,7 +18,8 @@ void			mainbody(t_para *glob)
 	if (!glob->env)
 		glob->env = setdefaultenv();
 	glob->term->action = 0;
-	print_prompt(glob);
+
+	print_prompt(&glob);
 	//ft_putstr_fd("yo 1", glob->fd);
 	main_loop(glob);
 }
@@ -29,6 +30,7 @@ void					main_loop(t_para *glob)
 
 	input = NULL;
 	glob->total_c = 0;
+	glob->cursor->ymax = 0;
 	while (42)
 	{
 		read_input(glob, &input);
@@ -37,11 +39,11 @@ void					main_loop(t_para *glob)
 //			ft_putnbr_fd(glob->cursor[0], glob->fd);
 			main_action(&glob);
 			glob->total_c = 0;
-			glob->cursor[0] = 0;
-			glob->cursor[1] = 0;
+			freecursor(&glob->cursor);
+			glob->cursor = init_cursor();
 			glob->selector = 0;
 			glob->term->action = 0;
-			print_prompt(glob);
+			print_prompt(&glob);
 		}
 	}
 }

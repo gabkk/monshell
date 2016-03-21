@@ -44,6 +44,7 @@ typedef struct 			s_term{
 	int					echo;
 	int					vim;
 	int					tim;
+	int					size[2];
 }						t_term;
 
 typedef struct			s_input{
@@ -61,14 +62,24 @@ typedef struct			s_env{
 	struct s_env		*next;
 }						t_env;
 
+typedef struct			s_cursor{
+	int					posx;
+	int					posy;
+	int					ymax;
+	struct s_cursor		*next;
+	struct s_cursor		*prev;
+}						t_cursor;
+
 typedef struct			s_para{
 	int					fd;
-	int					cursor[2];
+	int					current_l;
 	int					total_h;
 	int					current_h;
 	int					selector;
 	int					total_c;
+	int					prompt_s;
 	char				*cmd;
+	struct s_cursor		*cursor;
 	struct s_env		*env;
 	struct s_term		*term;
 	struct s_input		*copy;
@@ -113,10 +124,10 @@ void					fathersup(pid_t father, int status);
 /*
 ** display_prompt.c
 */
-void					print_prompt(t_para *glob);
+void					print_prompt(t_para **glob);
 void					print_intro(int fd);
-void					topbar_path(int fd, char *home, int flag, char *pwd);
-void					topbar_user(int fd, char *value);
+int						topbar_path(char *home, int flag, char *pwd);
+int						topbar_user(int fd, char *value);
 void					topbar_icone(int fd);
 
 /*
@@ -243,6 +254,7 @@ void					ft_exit(void);
 void					set_term_param(t_para *glob);
 void					check_terminal(t_para *glob);
 void					init_term(t_para *glob);
+void					winsize(int fd, int i[2]);
 
 /*
 ** lst_input_op.c
@@ -271,6 +283,13 @@ void					selector_action(t_para **glob, t_input **input, int buff);
 void					selector_copy(t_para **glob, t_input **input);
 void					selector_cut(t_para **glob, t_input **input);
 void					selector_paste(t_para **glob, t_input **input);
+
+/*
+** cursor.c
+*/
+t_cursor				*init_cursor(void);
+void					add_cursor(t_cursor **cursor);
+void					freecursor(t_cursor **cursor);
 
 #endif
 

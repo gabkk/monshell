@@ -22,7 +22,7 @@ void			show_last_hist(t_para **glob, t_input **input)
 	j = 0;
 	i = 0;
 	line = NULL;
-	(*glob)->cursor[0] = 0;
+	(*glob)->cursor->posy = 0;
 	(*glob)->total_c = 0;
 	if ((fd = open(PATH_HIST, O_RDWR | O_CREAT, 0777)) == -1)
 		return (ft_putstr_fd("open error : hist", 2));
@@ -34,7 +34,7 @@ void			show_last_hist(t_para **glob, t_input **input)
 			{
 				ft_putchar_fd(line[j], (*glob)->fd);
 				add_back_input(input, line[j], j);
-				(*glob)->cursor[0]++;
+				(*glob)->cursor->posy++;
 				(*glob)->total_c +=1 ;
 				j++;
 			}
