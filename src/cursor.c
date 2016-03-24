@@ -18,7 +18,7 @@ t_cursor		*init_cursor(void)
 
 	newm = (t_cursor *)malloc(sizeof(t_cursor));
 	newm->posx = 0;
-	newm->posy = 0;
+	newm->posy = 1;
 	newm->ymax = 0;
 	newm->next = NULL;
 	newm->prev = NULL;	
@@ -32,7 +32,7 @@ void			add_cursor(t_cursor **cursor)
 	newm = init_cursor();
 	(*cursor)->next = newm;
 	newm->prev = *cursor;
-	newm->posy = 0;
+	newm->posy = 1;
 	newm->ymax = 0;
 	newm->posx = newm->prev->posx + 1;
 	newm->next = NULL;

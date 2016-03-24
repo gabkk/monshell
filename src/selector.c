@@ -164,6 +164,7 @@ void				selector_cut(t_para **glob, t_input **input)
 				free(ptr);
 				ptr = tmp;
 			}
+			(*glob)->cursor->ymax--;
 			i++;
 		}
 		else

@@ -22,6 +22,7 @@ void				add_back_input(t_input **input, char buf, int i)
 	{
 		*input = newm;
 		(*input)->c = buf;
+		newm->pos[0] = i;
 		return;
 	}
 	ptr = *input;
@@ -35,18 +36,25 @@ void				add_back_input(t_input **input, char buf, int i)
 
 void				set_first_input(t_input **input, char buf, int i)
 {
-	t_input			*ptr;
 	t_input			*newm;
+	t_input			*ptr;
 
+	(void)i;
 	newm = init_lst_input();
-	ptr = *input;
-	ptr->pos[0] = i + 1;
-	newm->next = ptr;
-	ptr->prev = newm;
-	newm->pos[0] = i;
+	newm->next = *input;
+	(*input)->prev = newm;
+	*input = newm;
+	newm->pos[0] = 0;
 	newm->c = buf;
 	newm->selected = 0;
-	*input = newm;
+	newm->next->pos[0] = 1;
+	ptr = *input;
+	while (ptr)
+	{
+		if (ptr->pos[0] > 0)
+			ptr->pos[0] = ptr->prev->pos[0] + 1;
+		ptr = ptr->next;
+	}
 }
 
 void				add_inside_input(t_input **input, char buf, int i)
@@ -54,12 +62,18 @@ void				add_inside_input(t_input **input, char buf, int i)
 	t_input			*ptr;
 	t_input			*newm;
 
-	newm = init_lst_input();
-	if (i == 0)
+	if (i == 1)
+	{
 		set_first_input(input, buf, i);
+		return ;
+	}
+	i--; //car input->pos et cursor pos sont diff
+	newm = init_lst_input();
 	ptr = *input;
 	while (ptr)
 	{
+//		ft_putnbr_fd(ptr->pos[0], 2);
+
 		if (ptr->pos[0] == i)
 		{
 			ptr->pos[0] = i + 1;
@@ -95,17 +109,37 @@ t_input				*init_lst_input()
 void				print_lst_input(t_input **input, t_para **glob)
 {
 	t_input 		*ptr;
-	int				i;
+	int				x;
+	int				y;
+	int				prompt;
 
 //pas ok
 
-	i = (*glob)->cursor->posy;
-	while (i > 0)
+	y = (*glob)->cursor->posy - 1;
+	x = (*glob)->cursor->posx;
+	prompt = (*glob)->prompt_s;
+	while (y > 1)
 	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-		i--;
+		y--;
 	}
+	while (prompt > 0)
+	{	
+		if (x > 0)
+			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
+		prompt--;
+	}
+	while (x > 0)
+	{
+		ft_putstr_fd(tgetstr("up", NULL), (*glob)->fd);
+		x--;
+	}
+	(void)ptr;
+	(void)input;
+
+
 	ptr = *input;
+	y = (*glob)->prompt_s;
 	while (ptr)
 	{
 		if (ptr->selected == 1)//faire une fonction
@@ -116,14 +150,53 @@ void				print_lst_input(t_input **input, t_para **glob)
 		}
 		else 
 			ft_putchar_fd(ptr->c, (*glob)->fd);
-		i++;
+		if (y <= (*glob)->term->size[0])
+		{
+			if (y == (*glob)->term->size[0])
+			{
+				x++;
+				y = 0;
+			}
+			y++;
+			// ft_putnbr_fd(y, 2);
+			// ft_putchar_fd('-', 2);
+
+		}
 		ptr = ptr->next;
 	}
-	while (i > (*glob)->cursor->posy + 1)
+
+
+	int tmpy;
+
+	while (x > (*glob)->cursor->posx)
 	{
-		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-		i--;
+		ft_putstr_fd(tgetstr("up", NULL), (*glob)->fd);
+		x--;
 	}
+
+	tmpy = (*glob)->cursor->posy - 1;
+	if ((*glob)->cursor->posx == 0)
+	{
+		tmpy += (*glob)->prompt_s;
+	}
+	if (y > tmpy)
+	{
+		while (y > tmpy)
+		{
+			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+			y--;
+		}
+	}
+	else if (y < tmpy)
+	{
+		while (y < tmpy)
+		{
+			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
+			y++;
+		}
+	}
+
+
 }
 
 void				save_cmd(t_input **input, t_para **glob)

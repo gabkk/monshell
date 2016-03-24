@@ -291,6 +291,13 @@ t_cursor				*init_cursor(void);
 void					add_cursor(t_cursor **cursor);
 void					freecursor(t_cursor **cursor);
 
+
+/*
+** tool2.c
+*/
+
+void					modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value);
+
 #endif
 
 

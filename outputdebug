@@ -1,0 +1,7 @@
+warning: the debug information found in "/lib64/ld-2.13.so" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+backspace_last 1
+backspace_last 2
+inferieurbackspace_last 1
+backspace_last 2
+inferieurbackspace_last 1
