@@ -164,11 +164,15 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 		add_back_input(input, buff, (*glob)->total_c);
 		ft_putchar_fd(buff, (*glob)->fd);
 		(*glob)->total_c += 1;
-		if ((*glob)->cursor->ymax + 1 < (*glob)->term->size[0])
+		if ((*glob)->cursor->ymax < (*glob)->term->size[0])
 		{
 			(*glob)->cursor->ymax += 1;
 			(*glob)->cursor->posy += 1;			
 		}
+
+		ft_putchar_fd('b', 2); // debug
+		ft_putnbr_fd((*glob)->total_c, 2); // debug
+
 	}
 	else if ((*glob)->cursor->posy < (*glob)->cursor->ymax + 1 || (*glob)->cursor->posy == 1)
 	{
@@ -206,6 +210,10 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 		(*glob)->total_c += 1;
 		// ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
 		print_lst_input(input, glob); //changer le posy et le posx
+
+
+		ft_putchar_fd('i', 2); // debug
+		ft_putnbr_fd(position, 2); // debug
 
 	}
 

@@ -179,7 +179,7 @@ void				print_lst_input(t_input **input, t_para **glob)
 	{
 		tmpy += (*glob)->prompt_s;
 	}
-	if (y > tmpy)
+	if (y > tmpy) //fonction dupplique
 	{
 		while (y > tmpy)
 		{

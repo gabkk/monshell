@@ -298,6 +298,14 @@ void					freecursor(t_cursor **cursor);
 
 void					modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value);
 
+/*
+** backspace_op.c
+*/
+void					back_del_maillon(t_para **glob, t_input **input);
+void					back_pos_init(t_para **glob);
+void					back_redraw(t_para **glob, t_input **input);
+void					back_reposition(t_para **glob, int x, int y);
+
 #endif
 
 

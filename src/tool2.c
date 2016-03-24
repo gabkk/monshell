@@ -44,12 +44,12 @@ void				modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value)
 	else if (value == -1)
 	{
 //		tmp += ptr->ymax + 1;
-		if (ptr->posx > 0 && ptr->ymax == 1)
+		if (ptr->posx > 0 && ptr->ymax == 0)
 		{
 			ptr->prev->next = NULL;
 			ptr->prev->ymax--;
 			free(ptr);
-		ft_putstr_fd("freeptr", 2);
+			ft_putstr_fd("freeptr", 2);
 		}
 		else
 			ptr->ymax--;

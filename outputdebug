@@ -1,7 +1,606 @@
-warning: the debug information found in "/lib64/ld-2.13.so" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
-
+b1b2b3b4b5b6b7b8b9b10b11b12b13b14b15b16b17b18b19b20b21b22b23b24b25b26b27b28b29b30b31b32b33b34b35b36b37b38b39b40b41b42b43b44b45b46b47b48b49b50b51b52b53b54b55b56b57b58b59b60b61b62b63b64b65b66b67b68b69b70b71b72b73b74b75b76b77b78b79b80b81b82b83b84b85b86b87b88b89b90b91b92b93b94b95b96b97b98b99b100b101b102b103b104b105b106b107b108b109b110b111b112b113b114b115b116b117b118b119b120b121b122b123b124b125b126b127b128b129
+|posx:2|prompt:24|posy:45|ymax:45
+|posx:2|prompt:24|posy:44|ymax:45
+|posx:2|prompt:24|posy:43|ymax:45
+|posx:2|prompt:24|posy:42|ymax:45
+|posx:2|prompt:24|posy:41|ymax:45
+|posx:2|prompt:24|posy:40|ymax:45
+|posx:2|prompt:24|posy:39|ymax:45
+|posx:2|prompt:24|posy:38|ymax:45
+|posx:2|prompt:24|posy:37|ymax:45
+|posx:2|prompt:24|posy:36|ymax:45
+|posx:2|prompt:24|posy:35|ymax:45
+|posx:2|prompt:24|posy:34|ymax:45
+|posx:2|prompt:24|posy:33|ymax:45
+|posx:2|prompt:24|posy:32|ymax:45
+|posx:2|prompt:24|posy:31|ymax:45
+|posx:2|prompt:24|posy:30|ymax:45
+|posx:2|prompt:24|posy:29|ymax:45
+|posx:2|prompt:24|posy:28|ymax:45inside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastinside pos -1 
+value de y:11value de x:inferieurinside pos -1 
+value de y:10value de x:inferieurinside pos -1 
+value de y:9value de x:inferieurinside pos -1 
+value de y:8value de x:inferieurinside pos -1 
+value de y:7value de x:inferieurinside pos -1 
+value de y:6value de x:inferieurinside pos -1 
+value de y:5value de x:inferieurinside pos -1 
+value de y:4value de x:inferieurinside pos -1 
+value de y:3value de x:inferieurinside pos -1 
+value de y:2value de x:inferieurinside pos -1 
+value de y:1value de x:inferieurinside pos -1 
+value de y:54value de x:modify lastinside pos -1 
+value de y:53value de x:modify lastinside pos -1 
+value de y:52value de x:modify lastinside pos -1 
+value de y:51value de x:modify lastinside pos -1 
+value de y:50value de x:modify lastinside pos -1 
+value de y:49value de x:modify lastinside pos -1 
+value de y:48value de x:modify lastinside pos -1 
+value de y:47value de x:modify lastinside pos -1 
+value de y:46value de x:modify lastinside pos -1 
+value de y:45value de x:modify lastinside pos -1 
+value de y:44value de x:modify lastinside pos -1 
+value de y:43value de x:modify lastinside pos -1 
+value de y:42value de x:modify lastinside pos -1 
+value de y:41value de x:modify lastinside pos -1 
+value de y:40value de x:modify lastinside pos -1 
+value de y:39value de x:modify lastinside pos -1 
+value de y:38value de x:modify lastinside pos -1 
+value de y:37value de x:modify lastinside pos -1 
+value de y:36value de x:modify lastfreeptrinside pos -1 
+value de y:35value de x:modify lastinside pos -1 
+value de y:34value de x:modify lastinside pos -1 
+value de y:33value de x:modify lastinside pos -1 
+value de y:32value de x:modify lastinside pos -1 
+value de y:31value de x:modify lastinside pos -1 
+value de y:30value de x:modify lastinside pos -1 
+value de y:29value de x:modify lastinside pos -1 
+value de y:28value de x:modify lastinside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastinside pos -1 
+value de y:11value de x:inferieurinside pos -1 
+value de y:10value de x:inferieurinside pos -1 
+value de y:9value de x:inferieurinside pos -1 
+value de y:8value de x:inferieurinside pos -1 
+value de y:7value de x:inferieurinside pos -1 
+value de y:6value de x:inferieurinside pos -1 
+value de y:5value de x:inferieurinside pos -1 
+value de y:4value de x:inferieurinside pos -1 
+value de y:3value de x:inferieurinside pos -1 
+value de y:2value de x:inferieurinside pos -1 
+value de y:1value de x:inferieurinside pos -1 
+value de y:30value de x:modify lastinside pos -1 
+value de y:29value de x:modify lastinside pos -1 
+value de y:28value de x:modify lastinside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastfreeptrinside pos -1 
+value de y:11value de x:inferieurinside pos -1 
+value de y:10value de x:inferieurinside pos -1 
+value de y:9value de x:inferieurinside pos -1 
+value de y:8value de x:inferieurinside pos -1 
+value de y:7value de x:inferieurinside pos -1 
+value de y:6value de x:inferieurinside pos -1 
+value de y:5value de x:inferieurinside pos -1 
+value de y:4value de x:inferieurinside pos -1 
+value de y:3value de x:inferieurinside pos -1 
+value de y:2value de x:inferieurinside first
+value de y:1value de x:inferieur
+|posx:0|prompt:24|posy:2|ymax:18
+|posx:0|prompt:24|posy:3|ymax:18
+|posx:0|prompt:24|posy:4|ymax:18
+|posx:0|prompt:24|posy:5|ymax:18
+|posx:0|prompt:24|posy:6|ymax:18
+|posx:0|prompt:24|posy:7|ymax:18
+|posx:0|prompt:24|posy:8|ymax:18
+|posx:0|prompt:24|posy:9|ymax:18
+|posx:0|prompt:24|posy:10|ymax:18
+|posx:0|prompt:24|posy:11|ymax:18
+|posx:0|prompt:24|posy:12|ymax:18
+|posx:0|prompt:24|posy:13|ymax:18
+|posx:0|prompt:24|posy:14|ymax:18
+|posx:0|prompt:24|posy:15|ymax:18
+|posx:0|prompt:24|posy:16|ymax:18
+|posx:0|prompt:24|posy:17|ymax:18
+|posx:0|prompt:24|posy:18|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18
+|posx:0|prompt:24|posy:19|ymax:18backspace_last 1
 backspace_last 1
-backspace_last 2
-inferieurbackspace_last 1
-backspace_last 2
-inferieurbackspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+b1b2b3b4b5b6b7b8b9b10b11b12b13b14b15b16
+|posx:0|prompt:24|posy:16|ymax:16
+|posx:0|prompt:24|posy:15|ymax:16
+|posx:0|prompt:24|posy:14|ymax:16
+|posx:0|prompt:24|posy:13|ymax:16
+|posx:0|prompt:24|posy:12|ymax:16
+|posx:0|prompt:24|posy:11|ymax:16
+|posx:0|prompt:24|posy:10|ymax:16
+|posx:0|prompt:24|posy:9|ymax:16
+|posx:0|prompt:24|posy:8|ymax:16
+|posx:0|prompt:24|posy:7|ymax:16
+|posx:0|prompt:24|posy:6|ymax:16
+|posx:0|prompt:24|posy:5|ymax:16
+|posx:0|prompt:24|posy:4|ymax:16
+|posx:0|prompt:24|posy:3|ymax:16inferieuri3inferieuri4inferieuri5inferieuri6inferieuri7inferieuri8inferieuri9inferieuri10inferieuri11inferieuri12inferieuri13inferieuri14inferieuri15inferieuri16modify lasti17modify lasti18modify lasti19modify lasti20modify lasti21modify lasti22modify lasti23modify lasti24modify lasti25modify lasti26modify lasti27modify lasti28modify lasti29modify lasti30inferieuri31inferieuri32inferieuri33inferieuri34inferieuri35inferieuri36inferieuri37inferieuri38inferieuri39inferieuri40inferieuri41inferieuri42inferieuri43inferieuri44inferieuri45inferieuri46modify lasti47modify lasti48modify lasti49modify lasti50modify lasti51modify lasti52
+|posx:1|prompt:24|posy:22|ymax:36
+|posx:1|prompt:24|posy:21|ymax:36
+|posx:1|prompt:24|posy:20|ymax:36
+|posx:1|prompt:24|posy:19|ymax:36
+|posx:1|prompt:24|posy:18|ymax:36
+|posx:1|prompt:24|posy:17|ymax:36
+|posx:1|prompt:24|posy:16|ymax:36
+|posx:1|prompt:24|posy:15|ymax:36
+|posx:1|prompt:24|posy:14|ymax:36
+|posx:1|prompt:24|posy:13|ymax:36
+|posx:1|prompt:24|posy:12|ymax:36
+|posx:1|prompt:24|posy:11|ymax:36
+|posx:1|prompt:24|posy:10|ymax:36
+|posx:1|prompt:24|posy:9|ymax:36
+|posx:1|prompt:24|posy:8|ymax:36
+|posx:1|prompt:24|posy:7|ymax:36
+|posx:1|prompt:24|posy:6|ymax:36
+|posx:1|prompt:24|posy:5|ymax:36
+|posx:1|prompt:24|posy:4|ymax:36modify lasti34modify lasti35modify lasti36modify lasti37modify lasti38modify lasti39modify lasti40modify lasti41modify lasti42modify lasti43modify lasti44modify lasti45modify lasti46modify lasti47modify lasti48modify lasti49modify lasti50modify lasti51modify lasti52modify lasti53modify lasti54modify lasti55modify lasti56modify lasti57modify lasti58modify lasti59modify lasti60modify lasti61modify lasti62modify lasti63modify lasti64modify lasti65modify lasti66modify lasti67modify lasti68modify lasti69
+|posx:1|prompt:24|posy:39|ymax:54
+|posx:1|prompt:24|posy:38|ymax:54
+|posx:1|prompt:24|posy:37|ymax:54
+|posx:1|prompt:24|posy:36|ymax:54
+|posx:1|prompt:24|posy:35|ymax:54
+|posx:1|prompt:24|posy:34|ymax:54
+|posx:1|prompt:24|posy:33|ymax:54
+|posx:1|prompt:24|posy:32|ymax:54
+|posx:1|prompt:24|posy:31|ymax:54
+|posx:1|prompt:24|posy:30|ymax:54
+|posx:1|prompt:24|posy:29|ymax:54
+|posx:1|prompt:24|posy:28|ymax:54
+|posx:1|prompt:24|posy:27|ymax:54
+|posx:1|prompt:24|posy:26|ymax:54
+|posx:1|prompt:24|posy:25|ymax:54modify lasti55modify lasti56modify lasti57modify lasti58modify lasti59modify lasti60modify lasti61modify lasti62modify lasti63modify lasti64modify lasti65modify lasti66modify lasti67modify lasti68modify lasti69modify lasti70modify lasti71modify lasti72modify lasti73modify lasti74modify lasti75modify lasti76modify lasti77modify lasti78modify lasti79modify lasti80modify lasti81modify lasti82modify lasti83modify lasti84modify lasti85modify lasti86modify lasti87modify lasti88modify lasti89modify lasti90modify lasti91modify lasti92modify lasti93modify lasti94modify lasti95modify lasti96modify lasti97modify lasti98modify lasti99modify lasti100modify lasti101modify lasti102modify lasti103modify lasti104modify lasti105modify lasti106modify lasti107modify lasti108modify lasti109modify lasti110modify lasti111modify lasti112modify lasti113modify lasti114modify lasti115modify lasti116modify lasti117modify lasti118modify lasti119modify lasti120modify lasti121modify lasti122modify lasti123modify lasti124modify lasti125modify lasti126modify lasti127modify lasti128modify lasti129modify lasti130modify lasti131modify lasti132modify lasti133modify lasti134modify lasti135modify lasti136modify lasti137modify lasti138modify lasti139modify lasti140modify lasti141modify lasti142modify lasti143modify lasti144modify lasti145modify lasti146modify lasti147modify lasti148modify lasti149modify lasti150modify lasti151modify lasti152modify lasti153modify lasti154modify lasti155modify lasti156modify lasti157modify lasti158modify lasti159modify lasti160modify lasti161modify lasti162modify lasti163modify lasti164modify lasti165modify lasti166modify lasti167modify lasti168modify lasti169modify lasti170modify lasti171modify lasti172modify lasti173modify lasti174modify lasti175modify lasti176modify lasti177modify lasti178modify lasti179modify lasti180modify lasti181modify lasti182modify lasti183modify lasti184modify lasti185modify lasti186modify lasti187modify lasti188modify lasti189modify lasti190modify lasti191modify lasti192modify lasti193modify lasti194modify lasti195modify lasti196modify lasti197modify lasti198modify lasti199modify lasti200modify lasti201modify lasti202modify lasti203inside pos -1 
+value de y:11value de x:modify lastinside pos -1 
+value de y:10value de x:modify lastinside pos -1 
+value de y:9value de x:modify lastinside pos -1 
+value de y:8value de x:modify lastinside pos -1 
+value de y:7value de x:modify lastinside pos -1 
+value de y:6value de x:modify lastfreeptrinside pos -1 
+value de y:5value de x:modify lastinside pos -1 
+value de y:4value de x:modify lastinside pos -1 
+value de y:3value de x:modify lastinside pos -1 
+value de y:2value de x:modify lastinside pos -1 
+value de y:1value de x:modify lastinside pos -1 
+value de y:54value de x:modify lastinside pos -1 
+value de y:53value de x:modify lastinside pos -1 
+value de y:52value de x:modify lastinside pos -1 
+value de y:51value de x:modify lastinside pos -1 
+value de y:50value de x:modify lastinside pos -1 
+value de y:49value de x:modify lastinside pos -1 
+value de y:48value de x:modify lastinside pos -1 
+value de y:47value de x:modify lastinside pos -1 
+value de y:46value de x:modify lastinside pos -1 
+value de y:45value de x:modify lastinside pos -1 
+value de y:44value de x:modify lastinside pos -1 
+value de y:43value de x:modify lastinside pos -1 
+value de y:42value de x:modify lastinside pos -1 
+value de y:41value de x:modify lastinside pos -1 
+value de y:40value de x:modify lastinside pos -1 
+value de y:39value de x:modify lastinside pos -1 
+value de y:38value de x:modify lastinside pos -1 
+value de y:37value de x:modify lastinside pos -1 
+value de y:36value de x:modify lastinside pos -1 
+value de y:35value de x:modify lastinside pos -1 
+value de y:34value de x:modify lastinside pos -1 
+value de y:33value de x:modify lastinside pos -1 
+value de y:32value de x:modify lastinside pos -1 
+value de y:31value de x:modify lastinside pos -1 
+value de y:30value de x:modify lastinside pos -1 
+value de y:29value de x:modify lastinside pos -1 
+value de y:28value de x:modify lastinside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastinside pos -1 
+value de y:11value de x:modify lastinside pos -1 
+value de y:10value de x:modify lastinside pos -1 
+value de y:9value de x:modify lastinside pos -1 
+value de y:8value de x:modify lastinside pos -1 
+value de y:7value de x:modify lastinside pos -1 
+value de y:6value de x:modify lastfreeptrinside pos -1 
+value de y:5value de x:modify lastinside pos -1 
+value de y:4value de x:modify lastinside pos -1 
+value de y:3value de x:modify lastinside pos -1 
+value de y:2value de x:modify lastinside pos -1 
+value de y:1value de x:modify lastinside pos -1 
+value de y:54value de x:modify lastinside pos -1 
+value de y:53value de x:modify lastinside pos -1 
+value de y:52value de x:modify lastinside pos -1 
+value de y:51value de x:modify lastinside pos -1 
+value de y:50value de x:modify lastinside pos -1 
+value de y:49value de x:modify lastinside pos -1 
+value de y:48value de x:modify lastinside pos -1 
+value de y:47value de x:modify lastinside pos -1 
+value de y:46value de x:modify lastinside pos -1 
+value de y:45value de x:modify lastinside pos -1 
+value de y:44value de x:modify lastinside pos -1 
+value de y:43value de x:modify lastinside pos -1 
+value de y:42value de x:modify lastinside pos -1 
+value de y:41value de x:modify lastinside pos -1 
+value de y:40value de x:modify lastinside pos -1 
+value de y:39value de x:modify lastinside pos -1 
+value de y:38value de x:modify lastinside pos -1 
+value de y:37value de x:modify lastinside pos -1 
+value de y:36value de x:modify lastinside pos -1 
+value de y:35value de x:modify lastinside pos -1 
+value de y:34value de x:modify lastinside pos -1 
+value de y:33value de x:modify lastinside pos -1 
+value de y:32value de x:modify lastinside pos -1 
+value de y:31value de x:modify lastinside pos -1 
+value de y:30value de x:modify lastinside pos -1 
+value de y:29value de x:modify lastinside pos -1 
+value de y:28value de x:modify lastinside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastinside pos -1 
+value de y:11value de x:modify lastinside pos -1 
+value de y:10value de x:modify lastinside pos -1 
+value de y:9value de x:modify lastinside pos -1 
+value de y:8value de x:modify lastinside pos -1 
+value de y:7value de x:modify lastinside pos -1 
+value de y:6value de x:modify lastfreeptrinside pos -1 
+value de y:5value de x:modify lastinside pos -1 
+value de y:4value de x:modify lastinside pos -1 
+value de y:3value de x:modify lastinside pos -1 
+value de y:2value de x:modify lastinside pos -1 
+value de y:1value de x:modify lastinside pos -1 
+value de y:54value de x:modify lastinside pos -1 
+value de y:53value de x:modify lastinside pos -1 
+value de y:52value de x:modify lastinside pos -1 
+value de y:51value de x:modify lastinside pos -1 
+value de y:50value de x:modify lastinside pos -1 
+value de y:49value de x:modify lastinside pos -1 
+value de y:48value de x:modify lastinside pos -1 
+value de y:47value de x:modify lastinside pos -1 
+value de y:46value de x:modify lastinside pos -1 
+value de y:45value de x:modify lastinside pos -1 
+value de y:44value de x:modify lastinside pos -1 
+value de y:43value de x:modify lastinside pos -1 
+value de y:42value de x:modify lastinside pos -1 
+value de y:41value de x:modify lastinside pos -1 
+value de y:40value de x:modify lastinside pos -1 
+value de y:39value de x:modify lastinside pos -1 
+value de y:38value de x:modify lastinside pos -1 
+value de y:37value de x:modify lastinside pos -1 
+value de y:36value de x:modify lastinside pos -1 
+value de y:35value de x:modify lastinside pos -1 
+value de y:34value de x:modify lastinside pos -1 
+value de y:33value de x:modify lastinside pos -1 
+value de y:32value de x:modify lastinside pos -1 
+value de y:31value de x:modify lastinside pos -1 
+value de y:30value de x:modify lastinside pos -1 
+value de y:29value de x:modify lastinside pos -1 
+value de y:28value de x:modify lastinside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastinside pos -1 
+value de y:11value de x:modify lastinside pos -1 
+value de y:10value de x:modify lastinside pos -1 
+value de y:9value de x:modify lastinside pos -1 
+value de y:8value de x:modify lastinside pos -1 
+value de y:7value de x:modify lastinside pos -1 
+value de y:6value de x:modify lastfreeptrinside pos -1 
+value de y:5value de x:modify lastinside pos -1 
+value de y:4value de x:modify lastinside pos -1 
+value de y:3value de x:modify lastinside pos -1 
+value de y:2value de x:modify lastinside pos -1 
+value de y:1value de x:modify lastinside pos -1 
+value de y:30value de x:modify lastinside pos -1 
+value de y:29value de x:modify lastinside pos -1 
+value de y:28value de x:modify lastinside pos -1 
+value de y:27value de x:modify lastinside pos -1 
+value de y:26value de x:modify lastinside pos -1 
+value de y:25value de x:modify lastinside pos -1 
+value de y:24value de x:modify lastinside pos -1 
+value de y:23value de x:modify lastinside pos -1 
+value de y:22value de x:modify lastinside pos -1 
+value de y:21value de x:modify lastinside pos -1 
+value de y:20value de x:modify lastinside pos -1 
+value de y:19value de x:modify lastinside pos -1 
+value de y:18value de x:modify lastinside pos -1 
+value de y:17value de x:modify lastinside pos -1 
+value de y:16value de x:modify lastinside pos -1 
+value de y:15value de x:modify lastinside pos -1 
+value de y:14value de x:modify lastinside pos -1 
+value de y:13value de x:modify lastinside pos -1 
+value de y:12value de x:modify lastinside pos -1 
+value de y:11value de x:modify lastinside pos -1 
+value de y:10value de x:modify lastinside pos -1 
+value de y:9value de x:modify lastinside pos -1 
+value de y:8value de x:modify lastinside pos -1 
+value de y:7value de x:modify lastinside pos -1 
+value de y:6value de x:modify lastinside pos -1 
+value de y:5value de x:modify lastinside pos -1 
+value de y:4value de x:modify lastinside pos -1 
+value de y:3value de x:modify lastinside pos -1 
+value de y:2value de x:modify lastinside first
+value de y:1value de x:modify last
+|posx:0|prompt:24|posy:2|ymax:30
+|posx:0|prompt:24|posy:3|ymax:30
+|posx:0|prompt:24|posy:4|ymax:30
+|posx:0|prompt:24|posy:5|ymax:30
+|posx:0|prompt:24|posy:6|ymax:30
+|posx:0|prompt:24|posy:7|ymax:30
+|posx:0|prompt:24|posy:8|ymax:30
+|posx:0|prompt:24|posy:9|ymax:30
+|posx:0|prompt:24|posy:10|ymax:30
+|posx:0|prompt:24|posy:11|ymax:30
+|posx:0|prompt:24|posy:12|ymax:30
+|posx:0|prompt:24|posy:13|ymax:30
+|posx:0|prompt:24|posy:14|ymax:30
+|posx:0|prompt:24|posy:15|ymax:30
+|posx:0|prompt:24|posy:16|ymax:30
+|posx:0|prompt:24|posy:17|ymax:30
+|posx:0|prompt:24|posy:18|ymax:30
+|posx:0|prompt:24|posy:19|ymax:30
+|posx:0|prompt:24|posy:20|ymax:30
+|posx:0|prompt:24|posy:21|ymax:30
+|posx:0|prompt:24|posy:22|ymax:30
+|posx:0|prompt:24|posy:23|ymax:30
+|posx:0|prompt:24|posy:24|ymax:30
+|posx:0|prompt:24|posy:25|ymax:30
+|posx:0|prompt:24|posy:26|ymax:30
+|posx:0|prompt:24|posy:27|ymax:30
+|posx:0|prompt:24|posy:28|ymax:30
+|posx:0|prompt:24|posy:29|ymax:30
+|posx:0|prompt:24|posy:30|ymax:30
+|posx:1|prompt:24|posy:1|ymax:18
+|posx:1|prompt:24|posy:2|ymax:18
+|posx:1|prompt:24|posy:3|ymax:18
+|posx:1|prompt:24|posy:4|ymax:18
+|posx:1|prompt:24|posy:5|ymax:18
+|posx:1|prompt:24|posy:6|ymax:18
+|posx:1|prompt:24|posy:7|ymax:18
+|posx:1|prompt:24|posy:8|ymax:18
+|posx:1|prompt:24|posy:9|ymax:18
+|posx:1|prompt:24|posy:10|ymax:18
+|posx:1|prompt:24|posy:11|ymax:18
+|posx:1|prompt:24|posy:12|ymax:18
+|posx:1|prompt:24|posy:13|ymax:18
+|posx:1|prompt:24|posy:14|ymax:18
+|posx:1|prompt:24|posy:15|ymax:18
+|posx:1|prompt:24|posy:16|ymax:18
+|posx:1|prompt:24|posy:17|ymax:18
+|posx:1|prompt:24|posy:18|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18
+|posx:1|prompt:24|posy:19|ymax:18backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+move to last cursorfreeptrbackspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+backspace_last 1
+b1b2b3b4b5b6b7b8b9b10b11b12b13b14b15b16b17b18b19b20b21b22b23b24b25b26b27b28b29b30b31b32b33b34b35b36
+|posx:1|prompt:24|posy:6|ymax:6
+|posx:1|prompt:24|posy:5|ymax:6
+|posx:1|prompt:24|posy:4|ymax:6
+|posx:1|prompt:24|posy:3|ymax:6
+|posx:1|prompt:24|posy:2|ymax:6
+|posx:1|prompt:24|posy:1|ymax:6
+|posx:0|prompt:24|posy:30|ymax:30
+|posx:0|prompt:24|posy:29|ymax:30
+|posx:0|prompt:24|posy:30|ymax:30
+|posx:1|prompt:24|posy:1|ymax:6inside pos -1 
+value de y:30value de x:modify last
+|posx:1|prompt:24|posy:1|ymax:5inside pos -1 
+value de y:30value de x:modify last
+|posx:1|prompt:24|posy:1|ymax:4inside pos -1 
+value de y:30value de x:modify last
+|posx:1|prompt:24|posy:1|ymax:3inside pos -1 
+value de y:30value de x:modify last
+|posx:1|prompt:24|posy:1|ymax:2inside pos -1 
+value de y:30value de x:modify last
+|posx:1|prompt:24|posy:1|ymax:1inside pos -1 
+value de y:30value de x:modify last
+|posx:1|prompt:24|posy:1|ymax:0
+|posx:1|prompt:24|posy:1|ymax:0
+|posx:0|prompt:24|posy:30|ymax:30
+|posx:1|prompt:24|posy:1|ymax:0
+|posx:1|prompt:24|posy:1|ymax:0backspace_last 1
+move to last cursorfreeptr
+|posx:0|prompt:24|posy:29|ymax:29inside pos -1 
+value de y:28value de x:inferieurinside pos -1 
+value de y:27value de x:inferieurinside pos -1 
+value de y:26value de x:inferieurinside pos -1 
+value de y:25value de x:inferieurinside pos -1 
+value de y:24value de x:inferieurinside pos -1 
+value de y:23value de x:inferieurinside pos -1 
+value de y:22value de x:inferieur
+|posx:0|prompt:24|posy:21|ymax:22inside pos -1 
+value de y:20value de x:inferieurinside pos -1 
+value de y:19value de x:inferieurinside pos -1 
+value de y:18value de x:inferieurinside pos -1 
+value de y:17value de x:inferieurinside pos -1 
+value de y:16value de x:inferieurinside pos -1 
+value de y:15value de x:inferieur
+|posx:0|prompt:24|posy:14|ymax:16inside pos -1 
+value de y:13value de x:inferieur
+|posx:0|prompt:24|posy:12|ymax:15inside pos -1 
+value de y:11value de x:inferieur
+|posx:0|prompt:24|posy:10|ymax:14inside pos -1 
+value de y:9value de x:inferieur
+|posx:0|prompt:24|posy:8|ymax:13inside pos -1 
+value de y:7value de x:inferieur
+|posx:0|prompt:24|posy:6|ymax:12inside pos -1 
+value de y:5value de x:inferieur
+|posx:0|prompt:24|posy:4|ymax:11inside pos -1 
+value de y:3value de x:inferieur
+|posx:0|prompt:24|posy:2|ymax:10inside first
+value de y:1value de x:inferieur
+|posx:0|prompt:24|posy:1|ymax:9
+|posx:0|prompt:24|posy:2|ymax:9
+|posx:0|prompt:24|posy:3|ymax:9inside pos -1 
+value de y:2value de x:inferieur
+|posx:0|prompt:24|posy:3|ymax:8inside pos -1 
+value de y:2value de x:inferieur
+|posx:0|prompt:24|posy:3|ymax:7
+|posx:0|prompt:24|posy:4|ymax:7inside pos -1 
+value de y:3value de x:inferieur
+|posx:0|prompt:24|posy:4|ymax:6inside pos -1 
+value de y:3value de x:inferieur
+|posx:0|prompt:24|posy:4|ymax:5inside pos -1 
+value de y:3value de x:inferieurinside pos -1 
+value de y:2value de x:inferieur
+|posx:0|prompt:24|posy:3|ymax:3
+|posx:0|prompt:24|posy:4|ymax:3
+|posx:0|prompt:24|posy:4|ymax:3backspace_last 1
+
+|posx:0|prompt:24|posy:3|ymax:2backspace_last 1
+backspace_last 1
+
+|posx:0|prompt:24|posy:1|ymax:0
