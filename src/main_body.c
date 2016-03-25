@@ -36,7 +36,6 @@ void					main_loop(t_para *glob)
 		read_input(glob, &input);
 		if (glob->cmd && glob->term->action == 1)
 		{
-//			ft_putnbr_fd(glob->cursor[0], glob->fd);
 			main_action(&glob);
 			glob->total_c = 0;
 			freecursor(&glob->cursor);

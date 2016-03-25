@@ -102,7 +102,7 @@ void				backspace_inside(t_input **input, t_para **glob)
 		ptr->pos[0] = x++;
 		ptr = ptr->next;
 	}
-	back_pos_init(glob);
+	cursor_pos_init(glob);
 	back_redraw(glob, input);
 	(void)x;
 	(void)y;

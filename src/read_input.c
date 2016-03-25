@@ -72,7 +72,10 @@ void		read_arrow(t_para **glob, t_input **input)
 
 void		read_ud(t_para **glob, t_input **input, char buff)
 {
-	clear_line(*glob, input);
+	clear_line(glob, input);
+	if (&(*glob)->cursor)
+		freecursor(&(*glob)->cursor);
+	(*glob)->cursor = init_cursor();
 	if (*input)
 		delete_lst_input(input);
 	if (buff == 'A' && (*glob)->current_h - 1 > 0)

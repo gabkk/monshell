@@ -57,52 +57,6 @@ void		back_del_maillon(t_para **glob, t_input **input)
 	}
 }
 
-void		back_pos_init(t_para **glob)
-{
-	int				x;
-	int				y;
-	int				prompt;
-	
-
-	y = (*glob)->cursor->posy;
-	x = (*glob)->cursor->posx;
-	prompt = (*glob)->prompt_s;
-	if (x > 0)//fonction dupplique
-	{
-		while (x > 0)
-		{
-			ft_putstr_fd(tgetstr("up", NULL), (*glob)->fd);
-			x--;
-		}
-		if (y < prompt)
-		{	
-			while (y < prompt + 1)
-			{
-				ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
-				y++;
-			}
-		}
-		else if (y > prompt)
-		{	
-			while (y > prompt + 1)
-			{
-				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				y--;
-			}
-		}
-		else
-			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
-	}
-	else
-	{
-		while (y > 1)
-		{
-			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-			y--;
-		}		
-	}
-}
-
 void				back_redraw(t_para **glob, t_input **input)
 {
 	t_input			*ptr;

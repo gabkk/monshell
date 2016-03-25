@@ -18,11 +18,15 @@ void			show_last_hist(t_para **glob, t_input **input)
 	int			fd;
 	int			i;
 	int			j;
+	int			y;
+	int			x;
 
+	x = 0;
+	y = (*glob)->prompt_s;
 	j = 0;
 	i = 0;
 	line = NULL;
-	(*glob)->cursor->posy = 0;
+	(*glob)->cursor->posy = 1;
 	(*glob)->total_c = 0;
 	if ((fd = open(PATH_HIST, O_RDWR | O_CREAT, 0777)) == -1)
 		return (ft_putstr_fd("open error : hist", 2));
@@ -33,10 +37,35 @@ void			show_last_hist(t_para **glob, t_input **input)
 			while (line[j] != '\0')
 			{
 				ft_putchar_fd(line[j], (*glob)->fd);
+				
 				add_back_input(input, line[j], j);
+				
+				if (y == (*glob)->term->size[0])
+				{
+
+					add_cursor(&(*glob)->cursor);
+					y = 0;
+
+
+				ft_putendl_fd("", 2);//debug
+				ft_putstr_fd("(*glob)->cursor->posx", 2);//debug
+				ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
+				ft_putstr_fd("x", 2);//debug
+				ft_putnbr_fd(x, 2);//debug
+
+				}
+				y++;
+				(*glob)->cursor->ymax++;
 				(*glob)->cursor->posy++;
 				(*glob)->total_c +=1 ;
 				j++;
+
+				ft_putendl_fd("", 2);//debug
+				ft_putstr_fd("(*glob)->cursor->posy", 2);//debug
+				ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
+				ft_putstr_fd("y", 2);//debug
+				ft_putnbr_fd(y, 2);//debug
+
 			}
 			break;
 		}

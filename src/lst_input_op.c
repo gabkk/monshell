@@ -118,7 +118,7 @@ void				print_lst_input(t_input **input, t_para **glob)
 	y = (*glob)->cursor->posy - 1;
 	x = (*glob)->cursor->posx;
 	prompt = (*glob)->prompt_s;
-	while (y > 1)
+	while (y > 1)//fonction dupplique voir cursor_pos_init
 	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 		y--;

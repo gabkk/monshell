@@ -84,25 +84,19 @@ void		randcol_ansi(int i)
 	free(tmp2);
 }
 
-void			clear_line(t_para *glob, t_input **input)
+void			clear_line(t_para **glob, t_input **input)
 {
 	int 		i;
 
-	i = glob->cursor->posy;
-	while (i > 0)
-	{
-		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
-		i--;	
-	}
+	//faire uniquement un espace sur les charen trop si il y en a
+	i = 0;
+//	(void)input;
+	cursor_pos_init(glob);
 	while ((*input))
 	{
-		ft_putchar_fd(' ', glob->fd);
+		ft_putchar_fd(' ', (*glob)->fd);
 		(*input) = (*input)->next;
 		i++;
 	}
-	while (i > 0)
-	{
-		ft_putstr_fd(tgetstr("le", NULL), glob->fd);
-		i--;
-	}
+	cursor_pos_init(glob);
 }

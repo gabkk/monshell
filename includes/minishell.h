@@ -230,15 +230,6 @@ t_env					*setdefaultenv(void);
 char					**getdefaultenv(void);
 
 /*
-** tools.c
-*/
-char					*getlistevalue(t_env	**env, char *name);
-void					randcol_ansi(int i);
-int						checkifonlyspace(char *value);
-void					setlistlvl(t_env **env);
-void					clear_line(t_para *glob, t_input **input);
-
-/*
 ** signal.c
 */
 void					sig_handler(int signo);
@@ -290,7 +281,16 @@ void					selector_paste(t_para **glob, t_input **input);
 t_cursor				*init_cursor(void);
 void					add_cursor(t_cursor **cursor);
 void					freecursor(t_cursor **cursor);
+void					cursor_pos_init(t_para **glob);
 
+/*
+** tools.c
+*/
+char					*getlistevalue(t_env	**env, char *name);
+void					randcol_ansi(int i);
+int						checkifonlyspace(char *value);
+void					setlistlvl(t_env **env);
+void					clear_line(t_para **glob, t_input **input);
 
 /*
 ** tool2.c
@@ -302,7 +302,6 @@ void					modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value);
 ** backspace_op.c
 */
 void					back_del_maillon(t_para **glob, t_input **input);
-void					back_pos_init(t_para **glob);
 void					back_redraw(t_para **glob, t_input **input);
 void					back_reposition(t_para **glob, int x, int y);
 
