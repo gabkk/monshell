@@ -269,7 +269,7 @@ void					backspace_inside(t_input **input, t_para **glob);
 ** selector.c
 */
 void					mode_selector(t_para **glob);
-void					set_selector(t_para **glob, t_input **input, int index, int direction);
+void					set_selector(t_para **glob, t_input **input, int direction);
 void					selector_action(t_para **glob, t_input **input, int buff);
 void					selector_copy(t_para **glob, t_input **input);
 void					selector_cut(t_para **glob, t_input **input);
@@ -297,6 +297,7 @@ void					clear_line(t_para **glob, t_input **input);
 */
 
 void					modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value);
+int 					get_input_pos(t_para **glob);
 
 /*
 ** backspace_op.c
@@ -304,6 +305,13 @@ void					modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value);
 void					back_del_maillon(t_para **glob, t_input **input);
 void					back_redraw(t_para **glob, t_input **input);
 void					back_reposition(t_para **glob, int x, int y);
+
+
+/*
+** selector_paste.c
+*/
+int						save_copy(t_para **glob, t_input **input);
+void					redraw_with_copy(t_para **glob, t_input **input);
 
 #endif
 

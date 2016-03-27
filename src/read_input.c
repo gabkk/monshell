@@ -14,8 +14,8 @@
 
 void			read_input(t_para *glob, t_input **input)
 {
-	char	buff[2];
-	int  ret;
+	char		buff[2];
+	int  		ret;
 
 	ft_bzero(buff, 2);
 	if ((ret = read(0, buff, 1)) == 0)
@@ -45,7 +45,23 @@ void			read_input(t_para *glob, t_input **input)
 			delete_lst_input(input);
 	}
 	else if (buff[0] == 4)//ctr+d
+	{
+		if (glob->current_l == 1)
+		{
+			//ft_putstr_fd(tgetstr("me", NULL), glob->fd);
+			//ft_putstr_fd(tgetstr("ae", NULL), glob->fd);
+			glob->current_l = 0;
+		}
+		else if (glob->current_l == 0)
+		{
+			//ft_putstr_fd(tgetstr("as", NULL), glob->fd);
+			//ft_putstr_fd(tgetstr("md", NULL), glob->fd);
+			glob->current_l = 1;
+		}
+		//ft_putstr_fd("ok",glob->fd);
 		exit(0);
+	}
+//	me
 }
 
 void		read_arrow(t_para **glob, t_input **input)
@@ -97,7 +113,7 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 		if ((*glob)->cursor->posy < (*glob)->cursor->ymax + 1)
 		{
 			if ((*glob)->selector == 1)
-				set_selector(glob, input, (*glob)->cursor->posy, 1);
+				set_selector(glob, input, 1);
 			ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
 			(*glob)->cursor->posy += 1;
 		}
@@ -128,7 +144,7 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 		{
 			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 			if ((*glob)->selector == 1)
-				set_selector(glob, input, (*glob)->cursor->posy - 1, -1);
+				set_selector(glob, input, -1);
 			(*glob)->cursor->posy -= 1;
 		}
 		else if ((*glob)->cursor->prev && (*glob)->cursor->posy == 1)
@@ -145,7 +161,7 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 		}
 
 
-		ft_putchar_fd('\n', 2);
+		ft_putchar_fd('\n', 2);//debug
 		ft_putstr_fd("|posx:", 2);
 		ft_putnbr_fd((*glob)->cursor->posx, 2);
 		ft_putstr_fd("|prompt:", 2);

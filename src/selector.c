@@ -23,25 +23,33 @@ void				mode_selector(t_para **glob)
 	else if (ret == -1)
 		exit(EXIT_FAILURE);
 	if (buff[2] == 'A')
+	{
+		ft_putstr_fd("\e]12;blue\a", (*glob)->fd);
 		(*glob)->selector = 1;
+	}
 	else if (buff[2] == 'B')
+	{
+		ft_putstr_fd("\e]12;white\a", (*glob)->fd);
 		(*glob)->selector = 0;	
+	}
 }
 
-void				set_selector(t_para **glob, t_input **input, int index, int direction)
+void				set_selector(t_para **glob, t_input **input, int direction)
 {
 	t_input 		*ptr;
+	int 			position;
 
+	position = get_input_pos(glob) - 1;
 	ptr = *input;
 	while (ptr)
 	{
-		if (ptr->pos[0] == index)
+		if (ptr->pos[0] == position)
 		{
 			if (direction == 1 && ptr->selected == 0)
 			{
 				ft_putchar_fd(' ', (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				ft_putstr_fd("\x1b[32m", (*glob)->fd);
+				ft_putstr_fd("\x1b[34m", (*glob)->fd);
 				ft_putchar_fd(ptr->c, (*glob)->fd);
 				ft_putstr_fd("\x1b[0m", (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -55,11 +63,14 @@ void				set_selector(t_para **glob, t_input **input, int index, int direction)
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 				ptr->selected = 0;
 			}
-			else if (direction == -1 && ptr->selected == 0)
+		}
+		else if (ptr->pos[0] == position - 1)
+		{
+			if (direction == -1 && ptr->selected == 0)
 			{
 				ft_putchar_fd(' ', (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				ft_putstr_fd("\x1b[32m", (*glob)->fd);
+				ft_putstr_fd("\x1b[34m", (*glob)->fd);
 				ft_putchar_fd(ptr->c, (*glob)->fd);
 				ft_putstr_fd("\x1b[0m", (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -106,6 +117,7 @@ void				selector_copy(t_para **glob, t_input **input)
 		}
 		ptr = ptr->next;
 	}
+	ft_putstr_fd("\e]12;white\a", (*glob)->fd);
 	(*glob)->selector = 0;
 }
 
@@ -206,66 +218,123 @@ void				selector_cut(t_para **glob, t_input **input)
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
 		(*glob)->cursor->posy--;	
 	}
+
+	ft_putstr_fd("\e]12;white\a", (*glob)->fd);
 	(*glob)->selector = 0;
 }
 
 
 void				selector_paste(t_para **glob, t_input **input)
 {
-	t_input			*ptr;
-	int				j;
 	int				position;
+	int				final;
 
-	j = 0;
-	position = 0;
+	position = get_input_pos(glob);
+	final = position;
 	if ((*glob)->copy)//(*glob)->copy)
 	{
-		ptr = (*glob)->copy;//(*glob)->copy;
-		position = (*glob)->cursor->posy;
-		while (ptr)
+		if ((final = save_copy(glob, input)) == -1) //exit
 		{
-			//ft_putchar_fd(ptr->c, (*glob)->fd);
-			if (position == (*glob)->total_c)
+			ft_putstr_fd("\e]12;white\a", (*glob)->fd);
+			(*glob)->selector = 0;
+			return ; //definir le type d exit
+		}
+		cursor_pos_init(glob);
+		//reset
+		if (&(*glob)->cursor)
+			freecursor(&(*glob)->cursor);
+		(*glob)->cursor = init_cursor();
+		(*glob)->cursor->posy = 1;
+
+
+		// le add inside continue et a la pos final
+		redraw_with_copy(glob, input);
+
+		ft_putendl_fd("\n", 2);//debug
+		ft_putstr_fd("|final:", 2);
+		ft_putnbr_fd(final, 2);
+		ft_putstr_fd("|total:", 2);
+		ft_putnbr_fd((*glob)->total_c, 2);//debug
+
+		int xfinal;
+		int tmp;
+		int yfinal;
+
+		tmp = final;
+		xfinal = 0;
+		yfinal = (*glob)->prompt_s;
+		while (tmp > 0)
+		{
+			yfinal++;
+			if (yfinal > (*glob)->term->size[0])
 			{
-				add_back_input(input, ptr->c, (*glob)->total_c);
+				xfinal++;
+				yfinal = 1;
 			}
-			else
-				add_inside_input(input, ptr->c, position);
-			//(*glob)->cursor[0]++;
-			
-			(*glob)->total_c++;
-			position++;
-			ptr = ptr->next;
+			tmp--;
 		}
-		j = (*glob)->cursor->posy;
-		while (j > 0)
+
+		ft_putchar_fd('\n', 2);//debug
+		ft_putstr_fd("|xfinal:", 2);
+		ft_putnbr_fd(xfinal, 2);
+		ft_putstr_fd("|yfinal:", 2);
+		ft_putnbr_fd(yfinal, 2);//debug
+
+
+	if ((*glob)->cursor->posx > xfinal)// dans le cas sup a zero
+	{
+		if ((*glob)->cursor->posy < yfinal)
 		{
-			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-			j--;
-		}
-		j = (*glob)->cursor->posy;// pour le retour apres draw
-		(*glob)->cursor->posy = 0;
-		ptr = *input;
-		while (ptr)
-		{
-			if (ptr->selected == 1)//faire une fonction
+			while ((*glob)->cursor->posy < yfinal)
 			{
-				ft_putstr_fd("\x1b[32m", (*glob)->fd);
-				ft_putchar_fd(ptr->c, (*glob)->fd);
-				ft_putstr_fd("\x1b[0m", (*glob)->fd);
+				ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
+				(*glob)->cursor->posy++;
 			}
-			else 
-				ft_putchar_fd(ptr->c, (*glob)->fd);
-			ptr->selected = 0;
-			(*glob)->cursor->posy++;
-			j++;
-			ptr = ptr->next;
 		}
-		while ((*glob)->cursor->posy > position)
+		else if ((*glob)->cursor->posy > yfinal)
 		{
-		 	ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-			(*glob)->cursor->posy--;
+			while ((*glob)->cursor->posy > yfinal)
+			{
+				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+				(*glob)->cursor->posy--;
+			}
 		}
+		while ((*glob)->cursor->posx > xfinal)// dans le cas sup a zero
+		{
+			ft_putstr_fd(tgetstr("up", NULL), (*glob)->fd);
+			if ((*glob)->cursor->prev)
+			{
+				(*glob)->cursor->posy = 1;
+				(*glob)->cursor = (*glob)->cursor->prev;
+			}
+		}
+		if ((*glob)->cursor->posx == 0)
+			yfinal -= (*glob)->prompt_s;
+		(*glob)->cursor->posy = yfinal;
+	}
+	else
+	{
+		if ((*glob)->cursor->posx == 0)
+			yfinal -= (*glob)->prompt_s;
+		if ((*glob)->cursor->posy < yfinal)
+		{
+			while ((*glob)->cursor->posy < yfinal)
+			{
+				ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
+				(*glob)->cursor->posy++;
+			}
+		}
+		else if ((*glob)->cursor->posy > yfinal)
+		{
+			while ((*glob)->cursor->posy > yfinal)
+			{
+				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+				(*glob)->cursor->posy--;
+			}
+		}
+	}
+
+		ft_putstr_fd("\e]12;white\a", (*glob)->fd);
 		(*glob)->selector = 0;
 	}
 }

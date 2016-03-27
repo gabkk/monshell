@@ -56,3 +56,19 @@ void				modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value)
 
 	}
 }
+
+int 				get_input_pos(t_para **glob)
+{
+	int				position;
+
+	position = 0;
+	if ((*glob)->cursor->posx == 0)
+		position = (*glob)->cursor->posy;
+	else
+	{
+		position = (*glob)->term->size[0] - (*glob)->prompt_s;//verfier le dernier charactere
+		position += (*glob)->cursor->posy;
+		position += (((*glob)->cursor->posx - 1) * (*glob)->term->size[0]);//verfier le dernier charactere
+	}
+	return (position);
+}
