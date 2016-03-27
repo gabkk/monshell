@@ -306,12 +306,18 @@ void					back_del_maillon(t_para **glob, t_input **input);
 void					back_redraw(t_para **glob, t_input **input);
 void					back_reposition(t_para **glob, int x, int y);
 
-
 /*
 ** selector_paste.c
 */
 int						save_copy(t_para **glob, t_input **input);
-void					redraw_with_copy(t_para **glob, t_input **input);
+void					redraw_input(t_para **glob, t_input **input);
+void					position_cursor(t_para **glob, int final);
+
+/*
+** selector_cut.c
+*/
+int						free_input_copy_buff(t_para **glob, t_input **input);
+
 
 #endif
 

@@ -157,6 +157,8 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 				i--;
 			}
 			(*glob)->cursor = (*glob)->cursor->prev;
+			if ((*glob)->selector == 1)
+				set_selector(glob, input, -1);
 			(*glob)->cursor->posy -= 1;
 		}
 

@@ -21,7 +21,7 @@ void				add_back_input(t_input **input, char buf, int i)
 	if (!*input)
 	{
 		*input = newm;
-		(*input)->c = buf;
+		newm->c = buf;//(*input)->c
 		newm->pos[0] = i;
 		return;
 	}
