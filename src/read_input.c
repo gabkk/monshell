@@ -128,7 +128,7 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 
 		
 
-		ft_putchar_fd('\n', 2);
+		ft_putchar_fd('\n', 2); // debug
 		ft_putstr_fd("|posx:", 2);
 		ft_putnbr_fd((*glob)->cursor->posx, 2);
 		ft_putstr_fd("|prompt:", 2);
@@ -136,7 +136,7 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 		ft_putstr_fd("|posy:", 2);
 		ft_putnbr_fd((*glob)->cursor->posy, 2);
 		ft_putstr_fd("|ymax:", 2);
-		ft_putnbr_fd((*glob)->cursor->ymax, 2);
+		ft_putnbr_fd((*glob)->cursor->ymax, 2); // debug
 	}
 	else if (buff == 'D')//gauche
 	{
@@ -165,13 +165,13 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 
 		ft_putchar_fd('\n', 2);//debug
 		ft_putstr_fd("|posx:", 2);
-		ft_putnbr_fd((*glob)->cursor->posx, 2);
+		ft_putnbr_fd((*glob)->cursor->posx, 2); // debug
 		ft_putstr_fd("|prompt:", 2);
 		ft_putnbr_fd((*glob)->prompt_s, 2);
 		ft_putstr_fd("|posy:", 2);
-		ft_putnbr_fd((*glob)->cursor->posy, 2);
+		ft_putnbr_fd((*glob)->cursor->posy, 2); // debug
 		ft_putstr_fd("|ymax:", 2);
-		ft_putnbr_fd((*glob)->cursor->ymax, 2);
+		ft_putnbr_fd((*glob)->cursor->ymax, 2); // debug
 	}
 }
 
@@ -213,21 +213,15 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 		if ((*glob)->cursor->ymax < (*glob)->term->size[0] - (*glob)->prompt_s)
 		{
 			(*glob)->cursor->ymax++;
-			ft_putstr_fd("inferieur", 2);
+			ft_putstr_fd("inferieur", 2); // debug
 		}
 		else
 		{
-			ft_putstr_fd("modify last", 2);
+			ft_putstr_fd("modify last", 2); // debug
 			// if (!(*glob)->cursor->next)
 			// 	add_cursor(&(*glob)->cursor);
 			modify_ymax_to_last(glob, &(*glob)->cursor, 1);
 		}
-
-
-//		(*glob)->cursor->ymax += 1;
-
-
-
 		(*glob)->total_c += 1;
 		// ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
 		print_lst_input(input, glob); //changer le posy et le posx
@@ -246,15 +240,6 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 			add_cursor(&(*glob)->cursor);
 		else
 			(*glob)->cursor = (*glob)->cursor->next;
-		// ft_putchar_fd('\n', 2);
-		// ft_putstr_fd("|posx:", 2);
-		// ft_putnbr_fd((*glob)->cursor->posx, 2);
-		// ft_putstr_fd("|prompt:", 2);
-		// ft_putnbr_fd((*glob)->prompt_s, 2);
-		// ft_putstr_fd("|posy:", 2);
-		// ft_putnbr_fd((*glob)->cursor->posy, 2);
-		// ft_putstr_fd("|ymax:", 2);
-		// ft_putnbr_fd((*glob)->cursor->ymax, 2);
 	}
 	else if ((*glob)->cursor->posx > 0 &&
 		((*glob)->cursor->posy > (*glob)->term->size[0]))
@@ -265,10 +250,5 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 		else
 			(*glob)->cursor = (*glob)->cursor->next;
 	}
-	// else if ((*glob)->cursor->next)
-	// {
-	// 	ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
-	// 	(*glob)->cursor = (*glob)->cursor->next;	
-	// }
 }
 			

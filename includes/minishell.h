@@ -318,6 +318,12 @@ void					position_cursor(t_para **glob, int final);
 */
 int						free_input_copy_buff(t_para **glob, t_input **input);
 
+/*
+** cursor_move.c
+*/
+
+void					cursor_up(t_para **glob);
+void					cursor_down(t_para **glob);
 
 #endif
 

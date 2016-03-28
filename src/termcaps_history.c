@@ -19,9 +19,7 @@ void			show_last_hist(t_para **glob, t_input **input)
 	int			i;
 	int			j;
 	int			y;
-	int			x;
 
-	x = 0;
 	y = (*glob)->prompt_s;
 	j = 0;
 	i = 0;
@@ -47,11 +45,9 @@ void			show_last_hist(t_para **glob, t_input **input)
 					y = 0;
 
 
-				ft_putendl_fd("", 2);//debug
+				ft_putendl_fd("!1", 2);//debug
 				ft_putstr_fd("(*glob)->cursor->posx", 2);//debug
 				ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
-				ft_putstr_fd("x", 2);//debug
-				ft_putnbr_fd(x, 2);//debug
 
 				}
 				y++;
@@ -60,13 +56,24 @@ void			show_last_hist(t_para **glob, t_input **input)
 				(*glob)->total_c +=1 ;
 				j++;
 
+			}
+			if (y == (*glob)->term->size[0])
+			{
+			//	(*glob)->cursor->posy--;
+				ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
+				add_cursor(&(*glob)->cursor);
+			//	(*glob)->cursor->ymax++;
+				(*glob)->cursor->posy = 1;
+				ft_putendl_fd("!2", 2);//debug
+				ft_putstr_fd("(*glob)->cursor->posx", 2);//debug
+				ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
+			}
 				ft_putendl_fd("", 2);//debug
 				ft_putstr_fd("(*glob)->cursor->posy", 2);//debug
 				ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
-				ft_putstr_fd("y", 2);//debug
-				ft_putnbr_fd(y, 2);//debug
+				// ft_putstr_fd("y", 2);//debug
+				// ft_putnbr_fd(y, 2);//debug
 
-			}
 			break;
 		}
 		i++;

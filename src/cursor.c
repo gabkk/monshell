@@ -65,6 +65,8 @@ void		cursor_pos_init(t_para **glob)
 	prompt = (*glob)->prompt_s;
 	if (x > 0)//fonction dupplique
 	{
+		ft_putendl_fd("curpos_init x>0", 2);//debug
+
 		while (x > 0)
 		{
 			ft_putstr_fd(tgetstr("up", NULL), (*glob)->fd);
@@ -91,6 +93,7 @@ void		cursor_pos_init(t_para **glob)
 	}
 	else
 	{
+		ft_putendl_fd("curpos_init esle", 2);//debug
 		while (y > 1)
 		{
 			ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);

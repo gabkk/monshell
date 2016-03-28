@@ -98,5 +98,13 @@ void			clear_line(t_para **glob, t_input **input)
 		(*input) = (*input)->next;
 		i++;
 	}
+	if ((i == (*glob)->term->size[0] - (*glob)->prompt_s)||
+		((i + (*glob)->prompt_s)%(*glob)->term->size[0] == 0))
+	{
+		ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
+	} // POUR LE SAUT DE LIGNE SI ON CE TROUVE SUR UNE FIN DE LIGNE
+	while ((*glob)->cursor->next)
+		(*glob)->cursor = (*glob)->cursor->next;
+ 	(*glob)->cursor->posy = (*glob)->cursor->ymax + 1;
 	cursor_pos_init(glob);
 }

@@ -22,15 +22,23 @@ void				mode_selector(t_para **glob)
 		exit(0);
 	else if (ret == -1)
 		exit(EXIT_FAILURE);
-	if (buff[2] == 'A')
+	if (buff[1] == '2' && buff[2] == 'A')
 	{
 		ft_putstr_fd("\e]12;blue\a", (*glob)->fd);
 		(*glob)->selector = 1;
 	}
-	else if (buff[2] == 'B')
+	else if (buff[1] == '2' && buff[2] == 'B')
 	{
 		ft_putstr_fd("\e]12;white\a", (*glob)->fd);
 		(*glob)->selector = 0;	
+	}
+	else if (buff[1] == '5' && buff[2] == 'A')
+	{
+		cursor_up(glob);
+	}
+	else if (buff[1] == '5' && buff[2] == 'B')
+	{
+		cursor_down(glob);
 	}
 }
 
