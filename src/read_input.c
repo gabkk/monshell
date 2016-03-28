@@ -83,7 +83,7 @@ void		read_arrow(t_para **glob, t_input **input)
 	else if (buff[1] == 'C' || buff[1] == 'D')
 		read_lr(glob, input, buff[1]);
 	else if (buff[1] == '1')
-		mode_selector(glob);
+		mode_selector(glob, input);
 }
 
 void		read_ud(t_para **glob, t_input **input, char buff)

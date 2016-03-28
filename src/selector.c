@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void				mode_selector(t_para **glob)
+void				mode_selector(t_para **glob, t_input **input)
 {
 	char			buff[3];
 	int  			ret;
@@ -39,6 +39,14 @@ void				mode_selector(t_para **glob)
 	else if (buff[1] == '5' && buff[2] == 'B')
 	{
 		cursor_down(glob);
+	}
+	else if (buff[1] == '5' && buff[2] == 'D')//gauche
+	{
+		cursor_word_left(glob, input);
+	}
+	else if (buff[1] == '5' && buff[2] == 'C')//droite
+	{
+		cursor_word_right(glob, input);
 	}
 }
 

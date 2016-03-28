@@ -268,7 +268,7 @@ void					backspace_inside(t_input **input, t_para **glob);
 /*
 ** selector.c
 */
-void					mode_selector(t_para **glob);
+void					mode_selector(t_para **glob, t_input **input);
 void					set_selector(t_para **glob, t_input **input, int direction);
 void					selector_action(t_para **glob, t_input **input, int buff);
 void					selector_copy(t_para **glob, t_input **input);
@@ -324,6 +324,10 @@ int						free_input_copy_buff(t_para **glob, t_input **input);
 
 void					cursor_up(t_para **glob);
 void					cursor_down(t_para **glob);
+void					cursor_word_left(t_para **glob, t_input **input);
+void					cursor_word_right(t_para **glob, t_input **input);
+int						cursor_find_left(t_para **glob, t_input **input);
+void					cursor_find_right(t_para **glob, t_input **input);
 
 #endif
 

@@ -113,21 +113,21 @@ void		position_cursor(t_para **glob, int final)
 		// if (xfinal == 0)
 		// 	yfinal -=(*glob)->prompt_s;
 		
-		ft_putendl_fd("up", 2);//debug
-		ft_putchar_fd('\n', 2);//debug
-		ft_putstr_fd("|xfinal:", 2);
-		ft_putnbr_fd(xfinal, 2);
-		ft_putstr_fd("|yfinal:", 2);
-		ft_putnbr_fd(yfinal, 2);//debug
-		ft_putstr_fd("|(*glob)->cursor->posy:", 2);
-		ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
-		ft_putstr_fd("|(*glob)->cursor->posx:", 2);
-		ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
+		// ft_putendl_fd("up", 2);//debug
+		// ft_putchar_fd('\n', 2);//debug
+		// ft_putstr_fd("|xfinal:", 2);
+		// ft_putnbr_fd(xfinal, 2);
+		// ft_putstr_fd("|yfinal:", 2);
+		// ft_putnbr_fd(yfinal, 2);//debug
+		// ft_putstr_fd("|(*glob)->cursor->posy:", 2);
+		// ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
+		// ft_putstr_fd("|(*glob)->cursor->posx:", 2);
+		// ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
 
 
 		if ((*glob)->cursor->posy < yfinal)
 		{
-			ft_putstr_fd("|1", 2);
+			//ft_putstr_fd("|1", 2);
 			while ((*glob)->cursor->posy < yfinal)
 			{
 				ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
@@ -136,7 +136,7 @@ void		position_cursor(t_para **glob, int final)
 		}
 		else if ((*glob)->cursor->posy > yfinal)
 		{
-			ft_putstr_fd("|2", 2);
+			//ft_putstr_fd("|2", 2);
 			while ((*glob)->cursor->posy > yfinal)
 			{
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -168,22 +168,22 @@ void		position_cursor(t_para **glob, int final)
 		if ((*glob)->cursor->posx == 0)
 			yfinal -= (*glob)->prompt_s;
 
-		ft_putendl_fd("down", 2);//debug
-		ft_putchar_fd('\n', 2);//debug
-		ft_putstr_fd("|xfinal:", 2);
-		ft_putnbr_fd(xfinal, 2);
-		ft_putstr_fd("|yfinal:", 2);
-		ft_putnbr_fd(yfinal, 2);//debug
-		ft_putstr_fd("|(*glob)->cursor->posy:", 2);
-		ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
-		ft_putstr_fd("|(*glob)->cursor->posx:", 2);
-		ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
-		ft_putstr_fd("|(*glob)->cursor->ymax:", 2);
-		ft_putnbr_fd((*glob)->cursor->ymax, 2);//debug
+		// ft_putendl_fd("down", 2);//debug
+		// ft_putchar_fd('\n', 2);//debug
+		// ft_putstr_fd("|xfinal:", 2);
+		// ft_putnbr_fd(xfinal, 2);
+		// ft_putstr_fd("|yfinal:", 2);
+		// ft_putnbr_fd(yfinal, 2);//debug
+		// ft_putstr_fd("|(*glob)->cursor->posy:", 2);
+		// ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
+		// ft_putstr_fd("|(*glob)->cursor->posx:", 2);
+		// ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
+		// ft_putstr_fd("|(*glob)->cursor->ymax:", 2);
+		// ft_putnbr_fd((*glob)->cursor->ymax, 2);//debug
 
 		if ((*glob)->cursor->posy < yfinal)
 		{
-		ft_putstr_fd("|1", 2);
+		//ft_putstr_fd("|1", 2);
 			while ((*glob)->cursor->posy < yfinal)
 			{
 				ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
@@ -192,7 +192,7 @@ void		position_cursor(t_para **glob, int final)
 		}
 		else if ((*glob)->cursor->posy > yfinal)
 		{
-		ft_putstr_fd("|2", 2);
+		//ft_putstr_fd("|2", 2);
 			while ((*glob)->cursor->posy > yfinal)
 			{
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);

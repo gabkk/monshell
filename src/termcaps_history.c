@@ -35,20 +35,11 @@ void			show_last_hist(t_para **glob, t_input **input)
 			while (line[j] != '\0')
 			{
 				ft_putchar_fd(line[j], (*glob)->fd);
-				
 				add_back_input(input, line[j], j);
-				
 				if (y == (*glob)->term->size[0])
 				{
-
 					add_cursor(&(*glob)->cursor);
 					y = 0;
-
-
-				ft_putendl_fd("!1", 2);//debug
-				ft_putstr_fd("(*glob)->cursor->posx", 2);//debug
-				ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
-
 				}
 				y++;
 				(*glob)->cursor->ymax++;
@@ -59,21 +50,10 @@ void			show_last_hist(t_para **glob, t_input **input)
 			}
 			if (y == (*glob)->term->size[0])
 			{
-			//	(*glob)->cursor->posy--;
 				ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
 				add_cursor(&(*glob)->cursor);
-			//	(*glob)->cursor->ymax++;
 				(*glob)->cursor->posy = 1;
-				ft_putendl_fd("!2", 2);//debug
-				ft_putstr_fd("(*glob)->cursor->posx", 2);//debug
-				ft_putnbr_fd((*glob)->cursor->posx, 2);//debug
 			}
-				ft_putendl_fd("", 2);//debug
-				ft_putstr_fd("(*glob)->cursor->posy", 2);//debug
-				ft_putnbr_fd((*glob)->cursor->posy, 2);//debug
-				// ft_putstr_fd("y", 2);//debug
-				// ft_putnbr_fd(y, 2);//debug
-
 			break;
 		}
 		i++;
