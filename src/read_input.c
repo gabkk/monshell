@@ -38,7 +38,7 @@ void			read_input(t_para *glob, t_input **input)
 	}
 	else if (buff[0] == 27)
 		read_arrow(&glob, input);
-	else if (buff[0] == '\n')//line
+	else if (buff[0] == '\n' && glob->selector == 0)//line
 	{
 		save_cmd(input, &glob);
 		if (*input)
@@ -76,7 +76,8 @@ void		read_arrow(t_para **glob, t_input **input)
 		exit(EXIT_FAILURE);
 	
 	if ((buff[1] == 'A' || buff[1] == 'B') &&
-		(((*glob)->cursor->posy == 0 || (*glob)->current_h - 1 <= (*glob)->total_h)))
+		(((*glob)->cursor->posy == 0 || (*glob)->current_h - 1 <= (*glob)->total_h)) &&
+		(*glob)->selector == 0)
 	{
 		read_ud(glob, input, buff[1]);	
 	}
@@ -84,6 +85,12 @@ void		read_arrow(t_para **glob, t_input **input)
 		read_lr(glob, input, buff[1]);
 	else if (buff[1] == '1')
 		mode_selector(glob, input);
+	else if (buff[0] == 'O' &&
+		(buff[1] == 'H' || buff[1] == 'F'))
+	{
+		cursor_home_end(glob, input, buff[1]);
+
+	}
 }
 
 void		read_ud(t_para **glob, t_input **input, char buff)

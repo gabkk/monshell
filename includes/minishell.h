@@ -70,15 +70,26 @@ typedef struct			s_cursor{
 	struct s_cursor		*prev;
 }						t_cursor;
 
+typedef struct			s_quoting
+{
+	int					quote;
+	int					dbquote;
+	int					bkquote;
+	int					parenthese;
+	int					crochet;
+	int					accolade;
+}						t_quoting;
+
 typedef struct			s_para{
 	int					fd;
-	int					current_l;
+	int					current_l;//verifier utilite
 	int					total_h;
 	int					current_h;
 	int					selector;
 	int					total_c;
 	int					prompt_s;
 	char				*cmd;
+	struct s_quoting	*quoting;
 	struct s_cursor		*cursor;
 	struct s_env		*env;
 	struct s_term		*term;
@@ -318,16 +329,25 @@ void					position_cursor(t_para **glob, int final);
 */
 int						free_input_copy_buff(t_para **glob, t_input **input);
 
+
+/*
+** quoting.c
+*/
+t_quoting				*init_quoting();
+
 /*
 ** cursor_move.c
 */
-
 void					cursor_up(t_para **glob);
 void					cursor_down(t_para **glob);
 void					cursor_word_left(t_para **glob, t_input **input);
 void					cursor_word_right(t_para **glob, t_input **input);
 int						cursor_find_left(t_para **glob, t_input **input);
 void					cursor_find_right(t_para **glob, t_input **input);
+void					cursor_end(t_para **glob, t_input **input);
+void					cursor_home_end(t_para **glob, t_input **input, char buff);
+void					cursor_home(t_para **glob, t_input **input);
+int						cursor_find_home(t_para **glob, t_input **input);
 
 #endif
 

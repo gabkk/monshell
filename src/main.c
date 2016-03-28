@@ -34,12 +34,14 @@ int				main(int ac, char *const av[], char *const envp[])
 	// ft_putnbr_fd(glob->term->size[1] , glob->fd);
 	glob->env = env;
 	glob->current_l = 0;	
-	glob->cursor = init_cursor();
+	glob->cursor = init_cursor();//a free
 	glob->copy = NULL;
-	glob->selector = 0;	
+	glob->selector = 0;
+	glob->quoting = init_quoting();//a free
 	mainbody(glob);
 	freenv(glob->env);
 	close(glob->fd);
 	//free all glob
+	//free quoting
 	return (0);
 }

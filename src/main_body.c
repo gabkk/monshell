@@ -42,6 +42,7 @@ void					main_loop(t_para *glob)
 			glob->cursor = init_cursor();
 			glob->selector = 0;
 			glob->term->action = 0;
+			//free glob->quoting
 			print_prompt(&glob);
 		}
 	}
