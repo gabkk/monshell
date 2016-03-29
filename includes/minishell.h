@@ -33,12 +33,12 @@
 # define ANSI_UNDERLINE			"\x1b[4m"
 # define PATH_MAX				4096
 # define TTY_PATH				1025
-# define PATH_HIST				"/nfs/2014/g/gkuma/.mshell_hist"
-# define PATH_HIST2				"/home/shinja/.mshell_hist"
-# define CURSOR_COLOR_B_OS		"\033]Pl4040ff\033\\"
-# define CURSOR_COLOR_W_OS		"\033]Plffffff\033\\"
-# define CURSOR_COLOR_B_LI		"\e]12;blue\a"
-# define CURSOR_COLOR_W_LI		"\e]12;white\a"
+# define PATH_HIST2				"/nfs/2014/g/gkuma/.mshell_hist"
+# define PATH_HIST				"/home/shinja/.mshell_hist"
+# define CURSOR_COLOR_B_OS2		"\033]Pl4040ff\033\\"
+# define CURSOR_COLOR_W_OS2		"\033]Plffffff\033\\"
+# define CURSOR_COLOR_B_OS		"\e]12;blue\a"
+# define CURSOR_COLOR_W_OS		"\e]12;white\a"
 
 typedef struct dirent	*t_dirent;
 
@@ -70,6 +70,7 @@ typedef struct			s_cursor{
 	int					posx;
 	int					posy;
 	int					ymax;
+	int					quoting;
 	struct s_cursor		*next;
 	struct s_cursor		*prev;
 }						t_cursor;
@@ -79,9 +80,13 @@ typedef struct			s_quoting
 	int					quote;
 	int					dbquote;
 	int					bkquote;
-	int					parenthese;
-	int					crochet;
-	int					accolade;
+	int					bkslash;
+	int					parenthese_o;
+	int					parenthese_f;
+	int					crochet_o;
+	int					crochet_f;
+	int					accolade_o;
+	int					accolade_f;
 }						t_quoting;
 
 typedef struct			s_para{
@@ -338,6 +343,8 @@ int						free_input_copy_buff(t_para **glob, t_input **input);
 ** quoting.c
 */
 t_quoting				*init_quoting();
+void					set_quoting(t_quoting **quoting, int buff);
+int						quoting_valid(t_quoting *quoting);
 
 /*
 ** cursor_move.c

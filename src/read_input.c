@@ -16,7 +16,9 @@ void			read_input(t_para *glob, t_input **input)
 {
 	char		buff[2];
 	int  		ret;
+	int 		quote;
 
+	quote = 1;
 	ft_bzero(buff, 2);
 	if ((ret = read(0, buff, 1)) == 0)
 		exit(0);
@@ -40,9 +42,21 @@ void			read_input(t_para *glob, t_input **input)
 		read_arrow(&glob, input);
 	else if (buff[0] == '\n' && glob->selector == 0)//line
 	{
-		save_cmd(input, &glob);
-		if (*input)
-			delete_lst_input(input);
+		if ((quote = quoting_valid(glob->quoting)) == 0)
+		{
+			glob->quoting->bkslash = 0;
+			add_cursor(&glob->cursor);
+			ft_putchar_fd('\n', glob->fd);
+			ft_putstr_fd("\033[34m\\\033[0m ", glob->fd);
+			glob->cursor->quoting = 1;
+			glob->term->action = 0;
+		}
+		else if (quote == 1)
+		{
+			save_cmd(input, &glob);
+			if (*input)
+				delete_lst_input(input);
+		}
 	}
 	else if (buff[0] == 5)//ctr E
 	{
@@ -173,7 +187,7 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 				set_selector(glob, input, -1);
 			(*glob)->cursor->posy -= 1;
 		}
-		else if ((*glob)->cursor->prev && (*glob)->cursor->posy == 1)
+		else if ((*glob)->cursor->prev && (*glob)->cursor->posy == 1 && (*glob)->cursor->quoting == 0)
 		{
 			ft_putstr_fd(tgetstr("up", NULL),(*glob)->fd);
 			i = (*glob)->term->size[0] - (*glob)->cursor->posy ;
@@ -208,6 +222,7 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 	int		position;
 
 	position = 0;
+	set_quoting(&(*glob)->quoting, buff);
 	if ((*glob)->cursor->posy == (*glob)->cursor->ymax + 1)
 	{
 		add_back_input(input, buff, (*glob)->total_c);
@@ -270,6 +285,16 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 	}
 	else if ((*glob)->cursor->posx > 0 &&
 		((*glob)->cursor->posy > (*glob)->term->size[0]))
+	{
+		ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
+		if (!(*glob)->cursor->next)
+			add_cursor(&(*glob)->cursor);
+		else
+			(*glob)->cursor = (*glob)->cursor->next;
+	}
+	else if ((*glob)->cursor->quoting == 1 &&
+				(*glob)->cursor->posx > 0 &&
+					((*glob)->cursor->posy > (*glob)->term->size[0] - 2))
 	{
 		ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
 		if (!(*glob)->cursor->next)

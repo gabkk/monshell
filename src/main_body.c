@@ -39,7 +39,9 @@ void					main_loop(t_para *glob)
 			main_action(&glob);
 			glob->total_c = 0;
 			freecursor(&glob->cursor);
+			free(glob->quoting);
 			glob->cursor = init_cursor();
+			glob->quoting = init_quoting();
 			glob->selector = 0;
 			glob->term->action = 0;
 			//free glob->quoting

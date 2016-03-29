@@ -18,6 +18,8 @@ void				backspace(t_input **input, t_para **glob)
 
 	if ((*glob)->cursor->posy - 1 == (*glob)->cursor->ymax)
 	{
+		if ((*glob)->cursor->quoting == 1 && (*glob)->cursor->ymax == 0)
+			return ;
 		ft_putendl_fd("backspace_last 1", 2);
 		backspace_last(input, glob);
 		if ((*glob)->cursor->posy == 0 && (*glob)->cursor->prev)

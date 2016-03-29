@@ -23,7 +23,7 @@ void				add_back_input(t_input **input, char buf, int i)
 		*input = newm;
 		newm->c = buf;//(*input)->c
 		newm->pos[0] = i;
-		return;
+		return ;
 	}
 	ptr = *input;
 	while (ptr->next)

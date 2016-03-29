@@ -20,6 +20,7 @@ t_cursor		*init_cursor(void)
 	newm->posx = 0;
 	newm->posy = 1;
 	newm->ymax = 0;
+	newm->quoting = 0;
 	newm->next = NULL;
 	newm->prev = NULL;	
 	return (newm);
@@ -34,6 +35,7 @@ void			add_cursor(t_cursor **cursor)
 	newm->prev = *cursor;
 	newm->posy = 1;
 	newm->ymax = 0;
+	newm->quoting = 0;
 	newm->posx = newm->prev->posx + 1;
 	newm->next = NULL;
 	*cursor = newm;
