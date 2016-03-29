@@ -12,6 +12,16 @@
 
 #include "minishell.h"
 
+void				selector_action(t_para **glob, t_input **input, int buff)
+{
+	if (buff == 'c')
+		selector_copy(glob, input);
+	else if (buff == 'x') // utiliser copier
+		selector_cut(glob, input);
+	else if (buff == 'v')
+		selector_paste(glob, input);
+}
+
 void				mode_selector(t_para **glob, t_input **input)
 {
 	char			buff[3];
@@ -24,27 +34,17 @@ void				mode_selector(t_para **glob, t_input **input)
 		exit(EXIT_FAILURE);
 	if (buff[1] == '2' && buff[2] == 'A')
 	{
-		ft_putstr_fd("\e]12;blue\a", (*glob)->fd);
-		(*glob)->selector = 1;
+		cursor_up(glob);
 	}
 	else if (buff[1] == '2' && buff[2] == 'B')
 	{
-		ft_putstr_fd("\e]12;white\a", (*glob)->fd);
-		(*glob)->selector = 0;	
-	}
-	else if (buff[1] == '5' && buff[2] == 'A')
-	{
-		cursor_up(glob);
-	}
-	else if (buff[1] == '5' && buff[2] == 'B')
-	{
 		cursor_down(glob);
 	}
-	else if (buff[1] == '5' && buff[2] == 'D')//gauche
+	else if (buff[1] == '2' && buff[2] == 'D')//gauche
 	{
 		cursor_word_left(glob, input);
 	}
-	else if (buff[1] == '5' && buff[2] == 'C')//droite
+	else if (buff[1] == '2' && buff[2] == 'C')//droite
 	{
 		cursor_word_right(glob, input);
 	}
@@ -56,19 +56,28 @@ void				set_selector(t_para **glob, t_input **input, int direction)
 	int 			position;
 
 
+
+		ft_putchar_fd('\n', 2);//debug
+		ft_putstr_fd("inside set selector", 2);//debug
+		ft_putstr_fd("|posx:", 2);
+		ft_putnbr_fd((*glob)->cursor->posx, 2); // debug
+		ft_putstr_fd("|posy:", 2);
+		ft_putnbr_fd((*glob)->cursor->posy, 2); // debug
+		ft_putstr_fd("|ymax:", 2);
+		ft_putnbr_fd((*glob)->cursor->ymax, 2); // debug
 	position = get_input_pos(glob) - 1;
 	ptr = *input;
 	while (ptr)
 	{
-		ft_putstr_fd("position", 2);
-		ft_putnbr_fd(position, 2);
+		// ft_putstr_fd("position", 2);
+		// ft_putnbr_fd(position, 2);
 		if (ptr->pos[0] == position)
 		{
 			if (direction == 1 && ptr->selected == 0)
 			{
 				// ft_putchar_fd(' ', (*glob)->fd);
 				// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				ft_putstr_fd("\x1b[34m", (*glob)->fd);
+				ft_putstr_fd("\x1b[38;5;63m", (*glob)->fd);
 				ft_putchar_fd(ptr->c, (*glob)->fd);
 				ft_putstr_fd("\x1b[0m", (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -89,7 +98,7 @@ void				set_selector(t_para **glob, t_input **input, int direction)
 			{
 				// ft_putchar_fd(' ', (*glob)->fd);
 				// ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-				ft_putstr_fd("\x1b[34m", (*glob)->fd);
+				ft_putstr_fd("\x1b[38;5;63m", (*glob)->fd);
 				ft_putchar_fd(ptr->c, (*glob)->fd);
 				ft_putstr_fd("\x1b[0m", (*glob)->fd);
 				ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
@@ -108,16 +117,6 @@ void				set_selector(t_para **glob, t_input **input, int direction)
 	}
 }
 
-void				selector_action(t_para **glob, t_input **input, int buff)
-{
-	if (buff == 'c')
-		selector_copy(glob, input);
-	else if (buff == 'x') // utiliser copier
-		selector_cut(glob, input);
-	else if (buff == 'v')
-		selector_paste(glob, input);
-}
-
 void				selector_copy(t_para **glob, t_input **input)
 {
 	t_input			*ptr;
@@ -125,7 +124,7 @@ void				selector_copy(t_para **glob, t_input **input)
 
 	i = 0;
 	ptr = *input;
-	if (&(*glob)->copy)
+	if ((*glob)->copy)
 		delete_lst_input(&(*glob)->copy);
 	while (ptr)
 	{
@@ -136,7 +135,7 @@ void				selector_copy(t_para **glob, t_input **input)
 		}
 		ptr = ptr->next;
 	}
-	ft_putstr_fd("\e]12;white\a", (*glob)->fd);
+	ft_putstr_fd(CURSOR_COLOR_W_OS, (*glob)->fd);
 	(*glob)->selector = 0;
 }
 
@@ -155,7 +154,7 @@ void				selector_cut(t_para **glob, t_input **input)
 	tmp = ptr;
 	if (!ptr)
 		return ;
-	if (&(*glob)->copy)
+	if ((*glob)->copy)
 		delete_lst_input(&(*glob)->copy);
 
 	cursor_pos_init(glob);
@@ -181,7 +180,7 @@ void				selector_cut(t_para **glob, t_input **input)
 	cursor_pos_init(glob);
 	final = free_input_copy_buff(glob,input);
 
-	if (&(*glob)->cursor)
+	if ((*glob)->cursor)
 		freecursor(&(*glob)->cursor);
 	(*glob)->cursor = init_cursor();
 	(*glob)->cursor->posy = 1;
@@ -191,7 +190,7 @@ void				selector_cut(t_para **glob, t_input **input)
 	final++;
 	position_cursor(glob, final);
 
-	ft_putstr_fd("\e]12;white\a", (*glob)->fd);
+	ft_putstr_fd(CURSOR_COLOR_W_OS, (*glob)->fd);
 	(*glob)->selector = 0;
 }
 
@@ -207,13 +206,13 @@ void				selector_paste(t_para **glob, t_input **input)
 	{
 		if ((final = save_copy(glob, input)) == -1) //exit
 		{
-			ft_putstr_fd("\e]12;white\a", (*glob)->fd);
+			ft_putstr_fd(CURSOR_COLOR_W_OS, (*glob)->fd);
 			(*glob)->selector = 0;
 			return ; //definir le type d exit
 		}
 		//reset
 		cursor_pos_init(glob);
-		if (&(*glob)->cursor)
+		if ((*glob)->cursor)
 			freecursor(&(*glob)->cursor);
 		(*glob)->cursor = init_cursor();
 		(*glob)->cursor->posy = 1;
@@ -221,7 +220,7 @@ void				selector_paste(t_para **glob, t_input **input)
 		redraw_input(glob, input);
 		position_cursor(glob, final);
 	}
-	ft_putstr_fd("\e]12;white\a", (*glob)->fd);
+	ft_putstr_fd(CURSOR_COLOR_W_OS, (*glob)->fd);
 	(*glob)->selector = 0;
 	return ; //definir le type d exit
 }

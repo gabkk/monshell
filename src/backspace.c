@@ -78,11 +78,16 @@ void				backspace_last(t_input **input, t_para **glob)
 			i++;
 		}
 		(*glob)->cursor->posy--;
+		ft_putchar_fd(' ', (*glob)->fd);
+		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+		ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
 	}
 	else
+	{
 		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-	ft_putchar_fd(' ', (*glob)->fd);
-	ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
+		ft_putchar_fd(' ', (*glob)->fd);
+		ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);		
+	}
 	if ((*glob)->cursor->posy == 2 && (*glob)->cursor->posx == 0)
 	 	*input = NULL;
 }

@@ -33,8 +33,12 @@
 # define ANSI_UNDERLINE			"\x1b[4m"
 # define PATH_MAX				4096
 # define TTY_PATH				1025
-# define PATH_HIST2				"/nfs/2014/g/gkuma/.mshell_hist"
-# define PATH_HIST				"/home/shinja/.mshell_hist"
+# define PATH_HIST				"/nfs/2014/g/gkuma/.mshell_hist"
+# define PATH_HIST2				"/home/shinja/.mshell_hist"
+# define CURSOR_COLOR_B_OS		"\033]Pl4040ff\033\\"
+# define CURSOR_COLOR_W_OS		"\033]Plffffff\033\\"
+# define CURSOR_COLOR_B_LI		"\e]12;blue\a"
+# define CURSOR_COLOR_W_LI		"\e]12;white\a"
 
 typedef struct dirent	*t_dirent;
 

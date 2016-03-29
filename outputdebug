@@ -1,68 +1,1773 @@
-b1b2b1b2b3b4b5b6b7b8b9b10b11b12b13b14b15b16b17b18b19b20b21b22b23b24b25b26b27b28b29b30b31b32b33
-|posx:0|prompt:24|posy:33|ymax:33
-|posx:0|prompt:24|posy:32|ymax:33
-|posx:0|prompt:24|posy:31|ymax:33
-|posx:0|prompt:24|posy:30|ymax:33
-|posx:0|prompt:24|posy:29|ymax:33
-|posx:0|prompt:24|posy:28|ymax:33
-|posx:0|prompt:24|posy:27|ymax:33
-|posx:0|prompt:24|posy:26|ymax:33
-|posx:0|prompt:24|posy:25|ymax:33position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24position24
-|posx:0|prompt:24|posy:24|ymax:33position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23position23
-|posx:0|prompt:24|posy:23|ymax:33position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22position22
-|posx:0|prompt:24|posy:22|ymax:33position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21position21
-|posx:0|prompt:24|posy:21|ymax:33position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20position20
-|posx:0|prompt:24|posy:20|ymax:33position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19position19
-|posx:0|prompt:24|posy:19|ymax:33position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18position18
-|posx:0|prompt:24|posy:18|ymax:33position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17position17
-|posx:0|prompt:24|posy:17|ymax:33position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16position16
-|posx:0|prompt:24|posy:16|ymax:33position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15position15
-|posx:0|prompt:24|posy:15|ymax:33position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14position14
-|posx:0|prompt:24|posy:14|ymax:33position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13position13
-|posx:0|prompt:24|posy:13|ymax:33position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12position12
-|posx:0|prompt:24|posy:12|ymax:33position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11position11
-|posx:0|prompt:24|posy:11|ymax:33curpos_init esle
 curpos_init esle
+curpos_init esle
+curpos_init esle
+curpos_init esle
+curpos_init esle
+curpos_init esle
+curpos_init esle
+curpos_init esle
+b46b47b48b49b50b51b52b53b54b55b56b57b58b59b60b61b62b63b64b65b66b67b68b69b70b71b72b73b74b75b76b77b78b79b80b81b82b83b84b85b86b87b88b89b90b91b92b93b94b95b96b97b98b99b100b101b102b103b104b105b106b107b108b109b110b111b112b113b114b115b116b117b118b119b120b121b122b123b124b125b126b127b128
+inside set selector|posx:2|posy:4|ymax:3
+|posx:2|prompt:27|posy:3|ymax:3
+inside set selector|posx:2|posy:3|ymax:3
+|posx:2|prompt:27|posy:2|ymax:3
+inside set selector|posx:2|posy:2|ymax:3
+|posx:2|prompt:27|posy:1|ymax:3
+inside set selector|posx:2|posy:1|ymax:3
+|posx:1|prompt:27|posy:76|ymax:76
+inside set selector|posx:1|posy:76|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+inside set selector|posx:1|posy:75|ymax:76
+|posx:1|prompt:27|posy:74|ymax:76
+inside set selector|posx:1|posy:74|ymax:76
+|posx:1|prompt:27|posy:73|ymax:76
+inside set selector|posx:1|posy:73|ymax:76
+|posx:1|prompt:27|posy:72|ymax:76
+inside set selector|posx:1|posy:72|ymax:76
+|posx:1|prompt:27|posy:71|ymax:76
+inside set selector|posx:1|posy:71|ymax:76
+|posx:1|prompt:27|posy:70|ymax:76
+inside set selector|posx:1|posy:70|ymax:76
+|posx:1|prompt:27|posy:69|ymax:76
+inside set selector|posx:1|posy:69|ymax:76
+|posx:1|prompt:27|posy:68|ymax:76
+inside set selector|posx:1|posy:68|ymax:76
+|posx:1|prompt:27|posy:67|ymax:76
+inside set selector|posx:1|posy:67|ymax:76
+|posx:1|prompt:27|posy:66|ymax:76
+inside set selector|posx:1|posy:66|ymax:76
+|posx:1|prompt:27|posy:65|ymax:76
+inside set selector|posx:1|posy:65|ymax:76
+|posx:1|prompt:27|posy:64|ymax:76
+inside set selector|posx:1|posy:64|ymax:76
+|posx:1|prompt:27|posy:63|ymax:76
+inside set selector|posx:1|posy:63|ymax:76
+|posx:1|prompt:27|posy:62|ymax:76
+inside set selector|posx:1|posy:62|ymax:76
+|posx:1|prompt:27|posy:61|ymax:76
+inside set selector|posx:1|posy:61|ymax:76
+|posx:1|prompt:27|posy:60|ymax:76
+inside set selector|posx:1|posy:60|ymax:76
+|posx:1|prompt:27|posy:59|ymax:76
+inside set selector|posx:1|posy:59|ymax:76
+|posx:1|prompt:27|posy:58|ymax:76
+inside set selector|posx:1|posy:58|ymax:76
+|posx:1|prompt:27|posy:57|ymax:76
+inside set selector|posx:1|posy:57|ymax:76
+|posx:1|prompt:27|posy:56|ymax:76
+inside set selector|posx:1|posy:56|ymax:76
+|posx:1|prompt:27|posy:55|ymax:76
+inside set selector|posx:1|posy:55|ymax:76
+|posx:1|prompt:27|posy:54|ymax:76
+inside set selector|posx:1|posy:54|ymax:76
+|posx:1|prompt:27|posy:53|ymax:76
+inside set selector|posx:1|posy:53|ymax:76
+|posx:1|prompt:27|posy:52|ymax:76
+inside set selector|posx:1|posy:52|ymax:76
+|posx:1|prompt:27|posy:51|ymax:76
+inside set selector|posx:1|posy:51|ymax:76
+|posx:1|prompt:27|posy:50|ymax:76
+inside set selector|posx:1|posy:50|ymax:76
+|posx:1|prompt:27|posy:49|ymax:76
+inside set selector|posx:1|posy:49|ymax:76
+|posx:1|prompt:27|posy:48|ymax:76
+inside set selector|posx:1|posy:48|ymax:76
+|posx:1|prompt:27|posy:47|ymax:76
+inside set selector|posx:1|posy:47|ymax:76
+|posx:1|prompt:27|posy:46|ymax:76
+inside set selector|posx:1|posy:46|ymax:76
+|posx:1|prompt:27|posy:45|ymax:76
+inside set selector|posx:1|posy:45|ymax:76
+|posx:1|prompt:27|posy:44|ymax:76
+inside set selector|posx:1|posy:44|ymax:76
+|posx:1|prompt:27|posy:43|ymax:76
+inside set selector|posx:1|posy:43|ymax:76
+|posx:1|prompt:27|posy:42|ymax:76
+inside set selector|posx:1|posy:42|ymax:76
+|posx:1|prompt:27|posy:41|ymax:76
+inside set selector|posx:1|posy:41|ymax:76
+|posx:1|prompt:27|posy:40|ymax:76
+inside set selector|posx:1|posy:40|ymax:76
+|posx:1|prompt:27|posy:39|ymax:76
+inside set selector|posx:1|posy:39|ymax:76
+|posx:1|prompt:27|posy:38|ymax:76
+inside set selector|posx:1|posy:38|ymax:76
+|posx:1|prompt:27|posy:37|ymax:76
+inside set selector|posx:1|posy:37|ymax:76
+|posx:1|prompt:27|posy:36|ymax:76
+inside set selector|posx:1|posy:36|ymax:76
+|posx:1|prompt:27|posy:35|ymax:76
+inside set selector|posx:1|posy:35|ymax:76
+|posx:1|prompt:27|posy:34|ymax:76
+inside set selector|posx:1|posy:34|ymax:76
+|posx:1|prompt:27|posy:33|ymax:76
+inside set selector|posx:1|posy:33|ymax:76
+|posx:1|prompt:27|posy:32|ymax:76
+inside set selector|posx:1|posy:32|ymax:76
+|posx:1|prompt:27|posy:31|ymax:76
+inside set selector|posx:1|posy:31|ymax:76
+|posx:1|prompt:27|posy:30|ymax:76
+inside set selector|posx:1|posy:30|ymax:76
+|posx:1|prompt:27|posy:29|ymax:76
+inside set selector|posx:1|posy:29|ymax:76
+|posx:1|prompt:27|posy:28|ymax:76
+inside set selector|posx:1|posy:28|ymax:76
+|posx:1|prompt:27|posy:27|ymax:76
+inside set selector|posx:1|posy:27|ymax:76
+|posx:1|prompt:27|posy:26|ymax:76
+inside set selector|posx:1|posy:26|ymax:76
+|posx:1|prompt:27|posy:25|ymax:76
+inside set selector|posx:1|posy:25|ymax:76
+|posx:1|prompt:27|posy:24|ymax:76
+inside set selector|posx:1|posy:24|ymax:76
+|posx:1|prompt:27|posy:23|ymax:76
+inside set selector|posx:1|posy:23|ymax:76
+|posx:1|prompt:27|posy:22|ymax:76
+inside set selector|posx:1|posy:22|ymax:76
+|posx:1|prompt:27|posy:21|ymax:76
+inside set selector|posx:1|posy:21|ymax:76
+|posx:1|prompt:27|posy:20|ymax:76
+inside set selector|posx:1|posy:20|ymax:76
+|posx:1|prompt:27|posy:19|ymax:76
+inside set selector|posx:1|posy:19|ymax:76
+|posx:1|prompt:27|posy:18|ymax:76
+inside set selector|posx:1|posy:18|ymax:76
+|posx:1|prompt:27|posy:17|ymax:76
+inside set selector|posx:1|posy:17|ymax:76
+|posx:1|prompt:27|posy:16|ymax:76
+inside set selector|posx:1|posy:16|ymax:76
+|posx:1|prompt:27|posy:15|ymax:76
+inside set selector|posx:1|posy:15|ymax:76
+|posx:1|prompt:27|posy:14|ymax:76
+inside set selector|posx:1|posy:14|ymax:76
+|posx:1|prompt:27|posy:13|ymax:76
+inside set selector|posx:1|posy:13|ymax:76
+|posx:1|prompt:27|posy:12|ymax:76
+inside set selector|posx:1|posy:12|ymax:76
+|posx:1|prompt:27|posy:11|ymax:76
+inside set selector|posx:1|posy:11|ymax:76
+|posx:1|prompt:27|posy:10|ymax:76
+inside set selector|posx:1|posy:10|ymax:76
+|posx:1|prompt:27|posy:9|ymax:76
+inside set selector|posx:1|posy:9|ymax:76
+|posx:1|prompt:27|posy:8|ymax:76
+inside set selector|posx:1|posy:8|ymax:76
+|posx:1|prompt:27|posy:7|ymax:76
+inside set selector|posx:1|posy:7|ymax:76
+|posx:1|prompt:27|posy:6|ymax:76
+inside set selector|posx:1|posy:6|ymax:76
+|posx:1|prompt:27|posy:5|ymax:76
+inside set selector|posx:1|posy:5|ymax:76
+|posx:1|prompt:27|posy:4|ymax:76
+inside set selector|posx:1|posy:4|ymax:76
+|posx:1|prompt:27|posy:3|ymax:76
+inside set selector|posx:1|posy:3|ymax:76
+|posx:1|prompt:27|posy:2|ymax:76
+inside set selector|posx:1|posy:2|ymax:76
+|posx:1|prompt:27|posy:1|ymax:76
+inside set selector|posx:1|posy:1|ymax:76
+|posx:0|prompt:27|posy:49|ymax:49
+inside set selector|posx:0|posy:49|ymax:49
+|posx:1|prompt:27|posy:1|ymax:76
+inside set selector|posx:1|posy:1|ymax:76
+|posx:1|prompt:27|posy:2|ymax:76
+inside set selector|posx:1|posy:2|ymax:76
+|posx:1|prompt:27|posy:3|ymax:76
+inside set selector|posx:1|posy:3|ymax:76
+|posx:1|prompt:27|posy:4|ymax:76
+inside set selector|posx:1|posy:4|ymax:76
+|posx:1|prompt:27|posy:5|ymax:76
+inside set selector|posx:1|posy:5|ymax:76
+|posx:1|prompt:27|posy:6|ymax:76
+inside set selector|posx:1|posy:6|ymax:76
+|posx:1|prompt:27|posy:7|ymax:76
+inside set selector|posx:1|posy:7|ymax:76
+|posx:1|prompt:27|posy:8|ymax:76
+inside set selector|posx:1|posy:8|ymax:76
+|posx:1|prompt:27|posy:9|ymax:76
+inside set selector|posx:1|posy:9|ymax:76
+|posx:1|prompt:27|posy:10|ymax:76
+inside set selector|posx:1|posy:10|ymax:76
+|posx:1|prompt:27|posy:11|ymax:76
+inside set selector|posx:1|posy:11|ymax:76
+|posx:1|prompt:27|posy:12|ymax:76
+inside set selector|posx:1|posy:12|ymax:76
+|posx:1|prompt:27|posy:13|ymax:76
+inside set selector|posx:1|posy:13|ymax:76
+|posx:1|prompt:27|posy:14|ymax:76
+inside set selector|posx:1|posy:14|ymax:76
+|posx:1|prompt:27|posy:15|ymax:76
+inside set selector|posx:1|posy:15|ymax:76
+|posx:1|prompt:27|posy:16|ymax:76
+inside set selector|posx:1|posy:16|ymax:76
+|posx:1|prompt:27|posy:17|ymax:76
+inside set selector|posx:1|posy:17|ymax:76
+|posx:1|prompt:27|posy:18|ymax:76
+inside set selector|posx:1|posy:18|ymax:76
+|posx:1|prompt:27|posy:19|ymax:76
+inside set selector|posx:1|posy:19|ymax:76
+|posx:1|prompt:27|posy:20|ymax:76
+inside set selector|posx:1|posy:20|ymax:76
+|posx:1|prompt:27|posy:21|ymax:76
+inside set selector|posx:1|posy:21|ymax:76
+|posx:1|prompt:27|posy:22|ymax:76
+inside set selector|posx:1|posy:22|ymax:76
+|posx:1|prompt:27|posy:23|ymax:76
+inside set selector|posx:1|posy:23|ymax:76
+|posx:1|prompt:27|posy:24|ymax:76
+inside set selector|posx:1|posy:24|ymax:76
+|posx:1|prompt:27|posy:25|ymax:76
+inside set selector|posx:1|posy:25|ymax:76
+|posx:1|prompt:27|posy:26|ymax:76
+inside set selector|posx:1|posy:26|ymax:76
+|posx:1|prompt:27|posy:27|ymax:76
+inside set selector|posx:1|posy:27|ymax:76
+|posx:1|prompt:27|posy:28|ymax:76
+inside set selector|posx:1|posy:28|ymax:76
+|posx:1|prompt:27|posy:29|ymax:76
+inside set selector|posx:1|posy:29|ymax:76
+|posx:1|prompt:27|posy:30|ymax:76
+inside set selector|posx:1|posy:30|ymax:76
+|posx:1|prompt:27|posy:31|ymax:76
+inside set selector|posx:1|posy:31|ymax:76
+|posx:1|prompt:27|posy:32|ymax:76
+inside set selector|posx:1|posy:32|ymax:76
+|posx:1|prompt:27|posy:33|ymax:76
+inside set selector|posx:1|posy:33|ymax:76
+|posx:1|prompt:27|posy:34|ymax:76
+inside set selector|posx:1|posy:34|ymax:76
+|posx:1|prompt:27|posy:35|ymax:76
+inside set selector|posx:1|posy:35|ymax:76
+|posx:1|prompt:27|posy:36|ymax:76
+inside set selector|posx:1|posy:36|ymax:76
+|posx:1|prompt:27|posy:37|ymax:76
+inside set selector|posx:1|posy:37|ymax:76
+|posx:1|prompt:27|posy:38|ymax:76
+inside set selector|posx:1|posy:38|ymax:76
+|posx:1|prompt:27|posy:39|ymax:76
+inside set selector|posx:1|posy:39|ymax:76
+|posx:1|prompt:27|posy:40|ymax:76
+inside set selector|posx:1|posy:40|ymax:76
+|posx:1|prompt:27|posy:41|ymax:76
+inside set selector|posx:1|posy:41|ymax:76
+|posx:1|prompt:27|posy:42|ymax:76
+inside set selector|posx:1|posy:42|ymax:76
+|posx:1|prompt:27|posy:43|ymax:76
+inside set selector|posx:1|posy:43|ymax:76
+|posx:1|prompt:27|posy:44|ymax:76
+inside set selector|posx:1|posy:44|ymax:76
+|posx:1|prompt:27|posy:45|ymax:76
+inside set selector|posx:1|posy:45|ymax:76
+|posx:1|prompt:27|posy:46|ymax:76
+inside set selector|posx:1|posy:46|ymax:76
+|posx:1|prompt:27|posy:47|ymax:76
+inside set selector|posx:1|posy:47|ymax:76
+|posx:1|prompt:27|posy:48|ymax:76
+inside set selector|posx:1|posy:48|ymax:76
+|posx:1|prompt:27|posy:49|ymax:76
+inside set selector|posx:1|posy:49|ymax:76
+|posx:1|prompt:27|posy:50|ymax:76
+inside set selector|posx:1|posy:50|ymax:76
+|posx:1|prompt:27|posy:51|ymax:76
+inside set selector|posx:1|posy:51|ymax:76
+|posx:1|prompt:27|posy:52|ymax:76
+inside set selector|posx:1|posy:52|ymax:76
+|posx:1|prompt:27|posy:53|ymax:76
+inside set selector|posx:1|posy:53|ymax:76
+|posx:1|prompt:27|posy:54|ymax:76
+inside set selector|posx:1|posy:54|ymax:76
+|posx:1|prompt:27|posy:55|ymax:76
+inside set selector|posx:1|posy:55|ymax:76
+|posx:1|prompt:27|posy:56|ymax:76
+inside set selector|posx:1|posy:56|ymax:76
+|posx:1|prompt:27|posy:57|ymax:76
+inside set selector|posx:1|posy:57|ymax:76
+|posx:1|prompt:27|posy:58|ymax:76
+inside set selector|posx:1|posy:58|ymax:76
+|posx:1|prompt:27|posy:59|ymax:76
+inside set selector|posx:1|posy:59|ymax:76
+|posx:1|prompt:27|posy:60|ymax:76
+inside set selector|posx:1|posy:60|ymax:76
+|posx:1|prompt:27|posy:61|ymax:76
+inside set selector|posx:1|posy:61|ymax:76
+|posx:1|prompt:27|posy:62|ymax:76
+inside set selector|posx:1|posy:62|ymax:76
+|posx:1|prompt:27|posy:63|ymax:76
+inside set selector|posx:1|posy:63|ymax:76
+|posx:1|prompt:27|posy:64|ymax:76
+inside set selector|posx:1|posy:64|ymax:76
+|posx:1|prompt:27|posy:65|ymax:76
+inside set selector|posx:1|posy:65|ymax:76
+|posx:1|prompt:27|posy:66|ymax:76
+inside set selector|posx:1|posy:66|ymax:76
+|posx:1|prompt:27|posy:67|ymax:76
+inside set selector|posx:1|posy:67|ymax:76
+|posx:1|prompt:27|posy:68|ymax:76
+inside set selector|posx:1|posy:68|ymax:76
+|posx:1|prompt:27|posy:69|ymax:76
+inside set selector|posx:1|posy:69|ymax:76
+|posx:1|prompt:27|posy:70|ymax:76
+inside set selector|posx:1|posy:70|ymax:76
+|posx:1|prompt:27|posy:71|ymax:76
+inside set selector|posx:1|posy:71|ymax:76
+|posx:1|prompt:27|posy:72|ymax:76
+inside set selector|posx:1|posy:72|ymax:76
+|posx:1|prompt:27|posy:73|ymax:76
+inside set selector|posx:1|posy:73|ymax:76
+|posx:1|prompt:27|posy:74|ymax:76
+inside set selector|posx:1|posy:74|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+inside set selector|posx:1|posy:75|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+inside set selector|posx:1|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:3
+inside set selector|posx:2|posy:1|ymax:3
+|posx:2|prompt:27|posy:2|ymax:3
+inside set selector|posx:2|posy:2|ymax:3
+|posx:2|prompt:27|posy:3|ymax:3
+inside set selector|posx:2|posy:3|ymax:3
+|posx:2|prompt:27|posy:4|ymax:3
+|posx:2|prompt:27|posy:4|ymax:3
+|posx:2|prompt:27|posy:4|ymax:3b129b130b131b132b133b134b135b136b137b138b139b140b141b142b143b144b145b146b147b148b149b150b151b152b153b154b155b156b157b158b159b160b161b162b163b164b165b166b167b168b169b170b171b172b173b174b175b176b177b178b179b180b181b182b183b184b185b186b187b188b189b190b191b192b193b194b195b196b197b198b199b200b201b202b203b204b205b206b207curpos_init x>0
 
+|posx:2|prompt:27|posy:6|ymax:76
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+|posx:2|prompt:27|posy:3|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+|posx:2|prompt:27|posy:74|ymax:76
+|posx:2|prompt:27|posy:73|ymax:76
+|posx:2|prompt:27|posy:72|ymax:76
+|posx:2|prompt:27|posy:71|ymax:76
+|posx:2|prompt:27|posy:70|ymax:76
+|posx:2|prompt:27|posy:69|ymax:76
+|posx:2|prompt:27|posy:68|ymax:76
+|posx:2|prompt:27|posy:67|ymax:76
+|posx:2|prompt:27|posy:66|ymax:76
+|posx:2|prompt:27|posy:65|ymax:76
+|posx:2|prompt:27|posy:64|ymax:76
+|posx:2|prompt:27|posy:63|ymax:76
+|posx:2|prompt:27|posy:62|ymax:76
+|posx:2|prompt:27|posy:61|ymax:76
+|posx:2|prompt:27|posy:60|ymax:76
+|posx:2|prompt:27|posy:59|ymax:76
+|posx:2|prompt:27|posy:58|ymax:76
+|posx:2|prompt:27|posy:57|ymax:76
+|posx:2|prompt:27|posy:56|ymax:76
+|posx:2|prompt:27|posy:55|ymax:76
+|posx:2|prompt:27|posy:54|ymax:76
+|posx:2|prompt:27|posy:53|ymax:76
+|posx:2|prompt:27|posy:52|ymax:76
+|posx:2|prompt:27|posy:51|ymax:76
+|posx:2|prompt:27|posy:50|ymax:76
+|posx:2|prompt:27|posy:49|ymax:76
+|posx:2|prompt:27|posy:48|ymax:76
+|posx:2|prompt:27|posy:47|ymax:76
+|posx:2|prompt:27|posy:46|ymax:76
+|posx:2|prompt:27|posy:45|ymax:76
+|posx:2|prompt:27|posy:44|ymax:76
+|posx:2|prompt:27|posy:43|ymax:76
+|posx:2|prompt:27|posy:42|ymax:76
+|posx:2|prompt:27|posy:41|ymax:76
+|posx:2|prompt:27|posy:40|ymax:76
+|posx:2|prompt:27|posy:39|ymax:76
+|posx:2|prompt:27|posy:38|ymax:76
+|posx:2|prompt:27|posy:37|ymax:76
+|posx:2|prompt:27|posy:36|ymax:76
+|posx:2|prompt:27|posy:35|ymax:76
+|posx:2|prompt:27|posy:34|ymax:76
+|posx:2|prompt:27|posy:33|ymax:76
+|posx:2|prompt:27|posy:32|ymax:76
+|posx:2|prompt:27|posy:31|ymax:76
+|posx:2|prompt:27|posy:30|ymax:76
+|posx:2|prompt:27|posy:29|ymax:76
+|posx:2|prompt:27|posy:28|ymax:76
+|posx:2|prompt:27|posy:27|ymax:76
+|posx:2|prompt:27|posy:26|ymax:76
+|posx:2|prompt:27|posy:25|ymax:76
+|posx:2|prompt:27|posy:24|ymax:76
+|posx:2|prompt:27|posy:23|ymax:76
+|posx:2|prompt:27|posy:22|ymax:76
+|posx:2|prompt:27|posy:21|ymax:76
+|posx:2|prompt:27|posy:20|ymax:76
+|posx:2|prompt:27|posy:19|ymax:76
+|posx:2|prompt:27|posy:18|ymax:76
+|posx:2|prompt:27|posy:17|ymax:76
+|posx:2|prompt:27|posy:16|ymax:76
+|posx:2|prompt:27|posy:15|ymax:76
+|posx:2|prompt:27|posy:14|ymax:76
+|posx:2|prompt:27|posy:13|ymax:76
+|posx:2|prompt:27|posy:12|ymax:76
+|posx:2|prompt:27|posy:11|ymax:76
+|posx:2|prompt:27|posy:10|ymax:76
+|posx:2|prompt:27|posy:9|ymax:76
+|posx:2|prompt:27|posy:8|ymax:76
+|posx:2|prompt:27|posy:7|ymax:76
+|posx:2|prompt:27|posy:6|ymax:76
+|posx:2|prompt:27|posy:5|ymax:76
+|posx:2|prompt:27|posy:4|ymax:76
+|posx:2|prompt:27|posy:3|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+|posx:3|prompt:27|posy:3|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:2|prompt:27|posy:3|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+inside set selector|posx:2|posy:1|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+inside set selector|posx:2|posy:2|ymax:76
+|posx:2|prompt:27|posy:3|ymax:76
+inside set selector|posx:2|posy:3|ymax:76
+|posx:2|prompt:27|posy:4|ymax:76
+inside set selector|posx:2|posy:4|ymax:76
+|posx:2|prompt:27|posy:5|ymax:76
+inside set selector|posx:2|posy:5|ymax:76
+|posx:2|prompt:27|posy:6|ymax:76
+inside set selector|posx:2|posy:6|ymax:76
+|posx:2|prompt:27|posy:7|ymax:76
+inside set selector|posx:2|posy:7|ymax:76
+|posx:2|prompt:27|posy:8|ymax:76
+inside set selector|posx:2|posy:8|ymax:76
+|posx:2|prompt:27|posy:9|ymax:76
+inside set selector|posx:2|posy:9|ymax:76
+|posx:2|prompt:27|posy:10|ymax:76
+inside set selector|posx:2|posy:10|ymax:76
+|posx:2|prompt:27|posy:11|ymax:76
+inside set selector|posx:2|posy:11|ymax:76
+|posx:2|prompt:27|posy:12|ymax:76
+inside set selector|posx:2|posy:12|ymax:76
+|posx:2|prompt:27|posy:13|ymax:76
+inside set selector|posx:2|posy:13|ymax:76
+|posx:2|prompt:27|posy:14|ymax:76
+inside set selector|posx:2|posy:14|ymax:76
+|posx:2|prompt:27|posy:15|ymax:76
+inside set selector|posx:2|posy:15|ymax:76
+|posx:2|prompt:27|posy:16|ymax:76
+inside set selector|posx:2|posy:16|ymax:76
+|posx:2|prompt:27|posy:17|ymax:76
+inside set selector|posx:2|posy:17|ymax:76
+|posx:2|prompt:27|posy:18|ymax:76
+inside set selector|posx:2|posy:18|ymax:76
+|posx:2|prompt:27|posy:19|ymax:76
+inside set selector|posx:2|posy:19|ymax:76
+|posx:2|prompt:27|posy:20|ymax:76
+inside set selector|posx:2|posy:20|ymax:76
+|posx:2|prompt:27|posy:21|ymax:76
+inside set selector|posx:2|posy:21|ymax:76
+|posx:2|prompt:27|posy:22|ymax:76
+inside set selector|posx:2|posy:22|ymax:76
+|posx:2|prompt:27|posy:23|ymax:76
+inside set selector|posx:2|posy:23|ymax:76
+|posx:2|prompt:27|posy:24|ymax:76
+inside set selector|posx:2|posy:24|ymax:76
+|posx:2|prompt:27|posy:25|ymax:76
+inside set selector|posx:2|posy:25|ymax:76
+|posx:2|prompt:27|posy:26|ymax:76
+inside set selector|posx:2|posy:26|ymax:76
+|posx:2|prompt:27|posy:27|ymax:76
+inside set selector|posx:2|posy:27|ymax:76
+|posx:2|prompt:27|posy:28|ymax:76
+inside set selector|posx:2|posy:28|ymax:76
+|posx:2|prompt:27|posy:29|ymax:76
+inside set selector|posx:2|posy:29|ymax:76
+|posx:2|prompt:27|posy:30|ymax:76
+inside set selector|posx:2|posy:30|ymax:76
+|posx:2|prompt:27|posy:31|ymax:76
+inside set selector|posx:2|posy:31|ymax:76
+|posx:2|prompt:27|posy:32|ymax:76
+inside set selector|posx:2|posy:32|ymax:76
+|posx:2|prompt:27|posy:33|ymax:76
+inside set selector|posx:2|posy:33|ymax:76
+|posx:2|prompt:27|posy:34|ymax:76
+inside set selector|posx:2|posy:34|ymax:76
+|posx:2|prompt:27|posy:35|ymax:76
+inside set selector|posx:2|posy:35|ymax:76
+|posx:2|prompt:27|posy:36|ymax:76
+inside set selector|posx:2|posy:36|ymax:76
+|posx:2|prompt:27|posy:37|ymax:76
+inside set selector|posx:2|posy:37|ymax:76
+|posx:2|prompt:27|posy:38|ymax:76
+inside set selector|posx:2|posy:38|ymax:76
+|posx:2|prompt:27|posy:39|ymax:76
+inside set selector|posx:2|posy:39|ymax:76
+|posx:2|prompt:27|posy:40|ymax:76
+inside set selector|posx:2|posy:40|ymax:76
+|posx:2|prompt:27|posy:41|ymax:76
+inside set selector|posx:2|posy:41|ymax:76
+|posx:2|prompt:27|posy:42|ymax:76
+inside set selector|posx:2|posy:42|ymax:76
+|posx:2|prompt:27|posy:43|ymax:76
+inside set selector|posx:2|posy:43|ymax:76
+|posx:2|prompt:27|posy:44|ymax:76
+inside set selector|posx:2|posy:44|ymax:76
+|posx:2|prompt:27|posy:45|ymax:76
+inside set selector|posx:2|posy:45|ymax:76
+|posx:2|prompt:27|posy:46|ymax:76
+inside set selector|posx:2|posy:46|ymax:76
+|posx:2|prompt:27|posy:47|ymax:76
+inside set selector|posx:2|posy:47|ymax:76
+|posx:2|prompt:27|posy:48|ymax:76
+inside set selector|posx:2|posy:48|ymax:76
+|posx:2|prompt:27|posy:49|ymax:76
+inside set selector|posx:2|posy:49|ymax:76
+|posx:2|prompt:27|posy:50|ymax:76
+inside set selector|posx:2|posy:50|ymax:76
+|posx:2|prompt:27|posy:51|ymax:76
+inside set selector|posx:2|posy:51|ymax:76
+|posx:2|prompt:27|posy:52|ymax:76
+inside set selector|posx:2|posy:52|ymax:76
+|posx:2|prompt:27|posy:53|ymax:76
+inside set selector|posx:2|posy:53|ymax:76
+|posx:2|prompt:27|posy:54|ymax:76
+inside set selector|posx:2|posy:54|ymax:76
+|posx:2|prompt:27|posy:55|ymax:76
+inside set selector|posx:2|posy:55|ymax:76
+|posx:2|prompt:27|posy:56|ymax:76
+inside set selector|posx:2|posy:56|ymax:76
+|posx:2|prompt:27|posy:57|ymax:76
+inside set selector|posx:2|posy:57|ymax:76
+|posx:2|prompt:27|posy:58|ymax:76
+inside set selector|posx:2|posy:58|ymax:76
+|posx:2|prompt:27|posy:59|ymax:76
+inside set selector|posx:2|posy:59|ymax:76
+|posx:2|prompt:27|posy:60|ymax:76
+inside set selector|posx:2|posy:60|ymax:76
+|posx:2|prompt:27|posy:61|ymax:76
+inside set selector|posx:2|posy:61|ymax:76
+|posx:2|prompt:27|posy:62|ymax:76
+inside set selector|posx:2|posy:62|ymax:76
+|posx:2|prompt:27|posy:63|ymax:76
+inside set selector|posx:2|posy:63|ymax:76
+|posx:2|prompt:27|posy:64|ymax:76
+inside set selector|posx:2|posy:64|ymax:76
+|posx:2|prompt:27|posy:65|ymax:76
+inside set selector|posx:2|posy:65|ymax:76
+|posx:2|prompt:27|posy:66|ymax:76
+inside set selector|posx:2|posy:66|ymax:76
+|posx:2|prompt:27|posy:67|ymax:76
+inside set selector|posx:2|posy:67|ymax:76
+|posx:2|prompt:27|posy:68|ymax:76
+inside set selector|posx:2|posy:68|ymax:76
+|posx:2|prompt:27|posy:69|ymax:76
+inside set selector|posx:2|posy:69|ymax:76
+|posx:2|prompt:27|posy:70|ymax:76
+inside set selector|posx:2|posy:70|ymax:76
+|posx:2|prompt:27|posy:71|ymax:76
+inside set selector|posx:2|posy:71|ymax:76
+|posx:2|prompt:27|posy:72|ymax:76
+inside set selector|posx:2|posy:72|ymax:76
+|posx:2|prompt:27|posy:73|ymax:76
+inside set selector|posx:2|posy:73|ymax:76
+|posx:2|prompt:27|posy:74|ymax:76
+inside set selector|posx:2|posy:74|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+inside set selector|posx:2|posy:75|ymax:76
+|posx:2|prompt:27|posy:76|ymax:76
+inside set selector|posx:2|posy:76|ymax:76
+|posx:3|prompt:27|posy:1|ymax:6
+inside set selector|posx:3|posy:1|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+inside set selector|posx:3|posy:2|ymax:6
+|posx:3|prompt:27|posy:3|ymax:6
+inside set selector|posx:3|posy:3|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+inside set selector|posx:3|posy:4|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+inside set selector|posx:3|posy:5|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+inside set selector|posx:3|posy:6|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+inside set selector|posx:3|posy:7|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+inside set selector|posx:3|posy:6|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+inside set selector|posx:3|posy:5|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+inside set selector|posx:3|posy:4|ymax:6
+|posx:3|prompt:27|posy:3|ymax:6
+inside set selector|posx:3|posy:3|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+inside set selector|posx:3|posy:2|ymax:6
+|posx:3|prompt:27|posy:1|ymax:6
+inside set selector|posx:3|posy:1|ymax:6
+|posx:2|prompt:27|posy:76|ymax:76
+inside set selector|posx:2|posy:76|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+inside set selector|posx:2|posy:75|ymax:76
+|posx:2|prompt:27|posy:74|ymax:76
+inside set selector|posx:2|posy:74|ymax:76
+|posx:2|prompt:27|posy:73|ymax:76
+inside set selector|posx:2|posy:73|ymax:76
+|posx:2|prompt:27|posy:72|ymax:76
+inside set selector|posx:2|posy:72|ymax:76
+|posx:2|prompt:27|posy:71|ymax:76
+inside set selector|posx:2|posy:71|ymax:76
+|posx:2|prompt:27|posy:70|ymax:76
+inside set selector|posx:2|posy:70|ymax:76
+|posx:2|prompt:27|posy:69|ymax:76
+inside set selector|posx:2|posy:69|ymax:76
+|posx:2|prompt:27|posy:68|ymax:76
+inside set selector|posx:2|posy:68|ymax:76
+|posx:2|prompt:27|posy:67|ymax:76
+inside set selector|posx:2|posy:67|ymax:76
+|posx:2|prompt:27|posy:66|ymax:76
+inside set selector|posx:2|posy:66|ymax:76
+|posx:2|prompt:27|posy:65|ymax:76
+inside set selector|posx:2|posy:65|ymax:76
+|posx:2|prompt:27|posy:64|ymax:76
+inside set selector|posx:2|posy:64|ymax:76
+|posx:2|prompt:27|posy:63|ymax:76
+inside set selector|posx:2|posy:63|ymax:76
+|posx:2|prompt:27|posy:62|ymax:76
+inside set selector|posx:2|posy:62|ymax:76
+|posx:2|prompt:27|posy:61|ymax:76
+inside set selector|posx:2|posy:61|ymax:76
+|posx:2|prompt:27|posy:60|ymax:76
+inside set selector|posx:2|posy:60|ymax:76
+|posx:2|prompt:27|posy:59|ymax:76
+inside set selector|posx:2|posy:59|ymax:76
+|posx:2|prompt:27|posy:58|ymax:76
+inside set selector|posx:2|posy:58|ymax:76
+|posx:2|prompt:27|posy:57|ymax:76
+inside set selector|posx:2|posy:57|ymax:76
+|posx:2|prompt:27|posy:56|ymax:76
+inside set selector|posx:2|posy:56|ymax:76
+|posx:2|prompt:27|posy:55|ymax:76
+inside set selector|posx:2|posy:55|ymax:76
+|posx:2|prompt:27|posy:54|ymax:76
+inside set selector|posx:2|posy:54|ymax:76
+|posx:2|prompt:27|posy:53|ymax:76
+inside set selector|posx:2|posy:53|ymax:76
+|posx:2|prompt:27|posy:52|ymax:76
+inside set selector|posx:2|posy:52|ymax:76
+|posx:2|prompt:27|posy:51|ymax:76
+inside set selector|posx:2|posy:51|ymax:76
+|posx:2|prompt:27|posy:50|ymax:76
+inside set selector|posx:2|posy:50|ymax:76
+|posx:2|prompt:27|posy:49|ymax:76
+inside set selector|posx:2|posy:49|ymax:76
+|posx:2|prompt:27|posy:48|ymax:76
+inside set selector|posx:2|posy:48|ymax:76
+|posx:2|prompt:27|posy:47|ymax:76
+inside set selector|posx:2|posy:47|ymax:76
+|posx:2|prompt:27|posy:46|ymax:76
+inside set selector|posx:2|posy:46|ymax:76
+|posx:2|prompt:27|posy:45|ymax:76
+inside set selector|posx:2|posy:45|ymax:76
+|posx:2|prompt:27|posy:44|ymax:76
+inside set selector|posx:2|posy:44|ymax:76
+|posx:2|prompt:27|posy:43|ymax:76
+inside set selector|posx:2|posy:43|ymax:76
+|posx:2|prompt:27|posy:42|ymax:76
+inside set selector|posx:2|posy:42|ymax:76
+|posx:2|prompt:27|posy:41|ymax:76
+inside set selector|posx:2|posy:41|ymax:76
+|posx:2|prompt:27|posy:40|ymax:76
+inside set selector|posx:2|posy:40|ymax:76
+|posx:2|prompt:27|posy:39|ymax:76
+inside set selector|posx:2|posy:39|ymax:76
+|posx:2|prompt:27|posy:38|ymax:76
+inside set selector|posx:2|posy:38|ymax:76
+|posx:2|prompt:27|posy:37|ymax:76
+inside set selector|posx:2|posy:37|ymax:76
+|posx:2|prompt:27|posy:36|ymax:76
+inside set selector|posx:2|posy:36|ymax:76
+|posx:2|prompt:27|posy:35|ymax:76
+inside set selector|posx:2|posy:35|ymax:76
+|posx:2|prompt:27|posy:34|ymax:76
+inside set selector|posx:2|posy:34|ymax:76
+|posx:2|prompt:27|posy:33|ymax:76
+inside set selector|posx:2|posy:33|ymax:76
+|posx:2|prompt:27|posy:32|ymax:76
+inside set selector|posx:2|posy:32|ymax:76
+|posx:2|prompt:27|posy:31|ymax:76
+inside set selector|posx:2|posy:31|ymax:76
+|posx:2|prompt:27|posy:30|ymax:76
+inside set selector|posx:2|posy:30|ymax:76
+|posx:2|prompt:27|posy:29|ymax:76
+inside set selector|posx:2|posy:29|ymax:76
+|posx:2|prompt:27|posy:28|ymax:76
+inside set selector|posx:2|posy:28|ymax:76
+|posx:2|prompt:27|posy:27|ymax:76
+inside set selector|posx:2|posy:27|ymax:76
+|posx:2|prompt:27|posy:26|ymax:76
+inside set selector|posx:2|posy:26|ymax:76
+|posx:2|prompt:27|posy:25|ymax:76
+inside set selector|posx:2|posy:25|ymax:76
+|posx:2|prompt:27|posy:24|ymax:76
+inside set selector|posx:2|posy:24|ymax:76
+|posx:2|prompt:27|posy:23|ymax:76
+inside set selector|posx:2|posy:23|ymax:76
+|posx:2|prompt:27|posy:22|ymax:76
+inside set selector|posx:2|posy:22|ymax:76
+|posx:2|prompt:27|posy:21|ymax:76
+inside set selector|posx:2|posy:21|ymax:76
+|posx:2|prompt:27|posy:20|ymax:76
+inside set selector|posx:2|posy:20|ymax:76
+|posx:2|prompt:27|posy:19|ymax:76
+inside set selector|posx:2|posy:19|ymax:76
+|posx:2|prompt:27|posy:18|ymax:76
+inside set selector|posx:2|posy:18|ymax:76
+|posx:2|prompt:27|posy:17|ymax:76
+inside set selector|posx:2|posy:17|ymax:76
+|posx:2|prompt:27|posy:16|ymax:76
+inside set selector|posx:2|posy:16|ymax:76
+|posx:2|prompt:27|posy:15|ymax:76
+inside set selector|posx:2|posy:15|ymax:76
+|posx:2|prompt:27|posy:14|ymax:76
+inside set selector|posx:2|posy:14|ymax:76
+|posx:2|prompt:27|posy:13|ymax:76
+inside set selector|posx:2|posy:13|ymax:76
+|posx:2|prompt:27|posy:12|ymax:76
+inside set selector|posx:2|posy:12|ymax:76
+|posx:2|prompt:27|posy:11|ymax:76
+inside set selector|posx:2|posy:11|ymax:76
+|posx:2|prompt:27|posy:10|ymax:76
+inside set selector|posx:2|posy:10|ymax:76
+|posx:2|prompt:27|posy:9|ymax:76
+inside set selector|posx:2|posy:9|ymax:76
+|posx:2|prompt:27|posy:8|ymax:76
+inside set selector|posx:2|posy:8|ymax:76
+|posx:2|prompt:27|posy:7|ymax:76
+inside set selector|posx:2|posy:7|ymax:76
+|posx:2|prompt:27|posy:6|ymax:76
+inside set selector|posx:2|posy:6|ymax:76
+|posx:2|prompt:27|posy:5|ymax:76
+inside set selector|posx:2|posy:5|ymax:76
+|posx:2|prompt:27|posy:4|ymax:76
+inside set selector|posx:2|posy:4|ymax:76
+|posx:2|prompt:27|posy:3|ymax:76
+inside set selector|posx:2|posy:3|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+inside set selector|posx:2|posy:2|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+inside set selector|posx:2|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+inside set selector|posx:1|posy:76|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+inside set selector|posx:1|posy:75|ymax:76
+|posx:1|prompt:27|posy:74|ymax:76
+inside set selector|posx:1|posy:74|ymax:76
+|posx:1|prompt:27|posy:73|ymax:76
+inside set selector|posx:1|posy:73|ymax:76
+|posx:1|prompt:27|posy:72|ymax:76
+inside set selector|posx:1|posy:72|ymax:76
+|posx:1|prompt:27|posy:71|ymax:76
+inside set selector|posx:1|posy:71|ymax:76
+|posx:1|prompt:27|posy:70|ymax:76
+inside set selector|posx:1|posy:70|ymax:76
+|posx:1|prompt:27|posy:69|ymax:76
+inside set selector|posx:1|posy:69|ymax:76
+|posx:1|prompt:27|posy:68|ymax:76
+inside set selector|posx:1|posy:68|ymax:76
+|posx:1|prompt:27|posy:67|ymax:76
+inside set selector|posx:1|posy:67|ymax:76
+|posx:1|prompt:27|posy:66|ymax:76
+inside set selector|posx:1|posy:66|ymax:76
+|posx:1|prompt:27|posy:65|ymax:76
+inside set selector|posx:1|posy:65|ymax:76
+|posx:1|prompt:27|posy:64|ymax:76
+inside set selector|posx:1|posy:64|ymax:76
+|posx:1|prompt:27|posy:63|ymax:76
+inside set selector|posx:1|posy:63|ymax:76
+|posx:1|prompt:27|posy:62|ymax:76
+inside set selector|posx:1|posy:62|ymax:76
+|posx:1|prompt:27|posy:61|ymax:76
+inside set selector|posx:1|posy:61|ymax:76
+|posx:1|prompt:27|posy:60|ymax:76
+inside set selector|posx:1|posy:60|ymax:76
+|posx:1|prompt:27|posy:59|ymax:76
+inside set selector|posx:1|posy:59|ymax:76
+|posx:1|prompt:27|posy:58|ymax:76
+inside set selector|posx:1|posy:58|ymax:76
+|posx:1|prompt:27|posy:57|ymax:76
+inside set selector|posx:1|posy:57|ymax:76
+|posx:1|prompt:27|posy:56|ymax:76
+inside set selector|posx:1|posy:56|ymax:76
+|posx:1|prompt:27|posy:55|ymax:76
+inside set selector|posx:1|posy:55|ymax:76
+|posx:1|prompt:27|posy:54|ymax:76
+inside set selector|posx:1|posy:54|ymax:76
+|posx:1|prompt:27|posy:53|ymax:76
+inside set selector|posx:1|posy:53|ymax:76
+|posx:1|prompt:27|posy:52|ymax:76
+inside set selector|posx:1|posy:52|ymax:76
+|posx:1|prompt:27|posy:51|ymax:76
+inside set selector|posx:1|posy:51|ymax:76
+|posx:1|prompt:27|posy:50|ymax:76
+inside set selector|posx:1|posy:50|ymax:76
+|posx:1|prompt:27|posy:49|ymax:76
+inside set selector|posx:1|posy:49|ymax:76
+|posx:1|prompt:27|posy:48|ymax:76
+inside set selector|posx:1|posy:48|ymax:76
+|posx:1|prompt:27|posy:47|ymax:76
+inside set selector|posx:1|posy:47|ymax:76
+|posx:1|prompt:27|posy:46|ymax:76
+inside set selector|posx:1|posy:46|ymax:76
+|posx:1|prompt:27|posy:45|ymax:76
+inside set selector|posx:1|posy:45|ymax:76
+|posx:1|prompt:27|posy:44|ymax:76
+inside set selector|posx:1|posy:44|ymax:76
+|posx:1|prompt:27|posy:43|ymax:76
+inside set selector|posx:1|posy:43|ymax:76
+|posx:1|prompt:27|posy:42|ymax:76
+inside set selector|posx:1|posy:42|ymax:76
+|posx:1|prompt:27|posy:41|ymax:76
+inside set selector|posx:1|posy:41|ymax:76
+|posx:1|prompt:27|posy:40|ymax:76
+inside set selector|posx:1|posy:40|ymax:76
+|posx:1|prompt:27|posy:39|ymax:76
+inside set selector|posx:1|posy:39|ymax:76
+|posx:1|prompt:27|posy:38|ymax:76
+inside set selector|posx:1|posy:38|ymax:76
+|posx:1|prompt:27|posy:37|ymax:76
+inside set selector|posx:1|posy:37|ymax:76
+|posx:1|prompt:27|posy:36|ymax:76
+inside set selector|posx:1|posy:36|ymax:76
+|posx:1|prompt:27|posy:35|ymax:76
+inside set selector|posx:1|posy:35|ymax:76
+|posx:1|prompt:27|posy:34|ymax:76
+inside set selector|posx:1|posy:34|ymax:76
+|posx:1|prompt:27|posy:33|ymax:76
+inside set selector|posx:1|posy:33|ymax:76
+|posx:1|prompt:27|posy:32|ymax:76
+inside set selector|posx:1|posy:32|ymax:76
+|posx:1|prompt:27|posy:31|ymax:76
+inside set selector|posx:1|posy:31|ymax:76
+|posx:1|prompt:27|posy:30|ymax:76
+inside set selector|posx:1|posy:30|ymax:76
+|posx:1|prompt:27|posy:29|ymax:76
+inside set selector|posx:1|posy:29|ymax:76
+|posx:1|prompt:27|posy:28|ymax:76
+inside set selector|posx:1|posy:28|ymax:76
+|posx:1|prompt:27|posy:27|ymax:76
+inside set selector|posx:1|posy:27|ymax:76
+|posx:1|prompt:27|posy:26|ymax:76
+inside set selector|posx:1|posy:26|ymax:76
+|posx:1|prompt:27|posy:25|ymax:76
+inside set selector|posx:1|posy:25|ymax:76
+|posx:1|prompt:27|posy:24|ymax:76
+inside set selector|posx:1|posy:24|ymax:76
+|posx:1|prompt:27|posy:23|ymax:76
+inside set selector|posx:1|posy:23|ymax:76
+|posx:1|prompt:27|posy:22|ymax:76
+inside set selector|posx:1|posy:22|ymax:76
+|posx:1|prompt:27|posy:21|ymax:76
+inside set selector|posx:1|posy:21|ymax:76
+|posx:1|prompt:27|posy:20|ymax:76
+inside set selector|posx:1|posy:20|ymax:76
+|posx:1|prompt:27|posy:19|ymax:76
+inside set selector|posx:1|posy:19|ymax:76
+|posx:1|prompt:27|posy:18|ymax:76
+inside set selector|posx:1|posy:18|ymax:76
+|posx:1|prompt:27|posy:17|ymax:76
+inside set selector|posx:1|posy:17|ymax:76
+|posx:1|prompt:27|posy:16|ymax:76
+inside set selector|posx:1|posy:16|ymax:76
+|posx:1|prompt:27|posy:15|ymax:76
+inside set selector|posx:1|posy:15|ymax:76
+|posx:1|prompt:27|posy:14|ymax:76
+inside set selector|posx:1|posy:14|ymax:76
+|posx:1|prompt:27|posy:13|ymax:76
+inside set selector|posx:1|posy:13|ymax:76
+|posx:1|prompt:27|posy:12|ymax:76
+inside set selector|posx:1|posy:12|ymax:76
+|posx:1|prompt:27|posy:11|ymax:76
+inside set selector|posx:1|posy:11|ymax:76
+|posx:1|prompt:27|posy:10|ymax:76
+inside set selector|posx:1|posy:10|ymax:76
+|posx:1|prompt:27|posy:9|ymax:76
+inside set selector|posx:1|posy:9|ymax:76
+|posx:1|prompt:27|posy:8|ymax:76
+inside set selector|posx:1|posy:8|ymax:76
+|posx:1|prompt:27|posy:7|ymax:76
+inside set selector|posx:1|posy:7|ymax:76
+|posx:1|prompt:27|posy:6|ymax:76
+inside set selector|posx:1|posy:6|ymax:76
+|posx:1|prompt:27|posy:5|ymax:76
+inside set selector|posx:1|posy:5|ymax:76
+|posx:1|prompt:27|posy:4|ymax:76
+inside set selector|posx:1|posy:4|ymax:76
+|posx:1|prompt:27|posy:3|ymax:76
+inside set selector|posx:1|posy:3|ymax:76
+|posx:1|prompt:27|posy:2|ymax:76
+inside set selector|posx:1|posy:2|ymax:76
+|posx:1|prompt:27|posy:1|ymax:76
+inside set selector|posx:1|posy:1|ymax:76
+|posx:0|prompt:27|posy:49|ymax:49
+inside set selector|posx:0|posy:49|ymax:49
+|posx:0|prompt:27|posy:48|ymax:49
+inside set selector|posx:0|posy:48|ymax:49
+|posx:0|prompt:27|posy:47|ymax:49
+inside set selector|posx:0|posy:47|ymax:49
+|posx:0|prompt:27|posy:46|ymax:49
+inside set selector|posx:0|posy:46|ymax:49
+|posx:0|prompt:27|posy:45|ymax:49
+inside set selector|posx:0|posy:45|ymax:49
+|posx:0|prompt:27|posy:44|ymax:49
+inside set selector|posx:0|posy:44|ymax:49
+|posx:0|prompt:27|posy:43|ymax:49
+inside set selector|posx:0|posy:43|ymax:49
+|posx:0|prompt:27|posy:42|ymax:49
+inside set selector|posx:0|posy:42|ymax:49
+|posx:0|prompt:27|posy:41|ymax:49
+inside set selector|posx:0|posy:41|ymax:49
+|posx:0|prompt:27|posy:40|ymax:49
+inside set selector|posx:0|posy:40|ymax:49
+|posx:0|prompt:27|posy:39|ymax:49
+inside set selector|posx:0|posy:39|ymax:49
+|posx:0|prompt:27|posy:38|ymax:49
+inside set selector|posx:0|posy:38|ymax:49
+|posx:0|prompt:27|posy:37|ymax:49
+inside set selector|posx:0|posy:37|ymax:49
+|posx:0|prompt:27|posy:36|ymax:49
+inside set selector|posx:0|posy:36|ymax:49
+|posx:0|prompt:27|posy:35|ymax:49
+inside set selector|posx:0|posy:35|ymax:49
+|posx:0|prompt:27|posy:34|ymax:49
+inside set selector|posx:0|posy:34|ymax:49
+|posx:0|prompt:27|posy:33|ymax:49
+inside set selector|posx:0|posy:33|ymax:49
+|posx:0|prompt:27|posy:32|ymax:49
+inside set selector|posx:0|posy:32|ymax:49
+|posx:0|prompt:27|posy:31|ymax:49
+inside set selector|posx:0|posy:31|ymax:49
+|posx:0|prompt:27|posy:30|ymax:49
+inside set selector|posx:0|posy:30|ymax:49
+|posx:0|prompt:27|posy:29|ymax:49
+inside set selector|posx:0|posy:29|ymax:49
+|posx:0|prompt:27|posy:28|ymax:49
+inside set selector|posx:0|posy:28|ymax:49
+|posx:0|prompt:27|posy:27|ymax:49
+inside set selector|posx:0|posy:27|ymax:49
+|posx:0|prompt:27|posy:26|ymax:49
+inside set selector|posx:0|posy:26|ymax:49
+|posx:0|prompt:27|posy:25|ymax:49
+inside set selector|posx:0|posy:25|ymax:49
+|posx:0|prompt:27|posy:24|ymax:49
+inside set selector|posx:0|posy:24|ymax:49
+|posx:0|prompt:27|posy:23|ymax:49
+inside set selector|posx:0|posy:23|ymax:49
+|posx:0|prompt:27|posy:22|ymax:49
+inside set selector|posx:0|posy:22|ymax:49
+|posx:0|prompt:27|posy:21|ymax:49
+inside set selector|posx:0|posy:21|ymax:49
+|posx:0|prompt:27|posy:20|ymax:49
+inside set selector|posx:0|posy:20|ymax:49
+|posx:0|prompt:27|posy:19|ymax:49
+inside set selector|posx:0|posy:19|ymax:49
+|posx:0|prompt:27|posy:18|ymax:49
+inside set selector|posx:0|posy:18|ymax:49
+|posx:0|prompt:27|posy:17|ymax:49
+inside set selector|posx:0|posy:17|ymax:49
+|posx:0|prompt:27|posy:16|ymax:49
+inside set selector|posx:0|posy:16|ymax:49
+|posx:0|prompt:27|posy:15|ymax:49
+inside set selector|posx:0|posy:15|ymax:49
+|posx:0|prompt:27|posy:14|ymax:49
+inside set selector|posx:0|posy:14|ymax:49
+|posx:0|prompt:27|posy:13|ymax:49
+inside set selector|posx:0|posy:13|ymax:49
+|posx:0|prompt:27|posy:12|ymax:49
+inside set selector|posx:0|posy:12|ymax:49
+|posx:0|prompt:27|posy:11|ymax:49
+inside set selector|posx:0|posy:11|ymax:49
+|posx:0|prompt:27|posy:10|ymax:49
+inside set selector|posx:0|posy:10|ymax:49
+|posx:0|prompt:27|posy:9|ymax:49
+inside set selector|posx:0|posy:9|ymax:49
+|posx:0|prompt:27|posy:8|ymax:49
+inside set selector|posx:0|posy:8|ymax:49
+|posx:0|prompt:27|posy:7|ymax:49
+inside set selector|posx:0|posy:7|ymax:49
+|posx:0|prompt:27|posy:6|ymax:49
+inside set selector|posx:0|posy:6|ymax:49
+|posx:0|prompt:27|posy:5|ymax:49
+inside set selector|posx:0|posy:5|ymax:49
+|posx:0|prompt:27|posy:4|ymax:49
+inside set selector|posx:0|posy:4|ymax:49
+|posx:0|prompt:27|posy:3|ymax:49
+inside set selector|posx:0|posy:3|ymax:49
+|posx:0|prompt:27|posy:2|ymax:49
+inside set selector|posx:0|posy:2|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+|posx:0|prompt:27|posy:1|ymax:49
+inside set selector|posx:0|posy:1|ymax:49
+|posx:0|prompt:27|posy:2|ymax:49
+inside set selector|posx:0|posy:2|ymax:49
+|posx:0|prompt:27|posy:3|ymax:49
+inside set selector|posx:0|posy:3|ymax:49
+|posx:0|prompt:27|posy:4|ymax:49
+inside set selector|posx:0|posy:4|ymax:49
+|posx:0|prompt:27|posy:5|ymax:49
+inside set selector|posx:0|posy:5|ymax:49
+|posx:0|prompt:27|posy:6|ymax:49
+inside set selector|posx:0|posy:6|ymax:49
+|posx:0|prompt:27|posy:7|ymax:49
+inside set selector|posx:0|posy:7|ymax:49
+|posx:0|prompt:27|posy:8|ymax:49
+inside set selector|posx:0|posy:8|ymax:49
+|posx:0|prompt:27|posy:9|ymax:49
+inside set selector|posx:0|posy:9|ymax:49
+|posx:0|prompt:27|posy:10|ymax:49
+inside set selector|posx:0|posy:10|ymax:49
+|posx:0|prompt:27|posy:11|ymax:49
+inside set selector|posx:0|posy:11|ymax:49
+|posx:0|prompt:27|posy:12|ymax:49
+inside set selector|posx:0|posy:12|ymax:49
+|posx:0|prompt:27|posy:13|ymax:49
+inside set selector|posx:0|posy:13|ymax:49
+|posx:0|prompt:27|posy:14|ymax:49
+inside set selector|posx:0|posy:14|ymax:49
+|posx:0|prompt:27|posy:15|ymax:49
+inside set selector|posx:0|posy:15|ymax:49
+|posx:0|prompt:27|posy:16|ymax:49
+inside set selector|posx:0|posy:16|ymax:49
+|posx:0|prompt:27|posy:17|ymax:49
+inside set selector|posx:0|posy:17|ymax:49
+|posx:0|prompt:27|posy:18|ymax:49
+inside set selector|posx:0|posy:18|ymax:49
+|posx:0|prompt:27|posy:19|ymax:49
+inside set selector|posx:0|posy:19|ymax:49
+|posx:0|prompt:27|posy:20|ymax:49
+inside set selector|posx:0|posy:20|ymax:49
+|posx:0|prompt:27|posy:21|ymax:49
+inside set selector|posx:0|posy:21|ymax:49
+|posx:0|prompt:27|posy:22|ymax:49
+inside set selector|posx:0|posy:22|ymax:49
+|posx:0|prompt:27|posy:23|ymax:49
+inside set selector|posx:0|posy:23|ymax:49
+|posx:0|prompt:27|posy:24|ymax:49
+inside set selector|posx:0|posy:24|ymax:49
+|posx:0|prompt:27|posy:25|ymax:49
+inside set selector|posx:0|posy:25|ymax:49
+|posx:0|prompt:27|posy:26|ymax:49
+inside set selector|posx:0|posy:26|ymax:49
+|posx:0|prompt:27|posy:27|ymax:49
+inside set selector|posx:0|posy:27|ymax:49
+|posx:0|prompt:27|posy:28|ymax:49
+inside set selector|posx:0|posy:28|ymax:49
+|posx:0|prompt:27|posy:29|ymax:49
+inside set selector|posx:0|posy:29|ymax:49
+|posx:0|prompt:27|posy:30|ymax:49
+inside set selector|posx:0|posy:30|ymax:49
+|posx:0|prompt:27|posy:31|ymax:49
+inside set selector|posx:0|posy:31|ymax:49
+|posx:0|prompt:27|posy:32|ymax:49
+inside set selector|posx:0|posy:32|ymax:49
+|posx:0|prompt:27|posy:33|ymax:49
+inside set selector|posx:0|posy:33|ymax:49
+|posx:0|prompt:27|posy:34|ymax:49
+inside set selector|posx:0|posy:34|ymax:49
+|posx:0|prompt:27|posy:35|ymax:49
+inside set selector|posx:0|posy:35|ymax:49
+|posx:0|prompt:27|posy:36|ymax:49
+inside set selector|posx:0|posy:36|ymax:49
+|posx:0|prompt:27|posy:37|ymax:49
+inside set selector|posx:0|posy:37|ymax:49
+|posx:0|prompt:27|posy:38|ymax:49
+inside set selector|posx:0|posy:38|ymax:49
+|posx:0|prompt:27|posy:39|ymax:49
+inside set selector|posx:0|posy:39|ymax:49
+|posx:0|prompt:27|posy:40|ymax:49
+inside set selector|posx:0|posy:40|ymax:49
+|posx:0|prompt:27|posy:41|ymax:49
+inside set selector|posx:0|posy:41|ymax:49
+|posx:0|prompt:27|posy:42|ymax:49
+inside set selector|posx:0|posy:42|ymax:49
+|posx:0|prompt:27|posy:43|ymax:49
+inside set selector|posx:0|posy:43|ymax:49
+|posx:0|prompt:27|posy:44|ymax:49
+inside set selector|posx:0|posy:44|ymax:49
+|posx:0|prompt:27|posy:45|ymax:49
+inside set selector|posx:0|posy:45|ymax:49
+|posx:0|prompt:27|posy:46|ymax:49
+inside set selector|posx:0|posy:46|ymax:49
+|posx:0|prompt:27|posy:47|ymax:49
+inside set selector|posx:0|posy:47|ymax:49
+|posx:0|prompt:27|posy:48|ymax:49
+inside set selector|posx:0|posy:48|ymax:49
+|posx:0|prompt:27|posy:49|ymax:49
+inside set selector|posx:0|posy:49|ymax:49
+|posx:1|prompt:27|posy:1|ymax:76
+inside set selector|posx:1|posy:1|ymax:76
+|posx:1|prompt:27|posy:2|ymax:76
+inside set selector|posx:1|posy:2|ymax:76
+|posx:1|prompt:27|posy:3|ymax:76
+inside set selector|posx:1|posy:3|ymax:76
+|posx:1|prompt:27|posy:4|ymax:76
+inside set selector|posx:1|posy:4|ymax:76
+|posx:1|prompt:27|posy:5|ymax:76
+inside set selector|posx:1|posy:5|ymax:76
+|posx:1|prompt:27|posy:6|ymax:76
+inside set selector|posx:1|posy:6|ymax:76
+|posx:1|prompt:27|posy:7|ymax:76
+inside set selector|posx:1|posy:7|ymax:76
+|posx:1|prompt:27|posy:8|ymax:76
+inside set selector|posx:1|posy:8|ymax:76
+|posx:1|prompt:27|posy:9|ymax:76
+inside set selector|posx:1|posy:9|ymax:76
+|posx:1|prompt:27|posy:10|ymax:76
+inside set selector|posx:1|posy:10|ymax:76
+|posx:1|prompt:27|posy:11|ymax:76
+inside set selector|posx:1|posy:11|ymax:76
+|posx:1|prompt:27|posy:12|ymax:76
+inside set selector|posx:1|posy:12|ymax:76
+|posx:1|prompt:27|posy:13|ymax:76
+inside set selector|posx:1|posy:13|ymax:76
+|posx:1|prompt:27|posy:14|ymax:76
+inside set selector|posx:1|posy:14|ymax:76
+|posx:1|prompt:27|posy:15|ymax:76
+inside set selector|posx:1|posy:15|ymax:76
+|posx:1|prompt:27|posy:16|ymax:76
+inside set selector|posx:1|posy:16|ymax:76
+|posx:1|prompt:27|posy:17|ymax:76
+inside set selector|posx:1|posy:17|ymax:76
+|posx:1|prompt:27|posy:18|ymax:76
+inside set selector|posx:1|posy:18|ymax:76
+|posx:1|prompt:27|posy:19|ymax:76
+inside set selector|posx:1|posy:19|ymax:76
+|posx:1|prompt:27|posy:20|ymax:76
+inside set selector|posx:1|posy:20|ymax:76
+|posx:1|prompt:27|posy:21|ymax:76
+inside set selector|posx:1|posy:21|ymax:76
+|posx:1|prompt:27|posy:22|ymax:76
+inside set selector|posx:1|posy:22|ymax:76
+|posx:1|prompt:27|posy:23|ymax:76
+inside set selector|posx:1|posy:23|ymax:76
+|posx:1|prompt:27|posy:24|ymax:76
+inside set selector|posx:1|posy:24|ymax:76
+|posx:1|prompt:27|posy:25|ymax:76
+inside set selector|posx:1|posy:25|ymax:76
+|posx:1|prompt:27|posy:26|ymax:76
+inside set selector|posx:1|posy:26|ymax:76
+|posx:1|prompt:27|posy:27|ymax:76
+inside set selector|posx:1|posy:27|ymax:76
+|posx:1|prompt:27|posy:28|ymax:76
+inside set selector|posx:1|posy:28|ymax:76
+|posx:1|prompt:27|posy:29|ymax:76
+inside set selector|posx:1|posy:29|ymax:76
+|posx:1|prompt:27|posy:30|ymax:76
+inside set selector|posx:1|posy:30|ymax:76
+|posx:1|prompt:27|posy:31|ymax:76
+inside set selector|posx:1|posy:31|ymax:76
+|posx:1|prompt:27|posy:32|ymax:76
+inside set selector|posx:1|posy:32|ymax:76
+|posx:1|prompt:27|posy:33|ymax:76
+inside set selector|posx:1|posy:33|ymax:76
+|posx:1|prompt:27|posy:34|ymax:76
+inside set selector|posx:1|posy:34|ymax:76
+|posx:1|prompt:27|posy:35|ymax:76
+inside set selector|posx:1|posy:35|ymax:76
+|posx:1|prompt:27|posy:36|ymax:76
+inside set selector|posx:1|posy:36|ymax:76
+|posx:1|prompt:27|posy:37|ymax:76
+inside set selector|posx:1|posy:37|ymax:76
+|posx:1|prompt:27|posy:38|ymax:76
+inside set selector|posx:1|posy:38|ymax:76
+|posx:1|prompt:27|posy:39|ymax:76
+inside set selector|posx:1|posy:39|ymax:76
+|posx:1|prompt:27|posy:40|ymax:76
+inside set selector|posx:1|posy:40|ymax:76
+|posx:1|prompt:27|posy:41|ymax:76
+inside set selector|posx:1|posy:41|ymax:76
+|posx:1|prompt:27|posy:42|ymax:76
+inside set selector|posx:1|posy:42|ymax:76
+|posx:1|prompt:27|posy:43|ymax:76
+inside set selector|posx:1|posy:43|ymax:76
+|posx:1|prompt:27|posy:44|ymax:76
+inside set selector|posx:1|posy:44|ymax:76
+|posx:1|prompt:27|posy:45|ymax:76
+inside set selector|posx:1|posy:45|ymax:76
+|posx:1|prompt:27|posy:46|ymax:76
+inside set selector|posx:1|posy:46|ymax:76
+|posx:1|prompt:27|posy:47|ymax:76
+inside set selector|posx:1|posy:47|ymax:76
+|posx:1|prompt:27|posy:48|ymax:76
+inside set selector|posx:1|posy:48|ymax:76
+|posx:1|prompt:27|posy:49|ymax:76
+inside set selector|posx:1|posy:49|ymax:76
+|posx:1|prompt:27|posy:50|ymax:76
+inside set selector|posx:1|posy:50|ymax:76
+|posx:1|prompt:27|posy:51|ymax:76
+inside set selector|posx:1|posy:51|ymax:76
+|posx:1|prompt:27|posy:52|ymax:76
+inside set selector|posx:1|posy:52|ymax:76
+|posx:1|prompt:27|posy:53|ymax:76
+inside set selector|posx:1|posy:53|ymax:76
+|posx:1|prompt:27|posy:54|ymax:76
+inside set selector|posx:1|posy:54|ymax:76
+|posx:1|prompt:27|posy:55|ymax:76
+inside set selector|posx:1|posy:55|ymax:76
+|posx:1|prompt:27|posy:56|ymax:76
+inside set selector|posx:1|posy:56|ymax:76
+|posx:1|prompt:27|posy:57|ymax:76
+inside set selector|posx:1|posy:57|ymax:76
+|posx:1|prompt:27|posy:58|ymax:76
+inside set selector|posx:1|posy:58|ymax:76
+|posx:1|prompt:27|posy:59|ymax:76
+inside set selector|posx:1|posy:59|ymax:76
+|posx:1|prompt:27|posy:60|ymax:76
+inside set selector|posx:1|posy:60|ymax:76
+|posx:1|prompt:27|posy:61|ymax:76
+inside set selector|posx:1|posy:61|ymax:76
+|posx:1|prompt:27|posy:62|ymax:76
+inside set selector|posx:1|posy:62|ymax:76
+|posx:1|prompt:27|posy:63|ymax:76
+inside set selector|posx:1|posy:63|ymax:76
+|posx:1|prompt:27|posy:64|ymax:76
+inside set selector|posx:1|posy:64|ymax:76
+|posx:1|prompt:27|posy:65|ymax:76
+inside set selector|posx:1|posy:65|ymax:76
+|posx:1|prompt:27|posy:66|ymax:76
+inside set selector|posx:1|posy:66|ymax:76
+|posx:1|prompt:27|posy:67|ymax:76
+inside set selector|posx:1|posy:67|ymax:76
+|posx:1|prompt:27|posy:68|ymax:76
+inside set selector|posx:1|posy:68|ymax:76
+|posx:1|prompt:27|posy:69|ymax:76
+inside set selector|posx:1|posy:69|ymax:76
+|posx:1|prompt:27|posy:70|ymax:76
+inside set selector|posx:1|posy:70|ymax:76
+|posx:1|prompt:27|posy:71|ymax:76
+inside set selector|posx:1|posy:71|ymax:76
+|posx:1|prompt:27|posy:72|ymax:76
+inside set selector|posx:1|posy:72|ymax:76
+|posx:1|prompt:27|posy:73|ymax:76
+inside set selector|posx:1|posy:73|ymax:76
+|posx:1|prompt:27|posy:74|ymax:76
+inside set selector|posx:1|posy:74|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+inside set selector|posx:1|posy:75|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+inside set selector|posx:1|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+inside set selector|posx:2|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+inside set selector|posx:1|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+inside set selector|posx:2|posy:1|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+inside set selector|posx:2|posy:2|ymax:76
+|posx:2|prompt:27|posy:3|ymax:76
+inside set selector|posx:2|posy:3|ymax:76
+|posx:2|prompt:27|posy:4|ymax:76
+inside set selector|posx:2|posy:4|ymax:76
+|posx:2|prompt:27|posy:5|ymax:76
+inside set selector|posx:2|posy:5|ymax:76
+|posx:2|prompt:27|posy:6|ymax:76
+inside set selector|posx:2|posy:6|ymax:76
+|posx:2|prompt:27|posy:7|ymax:76
+inside set selector|posx:2|posy:7|ymax:76
+|posx:2|prompt:27|posy:8|ymax:76
+inside set selector|posx:2|posy:8|ymax:76
+|posx:2|prompt:27|posy:9|ymax:76
+inside set selector|posx:2|posy:9|ymax:76
+|posx:2|prompt:27|posy:10|ymax:76
+inside set selector|posx:2|posy:10|ymax:76
+|posx:2|prompt:27|posy:11|ymax:76
+inside set selector|posx:2|posy:11|ymax:76
+|posx:2|prompt:27|posy:12|ymax:76
+inside set selector|posx:2|posy:12|ymax:76
+|posx:2|prompt:27|posy:13|ymax:76
+inside set selector|posx:2|posy:13|ymax:76
+|posx:2|prompt:27|posy:14|ymax:76
+inside set selector|posx:2|posy:14|ymax:76
+|posx:2|prompt:27|posy:15|ymax:76
+inside set selector|posx:2|posy:15|ymax:76
+|posx:2|prompt:27|posy:16|ymax:76
+inside set selector|posx:2|posy:16|ymax:76
+|posx:2|prompt:27|posy:17|ymax:76
+inside set selector|posx:2|posy:17|ymax:76
+|posx:2|prompt:27|posy:18|ymax:76
+inside set selector|posx:2|posy:18|ymax:76
+|posx:2|prompt:27|posy:19|ymax:76
+inside set selector|posx:2|posy:19|ymax:76
+|posx:2|prompt:27|posy:20|ymax:76
+inside set selector|posx:2|posy:20|ymax:76
+|posx:2|prompt:27|posy:21|ymax:76
+inside set selector|posx:2|posy:21|ymax:76
+|posx:2|prompt:27|posy:22|ymax:76
+inside set selector|posx:2|posy:22|ymax:76
+|posx:2|prompt:27|posy:23|ymax:76
+inside set selector|posx:2|posy:23|ymax:76
+|posx:2|prompt:27|posy:24|ymax:76
+inside set selector|posx:2|posy:24|ymax:76
+|posx:2|prompt:27|posy:25|ymax:76
+inside set selector|posx:2|posy:25|ymax:76
+|posx:2|prompt:27|posy:26|ymax:76
+inside set selector|posx:2|posy:26|ymax:76
+|posx:2|prompt:27|posy:27|ymax:76
+inside set selector|posx:2|posy:27|ymax:76
+|posx:2|prompt:27|posy:28|ymax:76
+inside set selector|posx:2|posy:28|ymax:76
+|posx:2|prompt:27|posy:29|ymax:76
+inside set selector|posx:2|posy:29|ymax:76
+|posx:2|prompt:27|posy:30|ymax:76
+inside set selector|posx:2|posy:30|ymax:76
+|posx:2|prompt:27|posy:31|ymax:76
+inside set selector|posx:2|posy:31|ymax:76
+|posx:2|prompt:27|posy:32|ymax:76
+inside set selector|posx:2|posy:32|ymax:76
+|posx:2|prompt:27|posy:33|ymax:76
+inside set selector|posx:2|posy:33|ymax:76
+|posx:2|prompt:27|posy:34|ymax:76
+inside set selector|posx:2|posy:34|ymax:76
+|posx:2|prompt:27|posy:35|ymax:76
+inside set selector|posx:2|posy:35|ymax:76
+|posx:2|prompt:27|posy:36|ymax:76
+inside set selector|posx:2|posy:36|ymax:76
+|posx:2|prompt:27|posy:37|ymax:76
+inside set selector|posx:2|posy:37|ymax:76
+|posx:2|prompt:27|posy:38|ymax:76
+inside set selector|posx:2|posy:38|ymax:76
+|posx:2|prompt:27|posy:39|ymax:76
+inside set selector|posx:2|posy:39|ymax:76
+|posx:2|prompt:27|posy:40|ymax:76
+inside set selector|posx:2|posy:40|ymax:76
+|posx:2|prompt:27|posy:41|ymax:76
+inside set selector|posx:2|posy:41|ymax:76
+|posx:2|prompt:27|posy:42|ymax:76
+inside set selector|posx:2|posy:42|ymax:76
+|posx:2|prompt:27|posy:43|ymax:76
+inside set selector|posx:2|posy:43|ymax:76
+|posx:2|prompt:27|posy:44|ymax:76
+inside set selector|posx:2|posy:44|ymax:76
+|posx:2|prompt:27|posy:45|ymax:76
+inside set selector|posx:2|posy:45|ymax:76
+|posx:2|prompt:27|posy:46|ymax:76
+inside set selector|posx:2|posy:46|ymax:76
+|posx:2|prompt:27|posy:47|ymax:76
+inside set selector|posx:2|posy:47|ymax:76
+|posx:2|prompt:27|posy:48|ymax:76
+inside set selector|posx:2|posy:48|ymax:76
+|posx:2|prompt:27|posy:49|ymax:76
+inside set selector|posx:2|posy:49|ymax:76
+|posx:2|prompt:27|posy:50|ymax:76
+inside set selector|posx:2|posy:50|ymax:76
+|posx:2|prompt:27|posy:51|ymax:76
+inside set selector|posx:2|posy:51|ymax:76
+|posx:2|prompt:27|posy:52|ymax:76
+inside set selector|posx:2|posy:52|ymax:76
+|posx:2|prompt:27|posy:53|ymax:76
+inside set selector|posx:2|posy:53|ymax:76
+|posx:2|prompt:27|posy:54|ymax:76
+inside set selector|posx:2|posy:54|ymax:76
+|posx:2|prompt:27|posy:55|ymax:76
+inside set selector|posx:2|posy:55|ymax:76
+|posx:2|prompt:27|posy:56|ymax:76
+inside set selector|posx:2|posy:56|ymax:76
+|posx:2|prompt:27|posy:57|ymax:76
+inside set selector|posx:2|posy:57|ymax:76
+|posx:2|prompt:27|posy:58|ymax:76
+inside set selector|posx:2|posy:58|ymax:76
+|posx:2|prompt:27|posy:59|ymax:76
+inside set selector|posx:2|posy:59|ymax:76
+|posx:2|prompt:27|posy:60|ymax:76
+inside set selector|posx:2|posy:60|ymax:76
+|posx:2|prompt:27|posy:61|ymax:76
+inside set selector|posx:2|posy:61|ymax:76
+|posx:2|prompt:27|posy:62|ymax:76
+inside set selector|posx:2|posy:62|ymax:76
+|posx:2|prompt:27|posy:63|ymax:76
+inside set selector|posx:2|posy:63|ymax:76
+|posx:2|prompt:27|posy:64|ymax:76
+inside set selector|posx:2|posy:64|ymax:76
+|posx:2|prompt:27|posy:65|ymax:76
+inside set selector|posx:2|posy:65|ymax:76
+|posx:2|prompt:27|posy:66|ymax:76
+inside set selector|posx:2|posy:66|ymax:76
+|posx:2|prompt:27|posy:67|ymax:76
+inside set selector|posx:2|posy:67|ymax:76
+|posx:2|prompt:27|posy:68|ymax:76
+inside set selector|posx:2|posy:68|ymax:76
+|posx:2|prompt:27|posy:69|ymax:76
+inside set selector|posx:2|posy:69|ymax:76
+|posx:2|prompt:27|posy:70|ymax:76
+inside set selector|posx:2|posy:70|ymax:76
+|posx:2|prompt:27|posy:71|ymax:76
+inside set selector|posx:2|posy:71|ymax:76
+|posx:2|prompt:27|posy:72|ymax:76
+inside set selector|posx:2|posy:72|ymax:76
+|posx:2|prompt:27|posy:73|ymax:76
+inside set selector|posx:2|posy:73|ymax:76
+|posx:2|prompt:27|posy:74|ymax:76
+inside set selector|posx:2|posy:74|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+inside set selector|posx:2|posy:75|ymax:76
+|posx:2|prompt:27|posy:76|ymax:76
+inside set selector|posx:2|posy:76|ymax:76
+|posx:3|prompt:27|posy:1|ymax:6
+inside set selector|posx:3|posy:1|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+inside set selector|posx:3|posy:2|ymax:6
+|posx:3|prompt:27|posy:3|ymax:6
+inside set selector|posx:3|posy:3|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+inside set selector|posx:3|posy:4|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+inside set selector|posx:3|posy:5|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+inside set selector|posx:3|posy:6|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+|posx:3|prompt:27|posy:3|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+|posx:3|prompt:27|posy:1|ymax:6
+|posx:2|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+|posx:2|prompt:27|posy:74|ymax:76
+|posx:2|prompt:27|posy:73|ymax:76
+|posx:2|prompt:27|posy:72|ymax:76
+|posx:2|prompt:27|posy:71|ymax:76
+|posx:2|prompt:27|posy:70|ymax:76
+|posx:2|prompt:27|posy:69|ymax:76
+|posx:2|prompt:27|posy:68|ymax:76
+|posx:2|prompt:27|posy:67|ymax:76
+|posx:2|prompt:27|posy:66|ymax:76
+|posx:2|prompt:27|posy:65|ymax:76
+|posx:2|prompt:27|posy:64|ymax:76
+|posx:2|prompt:27|posy:63|ymax:76
+|posx:2|prompt:27|posy:62|ymax:76
+|posx:2|prompt:27|posy:61|ymax:76
+|posx:2|prompt:27|posy:60|ymax:76
+|posx:2|prompt:27|posy:59|ymax:76
+|posx:2|prompt:27|posy:58|ymax:76
+|posx:2|prompt:27|posy:57|ymax:76
+|posx:2|prompt:27|posy:56|ymax:76
+|posx:2|prompt:27|posy:55|ymax:76
+|posx:2|prompt:27|posy:54|ymax:76
+|posx:2|prompt:27|posy:53|ymax:76
+|posx:2|prompt:27|posy:52|ymax:76
+|posx:2|prompt:27|posy:51|ymax:76
+|posx:2|prompt:27|posy:50|ymax:76
+|posx:2|prompt:27|posy:49|ymax:76
+|posx:2|prompt:27|posy:48|ymax:76
+|posx:2|prompt:27|posy:47|ymax:76
+|posx:2|prompt:27|posy:46|ymax:76
+|posx:2|prompt:27|posy:45|ymax:76
+|posx:2|prompt:27|posy:44|ymax:76
+|posx:2|prompt:27|posy:43|ymax:76
+|posx:2|prompt:27|posy:42|ymax:76
+|posx:2|prompt:27|posy:41|ymax:76
+|posx:2|prompt:27|posy:40|ymax:76
+|posx:2|prompt:27|posy:39|ymax:76
+|posx:2|prompt:27|posy:38|ymax:76
+|posx:2|prompt:27|posy:37|ymax:76
+|posx:2|prompt:27|posy:36|ymax:76
+|posx:2|prompt:27|posy:35|ymax:76
+|posx:2|prompt:27|posy:34|ymax:76
+|posx:2|prompt:27|posy:33|ymax:76
+|posx:2|prompt:27|posy:32|ymax:76
+|posx:2|prompt:27|posy:31|ymax:76
+|posx:2|prompt:27|posy:30|ymax:76
+|posx:2|prompt:27|posy:29|ymax:76
+|posx:2|prompt:27|posy:28|ymax:76
+|posx:2|prompt:27|posy:27|ymax:76
+|posx:2|prompt:27|posy:26|ymax:76
+|posx:2|prompt:27|posy:25|ymax:76
+|posx:2|prompt:27|posy:24|ymax:76
+|posx:2|prompt:27|posy:23|ymax:76
+|posx:2|prompt:27|posy:22|ymax:76
+|posx:2|prompt:27|posy:21|ymax:76
+|posx:2|prompt:27|posy:20|ymax:76
+|posx:2|prompt:27|posy:19|ymax:76
+|posx:2|prompt:27|posy:18|ymax:76
+|posx:2|prompt:27|posy:17|ymax:76
+|posx:2|prompt:27|posy:16|ymax:76
+|posx:2|prompt:27|posy:15|ymax:76
+|posx:2|prompt:27|posy:14|ymax:76
+|posx:2|prompt:27|posy:13|ymax:76
+|posx:2|prompt:27|posy:12|ymax:76
+|posx:2|prompt:27|posy:11|ymax:76
+|posx:2|prompt:27|posy:10|ymax:76
+|posx:2|prompt:27|posy:9|ymax:76
+|posx:2|prompt:27|posy:8|ymax:76
+|posx:2|prompt:27|posy:7|ymax:76
+|posx:2|prompt:27|posy:6|ymax:76
+|posx:2|prompt:27|posy:5|ymax:76
+|posx:2|prompt:27|posy:4|ymax:76
+|posx:2|prompt:27|posy:3|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+|posx:1|prompt:27|posy:74|ymax:76
+|posx:1|prompt:27|posy:73|ymax:76
+|posx:1|prompt:27|posy:74|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76
+|posx:2|prompt:27|posy:2|ymax:76
+|posx:2|prompt:27|posy:3|ymax:76
+|posx:2|prompt:27|posy:4|ymax:76
+|posx:2|prompt:27|posy:5|ymax:76
+|posx:2|prompt:27|posy:6|ymax:76
+|posx:2|prompt:27|posy:7|ymax:76
+|posx:2|prompt:27|posy:8|ymax:76
+|posx:2|prompt:27|posy:9|ymax:76
+|posx:2|prompt:27|posy:10|ymax:76
+|posx:2|prompt:27|posy:11|ymax:76
+|posx:2|prompt:27|posy:12|ymax:76
+|posx:2|prompt:27|posy:13|ymax:76
+|posx:2|prompt:27|posy:14|ymax:76
+|posx:2|prompt:27|posy:15|ymax:76
+|posx:2|prompt:27|posy:16|ymax:76
+|posx:2|prompt:27|posy:17|ymax:76
+|posx:2|prompt:27|posy:18|ymax:76
+|posx:2|prompt:27|posy:19|ymax:76
+|posx:2|prompt:27|posy:20|ymax:76
+|posx:2|prompt:27|posy:21|ymax:76
+|posx:2|prompt:27|posy:22|ymax:76
+|posx:2|prompt:27|posy:23|ymax:76
+|posx:2|prompt:27|posy:24|ymax:76
+|posx:2|prompt:27|posy:25|ymax:76
+|posx:2|prompt:27|posy:26|ymax:76
+|posx:2|prompt:27|posy:27|ymax:76
+|posx:2|prompt:27|posy:28|ymax:76
+|posx:2|prompt:27|posy:29|ymax:76
+|posx:2|prompt:27|posy:30|ymax:76
+|posx:2|prompt:27|posy:31|ymax:76
+|posx:2|prompt:27|posy:32|ymax:76
+|posx:2|prompt:27|posy:33|ymax:76
+|posx:2|prompt:27|posy:34|ymax:76
+|posx:2|prompt:27|posy:35|ymax:76
+|posx:2|prompt:27|posy:36|ymax:76
+|posx:2|prompt:27|posy:37|ymax:76
+|posx:2|prompt:27|posy:38|ymax:76
+|posx:2|prompt:27|posy:39|ymax:76
+|posx:2|prompt:27|posy:40|ymax:76
+|posx:2|prompt:27|posy:41|ymax:76
+|posx:2|prompt:27|posy:42|ymax:76
+|posx:2|prompt:27|posy:43|ymax:76
+|posx:2|prompt:27|posy:44|ymax:76
+|posx:2|prompt:27|posy:45|ymax:76
+|posx:2|prompt:27|posy:46|ymax:76
+|posx:2|prompt:27|posy:47|ymax:76
+|posx:2|prompt:27|posy:48|ymax:76
+|posx:2|prompt:27|posy:49|ymax:76
+|posx:2|prompt:27|posy:50|ymax:76
+|posx:2|prompt:27|posy:51|ymax:76
+|posx:2|prompt:27|posy:52|ymax:76
+|posx:2|prompt:27|posy:53|ymax:76
+|posx:2|prompt:27|posy:54|ymax:76
+|posx:2|prompt:27|posy:55|ymax:76
+|posx:2|prompt:27|posy:56|ymax:76
+|posx:2|prompt:27|posy:57|ymax:76
+|posx:2|prompt:27|posy:58|ymax:76
+|posx:2|prompt:27|posy:59|ymax:76
+|posx:2|prompt:27|posy:60|ymax:76
+|posx:2|prompt:27|posy:61|ymax:76
+|posx:2|prompt:27|posy:62|ymax:76
+|posx:2|prompt:27|posy:63|ymax:76
+|posx:2|prompt:27|posy:64|ymax:76
+|posx:2|prompt:27|posy:65|ymax:76
+|posx:2|prompt:27|posy:66|ymax:76
+|posx:2|prompt:27|posy:67|ymax:76
+|posx:2|prompt:27|posy:68|ymax:76
+|posx:2|prompt:27|posy:69|ymax:76
+|posx:2|prompt:27|posy:70|ymax:76
+|posx:2|prompt:27|posy:71|ymax:76
+|posx:2|prompt:27|posy:72|ymax:76
+|posx:2|prompt:27|posy:73|ymax:76
+|posx:2|prompt:27|posy:74|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+|posx:2|prompt:27|posy:76|ymax:76
+|posx:3|prompt:27|posy:1|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+|posx:3|prompt:27|posy:3|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:7|ymax:6
+|posx:3|prompt:27|posy:6|ymax:6
+|posx:3|prompt:27|posy:5|ymax:6
+|posx:3|prompt:27|posy:4|ymax:6
+|posx:3|prompt:27|posy:3|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+|posx:3|prompt:27|posy:1|ymax:6
+|posx:2|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:75|ymax:76
+|posx:2|prompt:27|posy:76|ymax:76
+|posx:3|prompt:27|posy:1|ymax:6
+|posx:3|prompt:27|posy:2|ymax:6
+|posx:3|prompt:27|posy:1|ymax:6
+|posx:0|prompt:27|posy:2|ymax:49
+|posx:0|prompt:27|posy:3|ymax:49
+|posx:0|prompt:27|posy:4|ymax:49
+|posx:0|prompt:27|posy:5|ymax:49
+|posx:0|prompt:27|posy:6|ymax:49
+|posx:0|prompt:27|posy:7|ymax:49
+|posx:0|prompt:27|posy:8|ymax:49
+|posx:0|prompt:27|posy:9|ymax:49
+|posx:0|prompt:27|posy:10|ymax:49
+|posx:0|prompt:27|posy:11|ymax:49
+|posx:0|prompt:27|posy:12|ymax:49
+|posx:0|prompt:27|posy:13|ymax:49
+|posx:0|prompt:27|posy:14|ymax:49
+|posx:0|prompt:27|posy:15|ymax:49
+|posx:0|prompt:27|posy:16|ymax:49
+|posx:0|prompt:27|posy:17|ymax:49
+|posx:0|prompt:27|posy:18|ymax:49
+|posx:0|prompt:27|posy:19|ymax:49
+|posx:0|prompt:27|posy:20|ymax:49
+|posx:0|prompt:27|posy:21|ymax:49
+|posx:0|prompt:27|posy:22|ymax:49
+|posx:0|prompt:27|posy:23|ymax:49
+|posx:0|prompt:27|posy:24|ymax:49
+|posx:0|prompt:27|posy:25|ymax:49
+|posx:0|prompt:27|posy:26|ymax:49
+|posx:0|prompt:27|posy:27|ymax:49
+|posx:0|prompt:27|posy:28|ymax:49
+|posx:0|prompt:27|posy:29|ymax:49
+|posx:0|prompt:27|posy:30|ymax:49
+|posx:0|prompt:27|posy:31|ymax:49
+|posx:0|prompt:27|posy:32|ymax:49
+|posx:0|prompt:27|posy:33|ymax:49
+|posx:0|prompt:27|posy:34|ymax:49
+|posx:0|prompt:27|posy:35|ymax:49
+|posx:0|prompt:27|posy:36|ymax:49
+|posx:0|prompt:27|posy:37|ymax:49
+|posx:0|prompt:27|posy:38|ymax:49
+|posx:0|prompt:27|posy:39|ymax:49
+|posx:0|prompt:27|posy:40|ymax:49
+|posx:0|prompt:27|posy:41|ymax:49
+|posx:0|prompt:27|posy:42|ymax:49
+|posx:0|prompt:27|posy:43|ymax:49
+|posx:0|prompt:27|posy:44|ymax:49
+|posx:0|prompt:27|posy:45|ymax:49
+|posx:0|prompt:27|posy:46|ymax:49
+|posx:0|prompt:27|posy:47|ymax:49
+|posx:0|prompt:27|posy:48|ymax:49
+|posx:0|prompt:27|posy:49|ymax:49
+|posx:1|prompt:27|posy:1|ymax:76
+|posx:1|prompt:27|posy:2|ymax:76
+|posx:1|prompt:27|posy:3|ymax:76
+|posx:1|prompt:27|posy:4|ymax:76
+|posx:1|prompt:27|posy:5|ymax:76
+|posx:1|prompt:27|posy:6|ymax:76
+|posx:1|prompt:27|posy:7|ymax:76
+|posx:1|prompt:27|posy:8|ymax:76
+|posx:1|prompt:27|posy:9|ymax:76
+|posx:1|prompt:27|posy:10|ymax:76
+|posx:1|prompt:27|posy:11|ymax:76
+|posx:1|prompt:27|posy:12|ymax:76
+|posx:1|prompt:27|posy:13|ymax:76
+|posx:1|prompt:27|posy:14|ymax:76
+|posx:1|prompt:27|posy:15|ymax:76
+|posx:1|prompt:27|posy:16|ymax:76
+|posx:1|prompt:27|posy:17|ymax:76
+|posx:1|prompt:27|posy:18|ymax:76
+|posx:1|prompt:27|posy:19|ymax:76
+|posx:1|prompt:27|posy:20|ymax:76
+|posx:1|prompt:27|posy:21|ymax:76
+|posx:1|prompt:27|posy:22|ymax:76
+|posx:1|prompt:27|posy:23|ymax:76
+|posx:1|prompt:27|posy:24|ymax:76
+|posx:1|prompt:27|posy:25|ymax:76
+|posx:1|prompt:27|posy:26|ymax:76
+|posx:1|prompt:27|posy:27|ymax:76
+|posx:1|prompt:27|posy:28|ymax:76
+|posx:1|prompt:27|posy:29|ymax:76
+|posx:1|prompt:27|posy:30|ymax:76
+|posx:1|prompt:27|posy:31|ymax:76
+|posx:1|prompt:27|posy:32|ymax:76
+|posx:1|prompt:27|posy:33|ymax:76
+|posx:1|prompt:27|posy:34|ymax:76
+|posx:1|prompt:27|posy:35|ymax:76
+|posx:1|prompt:27|posy:36|ymax:76
+|posx:1|prompt:27|posy:37|ymax:76
+|posx:1|prompt:27|posy:38|ymax:76
+|posx:1|prompt:27|posy:39|ymax:76
+|posx:1|prompt:27|posy:40|ymax:76
+|posx:1|prompt:27|posy:41|ymax:76
+|posx:1|prompt:27|posy:42|ymax:76
+|posx:1|prompt:27|posy:43|ymax:76
+|posx:1|prompt:27|posy:44|ymax:76
+|posx:1|prompt:27|posy:45|ymax:76
+|posx:1|prompt:27|posy:46|ymax:76
+|posx:1|prompt:27|posy:47|ymax:76
+|posx:1|prompt:27|posy:48|ymax:76
+|posx:1|prompt:27|posy:49|ymax:76
+|posx:1|prompt:27|posy:50|ymax:76
+|posx:1|prompt:27|posy:51|ymax:76
+|posx:1|prompt:27|posy:52|ymax:76
+|posx:1|prompt:27|posy:53|ymax:76
+|posx:1|prompt:27|posy:54|ymax:76
+|posx:1|prompt:27|posy:55|ymax:76
+|posx:1|prompt:27|posy:56|ymax:76
+|posx:1|prompt:27|posy:57|ymax:76
+|posx:1|prompt:27|posy:58|ymax:76
+|posx:1|prompt:27|posy:59|ymax:76
+|posx:1|prompt:27|posy:60|ymax:76
+|posx:1|prompt:27|posy:61|ymax:76
+|posx:1|prompt:27|posy:62|ymax:76
+|posx:1|prompt:27|posy:63|ymax:76
+|posx:1|prompt:27|posy:64|ymax:76
+|posx:1|prompt:27|posy:65|ymax:76
+|posx:1|prompt:27|posy:66|ymax:76
+|posx:1|prompt:27|posy:67|ymax:76
+|posx:1|prompt:27|posy:68|ymax:76
+|posx:1|prompt:27|posy:69|ymax:76
+|posx:1|prompt:27|posy:70|ymax:76curpos_init x>0
+curpos_init x>0
 
-avant reposision =|posy: 20|posx:0
-|posx:0|prompt:24|posy:12|ymax:19
-|posx:0|prompt:24|posy:13|ymax:19
-|posx:0|prompt:24|posy:14|ymax:19
-|posx:0|prompt:24|posy:15|ymax:19
-|posx:0|prompt:24|posy:16|ymax:19
-|posx:0|prompt:24|posy:17|ymax:19
-|posx:0|prompt:24|posy:18|ymax:19
-|posx:0|prompt:24|posy:19|ymax:19
-|posx:0|prompt:24|posy:20|ymax:19
-|posx:0|prompt:24|posy:20|ymax:19
-|posx:0|prompt:24|posy:20|ymax:19
-|posx:0|prompt:24|posy:20|ymax:19b34b35b36b37b38b39b40b41b42b43b44b45b46b47b48b49b50b51b52b53b54b55b56b57b58b59b60b61b62b63b64b65b66b67b68b69b70b71b72b73b74b75b76b77b78b79b80b81b82b83b84b85b86b87b88b89b90b91
-|posx:0|prompt:24|posy:8|ymax:59
-|posx:0|prompt:24|posy:7|ymax:59
-|posx:0|prompt:24|posy:6|ymax:59
-|posx:0|prompt:24|posy:5|ymax:59
-|posx:0|prompt:24|posy:4|ymax:59
-|posx:0|prompt:24|posy:3|ymax:59
-|posx:0|prompt:24|posy:2|ymax:59
-|posx:0|prompt:24|posy:1|ymax:59
-|posx:0|prompt:24|posy:1|ymax:59
-|posx:0|prompt:24|posy:1|ymax:59position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83
-|posx:1|prompt:24|posy:26|ymax:32position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84
-|posx:1|prompt:24|posy:27|ymax:32position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85
-|posx:1|prompt:24|posy:28|ymax:32position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86
-|posx:1|prompt:24|posy:29|ymax:32position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87
-|posx:1|prompt:24|posy:30|ymax:32position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88
-|posx:1|prompt:24|posy:31|ymax:32position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89position89
-|posx:1|prompt:24|posy:30|ymax:32position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88position88
-|posx:1|prompt:24|posy:29|ymax:32position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87position87
-|posx:1|prompt:24|posy:28|ymax:32position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86position86
-|posx:1|prompt:24|posy:27|ymax:32position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85position85
-|posx:1|prompt:24|posy:26|ymax:32position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84position84
-|posx:1|prompt:24|posy:25|ymax:32position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83position83
-|posx:1|prompt:24|posy:24|ymax:32position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82
-|posx:1|prompt:24|posy:23|ymax:32position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81
-|posx:1|prompt:24|posy:22|ymax:32position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80position80
-|posx:1|prompt:24|posy:23|ymax:32position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81position81
-|posx:1|prompt:24|posy:24|ymax:32position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82position82
-|posx:1|prompt:24|posy:25|ymax:32
+|posx:0|prompt:27|posy:5|ymax:5curpos_init esle
+curpos_init esle
+b46b47b48b49b50b51b52b53b54b55b56b57b58b59b60b61b62b63b64b65b66b67b68b69b70b71b72b73b74b75b76b77b78b79b80b81b82b83b84b85b86b87b88b89b90b91b92b93b94b95b96b97b98b99b100b101b102b103b104b105b106b107b108b109b110b111b112b113b114b115b116b117b118b119b120b121b122b123b124b125b126b127b128b129b130b131b132b133b134b135b136b137b138b139b140b141b142b143b144b145b146b147b148b149b150b151b152b153b154b155b156b157b158b159b160b161b162b163b164b165b166b167b168b169b170b171b172b173b174b175b176b177b178b179b180b181b182b183b184b185b186b187b188b189b190b191b192b193b194b195b196b197b198b199b200b201b202b203b204b205curpos_init x>0
+
+|posx:1|prompt:27|posy:74|ymax:76
+|posx:1|prompt:27|posy:75|ymax:76
+|posx:1|prompt:27|posy:76|ymax:76
+|posx:2|prompt:27|posy:1|ymax:76

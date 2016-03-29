@@ -1,5 +1,5 @@
-/* ************************************************************************** */
 /*                                                                            */
+/* ************************************************************************** */
 /*                                                        :::      ::::::::   */
 /*   termcaps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -67,7 +67,8 @@ void					init_term(t_para *glob)
 	term.c_cc[VMIN] = 1; //a checker pour eviter le segfault
 	term.c_cc[VTIME] = 0; //a checker pour eviter le segfault
 	term.c_lflag &= ~(ICANON);
-	term.c_lflag &= ~(ECHO);
+	term.c_lflag &= ~(ECHO | ECHONL);
+	term.c_lflag = (ONLCR | OPOST);
 	if (tcsetattr(glob->fd, TCSADRAIN, &term) == -1)
 		return ;
 }
