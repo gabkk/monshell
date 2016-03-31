@@ -16,9 +16,7 @@ void			read_input(t_para *glob, t_input **input)
 {
 	char		buff[2];
 	int  		ret;
-	int 		quote;
 
-	quote = 1;
 	ft_bzero(buff, 2);
 	if ((ret = read(0, buff, 1)) == 0)
 		exit(0);
@@ -33,31 +31,14 @@ void			read_input(t_para *glob, t_input **input)
 	}
 	else if (buff[0] == 127)
 	{
-		if (glob->cursor->posy > 1)
-			backspace(input, &glob);
-		else if (glob->cursor->posy > 0 && glob->cursor->posx > 0)
-			backspace(input, &glob);
+		if ((glob->cursor->posy > 1) ||
+			(glob->cursor->posy > 0 && glob->cursor->posx > 0))
+		backspace(input, &glob);
 	}
 	else if (buff[0] == 27)
 		read_arrow(&glob, input);
 	else if (buff[0] == '\n' && glob->selector == 0)//line
-	{
-		if ((quote = quoting_valid(glob->quoting)) == 0)
-		{
-			glob->quoting->bkslash = 0;
-			add_cursor(&glob->cursor);
-			ft_putchar_fd('\n', glob->fd);
-			ft_putstr_fd("\033[34m\\\033[0m ", glob->fd);
-			glob->cursor->quoting = 1;
-			glob->term->action = 0;
-		}
-		else if (quote == 1)
-		{
-			save_cmd(input, &glob);
-			if (*input)
-				delete_lst_input(input);
-		}
-	}
+		read_enter(&glob, input);
 	else if (buff[0] == 5)//ctr E
 	{
 		if (glob->selector == 0)
@@ -76,31 +57,40 @@ void			read_input(t_para *glob, t_input **input)
 	}
 	else if (buff[0] == 4)//ctr+d
 	{
-		if (glob->current_l == 1)
-		{
-			//ft_putstr_fd(tgetstr("me", NULL), glob->fd);
-			//ft_putstr_fd(tgetstr("ae", NULL), glob->fd);
-			glob->current_l = 0;
-		}
-		else if (glob->current_l == 0)
-		{
-			//ft_putstr_fd(tgetstr("as", NULL), glob->fd);
-			//ft_putstr_fd(tgetstr("md", NULL), glob->fd);
-			glob->current_l = 1;
-		}
 		ft_putstr_fd(CURSOR_COLOR_W_OS, glob->fd);
-
-		//ft_putstr_fd("ok",glob->fd);
 		exit(0);
 	}
 
 //	me
 }
 
+void		read_enter(t_para **glob, t_input **input)
+{
+	if (quoting_valid((*glob)->quoting) == 0)
+	{
+		(*glob)->quoting->bkslash = 0;
+		add_cursor(&(*glob)->cursor);
+		ft_putchar_fd('\n', (*glob)->fd);
+		ft_putstr_fd("\033[34m\\\033[0m ", (*glob)->fd);
+		(*glob)->cursor->quoting = 1;
+		(*glob)->term->action = 0;
+		return ;
+	}
+	save_cmd(input, glob);
+	if (*input)
+		delete_lst_input(input);
+	while ((*glob)->cursor->next)
+	{
+		(*glob)->cursor = (*glob)->cursor->next;
+		if ((*glob)->cursor->ymax > 0)
+			ft_putstr_fd(tgetstr("do", NULL), (*glob)->fd);
+	}
+}
+
 void		read_arrow(t_para **glob, t_input **input)
 {
 	char	buff[2];
-	int  ret;
+	int		ret;
 
 	ft_bzero(buff, 2);
 	if ((ret = read(0, buff, 2)) == 0)
@@ -123,7 +113,6 @@ void		read_arrow(t_para **glob, t_input **input)
 	{
 		cursor_home_end(glob, input, buff[1]);
 	}
-
 }
 
 void		read_ud(t_para **glob, t_input **input, char buff)
@@ -141,6 +130,7 @@ void		read_ud(t_para **glob, t_input **input, char buff)
 	show_last_hist(glob, input);
 
 }
+
 void		read_lr(t_para **glob, t_input **input, char buff)
 {
 	int		i;
@@ -148,8 +138,6 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 	i = 0;
 	if (buff == 'C')//droite
 	{
-		//ft_putstr_fd("|posy:", 2);
-		//ft_putnbr_fd((*glob)->cursor->posy, 2);
 		if ((*glob)->cursor->posy < (*glob)->cursor->ymax + 1)
 		{
 			if ((*glob)->selector == 1)
@@ -165,8 +153,6 @@ void		read_lr(t_para **glob, t_input **input, char buff)
 				(*glob)->cursor = (*glob)->cursor->next;				
 			}
 		}
-
-		
 
 		ft_putchar_fd('\n', 2); // debug
 		ft_putstr_fd("|posx:", 2);
@@ -223,7 +209,8 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 
 	position = 0;
 	set_quoting(&(*glob)->quoting, buff);
-	if ((*glob)->cursor->posy == (*glob)->cursor->ymax + 1)
+	if ((*glob)->cursor->posy == (*glob)->cursor->ymax + 1 &&
+		(*glob)->cursor->posy < (*glob)->term->size[0] + 1)
 	{
 		add_back_input(input, buff, (*glob)->total_c);
 		ft_putchar_fd(buff, (*glob)->fd);
@@ -239,39 +226,45 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 	}
 	else if ((*glob)->cursor->posy < (*glob)->cursor->ymax + 1 || (*glob)->cursor->posy == 1)
 	{
+		int tmp;//woouuu
+		t_cursor		*newm;
+
 		if ((*glob)->cursor->posx == 0)
-			position = (*glob)->cursor->posy;
+			tmp = (*glob)->term->size[0] - (*glob)->prompt_s;
 		else
-		{
-			position = (*glob)->term->size[0] - (*glob)->prompt_s;//verfier le dernier charactere
-			position += (*glob)->cursor->posy;
-			position += (((*glob)->cursor->posx - 1) * (*glob)->term->size[0]);//verfier le dernier charactere
-		}
+			tmp = (*glob)->term->size[0];
+		position = get_input_pos(glob);
 		add_inside_input(input, buff, position);
 
+
+
 		(*glob)->cursor->posy += 1;//y final
-
-
-		if ((*glob)->cursor->ymax < (*glob)->term->size[0] - (*glob)->prompt_s)
+		ft_putendl_fd("", 2); // debug
+		if ((*glob)->cursor->ymax < tmp)
 		{
+			ft_putstr_fd("modify ymax inside", 2); // debug
 			(*glob)->cursor->ymax++;
-			ft_putstr_fd("inferieur", 2); // debug
+			if ((*glob)->cursor->ymax == tmp)
+			{
+				newm = init_cursor();
+				(*glob)->cursor->next = newm;
+				newm->prev = (*glob)->cursor;
+				newm->posx = (*glob)->cursor->posx + 1;
+				newm->next = NULL;
+				newm->posy = 1;
+				newm->ymax = 0;
+				newm->quoting = 0;
+			}
 		}
 		else
 		{
-			ft_putstr_fd("modify last", 2); // debug
-			// if (!(*glob)->cursor->next)
-			// 	add_cursor(&(*glob)->cursor);
 			modify_ymax_to_last(glob, &(*glob)->cursor, 1);
 		}
+
 		(*glob)->total_c += 1;
+
 		// ft_putstr_fd(tgetstr("nd", NULL), (*glob)->fd);
 		print_lst_input(input, glob); //changer le posy et le posx
-
-
-		ft_putchar_fd('i', 2); // debug
-		ft_putnbr_fd(position, 2); // debug
-
 	}
 
 	if ((*glob)->cursor->posx == 0 && 
@@ -303,4 +296,3 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 			(*glob)->cursor = (*glob)->cursor->next;
 	}
 }
-			

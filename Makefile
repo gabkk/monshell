@@ -25,7 +25,7 @@ SRCS = main.c maillon_op.c read_input.c alloc_tab.c define_env.c builtins.c \
 	main_body.c display_prompt.c history.c default_env.c exit.c signal.c \
 	termcaps.c lst_input_op.c backspace.c termcaps_history.c selector.c \
 	cursor.c tool2.c backspace_op.c selector_paste.c selector_cut.c \
-	cursor_move.c quoting.c
+	quoting.c cursor_up_down.c cursor_word.c cursor_home_end.c
 
 
 OBJ = $(SRCS:.c=.o)

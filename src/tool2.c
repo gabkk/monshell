@@ -19,6 +19,7 @@ void				modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value)
 	int				tmp;
 
 	tmp = 0;
+	ft_putstr_fd("modify ymax last", 2); // debug
 	ptr = *cursor;
 	while (ptr->next)
 	{
@@ -30,13 +31,21 @@ void				modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value)
 		if ((*glob)->cursor->posx == 0 && ptr->posx == 0)
 			tmp += (*glob)->prompt_s;
 		tmp += ptr->ymax + 1;
-		if (tmp > (*glob)->term->size[0])
+		ft_putstr_fd("|tmp:", 2);//debug
+		ft_putnbr_fd(tmp, 2);//debug
+		if (tmp == (*glob)->term->size[0])
 		{
+			ptr->ymax++;
+			ft_putstr_fd("go inside new line", 2);
+//			add_cursor(&ptr);
 			newm = init_cursor();
 			ptr->next = newm;
 			newm->prev = ptr;
-			newm->ymax++;
 			newm->posx = ptr->posx + 1;
+			newm->next = NULL;
+			newm->posy = 1;
+			newm->ymax = 0;
+			newm->quoting = 0;
 		}
 		else
 			ptr->ymax++;

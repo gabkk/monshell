@@ -33,7 +33,6 @@ int				main(int ac, char *const av[], char *const envp[])
 	//ft_putnbr_fd(glob->term->size[0] , glob->fd);
 	// ft_putnbr_fd(glob->term->size[1] , glob->fd);
 	glob->env = env;
-	glob->current_l = 0;	
 	glob->cursor = init_cursor();//a free
 	glob->copy = NULL;
 	glob->selector = 0;

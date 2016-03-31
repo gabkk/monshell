@@ -91,7 +91,6 @@ typedef struct			s_quoting
 
 typedef struct			s_para{
 	int					fd;
-	int					current_l;//verifier utilite
 	int					total_h;
 	int					current_h;
 	int					selector;
@@ -158,6 +157,7 @@ void					read_input(t_para *glob, t_input **input);
 void					read_if_print(t_para **glob, t_input **input, char buff);
 void					read_ud(t_para **glob, t_input **input, char buff);
 void					read_lr(t_para **glob, t_input **input, char buff);
+void					read_enter(t_para **glob, t_input **input);
 
 /*
 ** alloc_tab.c
@@ -347,18 +347,26 @@ void					set_quoting(t_quoting **quoting, int buff);
 int						quoting_valid(t_quoting *quoting);
 
 /*
-** cursor_move.c
+** cursor_up_down.c  //norme
 */
 void					cursor_up(t_para **glob);
 void					cursor_down(t_para **glob);
-void					cursor_word_left(t_para **glob, t_input **input);
-void					cursor_word_right(t_para **glob, t_input **input);
-int						cursor_find_left(t_para **glob, t_input **input);
-void					cursor_find_right(t_para **glob, t_input **input);
+
+/*
+** cursor_home_end.c //norme
+*/
 void					cursor_end(t_para **glob, t_input **input);
 void					cursor_home_end(t_para **glob, t_input **input, char buff);
 void					cursor_home(t_para **glob, t_input **input);
 int						cursor_find_home(t_para **glob, t_input **input);
+
+/*
+** cursor_word.c //norme
+*/
+void					cursor_word_left(t_para **glob, t_input **input);
+void					cursor_word_right(t_para **glob, t_input **input);
+int						cursor_find_left(t_para **glob, t_input **input);
+void					cursor_find_right(t_para **glob, int position, int final);
 
 #endif
 
