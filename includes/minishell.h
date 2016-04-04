@@ -284,6 +284,15 @@ void					add_inside_input(t_input **input, char buf, int i);
 void					backspace(t_input **input, t_para **glob);
 void					backspace_last(t_input **input, t_para **glob);
 void					backspace_inside(t_input **input, t_para **glob);
+void					backspace_last_ctrld(t_input **input, t_para **glob);
+void					backspace_inside_ctrld(t_input **input, t_para **glob);
+
+/*
+** backspace_op.c
+*/
+void					back_del_maillon(t_para **glob, t_input **input, int position);
+void					back_redraw(t_para **glob, t_input **input);
+void					back_reposition(t_para **glob, int x, int y);
 
 /*
 ** selector.c
@@ -318,13 +327,9 @@ void					clear_line(t_para **glob, t_input **input);
 
 void					modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value);
 int 					get_input_pos(t_para **glob);
+int						check_if_selected(t_input **input);
+int						getpos_from_input(t_input **input);
 
-/*
-** backspace_op.c
-*/
-void					back_del_maillon(t_para **glob, t_input **input);
-void					back_redraw(t_para **glob, t_input **input);
-void					back_reposition(t_para **glob, int x, int y);
 
 /*
 ** selector_paste.c
@@ -345,6 +350,7 @@ int						free_input_copy_buff(t_para **glob, t_input **input);
 t_quoting				*init_quoting();
 void					set_quoting(t_quoting **quoting, int buff);
 int						quoting_valid(t_quoting *quoting);
+void					unset_quoting(t_quoting **quoting, int buff);
 
 /*
 ** cursor_up_down.c  //norme

@@ -150,6 +150,8 @@ void				selector_cut(t_para **glob, t_input **input)
 
 	x = 0;
 	y = 0;
+	if (check_if_selected(input) == 0)
+		return ;
 	ptr = *input;
 	tmp = ptr;
 	if (!ptr)

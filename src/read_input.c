@@ -57,8 +57,49 @@ void			read_input(t_para *glob, t_input **input)
 	}
 	else if (buff[0] == 4)//ctr+d
 	{
-		ft_putstr_fd(CURSOR_COLOR_W_OS, glob->fd);
-		exit(0);
+		ft_putstr_fd("TOTAL : " ,2);// debug
+		ft_putnbr_fd(glob->total_c ,2);
+		ft_putstr_fd("pos : " ,2);
+		ft_putnbr_fd(get_input_pos(&glob) ,2);// debug
+		
+		// modifier le bug pos-- quand on ctrl-d au milieur
+		// revoir les fonction backspace_inside_ctrld et backspace_last_ctrld
+		// revoir ces if bizarre en dessous
+
+
+		int			pos;
+
+		if (!*input)
+			return ;
+		pos = 0 ;
+		pos = getpos_from_input(input);
+		if (pos < glob->total_c)
+		{
+			backspace_inside_ctrld(input, &glob);
+			if (glob->cursor->ymax < glob->term->size[0] - glob->prompt_s)
+				glob->cursor->ymax--;
+			else
+				modify_ymax_to_last(&glob, &glob->cursor, -1);
+			glob->total_c -= 1;
+		}
+		else if (pos == glob->total_c)
+		{
+			backspace_last_ctrld(input, &glob);
+			if (glob->cursor->posy == 0 && glob->cursor->prev)
+			{
+				glob->cursor = glob->cursor->prev;
+				modify_ymax_to_last(&glob, &glob->cursor, -1);
+			}
+			else
+				glob->cursor->ymax--;
+			glob->total_c -= 1;
+		}
+		else if (pos > glob->total_c &&
+			glob->cursor->posy == 1)
+		{
+			ft_putstr_fd(CURSOR_COLOR_W_OS, glob->fd);
+			exit(0);
+		}
 	}
 
 //	me
@@ -235,9 +276,6 @@ void		read_if_print(t_para **glob, t_input **input, char buff)
 			tmp = (*glob)->term->size[0];
 		position = get_input_pos(glob);
 		add_inside_input(input, buff, position);
-
-
-
 		(*glob)->cursor->posy += 1;//y final
 		ft_putendl_fd("", 2); // debug
 		if ((*glob)->cursor->ymax < tmp)

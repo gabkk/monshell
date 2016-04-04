@@ -38,7 +38,7 @@ void				set_quoting(t_quoting **quoting, int buff)
 	else if (buff == 34)
 		(*quoting)->dbquote += 1;
 	else if (buff == 92)
-		(*quoting)->bkslash = 1;
+		(*quoting)->bkslash += 1;
 	else if (buff == 96)
 		(*quoting)->bkquote += 1;
 	else if (buff == 40)
@@ -56,6 +56,31 @@ void				set_quoting(t_quoting **quoting, int buff)
 
 }
 
+void				unset_quoting(t_quoting **quoting, int buff)
+{
+	if (buff == 39)
+		(*quoting)->quote -= 1;
+	else if (buff == 34)
+		(*quoting)->dbquote -= 1;
+	else if (buff == 92)
+		(*quoting)->bkslash -= 1;
+	else if (buff == 96)
+		(*quoting)->bkquote -= 1;
+	else if (buff == 40)
+		(*quoting)->parenthese_o -= 1;
+	else if (buff == 41)
+		(*quoting)->parenthese_f -= 1;
+	else if (buff == 91)
+		(*quoting)->crochet_o -= 1;
+	else if (buff == 93)
+		(*quoting)->crochet_f -= 1;
+	else if (buff == 123)
+		(*quoting)->accolade_o -= 1;
+	else if (buff == 125)
+		(*quoting)->accolade_f -= 1;
+
+}
+
 int					quoting_valid(t_quoting *quoting)
 {
 	if (quoting->quote % 2 != 0)
@@ -70,7 +95,7 @@ int					quoting_valid(t_quoting *quoting)
 		return (0);
 	else if (quoting->accolade_o != quoting->accolade_f)
 		return (0);
-	if (quoting->bkslash == 1)
+	if (quoting->bkslash > 0)
 		return (0);
 	return (1);
 }

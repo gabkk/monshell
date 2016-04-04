@@ -67,7 +67,7 @@ void				modify_ymax_to_last(t_para **glob, t_cursor **cursor, int value)
 }
 
 int 				get_input_pos(t_para **glob)
-{
+{//changer le nom mecomprehension
 	int				position;
 
 	position = 0;
@@ -80,4 +80,30 @@ int 				get_input_pos(t_para **glob)
 		position += (((*glob)->cursor->posx - 1) * (*glob)->term->size[0]);//verfier le dernier charactere
 	}
 	return (position);
+}
+
+int					getpos_from_input(t_input **input)
+{
+	t_input			*ptr;
+
+	if (!*input)
+		return (0);
+	ptr = *input;
+	while (ptr->next)
+		ptr = ptr->next;
+	return (ptr->pos[0]);
+}
+
+int					check_if_selected(t_input **input)
+{
+	t_input			*ptr;
+
+	ptr = *input;
+	while (ptr)
+	{
+		if (ptr->selected == 1)
+			return (1);
+		ptr = ptr->next;
+	}
+	return (0);
 }

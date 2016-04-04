@@ -41,8 +41,8 @@ void				set_first_input(t_input **input, char buf, int i)
 
 	(void)i;
 	newm = init_lst_input();
-	newm->next = *input;
-	(*input)->prev = newm;
+//	newm->next = *input;
+//	*input->prev = newm;
 	*input = newm;
 	newm->pos[0] = 0;
 	newm->c = buf;
@@ -113,8 +113,6 @@ void				print_lst_input(t_input **input, t_para **glob)
 	int				y;
 	int				prompt;
 
-//pas ok
-
 	y = (*glob)->cursor->posy - 1;
 	x = (*glob)->cursor->posx;
 	prompt = (*glob)->prompt_s;
@@ -158,9 +156,6 @@ void				print_lst_input(t_input **input, t_para **glob)
 				y = 0;
 			}
 			y++;
-			// ft_putnbr_fd(y, 2);
-			// ft_putchar_fd('-', 2);
-
 		}
 		ptr = ptr->next;
 	}

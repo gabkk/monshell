@@ -12,13 +12,11 @@
 
 #include "minishell.h"
 
-void		back_del_maillon(t_para **glob, t_input **input)
+void		back_del_maillon(t_para **glob, t_input **input, int position)
 {
-	int				position;
 	t_input			*tmp;
 	t_input			*ptr;
 
-	position = get_input_pos(glob);
 	ptr = *input;
 	while (ptr)
 	{
@@ -27,9 +25,11 @@ void		back_del_maillon(t_para **glob, t_input **input)
 			ft_putstr_fd("inside first", 2);
 
 			tmp = ptr->next;
+			unset_quoting(&(*glob)->quoting, ptr->c);
 			free(ptr);
 			*input = tmp;
-			(*input)->prev = NULL;
+			// if ((*input)->prev)
+			// 	(*input)->prev = NULL;
 			break ;
 		}
 		else if (ptr->next && ptr->next->pos[0] == position - 1)
@@ -39,6 +39,7 @@ void		back_del_maillon(t_para **glob, t_input **input)
 			tmp = ptr->next;
 			ptr->prev->next = ptr->next;
 			ptr->next->prev = ptr->prev;
+			unset_quoting(&(*glob)->quoting, ptr->c);
 			free(ptr);
 			break ;
 		}
@@ -79,27 +80,9 @@ void				back_redraw(t_para **glob, t_input **input)
 		}
 		ptr = ptr->next;
 	}
-
-	// ft_putstr_fd("value de y:", 2);//debug
-	// ft_putnbr_fd(y, 2);//debug
-
-
-	// ft_putstr_fd("value de termsize:", 2);//debug
-	// ft_putnbr_fd((*glob)->term->size[0], 2);//debug
-
-
-	// ft_putstr_fd("value de x:", 2);//debug
-	// ft_putnbr_fd(x, 2);//debug
-
-
-
-
-
 	ft_putchar_fd(' ', (*glob)->fd);
 	ft_putstr_fd(tgetstr("le", NULL), (*glob)->fd);
-
 	back_reposition(glob, x ,y);
-
 }
 
 void			back_reposition(t_para **glob, int x, int y)
