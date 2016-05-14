@@ -66,7 +66,7 @@ void			read_input(t_para *glob, t_input **input)
 		// revoir les fonction backspace_inside_ctrld et backspace_last_ctrld
 		// revoir ces if bizarre en dessous
 
-
+		ft_putstr_fd(tgetstr("as", NULL), glob->fd);
 		int			pos;
 
 		if (!*input)
